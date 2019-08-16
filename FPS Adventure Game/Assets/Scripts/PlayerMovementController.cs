@@ -5,6 +5,7 @@ public class PlayerMovementController : MonoBehaviour {
 
     //Components
     private CharacterController _characterController;
+    [SerializeField]
     private Animator _animator;
 
     //Camera rotation
@@ -44,7 +45,7 @@ public class PlayerMovementController : MonoBehaviour {
     private void Start() {
         //Gets componenets.
         _characterController = GetComponent<CharacterController>();
-        _animator = GetComponent<Animator>();
+        //_animator = GetComponent<Animator>();
 
         //Default look direction.
         SetRotation(transform.localEulerAngles.y);
@@ -85,6 +86,7 @@ public class PlayerMovementController : MonoBehaviour {
             if (!Physics.Raycast(transform.position + new Vector3(0, _characterController.height, 0), Vector3.up, out RaycastHit hit, jumpHeightDetection)) {
                 verticalVelocity = jumpSpeed;
             }
+            _animator.SetTrigger("Jump");
             //Handles gravity.
         } else if (!_characterController.isGrounded) {
             verticalVelocity += Physics.gravity.y * Time.deltaTime;
@@ -100,7 +102,8 @@ public class PlayerMovementController : MonoBehaviour {
         //Uses all prior information to move the player.
         _characterController.Move(speed * Time.deltaTime);
 
-        _animator.SetFloat("Blend", _characterController.velocity.sqrMagnitude * moveSpeed);
+        _animator.SetFloat("Speed", forwardSpeed);
+        print(_characterController.velocity.sqrMagnitude);
         #endregion
     }
 
