@@ -94,7 +94,7 @@ public class PlayerMovementController : MonoBehaviour {
 
         //Creates the vector that will be used to tell the CharacterController where to move.
         Vector3 speed = new Vector3(sideSpeed * moveSpeed * sideSpeedMultiplier, verticalVelocity, forwardSpeed * moveSpeed);
-        
+
         /* Modifies the speed variable to make it relative to the gameObjects rotation. 
         (Aka telling it to move forward will make it move forward) */
         speed = transform.rotation * speed;
@@ -103,7 +103,6 @@ public class PlayerMovementController : MonoBehaviour {
         _characterController.Move(speed * Time.deltaTime);
 
         _animator.SetFloat("Speed", forwardSpeed);
-        print(_characterController.velocity.sqrMagnitude);
         #endregion
     }
 
