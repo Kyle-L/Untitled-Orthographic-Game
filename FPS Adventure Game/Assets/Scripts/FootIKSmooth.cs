@@ -10,13 +10,31 @@ public class FootIKSmooth : MonoBehaviour {
     [SerializeField]
     private bool IkActive = true;
 
-    [Range(0f, 1f)]
-    [SerializeField]
-    private float positionWeight = 1f;
-    [Range(0f, 1f)]
-    [SerializeField]
-    private float rotationWeight = 0f;
+    private float positionWeight;
 
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float positionWeightMultiplier = 1;
+    public float PositionWeight {
+        get {
+            return positionWeightMultiplier;
+        }
+        set {
+            positionWeightMultiplier = value;
+        }
+    }
+
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float rotationWeight = 1;
+    public float RotationWeight {
+        get {
+            return rotationWeight;
+        }
+        set {
+            rotationWeight = value;
+        }
+    }
     [SerializeField]
     private Vector3 offset;
     [SerializeField]
@@ -24,8 +42,6 @@ public class FootIKSmooth : MonoBehaviour {
 
     // Components
     private Animator _animator;
-
-    public Transform hand;
 
     void Start() {
         _animator = GetComponent<Animator>();
@@ -36,6 +52,8 @@ public class FootIKSmooth : MonoBehaviour {
     /// animation pass.
     /// </summary>
     void OnAnimatorIK() {
+        positionWeight = _animator.GetFloat("Weight") * positionWeightMultiplier;
+
         // If IK is enabled, perform IK on both feet.
         if (IkActive) {
             PerformFootIK(AvatarIKGoal.RightFoot);
@@ -53,7 +71,7 @@ public class FootIKSmooth : MonoBehaviour {
     /// Performs IK on a foot.
     /// </summary>
     /// <param name="foot">The foot that the IK is performed on.</param>
-    private void PerformFootIK (AvatarIKGoal foot) {
+    private void PerformFootIK (AvatarIKGoal foot) { 
         // Gets the initial position.
         Vector3 FootPos = _animator.GetIKPosition(foot);
 
@@ -65,7 +83,7 @@ public class FootIKSmooth : MonoBehaviour {
             _animator.SetIKRotationWeight(foot, rotationWeight);
 
             // Sets the IK position to the hit point plus the offset.
-            _animator.SetIKPosition(foot, hit.point + offset);
+            _animator.SetIKPosition(foot, hit.point + offset); 
 
             /* If the rotation weight is greater than 0.
              * calculate the rotation the foot should be

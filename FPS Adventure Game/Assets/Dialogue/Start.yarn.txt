@@ -1,0 +1,47 @@
+title: Start
+tags: 
+colorID: 0
+position: 540,260
+---
+This is the beginning node.
+
+[[This goes to node 2|Node2]]
+[[This goes to node 3|Node3]]
+===
+title: Node2
+tags: 
+colorID: 0
+position: 228,572
+---
+This is node 2
+
+[[This goes back to the start node.|Start]]
+[[This goes back to the 4th node.|Node4]]
+===
+title: Node3
+tags: 
+colorID: 0
+position: 953,547
+---
+This is node 3
+
+[[This goes back to the start node.|Start]]
+[[This goes back to the 4th node.|Node4]]
+===
+title: Node4
+tags: 
+colorID: 0
+position: 531,802
+---
+This is the 4th node.
+
+[[This ends goes back the start node.|Start]]
+[[This ends the conversation|End]]
+===
+title: End
+tags: 
+colorID: 0
+position: 525,1086
+---
+Good bye!
+===

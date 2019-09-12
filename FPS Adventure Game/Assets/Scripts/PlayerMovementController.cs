@@ -31,6 +31,8 @@ public class PlayerMovementController : MonoBehaviour {
 
     //Jumping
     [Header("Jumping Settings")]
+    [SerializeField]
+    private bool jumpEnabled = true;
     private float verticalVelocity = 0f;
     [SerializeField]
     private float jumpSpeed = 2.5f;
@@ -55,6 +57,7 @@ public class PlayerMovementController : MonoBehaviour {
         #region Movement
         float forwardSpeed = 0;
         float sideSpeed = 0;
+
 
         if (Control) {
             //Gets character movement input
@@ -81,7 +84,7 @@ public class PlayerMovementController : MonoBehaviour {
         playerMainCamera.transform.localRotation = Quaternion.Euler(currentXRotation, 0, 0);
 
         Debug.DrawLine(transform.position + new Vector3(0, _characterController.height, 0), transform.position + new Vector3(0, _characterController.height, 0) + Vector3.up * jumpHeightDetection);
-        if (Input.GetButtonDown("Jump") && Control && _characterController.isGrounded) {
+        if (jumpEnabled && Input.GetButtonDown("Jump") && Control && _characterController.isGrounded) {
             //Prevents the player from jumping while an object is above their head.
             if (!Physics.Raycast(transform.position + new Vector3(0, _characterController.height, 0), Vector3.up, out RaycastHit hit, jumpHeightDetection)) {
                 verticalVelocity = jumpSpeed;

@@ -1,0 +1,1188 @@
+fileFormatVersion: 2
+guid: 6a464c4ab137d474ca9bafd49e20c864
+ModelImporter:
+  serializedVersion: 28
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Character
+  - first:
+      1: 100002
+    second: //RootNode
+  - first:
+      1: 100004
+    second: Scene:curve1
+  - first:
+      1: 100006
+    second: Scene:head
+  - first:
+      1: 100008
+    second: Scene:ikLeftArm
+  - first:
+      1: 100010
+    second: Scene:ikLeftLeg
+  - first:
+      1: 100012
+    second: Scene:ikRightArm
+  - first:
+      1: 100014
+    second: Scene:ikRightLeg
+  - first:
+      1: 100016
+    second: Scene:L_ankle
+  - first:
+      1: 100018
+    second: Scene:L_arm
+  - first:
+      1: 100020
+    second: Scene:L_armhelper
+  - first:
+      1: 100022
+    second: Scene:L_ball
+  - first:
+      1: 100024
+    second: Scene:L_elbow
+  - first:
+      1: 100026
+    second: Scene:L_elbowhelper
+  - first:
+      1: 100028
+    second: Scene:L_finger1
+  - first:
+      1: 100030
+    second: Scene:L_finger1helper
+  - first:
+      1: 100032
+    second: Scene:L_finger2
+  - first:
+      1: 100034
+    second: Scene:L_finger2helper
+  - first:
+      1: 100036
+    second: Scene:L_knee
+  - first:
+      1: 100038
+    second: Scene:L_kneehelper
+  - first:
+      1: 100040
+    second: Scene:L_leg
+  - first:
+      1: 100042
+    second: Scene:L_point
+  - first:
+      1: 100044
+    second: Scene:L_shoulder
+  - first:
+      1: 100046
+    second: Scene:L_shoulderhelper
+  - first:
+      1: 100048
+    second: Scene:L_tip
+  - first:
+      1: 100050
+    second: Scene:L_wrist
+  - first:
+      1: 100052
+    second: Scene:neck
+  - first:
+      1: 100054
+    second: Scene:pelvis
+  - first:
+      1: 100056
+    second: Scene:R_ankle
+  - first:
+      1: 100058
+    second: Scene:R_arm
+  - first:
+      1: 100060
+    second: Scene:R_armhelper
+  - first:
+      1: 100062
+    second: Scene:R_ball
+  - first:
+      1: 100064
+    second: Scene:R_elbow
+  - first:
+      1: 100066
+    second: Scene:R_elbowhelper
+  - first:
+      1: 100068
+    second: Scene:R_finger1
+  - first:
+      1: 100070
+    second: Scene:R_finger1helper
+  - first:
+      1: 100072
+    second: Scene:R_finger2
+  - first:
+      1: 100074
+    second: Scene:R_finger2helper
+  - first:
+      1: 100076
+    second: Scene:R_knee
+  - first:
+      1: 100078
+    second: Scene:R_kneehelper
+  - first:
+      1: 100080
+    second: Scene:R_leg
+  - first:
+      1: 100082
+    second: Scene:R_point
+  - first:
+      1: 100084
+    second: Scene:R_shoulder
+  - first:
+      1: 100086
+    second: Scene:R_shoulderhelper
+  - first:
+      1: 100088
+    second: Scene:R_tip
+  - first:
+      1: 100090
+    second: Scene:R_wrist
+  - first:
+      1: 100092
+    second: Scene:spine1
+  - first:
+      1: 100094
+    second: Scene:spine2
+  - first:
+      1: 100096
+    second: Scene:spine3
+  - first:
+      1: 100098
+    second: spine4
+  - first:
+      1: 100100
+    second: polySurface2
+  - first:
+      1: 100102
+    second: head
+  - first:
+      1: 100104
+    second: ikLeftArm
+  - first:
+      1: 100106
+    second: ikRightArm
+  - first:
+      1: 100108
+    second: ikRightLeg
+  - first:
+      1: 100110
+    second: kLeftLeg
+  - first:
+      1: 100112
+    second: L_ankle
+  - first:
+      1: 100114
+    second: L_arm
+  - first:
+      1: 100116
+    second: L_armhelper
+  - first:
+      1: 100118
+    second: L_ball
+  - first:
+      1: 100120
+    second: L_elbow
+  - first:
+      1: 100122
+    second: L_elbowhelper
+  - first:
+      1: 100124
+    second: L_finger1
+  - first:
+      1: 100126
+    second: L_finger1helper
+  - first:
+      1: 100128
+    second: L_finger2
+  - first:
+      1: 100130
+    second: L_finger2helper
+  - first:
+      1: 100132
+    second: L_knee
+  - first:
+      1: 100134
+    second: L_kneehelper
+  - first:
+      1: 100136
+    second: L_leg
+  - first:
+      1: 100138
+    second: L_point
+  - first:
+      1: 100140
+    second: L_shoulder
+  - first:
+      1: 100142
+    second: L_shoulderhelper
+  - first:
+      1: 100144
+    second: L_tip
+  - first:
+      1: 100146
+    second: L_wrist
+  - first:
+      1: 100148
+    second: neck
+  - first:
+      1: 100150
+    second: pelvis
+  - first:
+      1: 100152
+    second: R_ankle
+  - first:
+      1: 100154
+    second: R_arm
+  - first:
+      1: 100156
+    second: R_armhelper
+  - first:
+      1: 100158
+    second: R_ball
+  - first:
+      1: 100160
+    second: R_elbow
+  - first:
+      1: 100162
+    second: R_elbowhelper
+  - first:
+      1: 100164
+    second: R_finger1
+  - first:
+      1: 100166
+    second: R_finger1helper
+  - first:
+      1: 100168
+    second: R_finger2
+  - first:
+      1: 100170
+    second: R_finger2helper
+  - first:
+      1: 100172
+    second: R_knee
+  - first:
+      1: 100174
+    second: R_kneehelper
+  - first:
+      1: 100176
+    second: R_leg
+  - first:
+      1: 100178
+    second: R_point
+  - first:
+      1: 100180
+    second: R_shoulder
+  - first:
+      1: 100182
+    second: R_shoulderhelper
+  - first:
+      1: 100184
+    second: R_tip
+  - first:
+      1: 100186
+    second: R_wrist
+  - first:
+      1: 100188
+    second: spine1
+  - first:
+      1: 100190
+    second: spine2
+  - first:
+      1: 100192
+    second: spine3
+  - first:
+      4: 400000
+    second: Character
+  - first:
+      4: 400002
+    second: //RootNode
+  - first:
+      4: 400004
+    second: Scene:curve1
+  - first:
+      4: 400006
+    second: Scene:head
+  - first:
+      4: 400008
+    second: Scene:ikLeftArm
+  - first:
+      4: 400010
+    second: Scene:ikLeftLeg
+  - first:
+      4: 400012
+    second: Scene:ikRightArm
+  - first:
+      4: 400014
+    second: Scene:ikRightLeg
+  - first:
+      4: 400016
+    second: Scene:L_ankle
+  - first:
+      4: 400018
+    second: Scene:L_arm
+  - first:
+      4: 400020
+    second: Scene:L_armhelper
+  - first:
+      4: 400022
+    second: Scene:L_ball
+  - first:
+      4: 400024
+    second: Scene:L_elbow
+  - first:
+      4: 400026
+    second: Scene:L_elbowhelper
+  - first:
+      4: 400028
+    second: Scene:L_finger1
+  - first:
+      4: 400030
+    second: Scene:L_finger1helper
+  - first:
+      4: 400032
+    second: Scene:L_finger2
+  - first:
+      4: 400034
+    second: Scene:L_finger2helper
+  - first:
+      4: 400036
+    second: Scene:L_knee
+  - first:
+      4: 400038
+    second: Scene:L_kneehelper
+  - first:
+      4: 400040
+    second: Scene:L_leg
+  - first:
+      4: 400042
+    second: Scene:L_point
+  - first:
+      4: 400044
+    second: Scene:L_shoulder
+  - first:
+      4: 400046
+    second: Scene:L_shoulderhelper
+  - first:
+      4: 400048
+    second: Scene:L_tip
+  - first:
+      4: 400050
+    second: Scene:L_wrist
+  - first:
+      4: 400052
+    second: Scene:neck
+  - first:
+      4: 400054
+    second: Scene:pelvis
+  - first:
+      4: 400056
+    second: Scene:R_ankle
+  - first:
+      4: 400058
+    second: Scene:R_arm
+  - first:
+      4: 400060
+    second: Scene:R_armhelper
+  - first:
+      4: 400062
+    second: Scene:R_ball
+  - first:
+      4: 400064
+    second: Scene:R_elbow
+  - first:
+      4: 400066
+    second: Scene:R_elbowhelper
+  - first:
+      4: 400068
+    second: Scene:R_finger1
+  - first:
+      4: 400070
+    second: Scene:R_finger1helper
+  - first:
+      4: 400072
+    second: Scene:R_finger2
+  - first:
+      4: 400074
+    second: Scene:R_finger2helper
+  - first:
+      4: 400076
+    second: Scene:R_knee
+  - first:
+      4: 400078
+    second: Scene:R_kneehelper
+  - first:
+      4: 400080
+    second: Scene:R_leg
+  - first:
+      4: 400082
+    second: Scene:R_point
+  - first:
+      4: 400084
+    second: Scene:R_shoulder
+  - first:
+      4: 400086
+    second: Scene:R_shoulderhelper
+  - first:
+      4: 400088
+    second: Scene:R_tip
+  - first:
+      4: 400090
+    second: Scene:R_wrist
+  - first:
+      4: 400092
+    second: Scene:spine1
+  - first:
+      4: 400094
+    second: Scene:spine2
+  - first:
+      4: 400096
+    second: Scene:spine3
+  - first:
+      4: 400098
+    second: spine4
+  - first:
+      4: 400100
+    second: polySurface2
+  - first:
+      4: 400102
+    second: head
+  - first:
+      4: 400104
+    second: ikLeftArm
+  - first:
+      4: 400106
+    second: ikRightArm
+  - first:
+      4: 400108
+    second: ikRightLeg
+  - first:
+      4: 400110
+    second: kLeftLeg
+  - first:
+      4: 400112
+    second: L_ankle
+  - first:
+      4: 400114
+    second: L_arm
+  - first:
+      4: 400116
+    second: L_armhelper
+  - first:
+      4: 400118
+    second: L_ball
+  - first:
+      4: 400120
+    second: L_elbow
+  - first:
+      4: 400122
+    second: L_elbowhelper
+  - first:
+      4: 400124
+    second: L_finger1
+  - first:
+      4: 400126
+    second: L_finger1helper
+  - first:
+      4: 400128
+    second: L_finger2
+  - first:
+      4: 400130
+    second: L_finger2helper
+  - first:
+      4: 400132
+    second: L_knee
+  - first:
+      4: 400134
+    second: L_kneehelper
+  - first:
+      4: 400136
+    second: L_leg
+  - first:
+      4: 400138
+    second: L_point
+  - first:
+      4: 400140
+    second: L_shoulder
+  - first:
+      4: 400142
+    second: L_shoulderhelper
+  - first:
+      4: 400144
+    second: L_tip
+  - first:
+      4: 400146
+    second: L_wrist
+  - first:
+      4: 400148
+    second: neck
+  - first:
+      4: 400150
+    second: pelvis
+  - first:
+      4: 400152
+    second: R_ankle
+  - first:
+      4: 400154
+    second: R_arm
+  - first:
+      4: 400156
+    second: R_armhelper
+  - first:
+      4: 400158
+    second: R_ball
+  - first:
+      4: 400160
+    second: R_elbow
+  - first:
+      4: 400162
+    second: R_elbowhelper
+  - first:
+      4: 400164
+    second: R_finger1
+  - first:
+      4: 400166
+    second: R_finger1helper
+  - first:
+      4: 400168
+    second: R_finger2
+  - first:
+      4: 400170
+    second: R_finger2helper
+  - first:
+      4: 400172
+    second: R_knee
+  - first:
+      4: 400174
+    second: R_kneehelper
+  - first:
+      4: 400176
+    second: R_leg
+  - first:
+      4: 400178
+    second: R_point
+  - first:
+      4: 400180
+    second: R_shoulder
+  - first:
+      4: 400182
+    second: R_shoulderhelper
+  - first:
+      4: 400184
+    second: R_tip
+  - first:
+      4: 400186
+    second: R_wrist
+  - first:
+      4: 400188
+    second: spine1
+  - first:
+      4: 400190
+    second: spine2
+  - first:
+      4: 400192
+    second: spine3
+  - first:
+      23: 2300000
+    second: polySurface2
+  - first:
+      23: 2300002
+    second: Character
+  - first:
+      33: 3300000
+    second: polySurface2
+  - first:
+      33: 3300002
+    second: Character
+  - first:
+      43: 4300000
+    second: Character
+  - first:
+      43: 4300002
+    second: polySurface2
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Character
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 0
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: "Avatar creation failed:\n\tTransform 'Scene:L_leg' for human
+      bone 'LeftUpperLeg' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 60
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips:
+  - 5653211d58c5ca44cb783244e4ed07c0
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: spine4
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_leg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_leg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_knee
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_knee
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_ankle
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_ankle
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:spine3
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:spine2
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_shoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_shoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_arm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_arm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_elbow
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_elbow
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_wrist
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_wrist
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_point
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_point
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_finger2
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_finger2helper
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_finger1
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:L_finger1helper
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_finger2
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_finger2helper
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_finger1
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scene:R_finger1helper
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: FemaleModel_1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Character
+      parentName: FemaleModel_1(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: spine4
+      parentName: FemaleModel_1(Clone)
+      position: {x: -0.0016059419, y: 1.3703432, z: 0.029378096}
+      rotation: {x: 0.70325357, y: 0.71093917, z: -4.7060745e-19, w: -8.659433e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:ikLeftLeg
+      parentName: spine4
+      position: {x: -1.2515999, y: -0.11540732, z: 0.038751755}
+      rotation: {x: 0.9990288, y: 0.032000054, z: -0.03028654, w: 0.00049987016}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:ikRightLeg
+      parentName: spine4
+      position: {x: -1.2517325, y: 0.091016814, z: 0.038991712}
+      rotation: {x: 0.024632778, y: -0.00075172645, z: 0.999423, w: 0.023372017}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:pelvis
+      parentName: spine4
+      position: {x: -0.16898061, y: -0.00023066279, z: 0.024481747}
+      rotation: {x: 0.70325357, y: 0.71093917, z: -4.7060745e-19, w: -8.659433e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:curve1
+      parentName: Scene:pelvis
+      position: {x: 0.010275645, y: -1.1918088, z: -0.004896348}
+      rotation: {x: -6.122872e-17, y: -6.189787e-17, z: -5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_leg
+      parentName: Scene:pelvis
+      position: {x: -0.092864595, y: -0.07147534, z: -0.032531682}
+      rotation: {x: -0.01875779, y: 0.017399264, z: 0.6947322, w: 0.71881336}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_knee
+      parentName: Scene:L_leg
+      position: {x: -0.38844568, y: -0.015746355, z: 0.05710523}
+      rotation: {x: 0.0010630777, y: -0.034567945, z: -0.007065508, w: 0.99937683}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_kneehelper
+      parentName: Scene:L_knee
+      position: {x: -0.16201119, y: -0.008000839, z: -0.034414273}
+      rotation: {x: 0.00024702318, y: -0.008888404, z: -0.0038252906, w: 0.99995315}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_ankle
+      parentName: Scene:L_kneehelper
+      position: {x: -0.46592107, y: -0.012742339, z: -0.0046245544}
+      rotation: {x: 2.3635418e-18, y: -2.5490687e-18, z: -0.6894481, w: 0.7243351}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_ball
+      parentName: Scene:L_ankle
+      position: {x: 0.006898758, y: -0.06475811, z: -0.0100635225}
+      rotation: {x: 0.03762369, y: 0.7061052, z: 0.03762369, w: 0.7061052}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_point
+      parentName: Scene:L_ball
+      position: {x: -0.086186714, y: 0.0082100555, z: 4.9960035e-17}
+      rotation: {x: -0.03762369, y: -0.7061052, z: -0.03762369, w: 0.7061052}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_tip
+      parentName: Scene:L_point
+      position: {x: 3.330669e-17, y: -0.010945777, z: 0.111447915}
+      rotation: {x: -2.0816682e-17, y: -2.1684043e-19, z: 7.047314e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_leg
+      parentName: Scene:pelvis
+      position: {x: 0.09286444, y: -0.07147691, z: -0.032531686}
+      rotation: {x: 0.7176389, y: -0.6955437, z: 0.023641914, w: 0.025584456}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_knee
+      parentName: Scene:R_leg
+      position: {x: 0.38844174, y: 0.015746012, z: -0.05710552}
+      rotation: {x: 0.0014053531, y: -0.04724152, z: -0.008012056, w: 0.9988504}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_kneehelper
+      parentName: Scene:R_knee
+      position: {x: 0.16201366, y: 0.00800095, z: 0.034414247}
+      rotation: {x: 0.00032056242, y: -0.0121492995, z: -0.0052270335, w: 0.9999125}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_ankle
+      parentName: Scene:R_kneehelper
+      position: {x: 0.46592098, y: 0.012742158, z: 0.004624544}
+      rotation: {x: 0.000000013219203, y: -0.000000033133077, z: -0.6894481, w: 0.7243351}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_ball
+      parentName: Scene:R_ankle
+      position: {x: -0.006898875, y: 0.06475808, z: 0.010063521}
+      rotation: {x: 0.037623666, y: 0.7061052, z: 0.037623666, w: 0.7061052}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_point
+      parentName: Scene:R_ball
+      position: {x: 0.08618677, y: -0.008210073, z: -0.00000041703305}
+      rotation: {x: -0.03762369, y: -0.7061052, z: -0.03762369, w: 0.7061052}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_tip
+      parentName: Scene:R_point
+      position: {x: 0.00000055980126, y: 0.010945774, z: -0.11144765}
+      rotation: {x: 8.348916e-19, y: 1.1796117e-16, z: 6.1650406e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:spine3
+      parentName: spine4
+      position: {x: 0.13648346, y: 0.0030895988, z: -0.020809485}
+      rotation: {x: 0.999936, y: 0.011316408, z: 6.929302e-19, w: 6.122842e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:ikLeftArm
+      parentName: Scene:spine3
+      position: {x: -0.314199, y: 0.30431533, z: -0.10681248}
+      rotation: {x: -2.8504745e-32, y: 1.424793e-17, z: -0.11634317, w: 0.99320906}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:ikRightArm
+      parentName: Scene:spine3
+      position: {x: -0.30686203, y: -0.31947392, z: -0.08446203}
+      rotation: {x: -0.12801912, y: 0.9917717, z: 0.000000013036392, w: -0.0000000016827537}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:spine2
+      parentName: Scene:spine3
+      position: {x: 0.16867377, y: -0.0028339007, z: -0.044819437}
+      rotation: {x: -1.2325517e-32, y: 1.0353366e-34, z: -0.008399649, w: 0.9999647}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:spine1
+      parentName: Scene:spine2
+      position: {x: 0.12600067, y: 0.0036000195, z: -0.026177626}
+      rotation: {x: 1.19726326e-32, y: 2.482542e-32, z: 0.014281344, w: 0.999898}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_shoulder
+      parentName: Scene:spine1
+      position: {x: 0.018815165, y: 0.072924376, z: -0.019585397}
+      rotation: {x: 0.012894408, y: 0.0038557085, z: -0.58045846, w: 0.81417865}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_shoulderhelper
+      parentName: Scene:L_shoulder
+      position: {x: -0.07382348, y: 0.011602335, z: -0.008568611}
+      rotation: {x: 0.009813943, y: -0.01571773, z: -0.14682694, w: 0.98898864}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_arm
+      parentName: Scene:L_shoulderhelper
+      position: {x: -0.07975169, y: -0.032359086, z: 0.0048963493}
+      rotation: {x: -0.0014674921, y: -0.0055830753, z: 0.010078648, w: 0.9999325}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_armhelper
+      parentName: Scene:L_arm
+      position: {x: -0.09741495, y: 0.009993828, z: -0.0012240873}
+      rotation: {x: 0.0001465824, y: 0.0000035267326, z: 0.024052769, w: 0.99971074}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_elbow
+      parentName: Scene:L_armhelper
+      position: {x: -0.1582711, y: -6.661338e-17, z: 0.003672262}
+      rotation: {x: -0.00009784739, y: -0.001067484, z: 0.0018997038, w: 0.9999976}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_elbowhelper
+      parentName: Scene:L_elbow
+      position: {x: -0.11451955, y: 6.661338e-17, z: 0.0012240873}
+      rotation: {x: 0.000056014112, y: -0.0000011473486, z: -0.02047891, w: 0.9997903}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_wrist
+      parentName: Scene:L_elbowhelper
+      position: {x: -0.1547554, y: 0.0011717913, z: 0.006120437}
+      rotation: {x: -2.129841e-33, y: 1.7300923e-32, z: -0.61541224, w: 0.78820544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_finger2
+      parentName: Scene:L_wrist
+      position: {x: -0.0035878532, y: -0.04004383, z: 0.04063901}
+      rotation: {x: 0.031938348, y: -0.05882036, z: 0.6374824, w: 0.76755214}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_finger2helper
+      parentName: Scene:L_finger2
+      position: {x: -0.05388092, y: 0.001074834, z: 0.01446492}
+      rotation: {x: 6.0001837e-34, y: -1.7421198e-32, z: -0.68234813, w: 0.73102736}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_finger1
+      parentName: Scene:L_wrist
+      position: {x: -0.011147168, y: -0.04174033, z: -0.0022383668}
+      rotation: {x: 0.48573428, y: 0.5138698, z: 0.48573428, w: 0.5138698}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:L_finger1helper
+      parentName: Scene:L_finger1
+      position: {x: -0.08229103, y: -4.163336e-18, z: -0.017971262}
+      rotation: {x: -0.48573428, y: -0.5138698, z: -0.48573428, w: 0.5138698}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:neck
+      parentName: Scene:spine1
+      position: {x: 0.05699331, y: 0.0024187244, z: -0.0046183383}
+      rotation: {x: 0, y: -1.2325952e-32, z: 1, w: -2.8327693e-16}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:head
+      parentName: Scene:neck
+      position: {x: -0.037103027, y: 9.367506e-18, z: 0}
+      rotation: {x: -8.7157646e-33, y: 8.7157646e-33, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_shoulder
+      parentName: Scene:spine1
+      position: {x: 0.018816082, y: -0.07292467, z: -0.019585393}
+      rotation: {x: -0.5845687, y: 0.8112933, z: -0.008043861, w: -0.0042323703}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_shoulderhelper
+      parentName: Scene:R_shoulder
+      position: {x: 0.0726286, y: -0.010276595, z: 0.008568599}
+      rotation: {x: 3.5334344e-10, y: 2.2963077e-10, z: -0.14542198, w: 0.98936975}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_arm
+      parentName: Scene:R_shoulderhelper
+      position: {x: 0.079749845, y: 0.03235612, z: -0.004896359}
+      rotation: {x: 0.0006135405, y: -0.011042533, z: 0.013537794, w: 0.99984723}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_armhelper
+      parentName: Scene:R_arm
+      position: {x: 0.09741858, y: -0.009992706, z: 0.0012241212}
+      rotation: {x: 6.0129076e-17, y: 1.4466892e-18, z: 0.024052769, w: 0.99971074}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_elbow
+      parentName: Scene:R_armhelper
+      position: {x: 0.15826921, y: -0.00000078180534, z: -0.003672237}
+      rotation: {x: -0.00009520658, y: -0.0006428748, z: 0.00173374, w: 0.99999833}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_elbowhelper
+      parentName: Scene:R_elbow
+      position: {x: 0.11452098, y: 0.00000060783435, z: -0.0012241182}
+      rotation: {x: 3.4683686e-17, y: 1.1532923e-17, z: -0.02047891, w: 0.9997903}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_wrist
+      parentName: Scene:R_elbowhelper
+      position: {x: 0.15475485, y: -0.0011720291, z: -0.0061204173}
+      rotation: {x: 0.00000000839198, y: -0.0000000065522605, z: -0.61541224, w: 0.78820544}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_finger2
+      parentName: Scene:R_wrist
+      position: {x: 0.0035879994, y: 0.040044, z: -0.040639017}
+      rotation: {x: 0.032335166, y: -0.05934572, z: 0.6372961, w: 0.7676499}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_finger2helper
+      parentName: Scene:R_finger2
+      position: {x: 0.053877607, y: -0.0010746545, z: -0.0144649185}
+      rotation: {x: 9.6106265e-33, y: -2.5831788e-32, z: -0.68234813, w: 0.73102736}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_finger1
+      parentName: Scene:R_wrist
+      position: {x: 0.011147399, y: 0.041735996, z: 0.0022383598}
+      rotation: {x: 0.48573428, y: 0.5138698, z: 0.48573428, w: 0.5138698}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scene:R_finger1helper
+      parentName: Scene:R_finger1
+      position: {x: 0.08229427, y: 0.0000001974334, z: 0.017971199}
+      rotation: {x: -0.48573428, y: -0.5138698, z: -0.48573428, w: 0.5138698}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 60
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
