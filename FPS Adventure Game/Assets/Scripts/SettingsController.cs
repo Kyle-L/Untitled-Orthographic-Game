@@ -61,7 +61,7 @@ public class SettingsController : MonoBehaviour {
     public float MouseSensitivity {
         get { return mouseSensitivity; }
         set {
-            PlayerPrefs.SetFloat("mouseSensitivity", value);
+            //PlayerPrefs.SetFloat("mouseSensitivity", value);
             //if (CameraController.instance != null) {
             //    CameraController.instance.AngleSensitivity = value;
             //}

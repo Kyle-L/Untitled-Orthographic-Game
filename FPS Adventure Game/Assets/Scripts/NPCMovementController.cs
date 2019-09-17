@@ -26,7 +26,7 @@ public class NPCMovementController : MonoBehaviour {
     }
 
     private void Update() {
-        _animator.SetFloat("Speed", _navMeshAgent.velocity.sqrMagnitude);
+        //_animator.SetFloat("Speed", _navMeshAgent.velocity.sqrMagnitude);
 
         // If the npc is walking, check to see if it should be heading to next destination.
         if (isWalking && !_navMeshAgent.pathPending) {
