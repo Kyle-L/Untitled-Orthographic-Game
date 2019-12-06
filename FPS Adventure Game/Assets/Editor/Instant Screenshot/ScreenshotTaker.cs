@@ -51,8 +51,9 @@ public class Screenshot : EditorWindow {
 
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.TextField(path, GUILayout.ExpandWidth(false));
-        if (GUILayout.Button("Browse", GUILayout.ExpandWidth(false)))
+        if (GUILayout.Button("Browse", GUILayout.ExpandWidth(false))) {
             path = EditorUtility.SaveFolderPanel("Path to Save Images", path, Application.dataPath);
+        }
 
         EditorGUILayout.EndHorizontal();
 
@@ -144,11 +145,11 @@ public class Screenshot : EditorWindow {
             myCamera.targetTexture = rt;
 
             TextureFormat tFormat;
-            if (isTransparent)
+            if (isTransparent) {
                 tFormat = TextureFormat.ARGB32;
-            else
+            } else {
                 tFormat = TextureFormat.RGB24;
-
+            }
 
             Texture2D screenShot = new Texture2D(resWidthN, resHeightN, tFormat, false);
             myCamera.Render();

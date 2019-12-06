@@ -25,7 +25,9 @@ public class LightController : MonoBehaviour {
 
         fadeInIntensity = myLight.intensity;
 
-        if (flicker) StartLight();
+        if (flicker) {
+            StartLight();
+        }
     }
 
     IEnumerator LerpLight(float intensity, float speed) {
@@ -33,7 +35,9 @@ public class LightController : MonoBehaviour {
             myLight.intensity = Mathf.Lerp(myLight.intensity, intensity, speed * Time.deltaTime);
             yield return null;
         }
-        if (flicker) StartLight();
+        if (flicker) {
+            StartLight();
+        }
     }
 
     private void StartLight() {

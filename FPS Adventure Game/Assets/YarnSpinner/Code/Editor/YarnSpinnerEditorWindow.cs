@@ -44,10 +44,11 @@ namespace Yarn.Unity {
             public ValidationMessage[] messages = new ValidationMessage[0];
 
             public override bool Equals(object obj) {
-                if (obj is CheckerResult && ((CheckerResult)obj).script == this.script)
+                if (obj is CheckerResult && ((CheckerResult)obj).script == this.script) {
                     return true;
-                else
+                } else {
                     return false;
+                }
             }
 
             public override int GetHashCode() {
@@ -388,9 +389,9 @@ namespace Yarn.Unity {
                 // each file is validated, do so.
                 complete++;
 
-                if (callback != null)
+                if (callback != null) {
                     callback(complete, checkResults.Count);
-
+                }
             }
 
             var results = new List<Yarn.Analysis.Diagnosis>();
@@ -431,9 +432,10 @@ namespace Yarn.Unity {
             // message into a ValidationMessage and store it;
             // additionally, mark that this file failed compilation
             dialog.LogErrorMessage = delegate (string message) {
-                var msg = new ValidationMessage();
-                msg.type = MessageType.Error;
-                msg.message = message;
+                var msg = new ValidationMessage {
+                    type = MessageType.Error,
+                    message = message
+                };
                 messageList.Add(msg);
 
                 // any errors means this validation failed
@@ -443,9 +445,10 @@ namespace Yarn.Unity {
             // Called when we get an error message. Convert this
             // message into a ValidationMessage and store it
             dialog.LogDebugMessage = delegate (string message) {
-                var msg = new ValidationMessage();
-                msg.type = MessageType.Info;
-                msg.message = message;
+                var msg = new ValidationMessage {
+                    type = MessageType.Info,
+                    message = message
+                };
                 messageList.Add(msg);
             };
 
@@ -494,21 +497,21 @@ namespace Yarn.Unity {
 
         IEnumerable<Yarn.Analysis.Diagnosis> AnalyseEnvironment() {
 
-            var deprecations = new List<Deprecation>();
-
-            deprecations.Add(new Deprecation(
+            var deprecations = new List<Deprecation> {
+                new Deprecation(
                 typeof(Yarn.Unity.VariableStorageBehaviour),
                 "SetNumber",
                 "This method is obsolete, and will not be called in future " +
                 "versions of Yarn Spinner. Use SetValue instead."
-            ));
+            ),
 
-            deprecations.Add(new Deprecation(
+                new Deprecation(
                 typeof(Yarn.Unity.VariableStorageBehaviour),
                 "GetNumber",
                 "This method is obsolete, and will not be called in future " +
                 "versions of Yarn Spinner. Use GetValue instead."
-            ));
+            )
+            };
 
             var results = new List<Yarn.Analysis.Diagnosis>();
 
@@ -519,8 +522,9 @@ namespace Yarn.Unity {
                 foreach (var type in assembly.GetTypes()) {
 
                     foreach (var deprecation in deprecations) {
-                        if (!type.IsSubclassOf(deprecation.type))
+                        if (!type.IsSubclassOf(deprecation.type)) {
                             continue;
+                        }
 
                         foreach (var method in type.GetMethods()) {
                             if (method.Name == deprecation.methodName && method.DeclaringType == type) {
@@ -544,8 +548,9 @@ namespace Yarn.Unity {
 
         private static Texture GetTexture(string textureName) {
             var guids = AssetDatabase.FindAssets(string.Format("{0} t:texture", textureName));
-            if (guids.Length == 0)
+            if (guids.Length == 0) {
                 return null;
+            }
 
             var path = AssetDatabase.GUIDToAssetPath(guids[0]);
             return AssetDatabase.LoadAssetAtPath<Texture>(path);

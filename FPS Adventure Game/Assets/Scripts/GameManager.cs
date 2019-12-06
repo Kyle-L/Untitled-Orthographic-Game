@@ -58,7 +58,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LoadSceneForce(int num) {
-        if (sceneLoadCoroutine != null) return;
+        if (sceneLoadCoroutine != null) {
+            return;
+        }
 
         // Ensures the user can't pause the game once a load has started.
         UIMenuController.instance.SetPauseState(false);

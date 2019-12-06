@@ -92,8 +92,9 @@ public class DialogueVariableStorage : VariableStorageBehaviour {
     /// Get a variable's value
     public override Yarn.Value GetValue(string variableName) {
         // If we don't have a variable with this name, return the null value
-        if (variables.ContainsKey(variableName) == false)
+        if (variables.ContainsKey(variableName) == false) {
             return Yarn.Value.NULL;
+        }
 
         return variables[variableName];
     }

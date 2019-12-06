@@ -71,7 +71,7 @@ public class FootIKController : MonoBehaviour {
     /// Performs IK on a foot.
     /// </summary>
     /// <param name="foot">The foot that the IK is performed on.</param>
-    private void PerformFootIK (AvatarIKGoal foot) { 
+    private void PerformFootIK(AvatarIKGoal foot) {
         // Gets the initial position.
         Vector3 FootPos = _animator.GetIKPosition(foot);
 
@@ -83,7 +83,7 @@ public class FootIKController : MonoBehaviour {
             _animator.SetIKRotationWeight(foot, rotationWeight);
 
             // Sets the IK position to the hit point plus the offset.
-            _animator.SetIKPosition(foot, hit.point + offset); 
+            _animator.SetIKPosition(foot, hit.point + offset);
 
             /* If the rotation weight is greater than 0.
              * calculate the rotation the foot should be
@@ -94,7 +94,7 @@ public class FootIKController : MonoBehaviour {
                 // Sets the IK rotation.
                 _animator.SetIKRotation(foot, footRotation);
             }
-        // If the raycast doesn't hit anything, set the position and rotation weight to 0.
+            // If the raycast doesn't hit anything, set the position and rotation weight to 0.
         } else {
             _animator.SetIKPositionWeight(foot, 0f);
             _animator.SetIKRotationWeight(foot, 0f);

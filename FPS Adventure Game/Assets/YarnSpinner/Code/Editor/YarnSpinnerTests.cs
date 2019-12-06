@@ -27,8 +27,9 @@ public class TestDialogueUIBehaviour : Yarn.Unity.DialogueUIBehaviour {
 
 
     public override System.Collections.IEnumerator RunLine(Yarn.Line line) {
-        if (lineHandler != null)
+        if (lineHandler != null) {
             lineHandler(line);
+        }
 
         if (expectedLines.Count > 0) {
             Assert.AreEqual(expectedLines.Dequeue(), line.text);
@@ -37,8 +38,9 @@ public class TestDialogueUIBehaviour : Yarn.Unity.DialogueUIBehaviour {
         yield break;
     }
     public override System.Collections.IEnumerator RunOptions(Yarn.Options optionsCollection, Yarn.OptionChooser optionChooser) {
-        if (optionsHandler != null)
+        if (optionsHandler != null) {
             optionsHandler(optionsCollection, optionChooser);
+        }
 
         if (expectedOptions.Count > 0) {
             var selection = expectedOptions.Dequeue();
@@ -54,8 +56,10 @@ public class TestDialogueUIBehaviour : Yarn.Unity.DialogueUIBehaviour {
         yield break;
     }
     public override System.Collections.IEnumerator RunCommand(Yarn.Command command) {
-        if (commandHandler != null)
+        if (commandHandler != null) {
             commandHandler(command);
+        }
+
         yield break;
     }
 }

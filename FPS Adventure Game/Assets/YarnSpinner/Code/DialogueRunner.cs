@@ -78,14 +78,15 @@ namespace Yarn.Unity {
             get {
                 if (_dialogue == null) {
                     // Create the main Dialogue runner, and pass our variableStorage to it
-                    _dialogue = new Yarn.Dialogue(variableStorage);
+                    _dialogue = new Yarn.Dialogue(variableStorage) {
 
-                    // Set up the logging system.
-                    _dialogue.LogDebugMessage = delegate (string message) {
-                        Debug.Log(message);
-                    };
-                    _dialogue.LogErrorMessage = delegate (string message) {
-                        Debug.LogError(message);
+                        // Set up the logging system.
+                        LogDebugMessage = delegate (string message) {
+                            Debug.Log(message);
+                        },
+                        LogErrorMessage = delegate (string message) {
+                            Debug.LogError(message);
+                        }
                     };
                 }
                 return _dialogue;

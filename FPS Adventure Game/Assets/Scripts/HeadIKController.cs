@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class HeadIKController : MonoBehaviour {
@@ -13,6 +11,7 @@ public class HeadIKController : MonoBehaviour {
     private float lookAtWeight = 1;
 
     private Animator _animator;
+
     [SerializeField]
     private Transform lookAtObj;
 
