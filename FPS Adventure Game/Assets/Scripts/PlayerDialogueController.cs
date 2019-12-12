@@ -37,8 +37,8 @@ public class PlayerDialogueController : MonoBehaviour {
 
             dr.StartDialogue(target.NPCDialogueController.TalkToNode);
 
-            // Makes the npc face the player.
-            // target.NPCMovementController.Face(PlayerController.instance.transform.position);
+            //Makes the npc face the player.
+            //target.NPCMovementController.Face(PlayerController.instance.transform.position);
 
             // Makes the player face the npc.
             // PlayerController.instance.PlayerMovementController.Face(target.transform.position);

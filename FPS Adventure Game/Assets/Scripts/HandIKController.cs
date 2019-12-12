@@ -72,7 +72,7 @@ public class HandIKController : MonoBehaviour {
             if (rightHand) {
                 PerformFootIK(AvatarIKGoal.RightHand, rightObject, rightOffset);
             }
-        
+
             // If IK is disabled, set the weight to 0.
         } else {
             _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0f);
@@ -107,8 +107,8 @@ public class HandIKController : MonoBehaviour {
                 // Sets the IK rotation.
                 _animator.SetIKRotation(hand, rotation);
             }
-            
-        // If the raycast doesn't hit anything, set the position and rotation weight to 0.
+
+            // If the raycast doesn't hit anything, set the position and rotation weight to 0.
         } else {
             _animator.SetIKPositionWeight(hand, 0f);
             _animator.SetIKRotationWeight(hand, 0f);

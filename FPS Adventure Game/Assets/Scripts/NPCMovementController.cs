@@ -17,7 +17,6 @@ public class NPCMovementController : MonoBehaviour {
     [Header("Components")]
     [SerializeField]
     private NavMeshAgent _navMeshAgent;
-    [SerializeField]
     private Animator _animator;
 
     private Transform[] walkLocations;
@@ -30,7 +29,13 @@ public class NPCMovementController : MonoBehaviour {
     private float speed;
 
     private void Start() {
-        speed = _navMeshAgent.speed;
+        // Get the animator for the NPC.
+        _animator = GetComponent<Animator>();
+        if (_animator == null) {
+            _animator = GetComponentInChildren<Animator>();
+        }
+
+        //speed = _navMeshAgent.speed;
         _navMeshAgent.updateRotation = true;
     }
 
@@ -39,12 +44,12 @@ public class NPCMovementController : MonoBehaviour {
         if (_animator != null) {
             _animator.SetFloat("SpeedX", transform.InverseTransformDirection(_navMeshAgent.velocity).x);
             _animator.SetFloat("SpeedY", transform.InverseTransformDirection(_navMeshAgent.velocity).z);
-        } 
+        }
 
         // If the npc is walking, check to see if it should be heading to next destination.
         if (isWalking && !_navMeshAgent.pathPending) {
             if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {
-                _navMeshAgent.speed = Mathf.Lerp(_navMeshAgent.speed, 0, slowDownSpeed * Time.deltaTime);
+                //_navMeshAgent.speed = Mathf.Lerp(_navMeshAgent.speed, 0, slowDownSpeed * Time.deltaTime);
                 if (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude == 0f) {
                     ReachedDestination(this, new EventArgs());
                     isWalking = false;
@@ -61,7 +66,7 @@ public class NPCMovementController : MonoBehaviour {
     }
 
     public void SetLocation(Transform loc) {
-        _navMeshAgent.speed = speed;
+        //_navMeshAgent.speed = speed;
         _navMeshAgent.isStopped = false;
         isWalking = true;
         _navMeshAgent.SetDestination(loc.position);

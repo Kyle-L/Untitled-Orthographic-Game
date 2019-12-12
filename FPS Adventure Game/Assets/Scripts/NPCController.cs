@@ -5,6 +5,10 @@ using UnityEngine;
 /// </summary>
 public class NPCController : MonoBehaviour {
 
+    [Header("States")]
+    [SerializeField]
+    private States startState = States.Idle;
+
     public States CurrentState {
         get { return currentState; }
         set {
@@ -12,13 +16,13 @@ public class NPCController : MonoBehaviour {
             UpdateState();
         }
     }
-    [SerializeField]
     private States currentState;
 
     public enum States {
         Idle,
         Wandering,
         Interacting,
+        Talking,
         Attacking,
         Searching,
         Dying
@@ -56,9 +60,13 @@ public class NPCController : MonoBehaviour {
     private void UpdateState() {
         switch (currentState) {
             case States.Idle:
+                Idle();
                 break;
             case States.Wandering:
                 Wander();
+                break;
+            case States.Talking:
+                Talk();
                 break;
             case States.Interacting:
                 break;
@@ -76,9 +84,9 @@ public class NPCController : MonoBehaviour {
         NPCMovementController.ReachedDestination += (sender, args) => { WanderReached(); };
 
         /* Updates the current state if the current
-            state has any actions that need to be run
-            in update. */
-        UpdateState();
+           state has any actions that need to be run
+           in Start. */
+        CurrentState = startState;
     }
 
     private void Update() {
@@ -136,6 +144,15 @@ public class NPCController : MonoBehaviour {
         NPCMovementController.SetLocation(loc);
     }
     #endregion
+
+    #region
+
+    public void Talk() {
+
+    }
+
+    #endregion
+
 
     public void Interact() {
 
