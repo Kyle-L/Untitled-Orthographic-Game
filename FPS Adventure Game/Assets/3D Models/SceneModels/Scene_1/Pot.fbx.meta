@@ -1,93 +1,224 @@
 fileFormatVersion: 2
 guid: c0f3d0700595fb34096d4f95f3afd827
-timeCreated: 1449633797
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: pPipe2
-    100004: pTorus1
-    100006: pTorus2
-    100008: pTorus3
-    100010: pTorus4
-    100012: transform1
-    100014: transform2
-    100016: transform3
-    100018: transform4
-    100020: pCube1
-    100022: pCube2
-    100024: pCube3
-    100026: pCylinder1
-    100028: pCylinder2
-    100030: polySurface1
-    100032: polySurface2
-    100034: polySurface3
-    100036: polySurface4
-    100038: transform10
-    100040: transform11
-    100042: transform12
-    100044: transform13
-    100046: transform5
-    100048: transform6
-    100050: transform7
-    100052: transform8
-    100054: transform9
-    400000: //RootNode
-    400002: pPipe2
-    400004: pTorus1
-    400006: pTorus2
-    400008: pTorus3
-    400010: pTorus4
-    400012: transform1
-    400014: transform2
-    400016: transform3
-    400018: transform4
-    400020: pCube1
-    400022: pCube2
-    400024: pCube3
-    400026: pCylinder1
-    400028: pCylinder2
-    400030: polySurface1
-    400032: polySurface2
-    400034: polySurface3
-    400036: polySurface4
-    400038: transform10
-    400040: transform11
-    400042: transform12
-    400044: transform13
-    400046: transform5
-    400048: transform6
-    400050: transform7
-    400052: transform8
-    400054: transform9
-    2300000: pTorus4
-    2300002: pCube3
-    3300000: pTorus4
-    3300002: pCube3
-    4300000: pTorus4
-    4300002: pCube3
-    9500000: //RootNode
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: pPipe2
+  - first:
+      1: 100004
+    second: pTorus1
+  - first:
+      1: 100006
+    second: pTorus2
+  - first:
+      1: 100008
+    second: pTorus3
+  - first:
+      1: 100010
+    second: pTorus4
+  - first:
+      1: 100012
+    second: transform1
+  - first:
+      1: 100014
+    second: transform2
+  - first:
+      1: 100016
+    second: transform3
+  - first:
+      1: 100018
+    second: transform4
+  - first:
+      1: 100020
+    second: pCube1
+  - first:
+      1: 100022
+    second: pCube2
+  - first:
+      1: 100024
+    second: pCube3
+  - first:
+      1: 100026
+    second: pCylinder1
+  - first:
+      1: 100028
+    second: pCylinder2
+  - first:
+      1: 100030
+    second: polySurface1
+  - first:
+      1: 100032
+    second: polySurface2
+  - first:
+      1: 100034
+    second: polySurface3
+  - first:
+      1: 100036
+    second: polySurface4
+  - first:
+      1: 100038
+    second: transform10
+  - first:
+      1: 100040
+    second: transform11
+  - first:
+      1: 100042
+    second: transform12
+  - first:
+      1: 100044
+    second: transform13
+  - first:
+      1: 100046
+    second: transform5
+  - first:
+      1: 100048
+    second: transform6
+  - first:
+      1: 100050
+    second: transform7
+  - first:
+      1: 100052
+    second: transform8
+  - first:
+      1: 100054
+    second: transform9
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: pPipe2
+  - first:
+      4: 400004
+    second: pTorus1
+  - first:
+      4: 400006
+    second: pTorus2
+  - first:
+      4: 400008
+    second: pTorus3
+  - first:
+      4: 400010
+    second: pTorus4
+  - first:
+      4: 400012
+    second: transform1
+  - first:
+      4: 400014
+    second: transform2
+  - first:
+      4: 400016
+    second: transform3
+  - first:
+      4: 400018
+    second: transform4
+  - first:
+      4: 400020
+    second: pCube1
+  - first:
+      4: 400022
+    second: pCube2
+  - first:
+      4: 400024
+    second: pCube3
+  - first:
+      4: 400026
+    second: pCylinder1
+  - first:
+      4: 400028
+    second: pCylinder2
+  - first:
+      4: 400030
+    second: polySurface1
+  - first:
+      4: 400032
+    second: polySurface2
+  - first:
+      4: 400034
+    second: polySurface3
+  - first:
+      4: 400036
+    second: polySurface4
+  - first:
+      4: 400038
+    second: transform10
+  - first:
+      4: 400040
+    second: transform11
+  - first:
+      4: 400042
+    second: transform12
+  - first:
+      4: 400044
+    second: transform13
+  - first:
+      4: 400046
+    second: transform5
+  - first:
+      4: 400048
+    second: transform6
+  - first:
+      4: 400050
+    second: transform7
+  - first:
+      4: 400052
+    second: transform8
+  - first:
+      4: 400054
+    second: transform9
+  - first:
+      23: 2300000
+    second: pTorus4
+  - first:
+      23: 2300002
+    second: pCube3
+  - first:
+      33: 3300000
+    second: pTorus4
+  - first:
+      33: 3300002
+    second: pCube3
+  - first:
+      43: 4300000
+    second: pTorus4
+  - first:
+      43: 4300002
+    second: pCube3
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -95,13 +226,23 @@ ModelImporter:
     globalScale: 14.32503
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -111,10 +252,14 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -124,14 +269,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 14.32503
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -1,82 +1,184 @@
 fileFormatVersion: 2
 guid: 01722f92bf9096c46a8c47637c3c590a
-timeCreated: 1470716155
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: Head
-    100002: Left_Elbow
-    100004: Left_Foot
-    100006: Left_Hand
-    100008: Left_Knee
-    100010: Left_Shoulder
-    100012: Neck
-    100014: pCube1
-    100016: Pelvis
-    100018: Right_Elbow
-    100020: Right_Foot
-    100022: Right_Hand
-    100024: Right_Knee
-    100026: Right_Shoulder
-    100028: Spine_1
-    100030: Spine_2
-    100032: Spine_3
-    100034: //RootNode
-    100036: ikHandle1
-    100038: ikHandle2
-    100040: Skin
-    400000: Head
-    400002: Left_Elbow
-    400004: Left_Foot
-    400006: Left_Hand
-    400008: Left_Knee
-    400010: Left_Shoulder
-    400012: Neck
-    400014: pCube1
-    400016: Pelvis
-    400018: Right_Elbow
-    400020: Right_Foot
-    400022: Right_Hand
-    400024: Right_Knee
-    400026: Right_Shoulder
-    400028: Spine_1
-    400030: Spine_2
-    400032: Spine_3
-    400034: //RootNode
-    400036: ikHandle1
-    400038: ikHandle2
-    400040: Skin
-    4300000: pCube1
-    4300002: Skin
-    7400000: Idle
-    9500000: //RootNode
-    13700000: pCube1
-    13700002: Skin
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Head
+  - first:
+      1: 100002
+    second: Left_Elbow
+  - first:
+      1: 100004
+    second: Left_Foot
+  - first:
+      1: 100006
+    second: Left_Hand
+  - first:
+      1: 100008
+    second: Left_Knee
+  - first:
+      1: 100010
+    second: Left_Shoulder
+  - first:
+      1: 100012
+    second: Neck
+  - first:
+      1: 100014
+    second: pCube1
+  - first:
+      1: 100016
+    second: Pelvis
+  - first:
+      1: 100018
+    second: Right_Elbow
+  - first:
+      1: 100020
+    second: Right_Foot
+  - first:
+      1: 100022
+    second: Right_Hand
+  - first:
+      1: 100024
+    second: Right_Knee
+  - first:
+      1: 100026
+    second: Right_Shoulder
+  - first:
+      1: 100028
+    second: Spine_1
+  - first:
+      1: 100030
+    second: Spine_2
+  - first:
+      1: 100032
+    second: Spine_3
+  - first:
+      1: 100034
+    second: //RootNode
+  - first:
+      1: 100036
+    second: ikHandle1
+  - first:
+      1: 100038
+    second: ikHandle2
+  - first:
+      1: 100040
+    second: Skin
+  - first:
+      4: 400000
+    second: Head
+  - first:
+      4: 400002
+    second: Left_Elbow
+  - first:
+      4: 400004
+    second: Left_Foot
+  - first:
+      4: 400006
+    second: Left_Hand
+  - first:
+      4: 400008
+    second: Left_Knee
+  - first:
+      4: 400010
+    second: Left_Shoulder
+  - first:
+      4: 400012
+    second: Neck
+  - first:
+      4: 400014
+    second: pCube1
+  - first:
+      4: 400016
+    second: Pelvis
+  - first:
+      4: 400018
+    second: Right_Elbow
+  - first:
+      4: 400020
+    second: Right_Foot
+  - first:
+      4: 400022
+    second: Right_Hand
+  - first:
+      4: 400024
+    second: Right_Knee
+  - first:
+      4: 400026
+    second: Right_Shoulder
+  - first:
+      4: 400028
+    second: Spine_1
+  - first:
+      4: 400030
+    second: Spine_2
+  - first:
+      4: 400032
+    second: Spine_3
+  - first:
+      4: 400034
+    second: //RootNode
+  - first:
+      4: 400036
+    second: ikHandle1
+  - first:
+      4: 400038
+    second: ikHandle2
+  - first:
+      4: 400040
+    second: Skin
+  - first:
+      43: 4300000
+    second: pCube1
+  - first:
+      43: 4300002
+    second: Skin
+  - first:
+      74: 7400000
+    second: Idle
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: pCube1
+  - first:
+      137: 13700002
+    second: Skin
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Idle
       takeName: Take 001
+      internalID: 0
       firstFrame: 1
       lastFrame: 80
       wrapMode: 0
@@ -144,13 +246,23 @@ ModelImporter:
     globalScale: 40
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -160,10 +272,14 @@ ModelImporter:
     normalSmoothAngle: 180
     normalImportMode: 1
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -173,15 +289,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 40
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c734739b9fa5b8c46a80ecb8d2b02822,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

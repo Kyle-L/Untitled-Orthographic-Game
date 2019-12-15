@@ -1,116 +1,293 @@
 fileFormatVersion: 2
 guid: 16ba0bdcf4467f94d94b42760c82eddc
-timeCreated: 1442069095
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: pCube1
-    100002: pCube10
-    100004: pCube11
-    100006: pCube12
-    100008: pCube13
-    100010: pCube14
-    100012: pCube16
-    100014: pCube17
-    100016: pCube18
-    100018: pCube2
-    100020: pCube3
-    100022: pCube4
-    100024: pCube6
-    100026: pCube7
-    100028: pCube9
-    100030: pCylinder1
-    100032: pCylinder2
-    100034: polySurface1
-    100036: polySurface2
-    100038: polySurface3
-    100040: //RootNode
-    100042: transform1
-    100044: transform10
-    100046: transform11
-    100048: transform12
-    100050: transform13
-    100052: transform14
-    100054: transform15
-    100056: transform16
-    100058: transform17
-    100060: transform2
-    100062: transform3
-    100064: transform4
-    100066: transform5
-    100068: transform6
-    100070: transform7
-    100072: transform8
-    100074: transform9
-    400000: pCube1
-    400002: pCube10
-    400004: pCube11
-    400006: pCube12
-    400008: pCube13
-    400010: pCube14
-    400012: pCube16
-    400014: pCube17
-    400016: pCube18
-    400018: pCube2
-    400020: pCube3
-    400022: pCube4
-    400024: pCube6
-    400026: pCube7
-    400028: pCube9
-    400030: pCylinder1
-    400032: pCylinder2
-    400034: polySurface1
-    400036: polySurface2
-    400038: polySurface3
-    400040: //RootNode
-    400042: transform1
-    400044: transform10
-    400046: transform11
-    400048: transform12
-    400050: transform13
-    400052: transform14
-    400054: transform15
-    400056: transform16
-    400058: transform17
-    400060: transform2
-    400062: transform3
-    400064: transform4
-    400066: transform5
-    400068: transform6
-    400070: transform7
-    400072: transform8
-    400074: transform9
-    2300000: pCube18
-    2300002: pCylinder1
-    2300004: pCylinder2
-    3300000: pCube18
-    3300002: pCylinder1
-    3300004: pCylinder2
-    4300000: pCube18
-    4300002: pCylinder1
-    4300004: pCylinder2
-    9500000: //RootNode
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: pCube1
+  - first:
+      1: 100002
+    second: pCube10
+  - first:
+      1: 100004
+    second: pCube11
+  - first:
+      1: 100006
+    second: pCube12
+  - first:
+      1: 100008
+    second: pCube13
+  - first:
+      1: 100010
+    second: pCube14
+  - first:
+      1: 100012
+    second: pCube16
+  - first:
+      1: 100014
+    second: pCube17
+  - first:
+      1: 100016
+    second: pCube18
+  - first:
+      1: 100018
+    second: pCube2
+  - first:
+      1: 100020
+    second: pCube3
+  - first:
+      1: 100022
+    second: pCube4
+  - first:
+      1: 100024
+    second: pCube6
+  - first:
+      1: 100026
+    second: pCube7
+  - first:
+      1: 100028
+    second: pCube9
+  - first:
+      1: 100030
+    second: pCylinder1
+  - first:
+      1: 100032
+    second: pCylinder2
+  - first:
+      1: 100034
+    second: polySurface1
+  - first:
+      1: 100036
+    second: polySurface2
+  - first:
+      1: 100038
+    second: polySurface3
+  - first:
+      1: 100040
+    second: //RootNode
+  - first:
+      1: 100042
+    second: transform1
+  - first:
+      1: 100044
+    second: transform10
+  - first:
+      1: 100046
+    second: transform11
+  - first:
+      1: 100048
+    second: transform12
+  - first:
+      1: 100050
+    second: transform13
+  - first:
+      1: 100052
+    second: transform14
+  - first:
+      1: 100054
+    second: transform15
+  - first:
+      1: 100056
+    second: transform16
+  - first:
+      1: 100058
+    second: transform17
+  - first:
+      1: 100060
+    second: transform2
+  - first:
+      1: 100062
+    second: transform3
+  - first:
+      1: 100064
+    second: transform4
+  - first:
+      1: 100066
+    second: transform5
+  - first:
+      1: 100068
+    second: transform6
+  - first:
+      1: 100070
+    second: transform7
+  - first:
+      1: 100072
+    second: transform8
+  - first:
+      1: 100074
+    second: transform9
+  - first:
+      4: 400000
+    second: pCube1
+  - first:
+      4: 400002
+    second: pCube10
+  - first:
+      4: 400004
+    second: pCube11
+  - first:
+      4: 400006
+    second: pCube12
+  - first:
+      4: 400008
+    second: pCube13
+  - first:
+      4: 400010
+    second: pCube14
+  - first:
+      4: 400012
+    second: pCube16
+  - first:
+      4: 400014
+    second: pCube17
+  - first:
+      4: 400016
+    second: pCube18
+  - first:
+      4: 400018
+    second: pCube2
+  - first:
+      4: 400020
+    second: pCube3
+  - first:
+      4: 400022
+    second: pCube4
+  - first:
+      4: 400024
+    second: pCube6
+  - first:
+      4: 400026
+    second: pCube7
+  - first:
+      4: 400028
+    second: pCube9
+  - first:
+      4: 400030
+    second: pCylinder1
+  - first:
+      4: 400032
+    second: pCylinder2
+  - first:
+      4: 400034
+    second: polySurface1
+  - first:
+      4: 400036
+    second: polySurface2
+  - first:
+      4: 400038
+    second: polySurface3
+  - first:
+      4: 400040
+    second: //RootNode
+  - first:
+      4: 400042
+    second: transform1
+  - first:
+      4: 400044
+    second: transform10
+  - first:
+      4: 400046
+    second: transform11
+  - first:
+      4: 400048
+    second: transform12
+  - first:
+      4: 400050
+    second: transform13
+  - first:
+      4: 400052
+    second: transform14
+  - first:
+      4: 400054
+    second: transform15
+  - first:
+      4: 400056
+    second: transform16
+  - first:
+      4: 400058
+    second: transform17
+  - first:
+      4: 400060
+    second: transform2
+  - first:
+      4: 400062
+    second: transform3
+  - first:
+      4: 400064
+    second: transform4
+  - first:
+      4: 400066
+    second: transform5
+  - first:
+      4: 400068
+    second: transform6
+  - first:
+      4: 400070
+    second: transform7
+  - first:
+      4: 400072
+    second: transform8
+  - first:
+      4: 400074
+    second: transform9
+  - first:
+      23: 2300000
+    second: pCube18
+  - first:
+      23: 2300002
+    second: pCylinder1
+  - first:
+      23: 2300004
+    second: pCylinder2
+  - first:
+      33: 3300000
+    second: pCube18
+  - first:
+      33: 3300002
+    second: pCylinder1
+  - first:
+      33: 3300004
+    second: pCylinder2
+  - first:
+      43: 4300000
+    second: pCube18
+  - first:
+      43: 4300002
+    second: pCylinder1
+  - first:
+      43: 4300004
+    second: pCylinder2
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -118,13 +295,23 @@ ModelImporter:
     globalScale: 58
     meshCompression: 2
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -134,10 +321,14 @@ ModelImporter:
     normalSmoothAngle: 0
     normalImportMode: 1
     tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -147,14 +338,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 58
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

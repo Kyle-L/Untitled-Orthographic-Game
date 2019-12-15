@@ -1,116 +1,326 @@
 fileFormatVersion: 2
 guid: 106562f45f288ce4d965123109289444
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: Character
-    100004: curve1
-    100006: head
-    100008: L_ankle
-    100010: L_arm
-    100012: L_armhelper
-    100014: L_ball
-    100016: L_elbow
-    100018: L_elbowhelper
-    100020: L_finger1
-    100022: L_finger1helper
-    100024: L_finger2
-    100026: L_finger2helper
-    100028: L_knee
-    100030: L_kneehelper
-    100032: L_leg
-    100034: L_point
-    100036: L_shoulder
-    100038: L_shoulderhelper
-    100040: L_tip
-    100042: L_wrist
-    100044: neck
-    100046: pelvis
-    100048: R_ankle
-    100050: R_arm
-    100052: R_armhelper
-    100054: R_ball
-    100056: R_elbow
-    100058: R_elbowhelper
-    100060: R_finger1
-    100062: R_finger1helper
-    100064: R_finger2
-    100066: R_finger2helper
-    100068: R_knee
-    100070: R_kneehelper
-    100072: R_leg
-    100074: R_point
-    100076: R_shoulder
-    100078: R_shoulderhelper
-    100080: R_tip
-    100082: R_wrist
-    100084: spine1
-    100086: spine2
-    100088: spine3
-    100090: spine4
-    100092: ikHandle1
-    100094: ikHandle2
-    100096: ikHandle3
-    100098: ikHandle4
-    400000: //RootNode
-    400002: Character
-    400004: curve1
-    400006: head
-    400008: L_ankle
-    400010: L_arm
-    400012: L_armhelper
-    400014: L_ball
-    400016: L_elbow
-    400018: L_elbowhelper
-    400020: L_finger1
-    400022: L_finger1helper
-    400024: L_finger2
-    400026: L_finger2helper
-    400028: L_knee
-    400030: L_kneehelper
-    400032: L_leg
-    400034: L_point
-    400036: L_shoulder
-    400038: L_shoulderhelper
-    400040: L_tip
-    400042: L_wrist
-    400044: neck
-    400046: pelvis
-    400048: R_ankle
-    400050: R_arm
-    400052: R_armhelper
-    400054: R_ball
-    400056: R_elbow
-    400058: R_elbowhelper
-    400060: R_finger1
-    400062: R_finger1helper
-    400064: R_finger2
-    400066: R_finger2helper
-    400068: R_knee
-    400070: R_kneehelper
-    400072: R_leg
-    400074: R_point
-    400076: R_shoulder
-    400078: R_shoulderhelper
-    400080: R_tip
-    400082: R_wrist
-    400084: spine1
-    400086: spine2
-    400088: spine3
-    400090: spine4
-    400092: ikHandle1
-    400094: ikHandle2
-    400096: ikHandle3
-    400098: ikHandle4
-    4300000: Character
-    7400000: walking
-    9500000: //RootNode
-    13700000: Character
-    2186277476908879412: ImportLogs
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Character
+  - first:
+      1: 100004
+    second: curve1
+  - first:
+      1: 100006
+    second: head
+  - first:
+      1: 100008
+    second: L_ankle
+  - first:
+      1: 100010
+    second: L_arm
+  - first:
+      1: 100012
+    second: L_armhelper
+  - first:
+      1: 100014
+    second: L_ball
+  - first:
+      1: 100016
+    second: L_elbow
+  - first:
+      1: 100018
+    second: L_elbowhelper
+  - first:
+      1: 100020
+    second: L_finger1
+  - first:
+      1: 100022
+    second: L_finger1helper
+  - first:
+      1: 100024
+    second: L_finger2
+  - first:
+      1: 100026
+    second: L_finger2helper
+  - first:
+      1: 100028
+    second: L_knee
+  - first:
+      1: 100030
+    second: L_kneehelper
+  - first:
+      1: 100032
+    second: L_leg
+  - first:
+      1: 100034
+    second: L_point
+  - first:
+      1: 100036
+    second: L_shoulder
+  - first:
+      1: 100038
+    second: L_shoulderhelper
+  - first:
+      1: 100040
+    second: L_tip
+  - first:
+      1: 100042
+    second: L_wrist
+  - first:
+      1: 100044
+    second: neck
+  - first:
+      1: 100046
+    second: pelvis
+  - first:
+      1: 100048
+    second: R_ankle
+  - first:
+      1: 100050
+    second: R_arm
+  - first:
+      1: 100052
+    second: R_armhelper
+  - first:
+      1: 100054
+    second: R_ball
+  - first:
+      1: 100056
+    second: R_elbow
+  - first:
+      1: 100058
+    second: R_elbowhelper
+  - first:
+      1: 100060
+    second: R_finger1
+  - first:
+      1: 100062
+    second: R_finger1helper
+  - first:
+      1: 100064
+    second: R_finger2
+  - first:
+      1: 100066
+    second: R_finger2helper
+  - first:
+      1: 100068
+    second: R_knee
+  - first:
+      1: 100070
+    second: R_kneehelper
+  - first:
+      1: 100072
+    second: R_leg
+  - first:
+      1: 100074
+    second: R_point
+  - first:
+      1: 100076
+    second: R_shoulder
+  - first:
+      1: 100078
+    second: R_shoulderhelper
+  - first:
+      1: 100080
+    second: R_tip
+  - first:
+      1: 100082
+    second: R_wrist
+  - first:
+      1: 100084
+    second: spine1
+  - first:
+      1: 100086
+    second: spine2
+  - first:
+      1: 100088
+    second: spine3
+  - first:
+      1: 100090
+    second: spine4
+  - first:
+      1: 100092
+    second: ikHandle1
+  - first:
+      1: 100094
+    second: ikHandle2
+  - first:
+      1: 100096
+    second: ikHandle3
+  - first:
+      1: 100098
+    second: ikHandle4
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Character
+  - first:
+      4: 400004
+    second: curve1
+  - first:
+      4: 400006
+    second: head
+  - first:
+      4: 400008
+    second: L_ankle
+  - first:
+      4: 400010
+    second: L_arm
+  - first:
+      4: 400012
+    second: L_armhelper
+  - first:
+      4: 400014
+    second: L_ball
+  - first:
+      4: 400016
+    second: L_elbow
+  - first:
+      4: 400018
+    second: L_elbowhelper
+  - first:
+      4: 400020
+    second: L_finger1
+  - first:
+      4: 400022
+    second: L_finger1helper
+  - first:
+      4: 400024
+    second: L_finger2
+  - first:
+      4: 400026
+    second: L_finger2helper
+  - first:
+      4: 400028
+    second: L_knee
+  - first:
+      4: 400030
+    second: L_kneehelper
+  - first:
+      4: 400032
+    second: L_leg
+  - first:
+      4: 400034
+    second: L_point
+  - first:
+      4: 400036
+    second: L_shoulder
+  - first:
+      4: 400038
+    second: L_shoulderhelper
+  - first:
+      4: 400040
+    second: L_tip
+  - first:
+      4: 400042
+    second: L_wrist
+  - first:
+      4: 400044
+    second: neck
+  - first:
+      4: 400046
+    second: pelvis
+  - first:
+      4: 400048
+    second: R_ankle
+  - first:
+      4: 400050
+    second: R_arm
+  - first:
+      4: 400052
+    second: R_armhelper
+  - first:
+      4: 400054
+    second: R_ball
+  - first:
+      4: 400056
+    second: R_elbow
+  - first:
+      4: 400058
+    second: R_elbowhelper
+  - first:
+      4: 400060
+    second: R_finger1
+  - first:
+      4: 400062
+    second: R_finger1helper
+  - first:
+      4: 400064
+    second: R_finger2
+  - first:
+      4: 400066
+    second: R_finger2helper
+  - first:
+      4: 400068
+    second: R_knee
+  - first:
+      4: 400070
+    second: R_kneehelper
+  - first:
+      4: 400072
+    second: R_leg
+  - first:
+      4: 400074
+    second: R_point
+  - first:
+      4: 400076
+    second: R_shoulder
+  - first:
+      4: 400078
+    second: R_shoulderhelper
+  - first:
+      4: 400080
+    second: R_tip
+  - first:
+      4: 400082
+    second: R_wrist
+  - first:
+      4: 400084
+    second: spine1
+  - first:
+      4: 400086
+    second: spine2
+  - first:
+      4: 400088
+    second: spine3
+  - first:
+      4: 400090
+    second: spine4
+  - first:
+      4: 400092
+    second: ikHandle1
+  - first:
+      4: 400094
+    second: ikHandle2
+  - first:
+      4: 400096
+    second: ikHandle3
+  - first:
+      4: 400098
+    second: ikHandle4
+  - first:
+      43: 4300000
+    second: Character
+  - first:
+      74: 7400000
+    second: walking
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: Character
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
   externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -124,20 +334,20 @@ ModelImporter:
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Errors found in
       old project file will be treated as a warnings. Configuration mis-match will
       be ignored, but current Configuration needs to be fixed:\n\tTransform 'L_kneehelper'
-      not found in HumanDescription.\nCopied Avatar Rig Configuration mis-match. Bone
-      length in copied configuration does not match position in animation file:\n\t'L_knee'
-      : position error = 23.930943 mm\n\t'L_ankle' : position error = 124.501198 mm\n\t'R_knee'
-      : position error = 23.931231 mm\n\t'R_ankle' : position error = 124.502586 mm\nCopied
-      Avatar Rig Configuration mis-match. Inbetween bone rotation in copied configuration
-      does not match rotation in animation file:\n\t'L_ball' : rotation error = 5.557368
-      deg\n\t'R_ball' : rotation error = 16.888735 deg\n\t'L_shoulderhelper' : rotation
-      error = 10.087142 deg\n\t'L_elbowhelper' : rotation error = 0.120859 deg\n\t'R_shoulderhelper'
-      : rotation error = 4.212988 deg\n\t'R_elbowhelper' : rotation error = 0.079303
-      deg\n"
+      not found in HumanDescription.\nCopied Avatar Rig Configuration mis-match.
+      Bone length in copied configuration does not match position in animation file:\n\t'L_knee'
+      : position error = 23.930943 mm\n\t'L_ankle' : position error = 124.501198
+      mm\n\t'R_knee' : position error = 23.931231 mm\n\t'R_ankle' : position error
+      = 124.502586 mm\nCopied Avatar Rig Configuration mis-match. Inbetween bone
+      rotation in copied configuration does not match rotation in animation file:\n\t'L_ball'
+      : rotation error = 5.557368 deg\n\t'R_ball' : rotation error = 16.888735 deg\n\t'L_shoulderhelper'
+      : rotation error = 10.087142 deg\n\t'L_elbowhelper' : rotation error = 0.120859
+      deg\n\t'R_shoulderhelper' : rotation error = 4.212988 deg\n\t'R_elbowhelper'
+      : rotation error = 0.079303 deg\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'L_kneehelper' is inbetween humanoid transforms
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'L_kneehelper' is inbetween humanoid transforms
       and has rotation animation that will be discarded.\n\t'L_ball' is inbetween
       humanoid transforms and has rotation animation that will be discarded.\n\t'R_kneehelper'
       is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'R_ball'
@@ -161,6 +371,7 @@ ModelImporter:
     - serializedVersion: 16
       name: walking
       takeName: Take 001
+      internalID: 0
       firstFrame: 1
       lastFrame: 80
       wrapMode: 0
@@ -408,17 +619,22 @@ ModelImporter:
     globalScale: 80
     meshCompression: 3
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
@@ -430,10 +646,13 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 1
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: spine4
       humanName: Hips
@@ -911,15 +1130,17 @@ ModelImporter:
     armStretch: 0
     legStretch: 0
     feetSpacing: 0
+    globalScale: 80
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a5083ec6862c685498d7f4d7b2a741f5,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 2
   additionalBone: 0
   userData: 
   assetBundleName: 

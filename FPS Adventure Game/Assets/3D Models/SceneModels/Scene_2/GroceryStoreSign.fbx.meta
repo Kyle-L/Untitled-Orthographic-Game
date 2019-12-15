@@ -1,85 +1,200 @@
 fileFormatVersion: 2
 guid: 0b857b30b1470f54a88d096a83efd776
-timeCreated: 1454217518
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: pCube1
-    100004: pCube4
-    100006: pCube5
-    100008: pCube6
-    100010: pCube7
-    100012: transform1
-    100014: transform2
-    100016: transform3
-    100018: transform4
-    100020: polySurface1
-    100022: polySurface1 1
-    100024: polySurface2
-    100026: polySurface3
-    100028: polySurface4
-    100030: transform5
-    100032: transform6
-    100034: transform7
-    100036: polySurface2 1
-    100038: transform8
-    100040: transform9
-    400000: //RootNode
-    400002: pCube1
-    400004: pCube4
-    400006: pCube5
-    400008: pCube6
-    400010: pCube7
-    400012: transform1
-    400014: transform2
-    400016: transform3
-    400018: transform4
-    400020: polySurface1
-    400022: polySurface1 1
-    400024: polySurface2
-    400026: polySurface3
-    400028: polySurface4
-    400030: transform5
-    400032: transform6
-    400034: transform7
-    400036: polySurface2 1
-    400038: transform8
-    400040: transform9
-    2300000: pCube7
-    2300002: polySurface1
-    2300004: polySurface2
-    2300006: polySurface4
-    3300000: pCube7
-    3300002: polySurface1
-    3300004: polySurface2
-    3300006: polySurface4
-    4300000: pCube7
-    4300002: polySurface2
-    4300004: polySurface4
-    4300006: polySurface1
-    9500000: //RootNode
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: pCube1
+  - first:
+      1: 100004
+    second: pCube4
+  - first:
+      1: 100006
+    second: pCube5
+  - first:
+      1: 100008
+    second: pCube6
+  - first:
+      1: 100010
+    second: pCube7
+  - first:
+      1: 100012
+    second: transform1
+  - first:
+      1: 100014
+    second: transform2
+  - first:
+      1: 100016
+    second: transform3
+  - first:
+      1: 100018
+    second: transform4
+  - first:
+      1: 100020
+    second: polySurface1
+  - first:
+      1: 100022
+    second: polySurface1 1
+  - first:
+      1: 100024
+    second: polySurface2
+  - first:
+      1: 100026
+    second: polySurface3
+  - first:
+      1: 100028
+    second: polySurface4
+  - first:
+      1: 100030
+    second: transform5
+  - first:
+      1: 100032
+    second: transform6
+  - first:
+      1: 100034
+    second: transform7
+  - first:
+      1: 100036
+    second: polySurface2 1
+  - first:
+      1: 100038
+    second: transform8
+  - first:
+      1: 100040
+    second: transform9
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: pCube1
+  - first:
+      4: 400004
+    second: pCube4
+  - first:
+      4: 400006
+    second: pCube5
+  - first:
+      4: 400008
+    second: pCube6
+  - first:
+      4: 400010
+    second: pCube7
+  - first:
+      4: 400012
+    second: transform1
+  - first:
+      4: 400014
+    second: transform2
+  - first:
+      4: 400016
+    second: transform3
+  - first:
+      4: 400018
+    second: transform4
+  - first:
+      4: 400020
+    second: polySurface1
+  - first:
+      4: 400022
+    second: polySurface1 1
+  - first:
+      4: 400024
+    second: polySurface2
+  - first:
+      4: 400026
+    second: polySurface3
+  - first:
+      4: 400028
+    second: polySurface4
+  - first:
+      4: 400030
+    second: transform5
+  - first:
+      4: 400032
+    second: transform6
+  - first:
+      4: 400034
+    second: transform7
+  - first:
+      4: 400036
+    second: polySurface2 1
+  - first:
+      4: 400038
+    second: transform8
+  - first:
+      4: 400040
+    second: transform9
+  - first:
+      23: 2300000
+    second: pCube7
+  - first:
+      23: 2300002
+    second: polySurface1
+  - first:
+      23: 2300004
+    second: polySurface2
+  - first:
+      23: 2300006
+    second: polySurface4
+  - first:
+      33: 3300000
+    second: pCube7
+  - first:
+      33: 3300002
+    second: polySurface1
+  - first:
+      33: 3300004
+    second: polySurface2
+  - first:
+      33: 3300006
+    second: polySurface4
+  - first:
+      43: 4300000
+    second: pCube7
+  - first:
+      43: 4300002
+    second: polySurface2
+  - first:
+      43: 4300004
+    second: polySurface4
+  - first:
+      43: 4300006
+    second: polySurface1
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -87,13 +202,23 @@ ModelImporter:
     globalScale: 90
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -103,10 +228,14 @@ ModelImporter:
     normalSmoothAngle: 0
     normalImportMode: 1
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -116,14 +245,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 90
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

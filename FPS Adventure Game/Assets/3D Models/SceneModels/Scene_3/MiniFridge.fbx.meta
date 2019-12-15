@@ -1,80 +1,185 @@
 fileFormatVersion: 2
 guid: 26fb533f98438594faa0f2fe45e657fe
-timeCreated: 1456790701
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: pCube1
-    100004: pCube2
-    100006: pCube3
-    100008: pCube4
-    100010: pCube5
-    100012: pCylinder1
-    100014: pCylinder2
-    100016: pCylinder3
-    100018: polySurface1
-    100020: polySurface2
-    100022: transform1
-    100024: transform2
-    100026: transform3
-    100028: transform4
-    100030: transform5
-    100032: transform6
-    100034: transform7
-    100036: transform8
-    100038: pCylinder4
-    400000: //RootNode
-    400002: pCube1
-    400004: pCube2
-    400006: pCube3
-    400008: pCube4
-    400010: pCube5
-    400012: pCylinder1
-    400014: pCylinder2
-    400016: pCylinder3
-    400018: polySurface1
-    400020: polySurface2
-    400022: transform1
-    400024: transform2
-    400026: transform3
-    400028: transform4
-    400030: transform5
-    400032: transform6
-    400034: transform7
-    400036: transform8
-    400038: pCylinder4
-    2300000: pCylinder3
-    2300002: polySurface1
-    2300004: pCylinder4
-    3300000: pCylinder3
-    3300002: polySurface1
-    3300004: pCylinder4
-    4300000: polySurface1
-    4300002: pCylinder3
-    4300004: pCylinder4
-    9500000: //RootNode
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: pCube1
+  - first:
+      1: 100004
+    second: pCube2
+  - first:
+      1: 100006
+    second: pCube3
+  - first:
+      1: 100008
+    second: pCube4
+  - first:
+      1: 100010
+    second: pCube5
+  - first:
+      1: 100012
+    second: pCylinder1
+  - first:
+      1: 100014
+    second: pCylinder2
+  - first:
+      1: 100016
+    second: pCylinder3
+  - first:
+      1: 100018
+    second: polySurface1
+  - first:
+      1: 100020
+    second: polySurface2
+  - first:
+      1: 100022
+    second: transform1
+  - first:
+      1: 100024
+    second: transform2
+  - first:
+      1: 100026
+    second: transform3
+  - first:
+      1: 100028
+    second: transform4
+  - first:
+      1: 100030
+    second: transform5
+  - first:
+      1: 100032
+    second: transform6
+  - first:
+      1: 100034
+    second: transform7
+  - first:
+      1: 100036
+    second: transform8
+  - first:
+      1: 100038
+    second: pCylinder4
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: pCube1
+  - first:
+      4: 400004
+    second: pCube2
+  - first:
+      4: 400006
+    second: pCube3
+  - first:
+      4: 400008
+    second: pCube4
+  - first:
+      4: 400010
+    second: pCube5
+  - first:
+      4: 400012
+    second: pCylinder1
+  - first:
+      4: 400014
+    second: pCylinder2
+  - first:
+      4: 400016
+    second: pCylinder3
+  - first:
+      4: 400018
+    second: polySurface1
+  - first:
+      4: 400020
+    second: polySurface2
+  - first:
+      4: 400022
+    second: transform1
+  - first:
+      4: 400024
+    second: transform2
+  - first:
+      4: 400026
+    second: transform3
+  - first:
+      4: 400028
+    second: transform4
+  - first:
+      4: 400030
+    second: transform5
+  - first:
+      4: 400032
+    second: transform6
+  - first:
+      4: 400034
+    second: transform7
+  - first:
+      4: 400036
+    second: transform8
+  - first:
+      4: 400038
+    second: pCylinder4
+  - first:
+      23: 2300000
+    second: pCylinder3
+  - first:
+      23: 2300002
+    second: polySurface1
+  - first:
+      23: 2300004
+    second: pCylinder4
+  - first:
+      33: 3300000
+    second: pCylinder3
+  - first:
+      33: 3300002
+    second: polySurface1
+  - first:
+      33: 3300004
+    second: pCylinder4
+  - first:
+      43: 4300000
+    second: polySurface1
+  - first:
+      43: 4300002
+    second: pCylinder3
+  - first:
+      43: 4300004
+    second: pCylinder4
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -82,13 +187,23 @@ ModelImporter:
     globalScale: 58
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -98,10 +213,14 @@ ModelImporter:
     normalSmoothAngle: 0
     normalImportMode: 1
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -111,14 +230,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 58
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

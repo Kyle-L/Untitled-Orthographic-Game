@@ -1,116 +1,293 @@
 fileFormatVersion: 2
 guid: ecd382eb403c82f4db766a3a8eab1dd4
-timeCreated: 1438744226
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: pCylinder2
-    100002: pSphere1
-    100004: pSphere10
-    100006: pSphere11
-    100008: pSphere12
-    100010: pSphere13
-    100012: pSphere15
-    100014: pSphere16
-    100016: pSphere17
-    100018: pSphere18
-    100020: pSphere19
-    100022: pSphere2
-    100024: pSphere20
-    100026: pSphere3
-    100028: pSphere4
-    100030: pSphere5
-    100032: pSphere6
-    100034: pSphere7
-    100036: pSphere8
-    100038: pSphere9
-    100040: transform1
-    100042: transform10
-    100044: transform11
-    100046: transform12
-    100048: transform13
-    100050: transform14
-    100052: transform15
-    100054: transform16
-    100056: transform17
-    100058: transform18
-    100060: transform2
-    100062: transform3
-    100064: transform4
-    100066: transform5
-    100068: transform6
-    100070: transform7
-    100072: transform8
-    100074: transform9
-    100076: //RootNode
-    400000: pCylinder2
-    400002: pSphere1
-    400004: pSphere10
-    400006: pSphere11
-    400008: pSphere12
-    400010: pSphere13
-    400012: pSphere15
-    400014: pSphere16
-    400016: pSphere17
-    400018: pSphere18
-    400020: pSphere19
-    400022: pSphere2
-    400024: pSphere20
-    400026: pSphere3
-    400028: pSphere4
-    400030: pSphere5
-    400032: pSphere6
-    400034: pSphere7
-    400036: pSphere8
-    400038: pSphere9
-    400040: transform1
-    400042: transform10
-    400044: transform11
-    400046: transform12
-    400048: transform13
-    400050: transform14
-    400052: transform15
-    400054: transform16
-    400056: transform17
-    400058: transform18
-    400060: transform2
-    400062: transform3
-    400064: transform4
-    400066: transform5
-    400068: transform6
-    400070: transform7
-    400072: transform8
-    400074: transform9
-    400076: //RootNode
-    2300000: pCylinder2
-    2300002: pSphere20
-    3300000: pCylinder2
-    3300002: pSphere20
-    4300000: pCylinder2
-    4300002: pSphere20
-    7400000: Take 001
-    9500000: //RootNode
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: pCylinder2
+  - first:
+      1: 100002
+    second: pSphere1
+  - first:
+      1: 100004
+    second: pSphere10
+  - first:
+      1: 100006
+    second: pSphere11
+  - first:
+      1: 100008
+    second: pSphere12
+  - first:
+      1: 100010
+    second: pSphere13
+  - first:
+      1: 100012
+    second: pSphere15
+  - first:
+      1: 100014
+    second: pSphere16
+  - first:
+      1: 100016
+    second: pSphere17
+  - first:
+      1: 100018
+    second: pSphere18
+  - first:
+      1: 100020
+    second: pSphere19
+  - first:
+      1: 100022
+    second: pSphere2
+  - first:
+      1: 100024
+    second: pSphere20
+  - first:
+      1: 100026
+    second: pSphere3
+  - first:
+      1: 100028
+    second: pSphere4
+  - first:
+      1: 100030
+    second: pSphere5
+  - first:
+      1: 100032
+    second: pSphere6
+  - first:
+      1: 100034
+    second: pSphere7
+  - first:
+      1: 100036
+    second: pSphere8
+  - first:
+      1: 100038
+    second: pSphere9
+  - first:
+      1: 100040
+    second: transform1
+  - first:
+      1: 100042
+    second: transform10
+  - first:
+      1: 100044
+    second: transform11
+  - first:
+      1: 100046
+    second: transform12
+  - first:
+      1: 100048
+    second: transform13
+  - first:
+      1: 100050
+    second: transform14
+  - first:
+      1: 100052
+    second: transform15
+  - first:
+      1: 100054
+    second: transform16
+  - first:
+      1: 100056
+    second: transform17
+  - first:
+      1: 100058
+    second: transform18
+  - first:
+      1: 100060
+    second: transform2
+  - first:
+      1: 100062
+    second: transform3
+  - first:
+      1: 100064
+    second: transform4
+  - first:
+      1: 100066
+    second: transform5
+  - first:
+      1: 100068
+    second: transform6
+  - first:
+      1: 100070
+    second: transform7
+  - first:
+      1: 100072
+    second: transform8
+  - first:
+      1: 100074
+    second: transform9
+  - first:
+      1: 100076
+    second: //RootNode
+  - first:
+      4: 400000
+    second: pCylinder2
+  - first:
+      4: 400002
+    second: pSphere1
+  - first:
+      4: 400004
+    second: pSphere10
+  - first:
+      4: 400006
+    second: pSphere11
+  - first:
+      4: 400008
+    second: pSphere12
+  - first:
+      4: 400010
+    second: pSphere13
+  - first:
+      4: 400012
+    second: pSphere15
+  - first:
+      4: 400014
+    second: pSphere16
+  - first:
+      4: 400016
+    second: pSphere17
+  - first:
+      4: 400018
+    second: pSphere18
+  - first:
+      4: 400020
+    second: pSphere19
+  - first:
+      4: 400022
+    second: pSphere2
+  - first:
+      4: 400024
+    second: pSphere20
+  - first:
+      4: 400026
+    second: pSphere3
+  - first:
+      4: 400028
+    second: pSphere4
+  - first:
+      4: 400030
+    second: pSphere5
+  - first:
+      4: 400032
+    second: pSphere6
+  - first:
+      4: 400034
+    second: pSphere7
+  - first:
+      4: 400036
+    second: pSphere8
+  - first:
+      4: 400038
+    second: pSphere9
+  - first:
+      4: 400040
+    second: transform1
+  - first:
+      4: 400042
+    second: transform10
+  - first:
+      4: 400044
+    second: transform11
+  - first:
+      4: 400046
+    second: transform12
+  - first:
+      4: 400048
+    second: transform13
+  - first:
+      4: 400050
+    second: transform14
+  - first:
+      4: 400052
+    second: transform15
+  - first:
+      4: 400054
+    second: transform16
+  - first:
+      4: 400056
+    second: transform17
+  - first:
+      4: 400058
+    second: transform18
+  - first:
+      4: 400060
+    second: transform2
+  - first:
+      4: 400062
+    second: transform3
+  - first:
+      4: 400064
+    second: transform4
+  - first:
+      4: 400066
+    second: transform5
+  - first:
+      4: 400068
+    second: transform6
+  - first:
+      4: 400070
+    second: transform7
+  - first:
+      4: 400072
+    second: transform8
+  - first:
+      4: 400074
+    second: transform9
+  - first:
+      4: 400076
+    second: //RootNode
+  - first:
+      23: 2300000
+    second: pCylinder2
+  - first:
+      23: 2300002
+    second: pSphere20
+  - first:
+      33: 3300000
+    second: pCylinder2
+  - first:
+      33: 3300002
+    second: pSphere20
+  - first:
+      43: 4300000
+    second: pCylinder2
+  - first:
+      43: 4300002
+    second: pSphere20
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -118,13 +295,23 @@ ModelImporter:
     globalScale: 58
     meshCompression: 2
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -134,10 +321,14 @@ ModelImporter:
     normalSmoothAngle: 0
     normalImportMode: 1
     tangentImportMode: 2
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -147,14 +338,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 58
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

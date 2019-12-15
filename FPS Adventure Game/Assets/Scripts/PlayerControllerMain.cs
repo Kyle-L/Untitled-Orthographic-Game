@@ -27,14 +27,14 @@ public class PlayerControllerMain : MonoBehaviour {
     }
 
     [SerializeField]
-    private PlayerMovementController _playerMovementController;
+    private PlayerMovementController2 _playerMovementController;
     [SerializeField]
     private PlayerSettingsController _playerSettingsController;
 
     public void Start() {
         instance = this;
 
-        _playerMovementController = GetComponent<PlayerMovementController>();
+        _playerMovementController = GetComponent<PlayerMovementController2>();
         _playerSettingsController = GetComponent<PlayerSettingsController>();
     }
 

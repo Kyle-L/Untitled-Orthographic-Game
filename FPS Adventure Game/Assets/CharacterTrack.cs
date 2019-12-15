@@ -18,6 +18,8 @@ public class CharacterTrack : MonoBehaviour {
     private RaycastHit _hit;
     int _layerMask;
 
+    private Vector3 velocity;
+    private Vector3 prevPos;
 
     // Start is called before the first frame update
     void Start() {
@@ -28,17 +30,29 @@ public class CharacterTrack : MonoBehaviour {
 
         _snowMaterial = _terrain.GetComponent<MeshRenderer>().material;
         if (_snowMaterial.GetTexture("_Splat") == null) {
-            _splatmap = new RenderTexture(1024, 1024, 0, RenderTextureFormat.ARGBFloat);
+            _splatmap = new RenderTexture(2048, 2048, 0, RenderTextureFormat.ARGBFloat);
         } else {
-            _splatmap = (RenderTexture) _snowMaterial.GetTexture("_Splat");
+            _splatmap = (RenderTexture)_snowMaterial.GetTexture("_Splat");
         }
         _snowMaterial.SetTexture("_Splat", _splatmap);
     }
 
+    void FixedUpdate() {
+        velocity = (transform.position - prevPos) / Time.deltaTime;
+        prevPos = transform.position;
+    }
+
     // Update is called once per frame
     void Update() {
+
+        var fwdDotProduct = Vector3.Dot(transform.forward, velocity);
+        var upDotProduct = Vector3.Dot(transform.up, velocity);
+        var rightDotProduct = Vector3.Dot(transform.right, velocity);
+
+        Vector3 velocityVector = new Vector3(rightDotProduct, upDotProduct, fwdDotProduct);
+
         foreach (Transform tran in feet) {
-            if (Physics.Raycast(tran.position, Vector3.down, out _hit, 1f, _layerMask)) {
+            if (Physics.Raycast(tran.position, Vector3.down, out _hit, 1f, _layerMask) && velocityVector.sqrMagnitude > 0) {
                 _drawMaterial.SetVector("_Coordinate", new Vector4(_hit.textureCoord.x, _hit.textureCoord.y, 0, 0));
                 _drawMaterial.SetFloat("_Strength", _brushStrength);
                 _drawMaterial.SetFloat("_Size", _brushSize);
