@@ -10,9 +10,13 @@ public class SettingsController : MonoBehaviour {
     // Default values of the settings.
     [Header("Default Settings")]
     [SerializeField]
-    private float defaultMouse = 2.5f;
+    private float defaultCameraMoveSpeed = -1f;
     [SerializeField]
-    private float defaultZoom = 1.5f;
+    private float defaultCameraHeightSpeed = 2f;
+    [SerializeField]
+    private float defaultCameraRotateSpeed = 20f;
+    [SerializeField]
+    private float defaultCameraZoomSpeed = 2f;
     [SerializeField]
     private float defaultVolume = 2.5f;
 
@@ -33,8 +37,10 @@ public class SettingsController : MonoBehaviour {
         /* Gets the values stored in player prefs, otherwise the default
          * values are used if the player has not changed the settings. */
         Volume = PlayerPrefs.GetFloat("volume", defaultVolume);
-        MouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity", defaultMouse);
-        ZoomSensitivity = PlayerPrefs.GetFloat("zoomSensitivity", defaultZoom);
+        CameraMoveSpeed = PlayerPrefs.GetFloat("cameraMoveSpeed", defaultCameraMoveSpeed);
+        CameraHeightSpeed = PlayerPrefs.GetFloat("cameraHeightSpeed", defaultCameraHeightSpeed);
+        CameraRotateSpeed = PlayerPrefs.GetFloat("cameraRotateSpeed", defaultCameraRotateSpeed);
+        CameraZoomSpeed = PlayerPrefs.GetFloat("cameraZoomSpeed", defaultCameraZoomSpeed);
         if (PlayerPrefs.GetInt("qualityLevel") != QualitySettings.GetQualityLevel()) {
             QualityLevel = QualitySettings.GetQualityLevel();
         } else {
@@ -58,34 +64,56 @@ public class SettingsController : MonoBehaviour {
     /// <summary>
     /// Changes the mouse sensitivity.
     /// </summary>
-    public float MouseSensitivity {
-        get { return mouseSensitivity; }
+    public float CameraRotateSpeed {
+        get { return cameraRotateSpeed; }
         set {
-            //PlayerPrefs.SetFloat("mouseSensitivity", value);
-            //if (CameraController.instance != null) {
-            //    CameraController.instance.AngleSensitivity = value;
-            //}
-
-            mouseSensitivity = value;
+            PlayerPrefs.SetFloat("cameraRotateSpeed", value);
+            if (CameraController.instance != null) {
+                CameraController.instance.cameraRotateSpeed = value;
+            }
+            cameraRotateSpeed = value;
         }
     }
-    private float mouseSensitivity;
+    private float cameraRotateSpeed;
+
+    public float CameraHeightSpeed {
+        get { return cameraHeightSpeed; }
+        set {
+            PlayerPrefs.SetFloat("cameraHeightSpeed", value);
+            if (CameraController.instance != null) {
+                CameraController.instance.cameraHeightSpeed = value;
+            }
+            cameraHeightSpeed = value;
+        }
+    }
+    private float cameraHeightSpeed;
+
+    public float CameraMoveSpeed {
+        get { return cameraMoveSpeed; }
+        set {
+            PlayerPrefs.SetFloat("cameraHeightSpeed", value);
+            if (CameraController.instance != null) {
+                CameraController.instance.cameraMoveSpeed = value;
+            }
+            cameraMoveSpeed = value;
+        }
+    }
+    private float cameraMoveSpeed;
 
     /// <summary>
     /// Changes the zoom sensitivity.
     /// </summary>
-    public float ZoomSensitivity {
-        get { return zoomSensitivity; }
+    public float CameraZoomSpeed {
+        get { return cameraZoomSpeed; }
         set {
             PlayerPrefs.SetFloat("zoomSensitivity", value);
-            //if (CameraController.instance != null) {
-            //    CameraController.instance.ZoomSensitivity = value;
-            //}
-
-            zoomSensitivity = value;
+            if (CameraController.instance != null) {
+                CameraController.instance.cameraZoomSpeed = value;
+            }
+            cameraZoomSpeed = value;
         }
     }
-    private float zoomSensitivity;
+    private float cameraZoomSpeed;
 
     /// <summary>
     /// Changes the quality level.

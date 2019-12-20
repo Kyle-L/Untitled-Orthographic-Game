@@ -150,7 +150,9 @@ public class UIMenuController : MonoBehaviour {
          * control while it is open. */
         if (aMenu == null || (aMenu != null && aMenu.GetControlState())) {
             // Then disable the mouse if it exists.
-            if (hideMouseOnUnpause) MouseStateController.instance?.SetMouseState(false);
+            if (hideMouseOnUnpause) {
+                MouseStateController.instance?.SetMouseState(false);
+            }
             // Then unpause the player controller if it exists.
             if (PlayerControllerMain.instance != null) {
                 PlayerControllerMain.instance.Pause = false;
@@ -158,7 +160,9 @@ public class UIMenuController : MonoBehaviour {
             // Otherwise
         } else {
             // Then enable the mouse if it exists.
-            if (hideMouseOnUnpause) MouseStateController.instance?.SetMouseState(true);
+            if (hideMouseOnUnpause) {
+                MouseStateController.instance?.SetMouseState(true);
+            }
             // Then pause the player controller if it exists.
             if (PlayerControllerMain.instance != null) {
                 PlayerControllerMain.instance.Pause = true;

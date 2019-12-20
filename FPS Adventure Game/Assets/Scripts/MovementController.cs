@@ -33,7 +33,7 @@ public class MovementController : MonoBehaviour {
         }
     }
 
-    public void Go (Vector3 destination) {
+    public void Go(Vector3 destination) {
         _navMeshAgent.SetDestination(destination);
     }
 

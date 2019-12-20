@@ -11,7 +11,11 @@ public class UIMenu_Settings : MonoBehaviour {
     [SerializeField]
     private Slider volumeSlider;
     [SerializeField]
-    private Slider mouseSlider;
+    private Slider moveSlider;
+    [SerializeField]
+    private Slider heightSlider;
+    [SerializeField]
+    private Slider rotateSlider;
     [SerializeField]
     private Slider zoomSlider;
     [SerializeField]
@@ -19,10 +23,12 @@ public class UIMenu_Settings : MonoBehaviour {
 
     private void Start() {
         // Set the UI elements to represent the values of settings.
-        //volumeSlider.value = SettingsController.instance.Volume;
-        //mouseSlider.value = SettingsController.instance.MouseSensitivity;
-        //zoomSlider.value = SettingsController.instance.ZoomSensitivity;
-        //qualityDropdown.value = SettingsController.instance.QualityLevel;
+        volumeSlider.value = SettingsController.instance.Volume;
+        moveSlider.value = SettingsController.instance.CameraMoveSpeed;
+        heightSlider.value = SettingsController.instance.CameraHeightSpeed;
+        rotateSlider.value = SettingsController.instance.CameraRotateSpeed;
+        zoomSlider.value = SettingsController.instance.CameraZoomSpeed;
+        qualityDropdown.value = SettingsController.instance.QualityLevel;
     }
 
     /// <summary>
@@ -30,16 +36,34 @@ public class UIMenu_Settings : MonoBehaviour {
     /// </summary>
     /// <param name="aSlider"></param>
     public void VolumeSlider(Slider aSlider) {
-        //SettingsController.instance.Volume = aSlider.value;
+        SettingsController.instance.Volume = aSlider.value;
     }
 
     /// <summary>
-    /// Changes the mouse sensitivty based on the value given by
+    /// Changes the camera move sensitivty based on the value given by
     /// a slider.
     /// </summary>
     /// <param name="aSlider"></param>
-    public void MouseSensitivitySlider(Slider aSlider) {
-        //SettingsController.instance.MouseSensitivity = aSlider.value;
+    public void MoveSensitivitySlider(Slider aSlider) {
+        SettingsController.instance.CameraMoveSpeed = aSlider.value;
+    }
+
+    /// <summary>
+    /// Changes the camera height sensitivty based on the value given by
+    /// a slider.
+    /// </summary>
+    /// <param name="aSlider"></param>
+    public void HeightSensitivitySlider(Slider aSlider) {
+        SettingsController.instance.CameraHeightSpeed = aSlider.value;
+    }
+
+    /// <summary>
+    /// Changes the camera rotate sensitivty based on the value given by
+    /// a slider.
+    /// </summary>
+    /// <param name="aSlider"></param>
+    public void RotateSensitivitySlider(Slider aSlider) {
+        SettingsController.instance.CameraRotateSpeed = aSlider.value;
     }
 
     /// <summary>
@@ -48,7 +72,7 @@ public class UIMenu_Settings : MonoBehaviour {
     /// </summary>
     /// <param name="aSlider"></param>
     public void ZoomSensitivitySlider(Slider aSlider) {
-        //SettingsController.instance.ZoomSensitivity = aSlider.value;
+        SettingsController.instance.CameraZoomSpeed = aSlider.value;
     }
 
     /// <summary>
@@ -57,7 +81,7 @@ public class UIMenu_Settings : MonoBehaviour {
     /// </summary>
     /// <param name="aDropdown"></param>
     public void QualityLevelSlider(Dropdown aDropdown) {
-        //SettingsController.instance.QualityLevel = aDropdown.value;
+        SettingsController.instance.QualityLevel = aDropdown.value;
     }
 
 }

@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityStandardAssets.CrossPlatformInput;
 
 /// <summary>
 /// Controls the camera.
 /// </summary>
+[RequireComponent(typeof(Camera))]
 public class CameraController : MonoBehaviour {
     [HideInInspector]
     public static CameraController instance;
@@ -20,21 +19,32 @@ public class CameraController : MonoBehaviour {
     public float cameraPositionSmoothSpeed = 2.5f;
 
     [Header("Camera Position Settings")]
-    public Vector3 cameraOffset;
+    public Vector3 objectOffset;
+    private Vector3 cameraTarget;
+
     public float cameraHeight = 15;
     public float cameraMinHeight = 0;
     public float cameraMaxHeight = 50;
-    private float curAngle = 15;
-    public float cameraRadius = 15;
 
+    public float cameraSize = 5;
+    public float cameraMinSize = 1;
+    public float cameraMaxSize = 7;
+
+    public float cameraRadius = 15;
+    public float cameraStartAngle = 15;
+    private float curAngle;
+
+    [Header("Camera Speed")]
+    public float cameraMoveSpeed = 1;
+    public float cameraHeightSpeed = 1;
+    public float cameraRotateSpeed = 1;
+    public float cameraZoomSpeed = 2;
 
     [Header("Ray Cast Settings")]
     public int rayCastAngle = 120;
     public int rayCastNum = 10;
     private RaycastHit[][] lastRayCastHits;
     public RaycastHit[][] rayCastHits;
-
-    LayerMask mask = 1 << 10;
 
     //Controls
     private bool Control { get; set; } = true;
@@ -43,68 +53,65 @@ public class CameraController : MonoBehaviour {
         instance = this;
 
         camera = GetComponent<Camera>();
+
+        SetAngle(cameraStartAngle);
     }
 
     void Start() {
         rayCastHits = new RaycastHit[rayCastNum][];
+
+        cameraTarget = trackingObject.transform.position;
     }
 
     void Update() {
         if (Control) {
-            if (CrossPlatformInputManager.GetButton("Fire1")) {
-                curAngle += Input.GetAxis("Axis X") * 2;
-                cameraHeight -= Input.GetAxis("Axis Y");
+            // Processes user input for rotation and height.
+            if (CrossPlatformInputManager.GetButton("Fire2")) {
+                // Get user input
+                float axisX = Input.GetAxis("Axis X");
+                float axisY = Input.GetAxis("Axis Y");
+
+                // Apply the user input to the current angle and height.
+                curAngle += axisX * cameraRotateSpeed * Time.deltaTime;
+                cameraHeight -= axisY * cameraHeightSpeed * Time.deltaTime;
+
+                // Clamps the camera's height.
                 cameraHeight = Mathf.Clamp(cameraHeight, cameraMinHeight, cameraMaxHeight);
             }
-            if (CrossPlatformInputManager.GetButton("Fire2")) {
 
-            }
+            // Processes user input for movement.
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
 
-            camera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * 2;
-            camera.orthographicSize = Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 1, 7);
-        }
+            // Get camera forward and right vectors:
+            Vector3 forward = camera.transform.forward;
+            Vector3 right = camera.transform.right;
 
-        //Creates all angles used for calculating the raycast 'pie'.
-        List<Vector3> vList = new List<Vector3>();
-        for (int i = -rayCastNum / 2; i < rayCastNum / 2; i++) {
-            vList.Add(Quaternion.AngleAxis(curAngle + i * (rayCastAngle / rayCastNum), Vector3.up) * new Vector3(cameraRadius, cameraHeight, 0));
-        }
+            // Project forward and right vectors on the horizontal plane (y = 0).
+            forward.y = 0f;
+            right.y = 0f;
+            forward.Normalize();
+            right.Normalize();
 
-        for (int i = 0; i < vList.Count; i++) {
-            //Performs Linecasts.
-            Debug.DrawRay(trackingObject.transform.position, new Vector3(vList[i].x, 0, vList[i].z), Color.yellow);
+            // Get the direction in the world space where the user wants to move.
+            Vector3 desiredMoveDirection = forward * vertical + right * horizontal;
 
-            Ray ray = new Ray(trackingObject.transform.position, new Vector3(transform.position.x + vList[i].x, trackingObject.transform.position.y, transform.position.z + vList[i].z) - trackingObject.transform.position);
-            rayCastHits[i] = Physics.RaycastAll(ray,100, mask);
-        }
+            // Apply the movement to the camera's target look position.
+            cameraTarget -= desiredMoveDirection * cameraMoveSpeed * Time.deltaTime;
 
-        //Enables all objects previously raycasted.
-        if (lastRayCastHits != null) {
-            for (int i = 0; i < lastRayCastHits.Length; i++) {
-                for (int i2 = 0; i2 < lastRayCastHits[i].Length; i2++) {
-                    lastRayCastHits[i][i2].collider.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-                }
-            }
-        }
-
-        //Copies rayCastHits to lastRayCastHits.
-        lastRayCastHits = new RaycastHit[rayCastHits.Length][];
-        for (int i = 0; i < lastRayCastHits.Length; i++) {
-            lastRayCastHits[i] = (RaycastHit[])rayCastHits[i].Clone();
-        }
-
-        //Disables all objects raycasted.
-        for (int i = 0; i < rayCastHits.Length; i++) {
-            for (int i2 = 0; i2 < rayCastHits[i].Length; i2++) {
-                lastRayCastHits[i][i2].collider.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
-            }
+            // Processes user input for camera size.
+            camera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * cameraZoomSpeed;
+            camera.orthographicSize = Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, cameraMinSize, cameraMaxSize);
         }
 
         //Creates the angle used to rotate the camera.
         Vector3 v = Quaternion.AngleAxis(curAngle, Vector3.up) * new Vector3(cameraRadius, cameraHeight, 0); //Center angle relative to player.
 
-        transform.position = trackingObject.transform.position + v + cameraOffset; //Sets the camera position.
-        transform.LookAt(trackingObject.transform.position + cameraOffset); //Rotates the camera to look at the playerController.
+        //Sets the camera position.
+        transform.position = v + objectOffset + cameraTarget;
+
+        //Rotates the camera to look at the playerController.
+        transform.LookAt(objectOffset + cameraTarget);
 
     }
 

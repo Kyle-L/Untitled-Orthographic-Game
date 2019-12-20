@@ -1,0 +1,746 @@
+fileFormatVersion: 2
+guid: 05d900b93466f164b96bfbfc956488fc
+ModelImporter:
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: back
+  - first:
+      1: 100002
+    second: bottom
+  - first:
+      1: 100004
+    second: //RootNode
+  - first:
+      1: 100006
+    second: Ear_1
+  - first:
+      1: 100008
+    second: Ear_2
+  - first:
+      1: 100010
+    second: pCube1
+  - first:
+      1: 100012
+    second: pCube10
+  - first:
+      1: 100014
+    second: pCube11
+  - first:
+      1: 100016
+    second: pCube12
+  - first:
+      1: 100018
+    second: pCube13
+  - first:
+      1: 100020
+    second: pCube14
+  - first:
+      1: 100022
+    second: pCube15
+  - first:
+      1: 100024
+    second: pCube16
+  - first:
+      1: 100026
+    second: pCube2
+  - first:
+      1: 100028
+    second: pCube3
+  - first:
+      1: 100030
+    second: pCube4
+  - first:
+      1: 100032
+    second: pCube5
+  - first:
+      1: 100034
+    second: pCube6
+  - first:
+      1: 100036
+    second: pCube9
+  - first:
+      1: 100038
+    second: Body
+  - first:
+      1: 100040
+    second: Eye_1
+  - first:
+      1: 100042
+    second: Eye_2
+  - first:
+      1: 100044
+    second: Eyebrow_1
+  - first:
+      1: 100046
+    second: Eyebrow_2
+  - first:
+      1: 100048
+    second: Head
+  - first:
+      1: 100050
+    second: Leg_1
+  - first:
+      1: 100052
+    second: Leg_2
+  - first:
+      1: 100054
+    second: Leg_3
+  - first:
+      1: 100056
+    second: Leg_4
+  - first:
+      1: 100058
+    second: Pupil_1
+  - first:
+      1: 100060
+    second: Pupil_2
+  - first:
+      1: 100062
+    second: Snout
+  - first:
+      1: 100064
+    second: Tail
+  - first:
+      4: 400000
+    second: back
+  - first:
+      4: 400002
+    second: bottom
+  - first:
+      4: 400004
+    second: //RootNode
+  - first:
+      4: 400006
+    second: Ear_1
+  - first:
+      4: 400008
+    second: Ear_2
+  - first:
+      4: 400010
+    second: pCube1
+  - first:
+      4: 400012
+    second: pCube10
+  - first:
+      4: 400014
+    second: pCube11
+  - first:
+      4: 400016
+    second: pCube12
+  - first:
+      4: 400018
+    second: pCube13
+  - first:
+      4: 400020
+    second: pCube14
+  - first:
+      4: 400022
+    second: pCube15
+  - first:
+      4: 400024
+    second: pCube16
+  - first:
+      4: 400026
+    second: pCube2
+  - first:
+      4: 400028
+    second: pCube3
+  - first:
+      4: 400030
+    second: pCube4
+  - first:
+      4: 400032
+    second: pCube5
+  - first:
+      4: 400034
+    second: pCube6
+  - first:
+      4: 400036
+    second: pCube9
+  - first:
+      4: 400038
+    second: Body
+  - first:
+      4: 400040
+    second: Eye_1
+  - first:
+      4: 400042
+    second: Eye_2
+  - first:
+      4: 400044
+    second: Eyebrow_1
+  - first:
+      4: 400046
+    second: Eyebrow_2
+  - first:
+      4: 400048
+    second: Head
+  - first:
+      4: 400050
+    second: Leg_1
+  - first:
+      4: 400052
+    second: Leg_2
+  - first:
+      4: 400054
+    second: Leg_3
+  - first:
+      4: 400056
+    second: Leg_4
+  - first:
+      4: 400058
+    second: Pupil_1
+  - first:
+      4: 400060
+    second: Pupil_2
+  - first:
+      4: 400062
+    second: Snout
+  - first:
+      4: 400064
+    second: Tail
+  - first:
+      20: 2000000
+    second: back
+  - first:
+      20: 2000002
+    second: bottom
+  - first:
+      21: 2100000
+    second: Skin_Normal
+  - first:
+      21: 2100002
+    second: lambert2
+  - first:
+      21: 2100004
+    second: Eye
+  - first:
+      21: 2100006
+    second: Eye_Color
+  - first:
+      21: 2100008
+    second: lambert1
+  - first:
+      21: 2100010
+    second: Pupil
+  - first:
+      21: 2100012
+    second: Skin_Light
+  - first:
+      21: 2100014
+    second: Skin_Normal_2
+  - first:
+      23: 2300000
+    second: Ear_1
+  - first:
+      23: 2300002
+    second: Ear_2
+  - first:
+      23: 2300004
+    second: pCube1
+  - first:
+      23: 2300006
+    second: pCube10
+  - first:
+      23: 2300008
+    second: pCube11
+  - first:
+      23: 2300010
+    second: pCube12
+  - first:
+      23: 2300012
+    second: pCube13
+  - first:
+      23: 2300014
+    second: pCube14
+  - first:
+      23: 2300016
+    second: pCube15
+  - first:
+      23: 2300018
+    second: pCube16
+  - first:
+      23: 2300020
+    second: pCube2
+  - first:
+      23: 2300022
+    second: pCube3
+  - first:
+      23: 2300024
+    second: pCube4
+  - first:
+      23: 2300026
+    second: pCube5
+  - first:
+      23: 2300028
+    second: pCube6
+  - first:
+      23: 2300030
+    second: pCube9
+  - first:
+      23: 2300032
+    second: Body
+  - first:
+      23: 2300034
+    second: Eye_1
+  - first:
+      23: 2300036
+    second: Eye_2
+  - first:
+      23: 2300038
+    second: Eyebrow_1
+  - first:
+      23: 2300040
+    second: Eyebrow_2
+  - first:
+      23: 2300042
+    second: Head
+  - first:
+      23: 2300044
+    second: Leg_1
+  - first:
+      23: 2300046
+    second: Leg_2
+  - first:
+      23: 2300048
+    second: Leg_3
+  - first:
+      23: 2300050
+    second: Leg_4
+  - first:
+      23: 2300052
+    second: Pupil_1
+  - first:
+      23: 2300054
+    second: Pupil_2
+  - first:
+      23: 2300056
+    second: Snout
+  - first:
+      23: 2300058
+    second: Tail
+  - first:
+      33: 3300000
+    second: Ear_1
+  - first:
+      33: 3300002
+    second: Ear_2
+  - first:
+      33: 3300004
+    second: pCube1
+  - first:
+      33: 3300006
+    second: pCube10
+  - first:
+      33: 3300008
+    second: pCube11
+  - first:
+      33: 3300010
+    second: pCube12
+  - first:
+      33: 3300012
+    second: pCube13
+  - first:
+      33: 3300014
+    second: pCube14
+  - first:
+      33: 3300016
+    second: pCube15
+  - first:
+      33: 3300018
+    second: pCube16
+  - first:
+      33: 3300020
+    second: pCube2
+  - first:
+      33: 3300022
+    second: pCube3
+  - first:
+      33: 3300024
+    second: pCube4
+  - first:
+      33: 3300026
+    second: pCube5
+  - first:
+      33: 3300028
+    second: pCube6
+  - first:
+      33: 3300030
+    second: pCube9
+  - first:
+      33: 3300032
+    second: Body
+  - first:
+      33: 3300034
+    second: Eye_1
+  - first:
+      33: 3300036
+    second: Eye_2
+  - first:
+      33: 3300038
+    second: Eyebrow_1
+  - first:
+      33: 3300040
+    second: Eyebrow_2
+  - first:
+      33: 3300042
+    second: Head
+  - first:
+      33: 3300044
+    second: Leg_1
+  - first:
+      33: 3300046
+    second: Leg_2
+  - first:
+      33: 3300048
+    second: Leg_3
+  - first:
+      33: 3300050
+    second: Leg_4
+  - first:
+      33: 3300052
+    second: Pupil_1
+  - first:
+      33: 3300054
+    second: Pupil_2
+  - first:
+      33: 3300056
+    second: Snout
+  - first:
+      33: 3300058
+    second: Tail
+  - first:
+      43: 4300000
+    second: pCube1
+  - first:
+      43: 4300002
+    second: pCube2
+  - first:
+      43: 4300004
+    second: pCube3
+  - first:
+      43: 4300006
+    second: pCube4
+  - first:
+      43: 4300008
+    second: pCube5
+  - first:
+      43: 4300010
+    second: pCube6
+  - first:
+      43: 4300012
+    second: Ear_1
+  - first:
+      43: 4300014
+    second: pCube9
+  - first:
+      43: 4300016
+    second: pCube10
+  - first:
+      43: 4300018
+    second: pCube11
+  - first:
+      43: 4300020
+    second: pCube12
+  - first:
+      43: 4300022
+    second: pCube13
+  - first:
+      43: 4300024
+    second: pCube14
+  - first:
+      43: 4300026
+    second: pCube15
+  - first:
+      43: 4300028
+    second: pCube16
+  - first:
+      43: 4300030
+    second: Ear_2
+  - first:
+      43: 4300032
+    second: Body
+  - first:
+      43: 4300034
+    second: Leg_3
+  - first:
+      43: 4300036
+    second: Head
+  - first:
+      43: 4300038
+    second: Eye_2
+  - first:
+      43: 4300040
+    second: Eyebrow_2
+  - first:
+      43: 4300042
+    second: Pupil_2
+  - first:
+      43: 4300044
+    second: Eye_1
+  - first:
+      43: 4300046
+    second: Pupil_1
+  - first:
+      43: 4300048
+    second: Eyebrow_1
+  - first:
+      43: 4300050
+    second: Snout
+  - first:
+      43: 4300052
+    second: Tail
+  - first:
+      43: 4300054
+    second: Leg_4
+  - first:
+      43: 4300056
+    second: Leg_2
+  - first:
+      43: 4300058
+    second: Leg_1
+  - first:
+      64: 6400000
+    second: Body
+  - first:
+      64: 6400002
+    second: Ear_1
+  - first:
+      64: 6400004
+    second: Ear_2
+  - first:
+      64: 6400006
+    second: Eye_1
+  - first:
+      64: 6400008
+    second: Eye_2
+  - first:
+      64: 6400010
+    second: Eyebrow_1
+  - first:
+      64: 6400012
+    second: Eyebrow_2
+  - first:
+      64: 6400014
+    second: Head
+  - first:
+      64: 6400016
+    second: Leg_1
+  - first:
+      64: 6400018
+    second: Leg_2
+  - first:
+      64: 6400020
+    second: Leg_3
+  - first:
+      64: 6400022
+    second: Leg_4
+  - first:
+      64: 6400024
+    second: Pupil_1
+  - first:
+      64: 6400026
+    second: Pupil_2
+  - first:
+      64: 6400028
+    second: Snout
+  - first:
+      64: 6400030
+    second: Tail
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 3
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: Cat(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Body
+      parentName: Cat(Clone)
+      position: {x: -0, y: 0.4337903, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.4325678, y: 0.4012677, z: 0.952945}
+    - name: Leg_3
+      parentName: Cat(Clone)
+      position: {x: -0.075799994, y: 0.3400874, z: -0.20224999}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.119029365, y: 0.5494291, z: 0.1340585}
+    - name: Head
+      parentName: Cat(Clone)
+      position: {x: -0, y: 0.5081055, z: 0.204745}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.541714, y: 0.458476, z: 0.2628253}
+    - name: Eye_2
+      parentName: Cat(Clone)
+      position: {x: 0.06138722, y: 0.5923742, z: 0.27842167}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.12780483, y: 0.21363622, z: 0.028675057}
+    - name: Eyebrow_2
+      parentName: Cat(Clone)
+      position: {x: 0.062057767, y: 0.63354933, z: 0.28248307}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.14799073, y: 0.06968683, z: 0.022521412}
+    - name: Pupil_2
+      parentName: Cat(Clone)
+      position: {x: 0.057597432, y: 0.6053505, z: 0.28248307}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.016607923, y: 0.014216743, z: 0.022521412}
+    - name: Eye_1
+      parentName: Cat(Clone)
+      position: {x: -0.06563216, y: 0.5923742, z: 0.27842167}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.12780483, y: 0.21363622, z: 0.028675057}
+    - name: Pupil_1
+      parentName: Cat(Clone)
+      position: {x: -0.06942194, y: 0.6053505, z: 0.28248307}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.016607923, y: 0.014216743, z: 0.022521412}
+    - name: Eyebrow_1
+      parentName: Cat(Clone)
+      position: {x: -0.064961605, y: 0.63354933, z: 0.28248307}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.14799073, y: 0.06968683, z: 0.022521412}
+    - name: Snout
+      parentName: Cat(Clone)
+      position: {x: -0, y: 0.5185269, z: 0.2962971}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.22468942, y: 0.10901415, z: 0.07421571}
+    - name: back
+      parentName: Cat(Clone)
+      position: {x: -0, y: 0, z: -500.04996}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tail
+      parentName: Cat(Clone)
+      position: {x: -0, y: 0.4385, z: -0.26583755}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.1189198, y: 0.06446076, z: 0.072927214}
+    - name: bottom
+      parentName: Cat(Clone)
+      position: {x: -0, y: -500.04996, z: 0}
+      rotation: {x: 0, y: -0.7071068, z: -0.7071068, w: 0}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ear_2
+      parentName: Cat(Clone)
+      position: {x: 0.1488002, y: 0.66989994, z: 0.17999999}
+      rotation: {x: 1, y: -0, z: 0, w: 6.123234e-17}
+      scale: {x: -0.179, y: -0.17904198, z: -0.07952756}
+    - name: Ear_1
+      parentName: Cat(Clone)
+      position: {x: -0.08969535, y: 0.66989994, z: 0.17999999}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.179, y: 0.17904198, z: 0.07952756}
+    - name: Leg_4
+      parentName: Cat(Clone)
+      position: {x: 0.07201122, y: 0.3400874, z: -0.20224999}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.119029365, y: 0.5494291, z: 0.1340585}
+    - name: Leg_2
+      parentName: Cat(Clone)
+      position: {x: 0.07201122, y: 0.3400874, z: 0.17056936}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.119029365, y: 0.5494291, z: 0.1340585}
+    - name: Leg_1
+      parentName: Cat(Clone)
+      position: {x: -0.07587721, y: 0.3400874, z: 0.17056936}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.119029365, y: 0.5494291, z: 0.1340585}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 0.5
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
