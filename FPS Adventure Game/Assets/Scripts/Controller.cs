@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Controller : MonoBehaviour {
 
@@ -11,8 +10,7 @@ public class Controller : MonoBehaviour {
     GameObject instance;
     Clipper clipper;
 
-    void Start () 
-    {
+    void Start() {
         clipper = new Clipper();
         instance = (GameObject)Object.Instantiate(prefab);
 
@@ -21,8 +19,7 @@ public class Controller : MonoBehaviour {
         Object.Instantiate(prefab, new Vector3(0f, 3f, 0f), Quaternion.identity);
     }
 
-	void Update () 
-    {
+    void Update() {
         marker = instance.transform.Find("Marker");
 
 
@@ -50,5 +47,5 @@ public class Controller : MonoBehaviour {
         // Apply the changes
         clipper.SetClippingPlane(sectionPoint, sectionPlane, sectionOffset);
 
-	}
+    }
 }

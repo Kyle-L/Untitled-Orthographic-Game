@@ -34,6 +34,8 @@ public class MovementController : MonoBehaviour {
     }
 
     public void Go(Vector3 destination) {
+        _navMeshAgent.isStopped = false;
+        isWalking = true;
         _navMeshAgent.SetDestination(destination);
     }
 

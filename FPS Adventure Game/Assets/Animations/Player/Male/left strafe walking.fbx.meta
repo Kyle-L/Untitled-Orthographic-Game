@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: left strafe walk
+    second: m_left_strafe_walking
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: left strafe walk
+      name: m_left_strafe_walking
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0

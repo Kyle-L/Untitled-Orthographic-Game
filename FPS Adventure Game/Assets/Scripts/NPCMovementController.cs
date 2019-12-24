@@ -21,13 +21,6 @@ public class NPCMovementController : MovementController {
     public delegate void EventHandler(object sender, EventArgs args);
     public event EventHandler ReachedDestination = delegate { };
 
-    public void SetLocation(Transform loc) {
-        //_navMeshAgent.speed = speed;
-        _navMeshAgent.isStopped = false;
-        isWalking = true;
-        _navMeshAgent.SetDestination(loc.position);
-    }
-
     public void SetLocation(Transform[] locs) {
         if (locs.Length == 0) {
             return;
@@ -35,6 +28,6 @@ public class NPCMovementController : MovementController {
 
         walkLocations = locs;
         walkIndex = 0;
-        SetLocation(locs[walkIndex]);
+        Go(locs[walkIndex].position);
     }
 }

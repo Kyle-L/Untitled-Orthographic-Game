@@ -13281,6 +13281,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 100078, guid: 570479c7515582f40b537cdcc7f0b2ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100080, guid: 570479c7515582f40b537cdcc7f0b2ed, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -13437,6 +13441,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 688f49627ded82e409a55f2280805ea8, type: 2}
+    - target: {fileID: 2300030, guid: 570479c7515582f40b537cdcc7f0b2ed, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2300032, guid: 570479c7515582f40b537cdcc7f0b2ed, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -13445,6 +13453,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 688f49627ded82e409a55f2280805ea8, type: 2}
+    - target: {fileID: 2300032, guid: 570479c7515582f40b537cdcc7f0b2ed, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2300034, guid: 570479c7515582f40b537cdcc7f0b2ed, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -13576,8 +13588,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4ab4a86c88a7f43bb1066f3e9ac603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwards:
-  - {x: 1, y: 0, z: 0}
+  forwards: {x: -1, y: 0, z: 0}
+  crossSectionMaxHeight: 4
+  crossSectionMinHeight: 0.1
+  alwaysHide: 0
 --- !u!114 &1705935295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13590,8 +13604,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4ab4a86c88a7f43bb1066f3e9ac603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwards:
-  - {x: 0, y: 0, z: 1}
+  forwards: {x: 0, y: 0, z: -1}
+  crossSectionMaxHeight: 4
+  crossSectionMinHeight: 0.1
+  alwaysHide: 0
 --- !u!114 &1705935296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13604,8 +13620,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4ab4a86c88a7f43bb1066f3e9ac603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwards:
-  - {x: -1, y: 0, z: 0}
+  forwards: {x: 1, y: 0, z: 0}
+  crossSectionMaxHeight: 4
+  crossSectionMinHeight: 0.1
+  alwaysHide: 0
 --- !u!114 &1705935297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13618,8 +13636,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4ab4a86c88a7f43bb1066f3e9ac603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwards:
-  - {x: 0, y: 0, z: -1}
+  forwards: {x: 0, y: 0, z: 1}
+  crossSectionMaxHeight: 4
+  crossSectionMinHeight: 0.1
+  alwaysHide: 0
 --- !u!1001 &1727964354
 PrefabInstance:
   m_ObjectHideFlags: 0

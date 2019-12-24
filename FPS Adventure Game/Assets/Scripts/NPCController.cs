@@ -110,7 +110,7 @@ public class NPCController : MonoBehaviour {
             return;
         }
         // Set the first location to visit.
-        NPCMovementController.SetLocation(wanderingPoints[Random.Range(0, wanderingPoints.Length)]);
+        NPCMovementController.Go(wanderingPoints[Random.Range(0, wanderingPoints.Length)].position);
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public class NPCController : MonoBehaviour {
     /// <returns></returns>
     private IEnumerator WanderingWait(float time, Transform loc) {
         yield return new WaitForSeconds(time);
-        NPCMovementController.SetLocation(loc);
+        NPCMovementController.Go(loc.position);
     }
     #endregion
 

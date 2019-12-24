@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: right strafe
+    second: f_right_strafe_running
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: right strafe
+      name: f_right_strafe_running
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
