@@ -24,6 +24,7 @@ SOFTWARE.
 
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -69,6 +70,9 @@ namespace Yarn.Unity {
         public bool isDialogueRunning { get; private set; }
 
         public bool automaticCommands = true;
+
+        public delegate void EventHandler(object sender, EventArgs args);
+        public event EventHandler DialogueFinished = delegate { };
 
         /// Our conversation engine
         /** Automatically created on first access
@@ -273,6 +277,8 @@ namespace Yarn.Unity {
             // to allow time for any animations that might run while transitioning
             // out of a conversation (ie letterboxing going away, etc)
             isDialogueRunning = false;
+
+            DialogueFinished(this, new EventArgs());
         }
 
         /// Clear the dialogue system

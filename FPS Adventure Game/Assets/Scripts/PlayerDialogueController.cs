@@ -8,7 +8,16 @@ public class PlayerDialogueController : MonoBehaviour {
     [SerializeField]
     private float interactionRadius = 2.0f;
 
-    // Update is called once per frame
+    private DialogueRunner dr;
+
+    private NPCController target;
+
+    private void Start() {
+        dr = FindObjectOfType<DialogueRunner>();
+
+        dr.DialogueFinished += (sender, args) => { StopTalk(); };
+    }
+
     void Update() {
         if (CrossPlatformInputManager.GetButtonDown("Interact")) {
             CheckForNearbyNPC();
@@ -21,15 +30,12 @@ public class PlayerDialogueController : MonoBehaviour {
      */
     public void CheckForNearbyNPC() {
         var allParticipants = new List<NPCController>(FindObjectsOfType<NPCController>());
-        var target = allParticipants.Find(delegate (NPCController p) {
+        target = allParticipants.Find(delegate (NPCController p) {
             return string.IsNullOrEmpty(p.NPCDialogueController.TalkToNode) == false && // has a conversation node?
             (p.transform.position - this.transform.position)// is in range?
             .magnitude <= interactionRadius;
         });
         if (target != null) {
-            // Kick off the dialogue at this node.
-            DialogueRunner dr = FindObjectOfType<DialogueRunner>();
-
             // Quit the dialogue if it is already running.
             if (dr.isDialogueRunning) {
                 return;
@@ -37,11 +43,14 @@ public class PlayerDialogueController : MonoBehaviour {
 
             dr.StartDialogue(target.NPCDialogueController.TalkToNode);
 
-            //Makes the npc face the player.
-            //target.NPCMovementController.Face(PlayerController.instance.transform.position);
+            target.Talk(this.gameObject);
+        }
+    }
 
-            // Makes the player face the npc.
-            // PlayerController.instance.PlayerMovementController.Face(target.transform.position);
+    private void StopTalk () {
+        if (target != null) {
+            target.StopTalk();
+            target = null;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// The overall controller for an npc.
@@ -9,14 +10,8 @@ public class NPCController : MonoBehaviour {
     [SerializeField]
     private States startState = States.Idle;
 
-    public States CurrentState {
-        get { return currentState; }
-        set {
-            currentState = value;
-            UpdateState();
-        }
-    }
     private States currentState;
+    private Stack<States> stateHistory;
 
     public enum States {
         Idle,
@@ -57,7 +52,21 @@ public class NPCController : MonoBehaviour {
         }
     }
 
-    private void UpdateState() {
+    private void UpdateState (States state) {
+        stateHistory.Push(currentState);
+        currentState = state;
+        RefreshState();
+    }
+
+    private void UpdateToLastState () {
+        if (stateHistory.Count == 0) {
+            return;
+        }
+        currentState = stateHistory.Pop();
+        RefreshState();
+    }
+
+    private void RefreshState() {
         switch (currentState) {
             case States.Idle:
                 Idle();
@@ -83,14 +92,12 @@ public class NPCController : MonoBehaviour {
         // Add WanderingReached to the ReachedDestination event.
         NPCMovementController.ReachedDestination += (sender, args) => { WanderReached(); };
 
+        stateHistory = new Stack<States>();
+
         /* Updates the current state if the current
            state has any actions that need to be run
            in Start. */
-        CurrentState = startState;
-    }
-
-    private void Update() {
-
+        UpdateState(startState);
     }
 
     /// <summary>
@@ -109,6 +116,7 @@ public class NPCController : MonoBehaviour {
         if (currentState != States.Wandering) {
             return;
         }
+
         // Set the first location to visit.
         NPCMovementController.SetLocation(wanderingPoints[Random.Range(0, wanderingPoints.Length)]);
     }
@@ -123,8 +131,7 @@ public class NPCController : MonoBehaviour {
         }
 
         wandering = StartCoroutine(WanderingWait(
-           wanderingTime + Random.Range(-wanderingTimeDeviation, wanderingTimeDeviation),
-           wanderingPoints[Random.Range(0, wanderingPoints.Length)]));
+           wanderingTime + Random.Range(-wanderingTimeDeviation, wanderingTimeDeviation)));
     }
 
     /* The coroutine for the wandering wait.
@@ -139,9 +146,9 @@ public class NPCController : MonoBehaviour {
     /// <param name="time">The amount of time to wait.</param>
     /// <param name="loc">The location to visit after waiting.</param>
     /// <returns></returns>
-    private IEnumerator WanderingWait(float time, Transform loc) {
+    private IEnumerator WanderingWait(float time) {
         yield return new WaitForSeconds(time);
-        NPCMovementController.SetLocation(loc);
+        Wander();
     }
     #endregion
 
@@ -149,6 +156,17 @@ public class NPCController : MonoBehaviour {
 
     public void Talk() {
 
+    }
+
+    public void Talk(GameObject gameObject) {
+        UpdateState(States.Talking);
+        NPCMovementController.Stop();
+        NPCMovementController.Face(gameObject.transform.position);
+    }
+
+    public void StopTalk () {
+        UpdateToLastState();
+        NPCMovementController.StopFace();
     }
 
     #endregion

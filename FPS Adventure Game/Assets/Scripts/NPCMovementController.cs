@@ -86,7 +86,7 @@ public class NPCMovementController : MonoBehaviour {
     /// Makes the npc face a target position.
     /// </summary>
     /// <param name="target"></param>
-    public void FaceFace(Vector3 target) {
+    public void Face(Vector3 target) {
         // Stops the npc from being able to move.
         _navMeshAgent.isStopped = true;
 
@@ -107,6 +107,12 @@ public class NPCMovementController : MonoBehaviour {
 
         // Start the look look at coroutine.
         lookCoroutine = StartCoroutine(LookAtCoroutine(lookRotation));
+    }
+
+    public void StopFace () {
+        if (lookCoroutine != null) {
+            StopCoroutine(lookCoroutine);
+        }
     }
 
     Coroutine lookCoroutine;
