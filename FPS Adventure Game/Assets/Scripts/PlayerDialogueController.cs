@@ -15,7 +15,7 @@ public class PlayerDialogueController : MonoBehaviour {
     private void Start() {
         dr = FindObjectOfType<DialogueRunner>();
 
-        dr.DialogueFinished += (sender, args) => { StopTalk(); };
+        dr.DialogueFinished += (sender, args) => { StopDialogue(); };
     }
 
     void Update() {
@@ -47,7 +47,7 @@ public class PlayerDialogueController : MonoBehaviour {
         }
     }
 
-    private void StopTalk () {
+    private void StopDialogue () {
         if (target != null) {
             target.StopTalk();
             target = null;

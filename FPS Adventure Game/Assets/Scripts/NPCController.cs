@@ -10,7 +10,7 @@ public class NPCController : MonoBehaviour {
     [SerializeField]
     private States startState = States.Idle;
 
-    private States currentState;
+    public States currentState { get; private set; }
     private Stack<States> stateHistory;
 
     public enum States {
@@ -52,13 +52,49 @@ public class NPCController : MonoBehaviour {
         }
     }
 
-    private void UpdateState (States state) {
+    List<NPCController> allParticipants;
+
+    private void Update() {
+        switch (currentState) {
+            case States.Idle:
+                break;
+            case States.Wandering:
+                break;
+            case States.Talking:
+                break;
+            case States.Interacting:
+                break;
+            case States.Attacking:
+                break;
+            case States.Searching:
+                break;
+            case States.Dying:
+                break;
+        }
+    }
+
+    private void Start() {
+        // Add WanderingReached to the ReachedDestination event.
+        NPCMovementController.ReachedDestination += (sender, args) => { WanderReached(); };
+
+        stateHistory = new Stack<States>();
+
+        /* Updates the current state if the current
+           state has any actions that need to be run
+           in Start. */
+        UpdateState(startState);
+
+        allParticipants = new List<NPCController>(FindObjectsOfType<NPCController>());
+    }
+
+    #region State management
+    private void UpdateState(States state) {
         stateHistory.Push(currentState);
         currentState = state;
         RefreshState();
     }
 
-    private void UpdateToLastState () {
+    private void UpdateToLastState() {
         if (stateHistory.Count == 0) {
             return;
         }
@@ -87,25 +123,16 @@ public class NPCController : MonoBehaviour {
                 break;
         }
     }
+    #endregion
 
-    private void Start() {
-        // Add WanderingReached to the ReachedDestination event.
-        NPCMovementController.ReachedDestination += (sender, args) => { WanderReached(); };
-
-        stateHistory = new Stack<States>();
-
-        /* Updates the current state if the current
-           state has any actions that need to be run
-           in Start. */
-        UpdateState(startState);
-    }
-
+    #region Idle
     /// <summary>
     /// Stops the NPC from doing other actions.
     /// </summary>
     public void Idle() {
         NPCMovementController.Stop();
     }
+    #endregion
 
     #region Wander
     /// <summary>
@@ -152,7 +179,7 @@ public class NPCController : MonoBehaviour {
     }
     #endregion
 
-    #region
+    #region Talk
 
     public void Talk() {
 
@@ -186,6 +213,22 @@ public class NPCController : MonoBehaviour {
 
     public void Die() {
 
+    }
+
+    Transform GetClosestEnemy(Transform[] npcs) {
+        Transform bestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+        foreach (Transform potentialTarget in npcs) {
+            Vector3 directionToTarget = potentialTarget.position - currentPosition;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+            if (dSqrToTarget < closestDistanceSqr) {
+                closestDistanceSqr = dSqrToTarget;
+                bestTarget = potentialTarget;
+            }
+        }
+
+        return bestTarget;
     }
 
 }

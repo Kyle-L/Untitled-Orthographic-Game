@@ -18,15 +18,18 @@ public class NPCMovementController : MonoBehaviour {
     [SerializeField]
     private NavMeshAgent _navMeshAgent;
     private Animator _animator;
+    [SerializeField]
+    private FootIKController _footIKController;
+    [SerializeField]
+    private HeadIKController _headIKController;
+    [SerializeField]
+    private HandIKController _handIKController;
 
     private Transform[] walkLocations;
     private int walkIndex = 0;
 
     //States
     private bool isWalking = false;
-
-    //Default
-    private float speed;
 
     private void Start() {
         // Get the animator for the NPC.
@@ -49,7 +52,6 @@ public class NPCMovementController : MonoBehaviour {
         // If the npc is walking, check to see if it should be heading to next destination.
         if (isWalking && !_navMeshAgent.pathPending) {
             if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {
-                //_navMeshAgent.speed = Mathf.Lerp(_navMeshAgent.speed, 0, slowDownSpeed * Time.deltaTime);
                 if (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude == 0f) {
                     ReachedDestination(this, new EventArgs());
                     isWalking = false;
@@ -87,6 +89,8 @@ public class NPCMovementController : MonoBehaviour {
     /// </summary>
     /// <param name="target"></param>
     public void Face(Vector3 target) {
+        _headIKController?.LookAt(target);
+
         // Stops the npc from being able to move.
         _navMeshAgent.isStopped = true;
 
