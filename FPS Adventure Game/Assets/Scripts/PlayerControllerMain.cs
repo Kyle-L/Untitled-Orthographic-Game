@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(PlayerMovementController))]
+[RequireComponent(typeof(PlayerSettingsController))]
 public class PlayerControllerMain : MonoBehaviour {
     public static PlayerControllerMain instance;
 
@@ -26,10 +28,8 @@ public class PlayerControllerMain : MonoBehaviour {
         }
     }
 
-    [SerializeField]
-    private PlayerMovementController _playerMovementController;
-    [SerializeField]
-    private PlayerSettingsController _playerSettingsController;
+    public PlayerMovementController _playerMovementController { get; private set; }
+    public PlayerSettingsController _playerSettingsController { get; private set; }
 
     public void Start() {
         instance = this;

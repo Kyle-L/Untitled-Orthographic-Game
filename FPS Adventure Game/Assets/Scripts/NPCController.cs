@@ -35,6 +35,9 @@ public class NPCController : MonoBehaviour {
     [SerializeField]
     private Transform[] interactingPoints;
 
+    [Header("Transforms")]
+    public Transform head;
+
     // Components
     [SerializeField]
     private NPCDialogueController _npcDialogueController;
@@ -189,11 +192,13 @@ public class NPCController : MonoBehaviour {
         UpdateState(States.Talking);
         NPCMovementController.Stop();
         NPCMovementController.Face(gameObject.transform.position);
+        NPCMovementController.SetLocation(gameObject.transform.position + gameObject.transform.forward);
+        //NPCMovementController.LookAt(gameObject.transform.position);
     }
 
     public void StopTalk () {
         UpdateToLastState();
-        NPCMovementController.StopFace();
+        //NPCMovementController.StopFace();
     }
 
     #endregion

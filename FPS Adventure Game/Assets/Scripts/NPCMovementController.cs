@@ -9,9 +9,7 @@ public class NPCMovementController : MonoBehaviour {
 
     [Header("Speed properties")]
     [SerializeField]
-    private float rotateSpeed = 5;
-    [SerializeField]
-    private float slowDownSpeed = 5;
+    private float rotateSpeed = 1;
 
 
     [Header("Components")]
@@ -38,7 +36,6 @@ public class NPCMovementController : MonoBehaviour {
             _animator = GetComponentInChildren<Animator>();
         }
 
-        //speed = _navMeshAgent.speed;
         _navMeshAgent.updateRotation = true;
     }
 
@@ -68,10 +65,13 @@ public class NPCMovementController : MonoBehaviour {
     }
 
     public void SetLocation(Transform loc) {
-        //_navMeshAgent.speed = speed;
+        SetLocation(loc.position);
+    }
+
+    public void SetLocation(Vector3 loc) {
         _navMeshAgent.isStopped = false;
         isWalking = true;
-        _navMeshAgent.SetDestination(loc.position);
+        _navMeshAgent.SetDestination(loc);
     }
 
     public void SetLocation(Transform[] locs) {
@@ -120,6 +120,7 @@ public class NPCMovementController : MonoBehaviour {
     }
 
     Coroutine lookCoroutine;
+
     /// <summary>
     /// The coroutine the rotates the npc based on the angle.
     /// </summary>
@@ -130,5 +131,13 @@ public class NPCMovementController : MonoBehaviour {
             transform.rotation = Quaternion.Slerp(transform.rotation, angle, rotateSpeed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    public void LookAt (Vector3 pos) {
+        _headIKController.LookAt(pos);
+    }
+
+    public void StopLookAt () {
+        //_headIKController.stop
     }
 }

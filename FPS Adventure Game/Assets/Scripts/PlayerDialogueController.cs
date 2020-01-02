@@ -8,6 +8,8 @@ public class PlayerDialogueController : MonoBehaviour {
     [SerializeField]
     private float interactionRadius = 2.0f;
 
+    public GameObject head;
+
     private DialogueRunner dr;
 
     private NPCController target;
@@ -42,8 +44,8 @@ public class PlayerDialogueController : MonoBehaviour {
             }
 
             dr.StartDialogue(target.NPCDialogueController.TalkToNode);
-
-            target.Talk(this.gameObject);
+            PlayerControllerMain.instance._playerMovementController.LookAt(target.head.transform, 0.25f, 5);
+            target.Talk(head);
         }
     }
 
@@ -52,5 +54,6 @@ public class PlayerDialogueController : MonoBehaviour {
             target.StopTalk();
             target = null;
         }
+        PlayerControllerMain.instance._playerMovementController.StopLookAt();
     }
 }

@@ -19,40 +19,33 @@ public class HeadIKController : MonoBehaviour {
     public float lookSpeed = 3;
     public float weightSpeed = 1;
 
-    [Header("Transforms")]
-    public Transform head;
-
     // Components.
     private Animator _animator;
 
     // Frequently used variables.
-    private GameObject lookAtObj;
+    private Vector3 lookPos;
     private RaycastHit _hit;
+    private Coroutine lookCoroutine;
 
     private void Start() {
         _animator = GetComponent<Animator>();
-
-        lookAtObj = new GameObject("\"" + this.name + "\" look at object");
-        lookAtObj.transform.position = transform.TransformDirection(head.forward);
     }
 
     private void OnAnimatorIK() {
         if (_animator) {
-            if (lookAtObj != null) {
-                _animator.SetLookAtWeight(lookAtWeight);
-                _animator.SetLookAtPosition(lookAtObj.transform.position);
-            }
+            _animator.SetLookAtPosition(lookPos);
+            _animator.SetLookAtWeight(lookAtWeight);
         }
     }
 
     private void Update() {
         // Creates a ray from the head of the character to the look at position.
-        Ray _ray = new Ray(head.position, lookAtObj.transform.position - head.position);
+        Ray _ray = new Ray(transform.position, lookPos - transform.position);
 
         /* Calculates whether the look at object is in front or behind.
          * This is found by taking the inverse transform point and looking
          * at the axis.*/
-        float front = transform.InverseTransformPoint(lookAtObj.transform.position).z;
+        float front = transform.InverseTransformPoint(lookPos).z;
 
         /* In order for to look at something, the object needs to be visible 
          * and in front of the character. */ 
@@ -67,18 +60,40 @@ public class HeadIKController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Makes the player look at a particular position.
+    /// </summary>
+    /// <param name="pos"></param>
     public void LookAt(Vector3 pos) {
-        if (coroutine != null) {
-            StopCoroutine(coroutine);
+        /* Calculates whether the look at object is in front or behind.
+         * This is found by taking the inverse transform point and looking
+         * at the axis.*/
+        float front = transform.InverseTransformPoint(lookPos).z;
+
+        /* If the position is behind the player, set it to be the current place the
+         * character is looking. */
+        if (front < distanceToLook) {
+            lookPos = transform.forward;
         }
-        coroutine = StartCoroutine(Look(pos));
+
+        // Stop the existing coroutine.
+        if (lookCoroutine != null) {
+            StopCoroutine(lookCoroutine);
+        }
+
+        // Start the coroutine.
+        lookCoroutine = StartCoroutine(Look(pos));
     }
 
-    private Coroutine coroutine;
-
+    /// <summary>
+    /// The coroutine that ensures the character slowly turns their head to look at the position
+    /// rather than abruptly looking at the position.
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
     private IEnumerator Look (Vector3 pos) {
-        while (Vector3.Distance(lookAtObj.transform.position, pos) > 0.01f) {
-            lookAtObj.transform.position = Vector3.Lerp(lookAtObj.transform.position, pos, lookSpeed * Time.deltaTime);
+        while (Vector3.Distance(lookPos, pos) > 0.01f) {
+            lookPos = Vector3.Lerp(lookPos, pos, lookSpeed * Time.deltaTime);
             yield return null;
         }
     }

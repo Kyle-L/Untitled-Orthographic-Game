@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovementController : MonoBehaviour {
@@ -52,7 +53,7 @@ public class PlayerMovementController : MonoBehaviour {
         //_animator = GetComponent<Animator>();
 
         // Default look direction.
-        SetRotation(transform.localEulerAngles.y);
+        SetRotation(transform.localEulerAngles.y, playerMainCamera.transform.localEulerAngles.x);
     }
 
     private void Update() {
@@ -62,8 +63,6 @@ public class PlayerMovementController : MonoBehaviour {
 
 
         if (Control) {
-            // Gets character movement input
-
             // Rotation
             xRotation -= Input.GetAxis("Axis Y") * currentLookSensitivity;
             yRotation += Input.GetAxis("Axis X") * currentLookSensitivity;
@@ -72,6 +71,7 @@ public class PlayerMovementController : MonoBehaviour {
             forwardSpeed = Input.GetAxis("Vertical");
             sideSpeed = Input.GetAxis("Horizontal");
         }
+
         // Clamps the xRotation so the player can't look directly up or directly down.
         xRotation = Mathf.Clamp(xRotation, -upDownRange, upDownRange);
 
@@ -85,7 +85,6 @@ public class PlayerMovementController : MonoBehaviour {
         // Rotates the camera's X rotation based on the player's input.
         playerMainCamera.transform.localRotation = Quaternion.Euler(currentXRotation, 0, 0);
 
-        Debug.DrawLine(transform.position + new Vector3(0, _characterController.height, 0), transform.position + new Vector3(0, _characterController.height, 0) + Vector3.up * jumpHeightDetection);
         if (jumpEnabled && Input.GetButtonDown("Jump") && Control && _characterController.isGrounded) {
             // Prevents the player from jumping while an object is above their head.
             if (!Physics.Raycast(transform.position + new Vector3(0, _characterController.height, 0), Vector3.up, out RaycastHit hit, jumpHeightDetection)) {
@@ -121,9 +120,61 @@ public class PlayerMovementController : MonoBehaviour {
         #endregion
     }
 
-    public void SetRotation(float yRot) {
+    public void SetRotation(float yRot, float xRot) {
         currentYRotation = yRot;
         yRotation = yRot;
+
+        currentXRotation = xRot;
+        xRotation = xRot;
+    }
+
+    /// <summary>
+    /// Makes the player look at a particular position.
+    /// </summary>
+    /// <param name="pos"></param>
+    public void LookAt(Transform pos, float sens = 1, float time = 0) {
+        // Stop the existing coroutine.
+        if (lookCoroutine != null) {
+            StopCoroutine(lookCoroutine);
+        }
+
+        // Start the coroutine.
+        lookCoroutine = StartCoroutine(Look(pos, sens, time));
+    }
+
+    public void StopLookAt () {
+        if (lookCoroutine != null) {
+            StopCoroutine(lookCoroutine);
+        }
+    }
+
+    private Coroutine lookCoroutine;
+
+    /// <summary>
+    /// The coroutine that ensures the character slowly turns their head to look at the position
+    /// rather than abruptly looking at the position.
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    private IEnumerator Look(Transform pos, float sens = 1, float time = 0) {
+        Vector3 direction = pos.position - playerMainCamera.transform.position;
+        Quaternion toRotationWorld = Quaternion.LookRotation(direction);
+        Quaternion toRotationLocal = Quaternion.Inverse(playerMainCamera.transform.rotation) * toRotationWorld;
+
+        while (Mathf.Abs(currentYRotation - toRotationWorld.eulerAngles.y) > sens || Mathf.Abs(currentXRotation - toRotationWorld.eulerAngles.x) > sens || time > 0) {
+            direction = pos.position - playerMainCamera.transform.position;
+            
+            
+            toRotationWorld = Quaternion.LookRotation(direction);
+            toRotationLocal = Quaternion.Inverse(playerMainCamera.transform.rotation) * toRotationWorld;
+
+            currentXRotation = xRotation = Mathf.LerpAngle(currentXRotation, toRotationLocal.eulerAngles.x, Time.deltaTime);
+            currentYRotation = yRotation = Mathf.LerpAngle(currentYRotation, toRotationWorld.eulerAngles.y, Time.deltaTime);
+            
+            time -= Time.deltaTime;
+            
+            yield return null;
+        }
     }
 
 }
