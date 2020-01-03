@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: c0af97b29756b5145838f55f6bbac0e0
 ModelImporter:
-  serializedVersion: 28
+  serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: left strafe walk
+    second: f_left-strafe-walking
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: left strafe walk
+      name: f_left-strafe-walking
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
@@ -430,6 +430,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1062930b65e405149b5a3f5c91e4ae7e,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2

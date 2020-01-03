@@ -27,7 +27,7 @@ public class NPCMovementController : MonoBehaviour {
     private int walkIndex = 0;
 
     //States
-    private bool isWalking = false;
+    public bool isWalking { get; private set; } = false;
 
     private void Start() {
         // Get the animator for the NPC.
@@ -88,7 +88,7 @@ public class NPCMovementController : MonoBehaviour {
     /// Makes the npc face a target position.
     /// </summary>
     /// <param name="target"></param>
-    public void Face(Vector3 target) {
+    public void Face(Vector3 target, float time = 0) {
         _headIKController?.LookAt(target);
 
         // Stops the npc from being able to move.
@@ -110,7 +110,7 @@ public class NPCMovementController : MonoBehaviour {
         }
 
         // Start the look look at coroutine.
-        lookCoroutine = StartCoroutine(LookAtCoroutine(lookRotation));
+        lookCoroutine = StartCoroutine(LookAtCoroutine(lookRotation, time));
     }
 
     public void StopFace () {
@@ -126,9 +126,10 @@ public class NPCMovementController : MonoBehaviour {
     /// </summary>
     /// <param name="angle">The angle the npc is rotating towards</param>
     /// <returns></returns>
-    private IEnumerator LookAtCoroutine(Quaternion angle) {
-        while (Quaternion.Angle(transform.rotation, angle) > 1) {
+    private IEnumerator LookAtCoroutine(Quaternion angle, float time = 0) {
+        while (Quaternion.Angle(transform.rotation, angle) > 1 || time > 0) {
             transform.rotation = Quaternion.Slerp(transform.rotation, angle, rotateSpeed * Time.deltaTime);
+            time -= Time.deltaTime;
             yield return null;
         }
     }

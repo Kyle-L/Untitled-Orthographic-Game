@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 2cd9e270e5d7e0340b1f4d700ca77f25
 ModelImporter:
-  serializedVersion: 28
+  serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: right strafe walking
+    second: m_right-strafe-walking
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: right strafe walking
+      name: m_right-strafe-walking
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -902,6 +902,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a9d315d73a197b74896183079066d054,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2

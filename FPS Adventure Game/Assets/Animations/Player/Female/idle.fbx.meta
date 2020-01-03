@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 04ec7279b8ff9be48ad2c1f49949d14c
 ModelImporter:
-  serializedVersion: 28
+  serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: idle
+    second: f_idle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle
+      name: f_idle
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
@@ -455,6 +455,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1062930b65e405149b5a3f5c91e4ae7e,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2

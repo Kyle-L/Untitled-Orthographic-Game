@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 47609bdeb22f0c545aeb8c03c308e7c9
 ModelImporter:
-  serializedVersion: 28
+  serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: walking
+    second: f_walking
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: walking
+      name: f_walking
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
@@ -473,6 +473,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 1062930b65e405149b5a3f5c91e4ae7e,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2

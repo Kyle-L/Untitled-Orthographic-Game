@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
+[RequireComponent(typeof(PlayerDialogueController))]
 [RequireComponent(typeof(PlayerSettingsController))]
 public class PlayerControllerMain : MonoBehaviour {
     public static PlayerControllerMain instance;
@@ -13,7 +14,7 @@ public class PlayerControllerMain : MonoBehaviour {
         }
         set {
             canControl = value;
-            _playerMovementController.Control = !isPaused && canControl;
+            PlayerMovementController.Control = !isPaused && canControl;
         }
     }
 
@@ -24,18 +25,20 @@ public class PlayerControllerMain : MonoBehaviour {
         }
         set {
             isPaused = value;
-            _playerMovementController.Control = !isPaused && canControl;
+            PlayerMovementController.Control = !isPaused && canControl;
         }
     }
 
-    public PlayerMovementController _playerMovementController { get; private set; }
-    public PlayerSettingsController _playerSettingsController { get; private set; }
+    public PlayerMovementController PlayerMovementController { get; private set; }
+    public PlayerSettingsController PlayerSettingsController { get; private set; }
+    public PlayerDialogueController PlayerDialogueController { get; private set; }
 
     public void Start() {
         instance = this;
 
-        _playerMovementController = GetComponent<PlayerMovementController>();
-        _playerSettingsController = GetComponent<PlayerSettingsController>();
+        PlayerMovementController = GetComponent<PlayerMovementController>();
+        PlayerSettingsController = GetComponent<PlayerSettingsController>();
+        PlayerDialogueController = GetComponent<PlayerDialogueController>();
     }
 
 }

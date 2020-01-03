@@ -10719,22 +10719,82 @@ MonoBehaviour:
   feet:
   - {fileID: 1056522366}
   - {fileID: 1752342997}
---- !u!208 &653055881
-NavMeshObstacle:
+--- !u!114 &653055883
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653055875}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e32211e3fbb5614da4103914bf90166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IkActive: 0
+  positionWeightMultiplier: 1
+  rotationWeight: 1
+  offset: {x: 0, y: 0, z: 0}
+  RayMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &653055884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653055875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f800469383ff449b62636c80727b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IkActive: 0
+  positionWeightMultiplier: 1
+  rotationWeight: 1
+  leftOffset: {x: 0, y: 0, z: 0}
+  rightOffset: {x: 0, y: 0, z: 0}
+  leftHand: 0
+  rightHand: 0
+  leftObject: {fileID: 0}
+  rightObject: {fileID: 0}
+--- !u!114 &653055885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653055875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c306aa69ecd89342afa3c0ed969a999, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAtMaxWeight: 1
+  lookAtMinWeight: 0
+  distanceToLook: -1
+  lookSpeed: 3
+  weightSpeed: 1
+--- !u!95 &653055886
+Animator:
   serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653055875}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 1062930b65e405149b5a3f5c91e4ae7e, type: 3}
+  m_Controller: {fileID: 9100000, guid: b12f5457b0d64dd408fa29ce0eb32869, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &662239141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400010, guid: 570479c7515582f40b537cdcc7f0b2ed,
@@ -11326,6 +11386,33 @@ MonoBehaviour:
   feet:
   - {fileID: 1289590186}
   - {fileID: 1646024864}
+--- !u!114 &878548263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878548252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cffcee412f1f7f43b351439da6fa1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gestureAnimationNames:
+  - angry
+  - annoyed
+  - cocky
+  - dismissing
+  - happy
+  - hard-nod
+  - yes-nod
+  - lengthy-nod
+  - look-away
+  - relieved
+  - sarcastic-nod
+  - no-nod
+  - throughtful-head-shake
+  - weight-shift
 --- !u!114 &932865683 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 32307393, guid: 0b61d239da1e9c24bb82ad60acd081a6,
@@ -14945,6 +15032,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3027163334471997119, guid: 8f272cf7abf733445be4b692989c10ed,
+        type: 3}
+      propertyPath: scriptToLoad
+      value: 
+      objectReference: {fileID: 4900000, guid: 4498bc0d812d823468fb15188e844236, type: 3}
     - target: {fileID: 3027163335292186622, guid: 8f272cf7abf733445be4b692989c10ed,
         type: 3}
       propertyPath: m_IsActive
@@ -15053,5 +15145,9 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2037229502, guid: 8b6387ced9a2cf0408025e6793572fbd, type: 3}
+    - {fileID: 2037229503, guid: 8b6387ced9a2cf0408025e6793572fbd, type: 3}
+    - {fileID: 3649459213471429289, guid: 8b6387ced9a2cf0408025e6793572fbd, type: 3}
+    - {fileID: 581134336582006872, guid: 8b6387ced9a2cf0408025e6793572fbd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8b6387ced9a2cf0408025e6793572fbd, type: 3}

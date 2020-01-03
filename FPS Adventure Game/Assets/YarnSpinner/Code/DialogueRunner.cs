@@ -41,7 +41,7 @@ namespace Yarn.Unity {
     /** Make our menu item slightly nicer looking */
     [AddComponentMenu("Scripts/Yarn Spinner/Dialogue Runner")]
     public class DialogueRunner : MonoBehaviour {
-        public DialogueRunner instance;
+        public static DialogueRunner instance;
 
         /// The JSON files to load the conversation from
         public TextAsset[] sourceText;

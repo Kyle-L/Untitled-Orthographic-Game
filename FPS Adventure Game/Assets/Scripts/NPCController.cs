@@ -191,13 +191,25 @@ public class NPCController : MonoBehaviour {
     public void Talk(GameObject gameObject) {
         UpdateState(States.Talking);
         NPCMovementController.Stop();
-        NPCMovementController.Face(gameObject.transform.position);
         NPCMovementController.SetLocation(gameObject.transform.position + gameObject.transform.forward);
         //NPCMovementController.LookAt(gameObject.transform.position);
+        StartCoroutine(Talking(gameObject));
     }
 
-    public void StopTalk () {
+    Coroutine talk;
+
+    IEnumerator Talking (GameObject gameObject) {
+        while (NPCMovementController.isWalking) {
+            yield return null;
+        }
+        NPCMovementController.Face(gameObject.transform.position);
+    }
+
+    public void StopTalk() {
         UpdateToLastState();
+        if (talk != null) {
+            StopCoroutine(talk);
+        }
         //NPCMovementController.StopFace();
     }
 

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 9870f3bf8c87b5b43b9434e013365a40
 ModelImporter:
-  serializedVersion: 28
+  serializedVersion: 19300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: right strafe
+    second: m_right-strafe
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: right strafe
+      name: m_right-strafe
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
@@ -902,6 +902,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: a9d315d73a197b74896183079066d054,
     type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2

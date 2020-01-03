@@ -2,11 +2,11 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Animator))]
 public class PlayerMovementController : MonoBehaviour {
 
     // Components
     private CharacterController _characterController;
-    [SerializeField]
     private Animator _animator;
 
     // Camera rotation
@@ -20,37 +20,29 @@ public class PlayerMovementController : MonoBehaviour {
     private float xRotationV;
     private float yRotationV;
     private float rotationSmoothTime = 0.075f;
-    [SerializeField]
-    private float currentLookSensitivity { get; set; } = 10;
+    public float currentLookSensitivity = 10;
 
     // Movement Controller Variables
     [Header("Movement Speed Settings")]
-    [SerializeField]
-    private float moveSpeed = 5;
-    [SerializeField]
-    private float sideSpeedMultiplier = 0.75f;
-    [SerializeField]
-    private float animatorLerpSpeed = 5;
+    public float moveSpeed = 5;
+    public float sideSpeedMultiplier = 0.75f;
+    public float animatorLerpSpeed = 5;
 
     // Jumping
     [Header("Jumping Settings")]
-    [SerializeField]
-    private bool jumpEnabled = true;
-    private float verticalVelocity = 0f;
-    [SerializeField]
-    private float jumpSpeed = 2.5f;
-    [SerializeField]
-    private float jumpHeightDetection = 0.5f;
+    public bool jumpEnabled = true;
+    private float verticalVelocity;
+    public float jumpSpeed = 2.5f;
+    public float jumpHeightDetection = 0.5f;
 
-    [SerializeField]
-    private Camera playerMainCamera;
+    public Camera playerMainCamera;
 
     public bool Control { get; set; } = true;
 
     private void Start() {
         // Gets componenets.
         _characterController = GetComponent<CharacterController>();
-        //_animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
 
         // Default look direction.
         SetRotation(transform.localEulerAngles.y, playerMainCamera.transform.localEulerAngles.x);

@@ -10,14 +10,10 @@ public class PlayerDialogueController : MonoBehaviour {
 
     public GameObject head;
 
-    private DialogueRunner dr;
-
     private NPCController target;
 
     private void Start() {
-        dr = FindObjectOfType<DialogueRunner>();
-
-        dr.DialogueFinished += (sender, args) => { StopDialogue(); };
+        DialogueRunner.instance.DialogueFinished += (sender, args) => { StopDialogue(); };
     }
 
     void Update() {
@@ -39,12 +35,12 @@ public class PlayerDialogueController : MonoBehaviour {
         });
         if (target != null) {
             // Quit the dialogue if it is already running.
-            if (dr.isDialogueRunning) {
+            if (DialogueRunner.instance.isDialogueRunning) {
                 return;
             }
 
-            dr.StartDialogue(target.NPCDialogueController.TalkToNode);
-            PlayerControllerMain.instance._playerMovementController.LookAt(target.head.transform, 0.25f, 5);
+            DialogueRunner.instance.StartDialogue(target.NPCDialogueController.TalkToNode);
+            PlayerControllerMain.instance.PlayerMovementController.LookAt(target.head.transform, 0.25f, 5);
             target.Talk(head);
         }
     }
@@ -54,6 +50,6 @@ public class PlayerDialogueController : MonoBehaviour {
             target.StopTalk();
             target = null;
         }
-        PlayerControllerMain.instance._playerMovementController.StopLookAt();
+        PlayerControllerMain.instance.PlayerMovementController.StopLookAt();
     }
 }
