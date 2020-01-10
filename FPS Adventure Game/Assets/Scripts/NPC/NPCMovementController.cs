@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+
 /// <summary>
 /// Controls the movement for the npc.
 /// </summary>
@@ -90,14 +91,14 @@ public class NPCMovementController : MonoBehaviour {
     /// Makes the npc face a target position.
     /// </summary>
     /// <param name="target"></param>
-    public void Face(Vector3 target, float time = 0) {
+    public void Face(Transform target) {
         _headIKController?.LookAt(target);
 
         // Stops the npc from being able to move.
         _navMeshAgent.isStopped = true;
 
         // Calculates the direction by finding the normalized difference.
-        Vector3 direction = (target - transform.position).normalized;
+        Vector3 direction = (target.position - transform.position).normalized;
 
         // Converts the direction to a quaternion.
         Quaternion lookRotation = Quaternion.LookRotation(direction);
@@ -112,7 +113,7 @@ public class NPCMovementController : MonoBehaviour {
         }
 
         // Start the look look at coroutine.
-        lookCoroutine = StartCoroutine(LookAtCoroutine(lookRotation, time));
+        lookCoroutine = StartCoroutine(LookAtCoroutine(lookRotation));
     }
 
     public void StopFace () {
@@ -128,16 +129,19 @@ public class NPCMovementController : MonoBehaviour {
     /// </summary>
     /// <param name="angle">The angle the npc is rotating towards</param>
     /// <returns></returns>
-    private IEnumerator LookAtCoroutine(Quaternion angle, float time = 0) {
-        while (Quaternion.Angle(transform.rotation, angle) > 1 || time > 0) {
+    private IEnumerator LookAtCoroutine(Quaternion angle) {
+        while (Quaternion.Angle(transform.rotation, angle) > 1) {
             transform.rotation = Quaternion.Slerp(transform.rotation, angle, rotateSpeed * Time.deltaTime);
-            time -= Time.deltaTime;
             yield return null;
         }
     }
 
-    public void LookAt (Vector3 pos) {
+    public void LookAt (Transform pos) {
         _headIKController.LookAt(pos);
+    }
+
+    public void LookAtRandom(Transform[] trans) {
+        _headIKController.LookAt(_headIKController.GetClosestInFrontTransform(trans));
     }
 
     public void StopLookAt () {
@@ -151,4 +155,5 @@ public class NPCMovementController : MonoBehaviour {
     public void StopRagdoll () {
         _ragdollHelper.ragdolled = false;
     }
+
 }

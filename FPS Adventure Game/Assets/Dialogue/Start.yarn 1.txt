@@ -3,7 +3,7 @@ tags:
 colorID: 0
 position: 540,260
 ---
-<<gesture NPC relieved>>
+<<stopragdoll NPC>>
 This is the beginning node.
 
 [[This goes to node 2|Node2]]
@@ -47,6 +47,6 @@ tags:
 colorID: 0
 position: 525,1086
 ---
-<<gesture NPC dismissing>>
+<<ragdoll NPC>>
 Good bye!
 ===

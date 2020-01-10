@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 /// <summary>
 /// The overall controller for an npc.
@@ -53,20 +54,23 @@ public class NPCController : MonoBehaviour {
         }
     }
 
-    List<NPCController> allParticipants;
+    List<Transform> allParticipants;
 
     private void Update() {
-        if (Input.GetButtonDown("Jump")) {
-            Die();
-        }
-        if (Input.GetButtonUp("Jump")) {
-            Live();
-        }
-
         switch (currentState) {
             case States.Idle:
+                _npcMovementController.LookAtRandom(allParticipants.ToArray());
                 break;
             case States.Wandering:
+                //Transform shortest = null;
+                //foreach (GameObject gameObject in allParticipants) {
+                //    if (shortest == null || Vector3.Distance(head.position, gameObject.transform.position) < Vector3.Distance(head.position, shortest.transform.position)) {
+                //        if (!gameObject.transform.Equals(head.transform)) {
+                //            shortest = gameObject.transform;
+                //        }
+                //    }
+                //}
+                _npcMovementController.LookAtRandom(allParticipants.ToArray());
                 break;
             case States.Talking:
                 break;
@@ -96,7 +100,10 @@ public class NPCController : MonoBehaviour {
            in Start. */
         UpdateState(startState);
 
-        allParticipants = new List<NPCController>(FindObjectsOfType<NPCController>());
+        //allParticipants = new List<GameObject>(GameObject.FindGameObjectsWithTag("Lookable"));
+        allParticipants = new List<Transform>();
+        allParticipants.AddRange(GameObject.FindGameObjectsWithTag("Lookable").Select(go => go.transform));
+        allParticipants.Remove(head.transform);
     }
 
 
@@ -212,7 +219,7 @@ public class NPCController : MonoBehaviour {
         while (NPCMovementController.isWalking) {
             yield return null;
         }
-        NPCMovementController.Face(gameObject.transform.position);
+        NPCMovementController.Face(gameObject.transform);
     }
 
     public void StopTalk() {
@@ -220,7 +227,7 @@ public class NPCController : MonoBehaviour {
         if (talk != null) {
             StopCoroutine(talk);
         }
-        //NPCMovementController.StopFace();
+        NPCMovementController.StopFace();
     }
 
     #endregion

@@ -16,7 +16,7 @@ public class YarnAnimator : MonoBehaviour
     private void Start() {
         _animator = GetComponent<Animator>();
 
-        layerIndex = _animator.GetLayerIndex("Gesture");
+        layerIndex = _animator.GetLayerIndex("Gestures");
     }
 
     [YarnCommand("gesture")]
@@ -28,6 +28,6 @@ public class YarnAnimator : MonoBehaviour
             }
         }
         print("There is no state \"" + gestureName + "\" on layer \"" + 
-              _animator.GetLayerName(layerIndex) + "\" of \"" + this.name + "\"");
+              layerIndex + "\" of \"" + this.name + "\"");
     }
 }

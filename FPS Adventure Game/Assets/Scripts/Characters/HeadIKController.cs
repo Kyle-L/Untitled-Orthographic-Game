@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System.Linq;
 
 [RequireComponent(typeof(Animator))]
 public class HeadIKController : MonoBehaviour {
 
     // Constants.
     private const float RAYCAST_MAX_DISTANCE = 5f;
+    private const float MIN_LOOK_THRESHOLD = 0.01f;
+
+    [Header("Transforms")]
+    public Transform head;
 
     [Header("Look Weight")]
     [Range(0, 1)]
@@ -23,6 +28,7 @@ public class HeadIKController : MonoBehaviour {
     private Animator _animator;
 
     // Frequently used variables.
+    private Transform currentLookTrans;
     private Vector3 lookPos;
     private RaycastHit _hit;
     private Coroutine lookCoroutine;
@@ -39,8 +45,8 @@ public class HeadIKController : MonoBehaviour {
     }
 
     private void Update() {
-        // Creates a ray from the head of the character to the look at position.
-        Ray _ray = new Ray(transform.position, lookPos - transform.position);
+        // Creates a ray from the head of the character to the look at transform.
+        Ray _ray = new Ray(head.position, lookPos);
 
         /* Calculates whether the look at object is in front or behind.
          * This is found by taking the inverse transform point and looking
@@ -58,23 +64,24 @@ public class HeadIKController : MonoBehaviour {
              * The lerp is there so the character doesn't abruptly look.*/
             lookAtWeight = Mathf.Lerp(lookAtWeight, lookAtMinWeight, weightSpeed * Time.deltaTime);
         }
+
+        Debug.DrawLine(head.position, lookPos);
     }
 
     /// <summary>
-    /// Makes the player look at a particular position.
+    /// Makes the player look at a particular transform.
     /// </summary>
-    /// <param name="pos"></param>
-    public void LookAt(Vector3 pos) {
-        /* Calculates whether the look at object is in front or behind.
-         * This is found by taking the inverse transform point and looking
-         * at the axis.*/
-        float front = transform.InverseTransformPoint(lookPos).z;
-
-        /* If the position is behind the player, set it to be the current place the
-         * character is looking. */
-        if (front < distanceToLook) {
-            lookPos = transform.forward;
+    /// <param name="trans"></param>
+    public void LookAt(Transform trans) {
+        if (trans == currentLookTrans) {
+            return;
         }
+
+        currentLookTrans = trans;
+
+        /* If the transform is behind the player, set it to be the current place the
+        * character is looking. */
+        lookPos = (lookPos - head.position).normalized + head.position;
 
         // Stop the existing coroutine.
         if (lookCoroutine != null) {
@@ -82,20 +89,25 @@ public class HeadIKController : MonoBehaviour {
         }
 
         // Start the coroutine.
-        lookCoroutine = StartCoroutine(Look(pos));
+        lookCoroutine = StartCoroutine(Look(trans));
     }
 
     /// <summary>
-    /// The coroutine that ensures the character slowly turns their head to look at the position
-    /// rather than abruptly looking at the position.
+    /// The coroutine that ensures the character slowly turns their head to look at the transform
+    /// rather than abruptly looking at the transform.
     /// </summary>
-    /// <param name="pos"></param>
+    /// <param name="trans"></param>
     /// <returns></returns>
-    private IEnumerator Look (Vector3 pos) {
-        while (Vector3.Distance(lookPos, pos) > 0.01f) {
-            lookPos = Vector3.Lerp(lookPos, pos, lookSpeed * Time.deltaTime);
+    private IEnumerator Look (Transform trans) {
+        while (Vector3.Distance(lookPos, trans.position) > MIN_LOOK_THRESHOLD) {
+            lookPos = Vector3.Lerp(lookPos, trans.position, lookSpeed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    public Transform GetClosestInFrontTransform (Transform[] transforms) {
+        Transform[] nClosest = transforms.OrderBy(t => (t.position - transform.position).sqrMagnitude).ThenByDescending(t => (transform.InverseTransformPoint(t.position).z)).ToArray();
+        return nClosest[0];
     }
 
 }
