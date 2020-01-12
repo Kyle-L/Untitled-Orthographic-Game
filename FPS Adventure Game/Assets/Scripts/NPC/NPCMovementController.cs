@@ -116,7 +116,7 @@ public class NPCMovementController : MonoBehaviour {
         lookCoroutine = StartCoroutine(LookAtCoroutine(lookRotation));
     }
 
-    public void StopFace () {
+    public void StopFace() {
         if (lookCoroutine != null) {
             StopCoroutine(lookCoroutine);
         }
@@ -136,7 +136,7 @@ public class NPCMovementController : MonoBehaviour {
         }
     }
 
-    public void LookAt (Transform pos) {
+    public void LookAt(Transform pos) {
         _headIKController.LookAt(pos);
     }
 
@@ -144,15 +144,15 @@ public class NPCMovementController : MonoBehaviour {
         _headIKController.LookAt(_headIKController.GetClosestInFrontTransform(trans));
     }
 
-    public void StopLookAt () {
+    public void StopLookAt() {
         //_headIKController.stop
     }
 
-    public void RagDoll () {
+    public void RagDoll() {
         _ragdollHelper.ragdolled = true;
     }
 
-    public void StopRagdoll () {
+    public void StopRagdoll() {
         _ragdollHelper.ragdolled = false;
     }
 

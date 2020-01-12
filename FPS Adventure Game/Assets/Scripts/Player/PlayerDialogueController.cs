@@ -45,7 +45,7 @@ public class PlayerDialogueController : MonoBehaviour {
         }
     }
 
-    private void StopDialogue () {
+    private void StopDialogue() {
         if (target != null) {
             target.StopTalk();
             target = null;

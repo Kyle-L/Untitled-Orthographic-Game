@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class HeadIKController : MonoBehaviour {
@@ -54,7 +54,7 @@ public class HeadIKController : MonoBehaviour {
         float front = transform.InverseTransformPoint(lookPos).z;
 
         /* In order for to look at something, the object needs to be visible 
-         * and in front of the character. */ 
+         * and in front of the character. */
         if (Physics.Raycast(_ray, RAYCAST_MAX_DISTANCE) && front > distanceToLook) {
             /* If the object is in front, lerp the weight to the max.
              * The lerp is there so the character doesn't abruptly look.*/
@@ -74,7 +74,9 @@ public class HeadIKController : MonoBehaviour {
     /// <param name="trans"></param>
     public void LookAt(Transform trans) {
         if (trans == currentLookTrans) {
-            return;
+            if (Vector3.Distance(lookPos, trans.position) <= MIN_LOOK_THRESHOLD) {
+                return;
+            }
         }
 
         currentLookTrans = trans;
@@ -98,16 +100,22 @@ public class HeadIKController : MonoBehaviour {
     /// </summary>
     /// <param name="trans"></param>
     /// <returns></returns>
-    private IEnumerator Look (Transform trans) {
+    private IEnumerator Look(Transform trans) {
         while (Vector3.Distance(lookPos, trans.position) > MIN_LOOK_THRESHOLD) {
             lookPos = Vector3.Lerp(lookPos, trans.position, lookSpeed * Time.deltaTime);
             yield return null;
         }
     }
 
-    public Transform GetClosestInFrontTransform (Transform[] transforms) {
-        Transform[] nClosest = transforms.OrderBy(t => (t.position - transform.position).sqrMagnitude).ThenByDescending(t => (transform.InverseTransformPoint(t.position).z)).ToArray();
-        return nClosest[0];
+    public Transform GetClosestInFrontTransform(Transform[] transforms) {
+        // Order all transforms by distance, least to greatest.
+        IOrderedEnumerable<Transform> nClosest = transforms.OrderBy(t => (t.position - transform.position).sqrMagnitude);
+
+        // Then order all transforms by whether they are in front of the root transform or behind.
+        nClosest = nClosest.ThenByDescending(t => (transform.InverseTransformPoint(t.position).z));
+
+        // Return the the first element which should be the closest and in front of the root transform.
+        return nClosest.First();
     }
 
 }

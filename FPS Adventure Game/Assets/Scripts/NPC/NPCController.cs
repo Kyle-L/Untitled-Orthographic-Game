@@ -59,18 +59,10 @@ public class NPCController : MonoBehaviour {
     private void Update() {
         switch (currentState) {
             case States.Idle:
-                _npcMovementController.LookAtRandom(allParticipants.ToArray());
+                //_npcMovementController.LookAtRandom(allParticipants.ToArray());
                 break;
             case States.Wandering:
-                //Transform shortest = null;
-                //foreach (GameObject gameObject in allParticipants) {
-                //    if (shortest == null || Vector3.Distance(head.position, gameObject.transform.position) < Vector3.Distance(head.position, shortest.transform.position)) {
-                //        if (!gameObject.transform.Equals(head.transform)) {
-                //            shortest = gameObject.transform;
-                //        }
-                //    }
-                //}
-                _npcMovementController.LookAtRandom(allParticipants.ToArray());
+                //_npcMovementController.LookAtRandom(allParticipants.ToArray());
                 break;
             case States.Talking:
                 break;
@@ -215,7 +207,7 @@ public class NPCController : MonoBehaviour {
 
     Coroutine talk;
 
-    IEnumerator Talking (GameObject gameObject) {
+    IEnumerator Talking(GameObject gameObject) {
         while (NPCMovementController.isWalking) {
             yield return null;
         }

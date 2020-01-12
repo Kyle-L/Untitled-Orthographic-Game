@@ -2,6 +2,7 @@
 
 [RequireComponent(typeof(PlayerMovementController))]
 [RequireComponent(typeof(PlayerDialogueController))]
+[RequireComponent(typeof(PlayerObjectHolder))]
 [RequireComponent(typeof(PlayerSettingsController))]
 public class PlayerControllerMain : MonoBehaviour {
     public static PlayerControllerMain instance;
@@ -30,15 +31,17 @@ public class PlayerControllerMain : MonoBehaviour {
     }
 
     public PlayerMovementController PlayerMovementController { get; private set; }
-    public PlayerSettingsController PlayerSettingsController { get; private set; }
     public PlayerDialogueController PlayerDialogueController { get; private set; }
+    public PlayerObjectHolder PlayerObjectHolder { get; private set; }
+    public PlayerSettingsController PlayerSettingsController { get; private set; }
 
     public void Start() {
         instance = this;
 
         PlayerMovementController = GetComponent<PlayerMovementController>();
-        PlayerSettingsController = GetComponent<PlayerSettingsController>();
         PlayerDialogueController = GetComponent<PlayerDialogueController>();
+        PlayerObjectHolder = GetComponent<PlayerObjectHolder>();
+        PlayerSettingsController = GetComponent<PlayerSettingsController>();
     }
 
 }

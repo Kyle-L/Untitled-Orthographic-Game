@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Yarn.Unity;
 
 [RequireComponent(typeof(Animator))]
-public class YarnAnimator : MonoBehaviour
-{
+public class YarnAnimator : MonoBehaviour {
 
     public string[] gestureAnimationNames;
 
@@ -27,7 +24,7 @@ public class YarnAnimator : MonoBehaviour
                 return;
             }
         }
-        print("There is no state \"" + gestureName + "\" on layer \"" + 
+        print("There is no state \"" + gestureName + "\" on layer \"" +
               layerIndex + "\" of \"" + this.name + "\"");
     }
 }

@@ -134,7 +134,7 @@ public class PlayerMovementController : MonoBehaviour {
         lookCoroutine = StartCoroutine(Look(pos, sens, time));
     }
 
-    public void StopLookAt () {
+    public void StopLookAt() {
         if (lookCoroutine != null) {
             StopCoroutine(lookCoroutine);
         }
@@ -155,16 +155,16 @@ public class PlayerMovementController : MonoBehaviour {
 
         while (Mathf.Abs(currentYRotation - toRotationWorld.eulerAngles.y) > sens || Mathf.Abs(currentXRotation - toRotationWorld.eulerAngles.x) > sens || time > 0) {
             direction = pos.position - playerMainCamera.transform.position;
-            
-            
+
+
             toRotationWorld = Quaternion.LookRotation(direction);
             toRotationLocal = Quaternion.Inverse(playerMainCamera.transform.rotation) * toRotationWorld;
 
             currentXRotation = xRotation = Mathf.LerpAngle(currentXRotation, toRotationLocal.eulerAngles.x, Time.deltaTime);
             currentYRotation = yRotation = Mathf.LerpAngle(currentYRotation, toRotationWorld.eulerAngles.y, Time.deltaTime);
-            
+
             time -= Time.deltaTime;
-            
+
             yield return null;
         }
     }

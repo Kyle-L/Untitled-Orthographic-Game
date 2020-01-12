@@ -7,8 +7,7 @@ public class HandIKController : MonoBehaviour {
     private const float RAYCAST_MAX_DISTANCE = 5f;
 
     // Preferences
-    [SerializeField]
-    private bool IkActive = true;
+    public bool IkActive { get; set; } = true;
 
     private float positionWeight;
 

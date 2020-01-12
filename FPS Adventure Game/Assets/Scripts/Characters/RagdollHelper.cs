@@ -20,7 +20,7 @@ Perhaps there could be an editor script that precomputes the needed information.
 
 */
 
-    [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator))]
 public class RagdollHelper : MonoBehaviour {
     //public property that can be set to toggle between ragdolled and animated character
     public bool ragdolled {
