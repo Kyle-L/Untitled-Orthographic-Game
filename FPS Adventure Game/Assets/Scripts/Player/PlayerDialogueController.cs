@@ -40,7 +40,7 @@ public class PlayerDialogueController : MonoBehaviour {
             }
 
             DialogueRunner.instance.StartDialogue(target.NPCDialogueController.TalkToNode);
-            PlayerControllerMain.instance.PlayerMovementController.LookAt(target.head.transform, 0.25f, 5);
+            //PlayerControllerMain.instance.PlayerMovementController.LookAt(target.head.transform, 0.25f, 5);
             target.Talk(head);
         }
     }
@@ -50,6 +50,6 @@ public class PlayerDialogueController : MonoBehaviour {
             target.StopTalk();
             target = null;
         }
-        PlayerControllerMain.instance.PlayerMovementController.StopLookAt();
+        //PlayerControllerMain.instance.PlayerMovementController.StopLookAt();
     }
 }

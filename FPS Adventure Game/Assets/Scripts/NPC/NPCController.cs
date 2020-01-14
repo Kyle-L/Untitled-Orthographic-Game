@@ -59,10 +59,10 @@ public class NPCController : MonoBehaviour {
     private void Update() {
         switch (currentState) {
             case States.Idle:
-                //_npcMovementController.LookAtRandom(allParticipants.ToArray());
+                _npcMovementController.LookAtRandom(allParticipants.ToArray());
                 break;
             case States.Wandering:
-                //_npcMovementController.LookAtRandom(allParticipants.ToArray());
+                _npcMovementController.LookAtRandom(allParticipants.ToArray());
                 break;
             case States.Talking:
                 break;
@@ -247,22 +247,6 @@ public class NPCController : MonoBehaviour {
         UpdateState(States.Talking);
         NPCMovementController.Stop();
         NPCMovementController.StopRagdoll();
-    }
-
-    Transform GetClosestEnemy(Transform[] npcs) {
-        Transform bestTarget = null;
-        float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
-        foreach (Transform potentialTarget in npcs) {
-            Vector3 directionToTarget = potentialTarget.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if (dSqrToTarget < closestDistanceSqr) {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
-            }
-        }
-
-        return bestTarget;
     }
 
 }
