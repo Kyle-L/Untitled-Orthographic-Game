@@ -1,28 +1,17 @@
-## FPS Adventure Game
+## Untitled Orthographic Game
 
 - [Overview](#overview)
 - [Media](#media)
-- [Created with](#created-with)
 - [Attributions](#attributions)
 - [License](#license)
 
 <a name="overview"/></a>
 ## Overview
-This is the repository for the development of a currently unnamed fps adventure game.
+This is the repository for the development of a currently unitled orthographic game.
 
 <a name="media"/></a>
 ## Media
 ![Concept Image](Documentation/images/banner.png)
-
-<a name="created-with"></a>
-## Created with
-The current version of the game was created with:
-- [Unity 2019](https://unity3d.com)
-- [Visual Studio 2019](https://visualstudio.microsoft.com)
-- [Adobe Photoshop CC](https://www.adobe.com/products/photoshop.html)
-- [Adobe After Effects CC](https://www.adobe.com/products/aftereffects.html)
-- [Maya 2020](https://www.autodesk.com/products/maya/overview)
-- [Mixamo](https://www.mixamo.com)
   
 <a name="attributions"></a>
 ## Attributions
