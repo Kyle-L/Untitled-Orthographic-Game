@@ -63,26 +63,35 @@ ModelImporter:
           serializedVersion: 2
           curve:
           - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: -4.497612
-            outSlope: -4.497612
-            tangentMode: 34
+            time: 0.0012207031
+            value: 0.7935295
+            inSlope: -0.026144302
+            outSlope: -0.026144302
+            tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0.33333334
+            outWeight: 0.16519438
           - serializedVersion: 3
             time: 0.22172546
             value: 0.0027649403
-            inSlope: -1.3118515
-            outSlope: -1.3118515
-            tangentMode: 34
+            inSlope: 0.043890823
+            outSlope: 0.043890823
+            tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
-            outWeight: 0.33333334
+            outWeight: 0.17986867
           - serializedVersion: 3
-            time: 0.7524632
-            value: 0.9973193
+            time: 0.4760257
+            value: 0.80679464
+            inSlope: 0.21443142
+            outSlope: 0.21443142
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.09415083
+          - serializedVersion: 3
+            time: 0.7561014
+            value: -0.004831016
             inSlope: 0.017348675
             outSlope: 0.017348675
             tangentMode: 0
@@ -90,13 +99,13 @@ ModelImporter:
             inWeight: 0.33333334
             outWeight: 0.66829616
           - serializedVersion: 3
-            time: 0.9932251
-            value: 0.00008392334
-            inSlope: -4.141999
-            outSlope: -4.141999
-            tangentMode: 34
+            time: 1.0036011
+            value: 0.79808426
+            inSlope: 0.018206028
+            outSlope: 0.018206028
+            tangentMode: 0
             weightedMode: 0
-            inWeight: 0.33333334
+            inWeight: 0.17274594
             outWeight: 0
           preInfinity: 0
           postInfinity: 0

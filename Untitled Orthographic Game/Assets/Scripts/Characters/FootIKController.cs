@@ -10,7 +10,7 @@ public class FootIKController : MonoBehaviour {
     [SerializeField]
     private bool IkActive = true;
 
-    private float positionWeight;
+    public float positionWeight;
 
     [Range(0f, 1f)]
     [SerializeField]

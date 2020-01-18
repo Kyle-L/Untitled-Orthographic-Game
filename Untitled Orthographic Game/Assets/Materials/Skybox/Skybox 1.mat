@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skybox 1
-  m_Shader: {fileID: 4800000, guid: 65588543a919c454c93919c34e45efa0, type: 3}
+  m_Shader: {fileID: 4800000, guid: fff3e4d0552c5ab47b41bfd13296a72d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -61,8 +61,6 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Exponent: 1
-    - _Exponent1: 1
-    - _Exponent2: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -71,30 +69,16 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _SkyExponent1: 8.5
-    - _SkyExponent2: 3
-    - _SkyIntensity: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SunAlpha: 550
-    - _SunAltitude: 38
-    - _SunAzimuth: 20
-    - _SunBeta: 1
-    - _SunIntensity: 2
     - _UVSec: 0
     - _UpVectorPitch: 0
     - _UpVectorYaw: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 1, g: 0.7821765, b: 0, a: 0}
-    - _Color2: {r: 0, g: 0, b: 0, a: 0}
-    - _Color3: {r: 1, g: 1, b: 1, a: 0}
+    - _Color1: {r: 0.32098788, g: 0.4433962, b: 0.2990833, a: 0}
+    - _Color2: {r: 0.4745906, g: 0.745283, b: 0.48141325, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SkyColor1: {r: 0.7080812, g: 0.90889347, b: 0.9811321, a: 0}
-    - _SkyColor2: {r: 0.8962264, g: 0.7853781, b: 0.57916516, a: 0}
-    - _SkyColor3: {r: 0.89, g: 0.89, b: 0.89, a: 0}
-    - _SunColor: {r: 1, g: 0.99, b: 0.87, a: 1}
-    - _SunVector: {r: 0.269, g: 0.615, b: 0.74, a: 0}
     - _UpVector: {r: 0, g: 1, b: 0, a: 0}
