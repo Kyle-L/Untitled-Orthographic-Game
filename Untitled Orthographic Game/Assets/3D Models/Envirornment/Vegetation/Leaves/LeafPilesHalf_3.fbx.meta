@@ -1,174 +1,467 @@
 fileFormatVersion: 2
 guid: 2184b898ae2cb0f49962f6ed8da17e73
-timeCreated: 1441159527
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: Leaves
-    100004: polySurface1
-    100006: polySurface3
-    100008: polySurface4
-    100010: polySurface6
-    100012: polySurface7
-    100014: polySurface8
-    100016: polySurface9
-    100018: pPyramid1
-    100020: pPyramid10
-    100022: pPyramid11
-    100024: pPyramid12
-    100026: pPyramid13
-    100028: pPyramid15
-    100030: pPyramid16
-    100032: pPyramid17
-    100034: pPyramid2
-    100036: pPyramid20
-    100038: pPyramid5
-    100040: pPyramid6
-    100042: pPyramid7
-    100044: pPyramid8
-    100046: pPyramid9
-    100048: pSphere1
-    100050: pSphere10
-    100052: pSphere11
-    100054: pSphere12
-    100056: pSphere13
-    100058: pSphere2
-    100060: pSphere3
-    100062: pSphere4
-    100064: pSphere6
-    100066: pSphere7
-    100068: pSphere8
-    100070: pSphere9
-    100072: transform1
-    100074: transform10
-    100076: transform11
-    100078: transform12
-    100080: transform13
-    100082: transform14
-    100084: transform15
-    100086: transform16
-    100088: transform17
-    100090: transform18
-    100092: transform19
-    100094: transform2
-    100096: transform20
-    100098: transform21
-    100100: transform22
-    100102: transform23
-    100104: transform24
-    100106: transform25
-    100108: transform26
-    100110: transform27
-    100112: transform28
-    100114: transform29
-    100116: transform3
-    100118: transform30
-    100120: transform31
-    100122: transform32
-    100124: transform33
-    100126: transform34
-    100128: transform4
-    100130: transform5
-    100132: transform6
-    100134: transform7
-    100136: transform8
-    100138: transform9
-    400000: //RootNode
-    400002: Leaves
-    400004: polySurface1
-    400006: polySurface3
-    400008: polySurface4
-    400010: polySurface6
-    400012: polySurface7
-    400014: polySurface8
-    400016: polySurface9
-    400018: pPyramid1
-    400020: pPyramid10
-    400022: pPyramid11
-    400024: pPyramid12
-    400026: pPyramid13
-    400028: pPyramid15
-    400030: pPyramid16
-    400032: pPyramid17
-    400034: pPyramid2
-    400036: pPyramid20
-    400038: pPyramid5
-    400040: pPyramid6
-    400042: pPyramid7
-    400044: pPyramid8
-    400046: pPyramid9
-    400048: pSphere1
-    400050: pSphere10
-    400052: pSphere11
-    400054: pSphere12
-    400056: pSphere13
-    400058: pSphere2
-    400060: pSphere3
-    400062: pSphere4
-    400064: pSphere6
-    400066: pSphere7
-    400068: pSphere8
-    400070: pSphere9
-    400072: transform1
-    400074: transform10
-    400076: transform11
-    400078: transform12
-    400080: transform13
-    400082: transform14
-    400084: transform15
-    400086: transform16
-    400088: transform17
-    400090: transform18
-    400092: transform19
-    400094: transform2
-    400096: transform20
-    400098: transform21
-    400100: transform22
-    400102: transform23
-    400104: transform24
-    400106: transform25
-    400108: transform26
-    400110: transform27
-    400112: transform28
-    400114: transform29
-    400116: transform3
-    400118: transform30
-    400120: transform31
-    400122: transform32
-    400124: transform33
-    400126: transform34
-    400128: transform4
-    400130: transform5
-    400132: transform6
-    400134: transform7
-    400136: transform8
-    400138: transform9
-    2300000: Leaves
-    3300000: Leaves
-    4300000: Leaves
-    9500000: //RootNode
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Leaves
+  - first:
+      1: 100004
+    second: polySurface1
+  - first:
+      1: 100006
+    second: polySurface3
+  - first:
+      1: 100008
+    second: polySurface4
+  - first:
+      1: 100010
+    second: polySurface6
+  - first:
+      1: 100012
+    second: polySurface7
+  - first:
+      1: 100014
+    second: polySurface8
+  - first:
+      1: 100016
+    second: polySurface9
+  - first:
+      1: 100018
+    second: pPyramid1
+  - first:
+      1: 100020
+    second: pPyramid10
+  - first:
+      1: 100022
+    second: pPyramid11
+  - first:
+      1: 100024
+    second: pPyramid12
+  - first:
+      1: 100026
+    second: pPyramid13
+  - first:
+      1: 100028
+    second: pPyramid15
+  - first:
+      1: 100030
+    second: pPyramid16
+  - first:
+      1: 100032
+    second: pPyramid17
+  - first:
+      1: 100034
+    second: pPyramid2
+  - first:
+      1: 100036
+    second: pPyramid20
+  - first:
+      1: 100038
+    second: pPyramid5
+  - first:
+      1: 100040
+    second: pPyramid6
+  - first:
+      1: 100042
+    second: pPyramid7
+  - first:
+      1: 100044
+    second: pPyramid8
+  - first:
+      1: 100046
+    second: pPyramid9
+  - first:
+      1: 100048
+    second: pSphere1
+  - first:
+      1: 100050
+    second: pSphere10
+  - first:
+      1: 100052
+    second: pSphere11
+  - first:
+      1: 100054
+    second: pSphere12
+  - first:
+      1: 100056
+    second: pSphere13
+  - first:
+      1: 100058
+    second: pSphere2
+  - first:
+      1: 100060
+    second: pSphere3
+  - first:
+      1: 100062
+    second: pSphere4
+  - first:
+      1: 100064
+    second: pSphere6
+  - first:
+      1: 100066
+    second: pSphere7
+  - first:
+      1: 100068
+    second: pSphere8
+  - first:
+      1: 100070
+    second: pSphere9
+  - first:
+      1: 100072
+    second: transform1
+  - first:
+      1: 100074
+    second: transform10
+  - first:
+      1: 100076
+    second: transform11
+  - first:
+      1: 100078
+    second: transform12
+  - first:
+      1: 100080
+    second: transform13
+  - first:
+      1: 100082
+    second: transform14
+  - first:
+      1: 100084
+    second: transform15
+  - first:
+      1: 100086
+    second: transform16
+  - first:
+      1: 100088
+    second: transform17
+  - first:
+      1: 100090
+    second: transform18
+  - first:
+      1: 100092
+    second: transform19
+  - first:
+      1: 100094
+    second: transform2
+  - first:
+      1: 100096
+    second: transform20
+  - first:
+      1: 100098
+    second: transform21
+  - first:
+      1: 100100
+    second: transform22
+  - first:
+      1: 100102
+    second: transform23
+  - first:
+      1: 100104
+    second: transform24
+  - first:
+      1: 100106
+    second: transform25
+  - first:
+      1: 100108
+    second: transform26
+  - first:
+      1: 100110
+    second: transform27
+  - first:
+      1: 100112
+    second: transform28
+  - first:
+      1: 100114
+    second: transform29
+  - first:
+      1: 100116
+    second: transform3
+  - first:
+      1: 100118
+    second: transform30
+  - first:
+      1: 100120
+    second: transform31
+  - first:
+      1: 100122
+    second: transform32
+  - first:
+      1: 100124
+    second: transform33
+  - first:
+      1: 100126
+    second: transform34
+  - first:
+      1: 100128
+    second: transform4
+  - first:
+      1: 100130
+    second: transform5
+  - first:
+      1: 100132
+    second: transform6
+  - first:
+      1: 100134
+    second: transform7
+  - first:
+      1: 100136
+    second: transform8
+  - first:
+      1: 100138
+    second: transform9
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Leaves
+  - first:
+      4: 400004
+    second: polySurface1
+  - first:
+      4: 400006
+    second: polySurface3
+  - first:
+      4: 400008
+    second: polySurface4
+  - first:
+      4: 400010
+    second: polySurface6
+  - first:
+      4: 400012
+    second: polySurface7
+  - first:
+      4: 400014
+    second: polySurface8
+  - first:
+      4: 400016
+    second: polySurface9
+  - first:
+      4: 400018
+    second: pPyramid1
+  - first:
+      4: 400020
+    second: pPyramid10
+  - first:
+      4: 400022
+    second: pPyramid11
+  - first:
+      4: 400024
+    second: pPyramid12
+  - first:
+      4: 400026
+    second: pPyramid13
+  - first:
+      4: 400028
+    second: pPyramid15
+  - first:
+      4: 400030
+    second: pPyramid16
+  - first:
+      4: 400032
+    second: pPyramid17
+  - first:
+      4: 400034
+    second: pPyramid2
+  - first:
+      4: 400036
+    second: pPyramid20
+  - first:
+      4: 400038
+    second: pPyramid5
+  - first:
+      4: 400040
+    second: pPyramid6
+  - first:
+      4: 400042
+    second: pPyramid7
+  - first:
+      4: 400044
+    second: pPyramid8
+  - first:
+      4: 400046
+    second: pPyramid9
+  - first:
+      4: 400048
+    second: pSphere1
+  - first:
+      4: 400050
+    second: pSphere10
+  - first:
+      4: 400052
+    second: pSphere11
+  - first:
+      4: 400054
+    second: pSphere12
+  - first:
+      4: 400056
+    second: pSphere13
+  - first:
+      4: 400058
+    second: pSphere2
+  - first:
+      4: 400060
+    second: pSphere3
+  - first:
+      4: 400062
+    second: pSphere4
+  - first:
+      4: 400064
+    second: pSphere6
+  - first:
+      4: 400066
+    second: pSphere7
+  - first:
+      4: 400068
+    second: pSphere8
+  - first:
+      4: 400070
+    second: pSphere9
+  - first:
+      4: 400072
+    second: transform1
+  - first:
+      4: 400074
+    second: transform10
+  - first:
+      4: 400076
+    second: transform11
+  - first:
+      4: 400078
+    second: transform12
+  - first:
+      4: 400080
+    second: transform13
+  - first:
+      4: 400082
+    second: transform14
+  - first:
+      4: 400084
+    second: transform15
+  - first:
+      4: 400086
+    second: transform16
+  - first:
+      4: 400088
+    second: transform17
+  - first:
+      4: 400090
+    second: transform18
+  - first:
+      4: 400092
+    second: transform19
+  - first:
+      4: 400094
+    second: transform2
+  - first:
+      4: 400096
+    second: transform20
+  - first:
+      4: 400098
+    second: transform21
+  - first:
+      4: 400100
+    second: transform22
+  - first:
+      4: 400102
+    second: transform23
+  - first:
+      4: 400104
+    second: transform24
+  - first:
+      4: 400106
+    second: transform25
+  - first:
+      4: 400108
+    second: transform26
+  - first:
+      4: 400110
+    second: transform27
+  - first:
+      4: 400112
+    second: transform28
+  - first:
+      4: 400114
+    second: transform29
+  - first:
+      4: 400116
+    second: transform3
+  - first:
+      4: 400118
+    second: transform30
+  - first:
+      4: 400120
+    second: transform31
+  - first:
+      4: 400122
+    second: transform32
+  - first:
+      4: 400124
+    second: transform33
+  - first:
+      4: 400126
+    second: transform34
+  - first:
+      4: 400128
+    second: transform4
+  - first:
+      4: 400130
+    second: transform5
+  - first:
+      4: 400132
+    second: transform6
+  - first:
+      4: 400134
+    second: transform7
+  - first:
+      4: 400136
+    second: transform8
+  - first:
+      4: 400138
+    second: transform9
+  - first:
+      23: 2300000
+    second: Leaves
+  - first:
+      33: 3300000
+    second: Leaves
+  - first:
+      43: 4300000
+    second: Leaves
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -176,13 +469,23 @@ ModelImporter:
     globalScale: 58
     meshCompression: 2
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -192,10 +495,14 @@ ModelImporter:
     normalSmoothAngle: 0
     normalImportMode: 1
     tangentImportMode: 2
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -205,14 +512,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 58
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

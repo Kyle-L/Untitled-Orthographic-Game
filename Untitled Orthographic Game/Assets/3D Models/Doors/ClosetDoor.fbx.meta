@@ -1,69 +1,152 @@
 fileFormatVersion: 2
 guid: d13cf4f9819480a40adfe11878795e9e
-timeCreated: 1475352016
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: Door:Door
-    100004: Door:Frame
-    100006: pCube1
-    100008: pCube2
-    100010: Closet
-    100012: Door:transform1
-    100014: Door:transform2
-    100016: Door:transform3
-    100018: DoorLeft
-    100020: DoorRight
-    100022: Frame
-    100024: Closet1
-    400000: //RootNode
-    400002: Door:Door
-    400004: Door:Frame
-    400006: pCube1
-    400008: pCube2
-    400010: Closet
-    400012: Door:transform1
-    400014: Door:transform2
-    400016: Door:transform3
-    400018: DoorLeft
-    400020: DoorRight
-    400022: Frame
-    400024: Closet1
-    2300000: Door:Frame
-    2300002: pCube1
-    2300004: pCube2
-    2300006: Closet1
-    3300000: Door:Frame
-    3300002: pCube1
-    3300004: pCube2
-    3300006: Closet1
-    4300000: Door:Frame
-    4300002: pCube1
-    4300004: pCube2
-    4300006: Closet1
-    9500000: //RootNode
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Door:Door
+  - first:
+      1: 100004
+    second: Door:Frame
+  - first:
+      1: 100006
+    second: pCube1
+  - first:
+      1: 100008
+    second: pCube2
+  - first:
+      1: 100010
+    second: Closet
+  - first:
+      1: 100012
+    second: Door:transform1
+  - first:
+      1: 100014
+    second: Door:transform2
+  - first:
+      1: 100016
+    second: Door:transform3
+  - first:
+      1: 100018
+    second: DoorLeft
+  - first:
+      1: 100020
+    second: DoorRight
+  - first:
+      1: 100022
+    second: Frame
+  - first:
+      1: 100024
+    second: Closet1
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Door:Door
+  - first:
+      4: 400004
+    second: Door:Frame
+  - first:
+      4: 400006
+    second: pCube1
+  - first:
+      4: 400008
+    second: pCube2
+  - first:
+      4: 400010
+    second: Closet
+  - first:
+      4: 400012
+    second: Door:transform1
+  - first:
+      4: 400014
+    second: Door:transform2
+  - first:
+      4: 400016
+    second: Door:transform3
+  - first:
+      4: 400018
+    second: DoorLeft
+  - first:
+      4: 400020
+    second: DoorRight
+  - first:
+      4: 400022
+    second: Frame
+  - first:
+      4: 400024
+    second: Closet1
+  - first:
+      23: 2300000
+    second: Door:Frame
+  - first:
+      23: 2300002
+    second: pCube1
+  - first:
+      23: 2300004
+    second: pCube2
+  - first:
+      23: 2300006
+    second: Closet1
+  - first:
+      33: 3300000
+    second: Door:Frame
+  - first:
+      33: 3300002
+    second: pCube1
+  - first:
+      33: 3300004
+    second: pCube2
+  - first:
+      33: 3300006
+    second: Closet1
+  - first:
+      43: 4300000
+    second: Door:Frame
+  - first:
+      43: 4300002
+    second: pCube1
+  - first:
+      43: 4300004
+    second: pCube2
+  - first:
+      43: 4300006
+    second: Closet1
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -71,13 +154,23 @@ ModelImporter:
     globalScale: 76.53692
     meshCompression: 3
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -87,10 +180,14 @@ ModelImporter:
     normalSmoothAngle: 0
     normalImportMode: 1
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -100,14 +197,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 76.53692
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -9,31 +9,15 @@ public class HandIKController : MonoBehaviour {
     // Preferences
     public bool IkActive { get; set; } = true;
 
-    private float positionWeight;
-
     [Range(0f, 1f)]
-    [SerializeField]
-    private float positionWeightMultiplier = 1;
-    public float PositionWeight {
-        get {
-            return positionWeightMultiplier;
-        }
-        set {
-            positionWeightMultiplier = value;
-        }
-    }
-
+    public float positionWeightMultiplierLeftHand = 1;
     [Range(0f, 1f)]
-    [SerializeField]
-    private float rotationWeight = 1;
-    public float RotationWeight {
-        get {
-            return rotationWeight;
-        }
-        set {
-            rotationWeight = value;
-        }
-    }
+    public float rotationWeightLeftHand = 1;
+    [Range(0f, 1f)]
+    public float positionWeightMultiplierRightHand = 1;
+    [Range(0f, 1f)]
+    public float rotationWeightRightHand = 1;
+
     [SerializeField]
     private Vector3 leftOffset;
     [SerializeField]
@@ -61,15 +45,13 @@ public class HandIKController : MonoBehaviour {
     /// animation pass.
     /// </summary>
     void OnAnimatorIK() {
-        positionWeight = positionWeightMultiplier;
-
         // If IK is enabled, perform IK on both feet.
         if (IkActive) {
             if (leftHand) {
-                PerformFootIK(AvatarIKGoal.LeftHand, leftObject, leftOffset);
+                PerformFootIK(AvatarIKGoal.LeftHand, rotationWeightLeftHand, positionWeightMultiplierLeftHand, leftObject, leftOffset);
             }
             if (rightHand) {
-                PerformFootIK(AvatarIKGoal.RightHand, rightObject, rightOffset);
+                PerformFootIK(AvatarIKGoal.RightHand, rotationWeightRightHand, positionWeightMultiplierRightHand, rightObject, rightOffset);
             }
 
             // If IK is disabled, set the weight to 0.
@@ -85,7 +67,7 @@ public class HandIKController : MonoBehaviour {
     /// Performs IK on a foot.
     /// </summary>
     /// <param name="hand">The foot that the IK is performed on.</param>
-    private void PerformFootIK(AvatarIKGoal hand, Transform heldObject, Vector3 offset) {
+    private void PerformFootIK(AvatarIKGoal hand, float rotationWeight, float positionWeight, Transform heldObject, Vector3 offset) {
         // Gets the initial position.
         Vector3 FootPos = _animator.GetIKPosition(hand);
 
@@ -100,7 +82,7 @@ public class HandIKController : MonoBehaviour {
             /* If the rotation weight is greater than 0.
              * calculate the rotation the foot should be
              * on the surface below the foot. */
-            if (rotationWeight > 0f) {
+            if (rotationWeightLeftHand > 0f) {
                 // Calculates the look rotation by projecting a vector onto the hit point normal below the foot.
                 Quaternion rotation = heldObject.rotation;
                 // Sets the IK rotation.

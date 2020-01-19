@@ -1,160 +1,425 @@
 fileFormatVersion: 2
 guid: d6e3597f28d141e438d450d80e8ba9fb
-timeCreated: 1440274430
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: pPyramid1
-    100004: pPyramid2
-    100006: pPyramid3
-    100008: pPyramid4
-    100010: pPyramid5
-    100012: pPyramid6
-    100014: pPyramid7
-    100016: pPyramid8
-    100018: pSphere1
-    100020: pSphere10
-    100022: pSphere11
-    100024: pSphere12
-    100026: pSphere13
-    100028: pSphere2
-    100030: pSphere3
-    100032: pSphere4
-    100034: pSphere6
-    100036: pSphere7
-    100038: pSphere8
-    100040: pSphere9
-    100042: transform1
-    100044: transform10
-    100046: transform11
-    100048: transform12
-    100050: transform13
-    100052: transform14
-    100054: transform15
-    100056: transform16
-    100058: transform17
-    100060: transform18
-    100062: transform19
-    100064: transform2
-    100066: transform3
-    100068: transform4
-    100070: transform5
-    100072: transform6
-    100074: transform7
-    100076: transform8
-    100078: transform9
-    100080: pPyramid10
-    100082: pPyramid11
-    100084: pPyramid12
-    100086: pPyramid9
-    100088: pPyramid13
-    100090: transform20
-    100092: transform21
-    100094: transform22
-    400000: //RootNode
-    400002: pPyramid1
-    400004: pPyramid2
-    400006: pPyramid3
-    400008: pPyramid4
-    400010: pPyramid5
-    400012: pPyramid6
-    400014: pPyramid7
-    400016: pPyramid8
-    400018: pSphere1
-    400020: pSphere10
-    400022: pSphere11
-    400024: pSphere12
-    400026: pSphere13
-    400028: pSphere2
-    400030: pSphere3
-    400032: pSphere4
-    400034: pSphere6
-    400036: pSphere7
-    400038: pSphere8
-    400040: pSphere9
-    400042: transform1
-    400044: transform10
-    400046: transform11
-    400048: transform12
-    400050: transform13
-    400052: transform14
-    400054: transform15
-    400056: transform16
-    400058: transform17
-    400060: transform18
-    400062: transform19
-    400064: transform2
-    400066: transform3
-    400068: transform4
-    400070: transform5
-    400072: transform6
-    400074: transform7
-    400076: transform8
-    400078: transform9
-    400080: pPyramid10
-    400082: pPyramid11
-    400084: pPyramid12
-    400086: pPyramid9
-    400088: pPyramid13
-    400090: transform20
-    400092: transform21
-    400094: transform22
-    2300000: pPyramid8
-    2300002: pPyramid1
-    2300004: pPyramid10
-    2300006: pPyramid11
-    2300008: pPyramid12
-    2300010: pPyramid2
-    2300012: pPyramid5
-    2300014: pPyramid6
-    2300016: pPyramid7
-    2300018: pPyramid9
-    2300020: pPyramid13
-    3300000: pPyramid8
-    3300002: pPyramid1
-    3300004: pPyramid10
-    3300006: pPyramid11
-    3300008: pPyramid12
-    3300010: pPyramid2
-    3300012: pPyramid5
-    3300014: pPyramid6
-    3300016: pPyramid7
-    3300018: pPyramid9
-    3300020: pPyramid13
-    4300000: pPyramid8
-    4300002: pPyramid1
-    4300004: pPyramid2
-    4300006: pPyramid5
-    4300008: pPyramid6
-    4300010: pPyramid7
-    4300012: pPyramid9
-    4300014: pPyramid10
-    4300016: pPyramid11
-    4300018: pPyramid12
-    4300020: pPyramid13
-    9500000: //RootNode
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: pPyramid1
+  - first:
+      1: 100004
+    second: pPyramid2
+  - first:
+      1: 100006
+    second: pPyramid3
+  - first:
+      1: 100008
+    second: pPyramid4
+  - first:
+      1: 100010
+    second: pPyramid5
+  - first:
+      1: 100012
+    second: pPyramid6
+  - first:
+      1: 100014
+    second: pPyramid7
+  - first:
+      1: 100016
+    second: pPyramid8
+  - first:
+      1: 100018
+    second: pSphere1
+  - first:
+      1: 100020
+    second: pSphere10
+  - first:
+      1: 100022
+    second: pSphere11
+  - first:
+      1: 100024
+    second: pSphere12
+  - first:
+      1: 100026
+    second: pSphere13
+  - first:
+      1: 100028
+    second: pSphere2
+  - first:
+      1: 100030
+    second: pSphere3
+  - first:
+      1: 100032
+    second: pSphere4
+  - first:
+      1: 100034
+    second: pSphere6
+  - first:
+      1: 100036
+    second: pSphere7
+  - first:
+      1: 100038
+    second: pSphere8
+  - first:
+      1: 100040
+    second: pSphere9
+  - first:
+      1: 100042
+    second: transform1
+  - first:
+      1: 100044
+    second: transform10
+  - first:
+      1: 100046
+    second: transform11
+  - first:
+      1: 100048
+    second: transform12
+  - first:
+      1: 100050
+    second: transform13
+  - first:
+      1: 100052
+    second: transform14
+  - first:
+      1: 100054
+    second: transform15
+  - first:
+      1: 100056
+    second: transform16
+  - first:
+      1: 100058
+    second: transform17
+  - first:
+      1: 100060
+    second: transform18
+  - first:
+      1: 100062
+    second: transform19
+  - first:
+      1: 100064
+    second: transform2
+  - first:
+      1: 100066
+    second: transform3
+  - first:
+      1: 100068
+    second: transform4
+  - first:
+      1: 100070
+    second: transform5
+  - first:
+      1: 100072
+    second: transform6
+  - first:
+      1: 100074
+    second: transform7
+  - first:
+      1: 100076
+    second: transform8
+  - first:
+      1: 100078
+    second: transform9
+  - first:
+      1: 100080
+    second: pPyramid10
+  - first:
+      1: 100082
+    second: pPyramid11
+  - first:
+      1: 100084
+    second: pPyramid12
+  - first:
+      1: 100086
+    second: pPyramid9
+  - first:
+      1: 100088
+    second: pPyramid13
+  - first:
+      1: 100090
+    second: transform20
+  - first:
+      1: 100092
+    second: transform21
+  - first:
+      1: 100094
+    second: transform22
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: pPyramid1
+  - first:
+      4: 400004
+    second: pPyramid2
+  - first:
+      4: 400006
+    second: pPyramid3
+  - first:
+      4: 400008
+    second: pPyramid4
+  - first:
+      4: 400010
+    second: pPyramid5
+  - first:
+      4: 400012
+    second: pPyramid6
+  - first:
+      4: 400014
+    second: pPyramid7
+  - first:
+      4: 400016
+    second: pPyramid8
+  - first:
+      4: 400018
+    second: pSphere1
+  - first:
+      4: 400020
+    second: pSphere10
+  - first:
+      4: 400022
+    second: pSphere11
+  - first:
+      4: 400024
+    second: pSphere12
+  - first:
+      4: 400026
+    second: pSphere13
+  - first:
+      4: 400028
+    second: pSphere2
+  - first:
+      4: 400030
+    second: pSphere3
+  - first:
+      4: 400032
+    second: pSphere4
+  - first:
+      4: 400034
+    second: pSphere6
+  - first:
+      4: 400036
+    second: pSphere7
+  - first:
+      4: 400038
+    second: pSphere8
+  - first:
+      4: 400040
+    second: pSphere9
+  - first:
+      4: 400042
+    second: transform1
+  - first:
+      4: 400044
+    second: transform10
+  - first:
+      4: 400046
+    second: transform11
+  - first:
+      4: 400048
+    second: transform12
+  - first:
+      4: 400050
+    second: transform13
+  - first:
+      4: 400052
+    second: transform14
+  - first:
+      4: 400054
+    second: transform15
+  - first:
+      4: 400056
+    second: transform16
+  - first:
+      4: 400058
+    second: transform17
+  - first:
+      4: 400060
+    second: transform18
+  - first:
+      4: 400062
+    second: transform19
+  - first:
+      4: 400064
+    second: transform2
+  - first:
+      4: 400066
+    second: transform3
+  - first:
+      4: 400068
+    second: transform4
+  - first:
+      4: 400070
+    second: transform5
+  - first:
+      4: 400072
+    second: transform6
+  - first:
+      4: 400074
+    second: transform7
+  - first:
+      4: 400076
+    second: transform8
+  - first:
+      4: 400078
+    second: transform9
+  - first:
+      4: 400080
+    second: pPyramid10
+  - first:
+      4: 400082
+    second: pPyramid11
+  - first:
+      4: 400084
+    second: pPyramid12
+  - first:
+      4: 400086
+    second: pPyramid9
+  - first:
+      4: 400088
+    second: pPyramid13
+  - first:
+      4: 400090
+    second: transform20
+  - first:
+      4: 400092
+    second: transform21
+  - first:
+      4: 400094
+    second: transform22
+  - first:
+      23: 2300000
+    second: pPyramid8
+  - first:
+      23: 2300002
+    second: pPyramid1
+  - first:
+      23: 2300004
+    second: pPyramid10
+  - first:
+      23: 2300006
+    second: pPyramid11
+  - first:
+      23: 2300008
+    second: pPyramid12
+  - first:
+      23: 2300010
+    second: pPyramid2
+  - first:
+      23: 2300012
+    second: pPyramid5
+  - first:
+      23: 2300014
+    second: pPyramid6
+  - first:
+      23: 2300016
+    second: pPyramid7
+  - first:
+      23: 2300018
+    second: pPyramid9
+  - first:
+      23: 2300020
+    second: pPyramid13
+  - first:
+      33: 3300000
+    second: pPyramid8
+  - first:
+      33: 3300002
+    second: pPyramid1
+  - first:
+      33: 3300004
+    second: pPyramid10
+  - first:
+      33: 3300006
+    second: pPyramid11
+  - first:
+      33: 3300008
+    second: pPyramid12
+  - first:
+      33: 3300010
+    second: pPyramid2
+  - first:
+      33: 3300012
+    second: pPyramid5
+  - first:
+      33: 3300014
+    second: pPyramid6
+  - first:
+      33: 3300016
+    second: pPyramid7
+  - first:
+      33: 3300018
+    second: pPyramid9
+  - first:
+      33: 3300020
+    second: pPyramid13
+  - first:
+      43: 4300000
+    second: pPyramid8
+  - first:
+      43: 4300002
+    second: pPyramid1
+  - first:
+      43: 4300004
+    second: pPyramid2
+  - first:
+      43: 4300006
+    second: pPyramid5
+  - first:
+      43: 4300008
+    second: pPyramid6
+  - first:
+      43: 4300010
+    second: pPyramid7
+  - first:
+      43: 4300012
+    second: pPyramid9
+  - first:
+      43: 4300014
+    second: pPyramid10
+  - first:
+      43: 4300016
+    second: pPyramid11
+  - first:
+      43: 4300018
+    second: pPyramid12
+  - first:
+      43: 4300020
+    second: pPyramid13
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -162,13 +427,23 @@ ModelImporter:
     globalScale: 58
     meshCompression: 2
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -178,10 +453,14 @@ ModelImporter:
     normalSmoothAngle: 0
     normalImportMode: 1
     tangentImportMode: 2
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -191,14 +470,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 58
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
