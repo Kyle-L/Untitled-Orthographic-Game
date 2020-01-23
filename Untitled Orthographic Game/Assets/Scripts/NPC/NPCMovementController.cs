@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.AI;
-
-/// <summary>
+﻿/// <summary>
 /// Controls the movement for the npc.
 /// </summary>
 public class NPCMovementController : MovementController {

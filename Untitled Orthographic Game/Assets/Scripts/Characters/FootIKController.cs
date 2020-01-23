@@ -7,38 +7,19 @@ public class FootIKController : MonoBehaviour {
     private const float RAYCAST_MAX_DISTANCE = 5f;
 
     // Preferences
-    [SerializeField]
-    private bool IkActive = true;
+    public bool IkActive = true;
 
     public float positionWeight;
 
     [Range(0f, 1f)]
-    [SerializeField]
-    private float positionWeightMultiplier = 1;
-    public float PositionWeight {
-        get {
-            return positionWeightMultiplier;
-        }
-        set {
-            positionWeightMultiplier = value;
-        }
-    }
+    public float positionWeightMultiplier = 1;
 
     [Range(0f, 1f)]
     [SerializeField]
-    private float rotationWeight = 1;
-    public float RotationWeight {
-        get {
-            return rotationWeight;
-        }
-        set {
-            rotationWeight = value;
-        }
-    }
-    [SerializeField]
-    private Vector3 offset;
-    [SerializeField]
-    private LayerMask RayMask;
+    public float rotationWeight = 1;
+
+    public Vector3 offset;
+    public LayerMask RayMask;
 
     // Components
     private Animator _animator;

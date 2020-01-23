@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour {
     public float minimumLoadTime = 1.5f;
 
     private int prevScene = -1;
-    private bool previousPlayerState = true;
 
     private void Awake() {
         #region Enforces Singleton Pattern.

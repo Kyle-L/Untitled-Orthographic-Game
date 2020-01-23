@@ -29,7 +29,7 @@ public class PlayerDialogueController : MonoBehaviour {
     public void CheckForNearbyNPC() {
         var allParticipants = new List<NPCController>(FindObjectsOfType<NPCController>());
         target = allParticipants.Find(delegate (NPCController p) {
-            return string.IsNullOrEmpty(p.NPCDialogueController.TalkToNode) == false && // has a conversation node?
+            return string.IsNullOrEmpty(p.NPCDialogueController.talkToNode) == false && // has a conversation node?
             (p.transform.position - this.transform.position)// is in range?
             .magnitude <= interactionRadius;
         });
@@ -39,7 +39,7 @@ public class PlayerDialogueController : MonoBehaviour {
                 return;
             }
 
-            DialogueRunner.instance.StartDialogue(target.NPCDialogueController.TalkToNode);
+            DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode);
             PlayerControllerMain.instance.PlayerMovementController.Face(target.head.transform);
             PlayerControllerMain.instance.PlayerMovementController.LookAt(target.head.transform);
             //PlayerControllerMain.instance.PlayerMovementController.SetLocation(target.transform.forward);

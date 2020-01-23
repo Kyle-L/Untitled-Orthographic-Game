@@ -3,14 +3,9 @@
 public class UIFadeTransitionController : MonoBehaviour {
     public static UIFadeTransitionController instance;
 
-    [SerializeField]
-    private Animator _animator;
-    [SerializeField]
-    private string fadeInTrigger;
-    [SerializeField]
-    private string fadeOutTrigger;
-
-    private bool trans;
+    public Animator _animator;
+    public string fadeInTrigger;
+    public string fadeOutTrigger;
 
     private void Awake() {
         #region Enforces Singleton Pattern.

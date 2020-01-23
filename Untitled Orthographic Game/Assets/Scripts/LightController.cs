@@ -47,12 +47,12 @@ public class LightController : MonoBehaviour {
 
     public void FadeLightOut() {
         StopAllCoroutines();
-        lightCoroutine = StartCoroutine(LerpLight(0, fadeSpeed));
+        lightCoroutine = StartCoroutine(LerpLight(fadeIntensityOut, fadeSpeed));
     }
 
     public void FadeLightIn() {
         StopAllCoroutines();
-        lightCoroutine = StartCoroutine(LerpLight(1, fadeSpeed));
+        lightCoroutine = StartCoroutine(LerpLight(fadeInIntensity, fadeSpeed));
     }
 }
 

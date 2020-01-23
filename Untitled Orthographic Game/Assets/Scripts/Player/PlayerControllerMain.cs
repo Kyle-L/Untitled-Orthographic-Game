@@ -4,7 +4,7 @@
 [RequireComponent(typeof(PlayerDialogueController))]
 [RequireComponent(typeof(PlayerObjectHolder))]
 [RequireComponent(typeof(PlayerSettingsController))]
-public class PlayerControllerMain : MonoBehaviour {
+public class PlayerControllerMain : Controller {
     public static PlayerControllerMain instance;
 
     //Controls
@@ -35,7 +35,8 @@ public class PlayerControllerMain : MonoBehaviour {
     public PlayerObjectHolder PlayerObjectHolder { get; private set; }
     public PlayerSettingsController PlayerSettingsController { get; private set; }
 
-    public void Start() {
+    public new void Start() {
+        base.Start();
         instance = this;
 
         PlayerMovementController = GetComponent<PlayerMovementController>();
@@ -44,4 +45,35 @@ public class PlayerControllerMain : MonoBehaviour {
         PlayerSettingsController = GetComponent<PlayerSettingsController>();
     }
 
+    public override void Idle() {
+        //throw new System.NotImplementedException();
+    }
+
+    public override void Wander() {
+        //throw new System.NotImplementedException();
+    }
+
+    public override void Talk() {
+        //throw new System.NotImplementedException();
+    }
+
+    public override void Interact() {
+        //throw new System.NotImplementedException();
+    }
+
+    public override void Attack() {
+        //throw new System.NotImplementedException();
+    }
+
+    public override void Search() {
+        //throw new System.NotImplementedException();
+    }
+
+    public override void Die() {
+        //throw new System.NotImplementedException();
+    }
+
+    public override void Live() {
+        //throw new System.NotImplementedException();
+    }
 }

@@ -1,147 +1,38 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 /// <summary>
 /// The overall controller for an npc.
 /// </summary>
-public class NPCController : MonoBehaviour {
-
-    [Header("States")]
-    [SerializeField]
-    private States startState = States.Idle;
-
-    public States currentState { get; private set; }
-    private Stack<States> stateHistory;
-
-    public enum States {
-        Idle,
-        Wandering,
-        Interacting,
-        Talking,
-        Attacking,
-        Searching,
-        Dying
-    }
+public class NPCController : Controller {
 
     [Header("Wandering")]
-    [SerializeField]
-    private Transform[] wanderingPoints;
-    [SerializeField]
-    private float wanderingTime = 10;
-    [SerializeField]
-    private float wanderingTimeDeviation = 10;
+    public Transform[] wanderingPoints;
+    public float wanderingTime = 10;
+    public float wanderingTimeDeviation = 10;
 
     [Header("Interacting")]
-    [SerializeField]
-    private Transform[] interactingPoints;
+    public Transform[] interactingPoints;
 
-    [Header("Transforms")]
-    public Transform head;
+    public NPCDialogueController NPCDialogueController { get; private set; }
 
-    // Components
-    private NPCDialogueController _npcDialogueController;
-    public NPCDialogueController NPCDialogueController {
-        get {
-            return _npcDialogueController;
-        }
-    }
+    public NPCMovementController NPCMovementController { get; private set; }
 
-    private NPCMovementController _npcMovementController;
-    public NPCMovementController NPCMovementController {
-        get {
-            return _npcMovementController;
-        }
-    }
-
-    private List<Transform> allParticipants;
-
-    private void Update() {
-        switch (currentState) {
-            case States.Idle:
-                _npcMovementController.LookAtRandom(allParticipants.ToArray());
-                break;
-            case States.Wandering:
-                _npcMovementController.LookAtRandom(allParticipants.ToArray());
-                break;
-            case States.Talking:
-                break;
-            case States.Interacting:
-                break;
-            case States.Attacking:
-                break;
-            case States.Searching:
-                break;
-            case States.Dying:
-                break;
-        }
-    }
-
-    private void Start() {
+    private new void Start() {
         // Get componenets
-        _npcDialogueController = GetComponent<NPCDialogueController>();
-        _npcMovementController = GetComponent<NPCMovementController>();
+        NPCDialogueController = GetComponent<NPCDialogueController>();
+        NPCMovementController = GetComponent<NPCMovementController>();
 
         // Add WanderingReached to the ReachedDestination event.
         NPCMovementController.ReachedDestination += (sender, args) => { WanderReached(); };
 
-        stateHistory = new Stack<States>();
-
-        /* Updates the current state if the current
-           state has any actions that need to be run
-           in Start. */
-        UpdateState(startState);
-
-        //allParticipants = new List<GameObject>(GameObject.FindGameObjectsWithTag("Lookable"));
-        allParticipants = new List<Transform>();
-        allParticipants.AddRange(GameObject.FindGameObjectsWithTag("Lookable").Select(go => go.transform));
-        allParticipants.Remove(head.transform);
+        base.Start();
     }
-
-
-    #region State management
-    private void UpdateState(States state) {
-        stateHistory.Push(currentState);
-        currentState = state;
-        RefreshState();
-    }
-
-    private void UpdateToLastState() {
-        if (stateHistory.Count == 0) {
-            return;
-        }
-        currentState = stateHistory.Pop();
-        RefreshState();
-    }
-
-    private void RefreshState() {
-        switch (currentState) {
-            case States.Idle:
-                Idle();
-                break;
-            case States.Wandering:
-                Wander();
-                break;
-            case States.Talking:
-                Talk();
-                break;
-            case States.Interacting:
-                break;
-            case States.Attacking:
-                break;
-            case States.Searching:
-                break;
-            case States.Dying:
-                break;
-        }
-    }
-    #endregion
 
     #region Idle
     /// <summary>
     /// Stops the NPC from doing other actions.
     /// </summary>
-    public void Idle() {
+    public override void Idle() {
         NPCMovementController.Stop();
     }
     #endregion
@@ -150,12 +41,7 @@ public class NPCController : MonoBehaviour {
     /// <summary>
     /// Indicates to the NPC to start wandering.
     /// </summary>
-    public void Wander() {
-        // If not in the wandering state, stop.
-        if (currentState != States.Wandering) {
-            return;
-        }
-
+    public override void Wander() {
         // Set the first location to visit.
         NPCMovementController.SetLocation(wanderingPoints[Random.Range(0, wanderingPoints.Length)]);
     }
@@ -165,18 +51,17 @@ public class NPCController : MonoBehaviour {
     /// the wandering state.
     /// </summary>
     private void WanderReached() {
-        if (wandering != null) {
-            StopCoroutine(wandering);
+        if (currentState != States.Wandering) {
+            return;
         }
 
-        wandering = StartCoroutine(WanderingWait(
+        if (stateCoroutine != null) {
+            StopCoroutine(stateCoroutine);
+        }
+
+        stateCoroutine = StartCoroutine(WanderingWait(
            wanderingTime + Random.Range(-wanderingTimeDeviation, wanderingTimeDeviation)));
     }
-
-    /* The coroutine for the wandering wait.
-       This ensures there is only one coroutine
-       instance. */
-    Coroutine wandering;
 
     /// <summary>
     /// Sets the next locations once the amount of time alloted
@@ -193,8 +78,7 @@ public class NPCController : MonoBehaviour {
 
     #region Talk
 
-    public void Talk() {
-
+    public override void Talk() {
     }
 
     public void Talk(GameObject gameObject) {
@@ -202,10 +86,8 @@ public class NPCController : MonoBehaviour {
         NPCMovementController.Stop();
         NPCMovementController.SetLocation(gameObject.transform.position + gameObject.transform.forward);
         //NPCMovementController.LookAt(gameObject.transform.position);
-        StartCoroutine(Talking(gameObject));
+        stateCoroutine = StartCoroutine(Talking(gameObject));
     }
-
-    Coroutine talk;
 
     IEnumerator Talking(GameObject gameObject) {
         while (NPCMovementController.isWalking) {
@@ -216,8 +98,8 @@ public class NPCController : MonoBehaviour {
 
     public void StopTalk() {
         UpdateToLastState();
-        if (talk != null) {
-            StopCoroutine(talk);
+        if (stateCoroutine != null) {
+            StopCoroutine(stateCoroutine);
         }
         NPCMovementController.StopFace();
     }
@@ -225,28 +107,13 @@ public class NPCController : MonoBehaviour {
     #endregion
 
 
-    public void Interact() {
-
+    public override void Interact() {
     }
 
-    public void Attack() {
-
+    public override void Attack() {
     }
 
-    public void Search() {
-
-    }
-
-    public void Die() {
-        UpdateState(States.Talking);
-        NPCMovementController.Stop();
-        NPCMovementController.RagDoll();
-    }
-
-    public void Live() {
-        UpdateState(States.Talking);
-        NPCMovementController.Stop();
-        NPCMovementController.StopRagdoll();
+    public override void Search() {
     }
 
 }

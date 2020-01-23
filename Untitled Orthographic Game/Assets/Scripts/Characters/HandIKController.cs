@@ -18,20 +18,14 @@ public class HandIKController : MonoBehaviour {
     [Range(0f, 1f)]
     public float rotationWeightRightHand = 1;
 
-    [SerializeField]
-    private Vector3 leftOffset;
-    [SerializeField]
-    private Vector3 rightOffset;
-    [SerializeField]
-    private bool leftHand;
-    [SerializeField]
-    private bool rightHand;
+    public Vector3 leftOffset;
+    public Vector3 rightOffset;
+    public bool leftHand;
+    public bool rightHand;
 
 
-    [SerializeField]
-    private Transform leftObject;
-    [SerializeField]
-    private Transform rightObject;
+    public Transform leftObject;
+    public Transform rightObject;
 
     // Components
     private Animator _animator;

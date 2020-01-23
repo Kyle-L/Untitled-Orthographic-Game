@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -107,12 +108,16 @@ public class HeadIKController : MonoBehaviour {
         }
     }
 
-    public Transform GetClosestInFrontTransform(Transform[] transforms) {
+    public Transform GetClosestInFrontTransform(ICollection<Transform> transforms) {
         // Order all transforms by distance, least to greatest.
         IOrderedEnumerable<Transform> nClosest = transforms.OrderBy(t => (t.position - transform.position).sqrMagnitude);
 
         // Then order all transforms by whether they are in front of the root transform or behind.
         nClosest = nClosest.ThenByDescending(t => (transform.InverseTransformPoint(t.position).z));
+
+        if (nClosest.First().Equals(head)) {
+            return nClosest.Skip(1).First();
+        }
 
         // Return the the first element which should be the closest and in front of the root transform.
         return nClosest.First();

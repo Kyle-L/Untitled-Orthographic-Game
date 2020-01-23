@@ -16,20 +16,14 @@ public class UIMenuController : MonoBehaviour {
     public enum MainMenus { NoMenu, MainMenu, PauseMenu, DialogueMenu, GameOver };
 
     // The default menu that is started on.
-    [SerializeField]
-    private MainMenus defaultMenu = MainMenus.NoMenu;
+    public MainMenus defaultMenu = MainMenus.NoMenu;
 
     // Default Menus
-    [SerializeField]
-    private GameObject backgroundUI;
-    [SerializeField]
-    private UIMenu mainMenuUI;
-    [SerializeField]
-    private UIMenu pauseMenuUI;
-    [SerializeField]
-    private UIMenu dialogueMenuUI;
-    [SerializeField]
-    private UIMenu gameOverMenuUI;
+    public GameObject backgroundUI;
+    public UIMenu mainMenuUI;
+    public UIMenu pauseMenuUI;
+    public UIMenu dialogueMenuUI;
+    public UIMenu gameOverMenuUI;
 
     // The UI history. What menus the user has pressed on.
     private Stack<UIMenu> uiHistory = new Stack<UIMenu>();

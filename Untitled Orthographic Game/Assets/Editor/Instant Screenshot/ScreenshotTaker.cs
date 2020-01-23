@@ -13,13 +13,13 @@ public class Screenshot : EditorWindow {
     int scale = 1;
 
     string path = "";
-    bool showPreview = true;
     RenderTexture renderTexture;
 
     bool isTransparent = false;
 
     // Add menu item named "My Window" to the Window menu
     [MenuItem("Tools/Saad Khawaja/Instant High-Res Screenshot")]
+    [System.Obsolete]
     public static void ShowWindow() {
         //Show existing window instance. If one doesn't exist, make one.
         EditorWindow editorWindow = EditorWindow.GetWindow(typeof(Screenshot));

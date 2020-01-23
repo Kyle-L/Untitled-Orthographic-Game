@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour {
     //[HideInInspector]
     public GameObject trackingObject;
 
-    private Camera camera;
+    private Camera _camera;
 
     [Header("Camera Movement Settings")]
     public float cameraRotationSmoothSpeed = 2.5f;
@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour {
     void Awake() {
         instance = this;
 
-        camera = GetComponent<Camera>();
+        _camera = GetComponent<Camera>();
 
         SetAngle(cameraStartAngle);
     }
@@ -76,8 +76,8 @@ public class CameraController : MonoBehaviour {
             //float vertical = Input.GetAxis("Vertical");
 
             // Get camera forward and right vectors:
-            Vector3 forward = camera.transform.forward;
-            Vector3 right = camera.transform.right;
+            Vector3 forward = _camera.transform.forward;
+            Vector3 right = _camera.transform.right;
 
             // Project forward and right vectors on the horizontal plane (y = 0).
             forward.y = 0f;
@@ -92,8 +92,8 @@ public class CameraController : MonoBehaviour {
             //cameraTarget -= desiredMoveDirection * cameraMoveSpeed * Time.deltaTime;
 
             // Processes user input for camera size.
-            camera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * cameraZoomSpeed;
-            camera.orthographicSize = camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, cameraMinSize, cameraMaxSize);
+            _camera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * cameraZoomSpeed;
+            _camera.orthographicSize = _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize, cameraMinSize, cameraMaxSize);
         }
 
         //Creates the angle used to rotate the camera.
