@@ -45,35 +45,4 @@ public class PlayerControllerMain : Controller {
         PlayerSettingsController = GetComponent<PlayerSettingsController>();
     }
 
-    public override void Idle() {
-        //throw new System.NotImplementedException();
-    }
-
-    public override void Wander() {
-        //throw new System.NotImplementedException();
-    }
-
-    public override void Talk() {
-        //throw new System.NotImplementedException();
-    }
-
-    public override void Interact() {
-        //throw new System.NotImplementedException();
-    }
-
-    public override void Attack() {
-        //throw new System.NotImplementedException();
-    }
-
-    public override void Search() {
-        //throw new System.NotImplementedException();
-    }
-
-    public override void Die() {
-        //throw new System.NotImplementedException();
-    }
-
-    public override void Live() {
-        //throw new System.NotImplementedException();
-    }
 }

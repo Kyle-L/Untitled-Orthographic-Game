@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
+using NPBehave;
+
 /// <summary>
 /// The overall controller for an npc.
 /// </summary>
@@ -22,67 +24,38 @@ public class NPCController : Controller {
         NPCDialogueController = GetComponent<NPCDialogueController>();
         NPCMovementController = GetComponent<NPCMovementController>();
 
-        // Add WanderingReached to the ReachedDestination event.
-        NPCMovementController.ReachedDestination += (sender, args) => { WanderReached(); };
-
         base.Start();
-    }
 
-    #region Idle
-    /// <summary>
-    /// Stops the NPC from doing other actions.
-    /// </summary>
-    public override void Idle() {
-        NPCMovementController.Stop();
+        // create our behaviour tree and get it's blackboard
+        behaviorTree = CreateBehaviourTree();
+        blackboard = behaviorTree.Blackboard;
+
+        // attach the debugger component if executed in editor (helps to debug in the inspector) 
+#if UNITY_EDITOR
+        Debugger debugger = (Debugger)this.gameObject.AddComponent(typeof(Debugger));
+        debugger.BehaviorTree = behaviorTree;
+#endif
+
+        // start the behaviour tree
+        behaviorTree.Start();
     }
-    #endregion
 
     #region Wander
     /// <summary>
     /// Indicates to the NPC to start wandering.
     /// </summary>
-    public override void Wander() {
+    public void Wander() {
         // Set the first location to visit.
-        NPCMovementController.SetLocation(wanderingPoints[Random.Range(0, wanderingPoints.Length)]);
-    }
-
-    /// <summary>
-    /// How the NPC should react when a destination is reached while in
-    /// the wandering state.
-    /// </summary>
-    private void WanderReached() {
-        if (currentState != States.Wandering) {
-            return;
+        if (!NPCMovementController.isWalking) {
+            NPCMovementController.SetLocation(wanderingPoints[UnityEngine.Random.Range(0, wanderingPoints.Length)]);
         }
-
-        if (stateCoroutine != null) {
-            StopCoroutine(stateCoroutine);
-        }
-
-        stateCoroutine = StartCoroutine(WanderingWait(
-           wanderingTime + Random.Range(-wanderingTimeDeviation, wanderingTimeDeviation)));
     }
 
-    /// <summary>
-    /// Sets the next locations once the amount of time alloted
-    /// passes.
-    /// </summary>
-    /// <param name="time">The amount of time to wait.</param>
-    /// <param name="loc">The location to visit after waiting.</param>
-    /// <returns></returns>
-    private IEnumerator WanderingWait(float time) {
-        yield return new WaitForSeconds(time);
-        Wander();
-    }
     #endregion
 
     #region Talk
 
-    public override void Talk() {
-    }
-
     public void Talk(GameObject gameObject) {
-        UpdateState(States.Talking);
         NPCMovementController.Stop();
         NPCMovementController.SetLocation(gameObject.transform.position + gameObject.transform.forward);
         //NPCMovementController.LookAt(gameObject.transform.position);
@@ -97,7 +70,6 @@ public class NPCController : Controller {
     }
 
     public void StopTalk() {
-        UpdateToLastState();
         if (stateCoroutine != null) {
             StopCoroutine(stateCoroutine);
         }
@@ -106,14 +78,41 @@ public class NPCController : Controller {
 
     #endregion
 
+    private Root behaviorTree;
+    private Blackboard blackboard;
 
-    public override void Interact() {
+    private Root CreateBehaviourTree() {
+        // we always need a root node
+        return new Root(
+
+            // kick up our service to update the "playerDistance" and "playerLocalPos" Blackboard values every 125 milliseconds
+            new Service(0.125f, UpdateBlackBoards,
+
+                new Selector(
+
+                    new BlackboardCondition("state", Operator.IS_EQUAL, States.Idle, Stops.IMMEDIATE_RESTART,
+
+                        new Action(() => _movementController.Stop()) { Label = "Idle" }
+                    
+                    ),
+
+                    new BlackboardCondition("state", Operator.IS_EQUAL, States.Wandering, Stops.IMMEDIATE_RESTART,
+
+                        new Sequence(
+
+                            new Action(() => Wander()) { Label = "Wander" }
+
+                        )
+
+                    )
+
+                )
+            )
+        );
     }
 
-    public override void Attack() {
-    }
-
-    public override void Search() {
+    public void UpdateBlackBoards () {
+        blackboard["state"] = startState;
     }
 
 }

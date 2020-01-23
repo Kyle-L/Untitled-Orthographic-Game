@@ -30,9 +30,6 @@ public abstract class MovementController : MonoBehaviour {
     public bool agentControlled { get; set; } = true;
     public bool isWalking { get; private set; } = false;
 
-    public delegate void EventHandler(object sender, EventArgs args);
-    public event EventHandler ReachedDestination = delegate { };
-
     protected float verticalVelocity;
     protected Vector3 direction;
 
@@ -86,13 +83,8 @@ public abstract class MovementController : MonoBehaviour {
         _animator.SetFloat("SpeedX", speedX);
 
         // If the npc is walking, check to see if it should be heading to next destination.
-        if (isWalking && !_navMeshAgent.pathPending) {
-            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) {
-                if (!_navMeshAgent.hasPath || _characterController.velocity.sqrMagnitude == 0f) {
-                    ReachedDestination(this, new EventArgs());
-                    isWalking = false;
-                }
-            }
+        if (!_navMeshAgent.pathPending && _characterController.velocity.sqrMagnitude == 0f) {
+            isWalking = false;
         }
     }
 
