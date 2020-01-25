@@ -1,11 +1,6 @@
-﻿using System;
-
-namespace NPBehave
-{
-    public class Exception : System.Exception
-    {
-        public Exception(string message) : base(message)
-        {
+﻿namespace NPBehave {
+    public class Exception : System.Exception {
+        public Exception(string message) : base(message) {
         }
     }
 }

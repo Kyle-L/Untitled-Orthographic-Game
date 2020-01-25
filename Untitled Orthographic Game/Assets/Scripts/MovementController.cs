@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -33,7 +32,7 @@ public abstract class MovementController : MonoBehaviour {
     protected float verticalVelocity;
     protected Vector3 direction;
 
-    protected void Start() {
+    protected void Awake() {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
         _characterController = this.GetComponent<CharacterController>();
         _animator = this.GetComponent<Animator>();
@@ -107,8 +106,6 @@ public abstract class MovementController : MonoBehaviour {
     /// </summary>
     /// <param name="target"></param>
     public void Face(Transform target) {
-        _headIKController?.LookAt(target);
-
         // Stops the npc from being able to move.
         Stop();
 

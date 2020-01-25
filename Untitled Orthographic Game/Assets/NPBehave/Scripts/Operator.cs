@@ -1,7 +1,5 @@
-namespace NPBehave
-{
-    public enum Operator
-    {
+namespace NPBehave {
+    public enum Operator {
         IS_SET,
         IS_NOT_SET,
         IS_EQUAL,

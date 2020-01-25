@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovementController : MovementController {
 
@@ -9,10 +7,6 @@ public class PlayerMovementController : MovementController {
     public Transform target;
 
     public bool Control { get; set; } = true;
-
-    private new void Start() {
-        base.Start();
-    }
 
     private new void Update() {
         direction = Vector3.zero;

@@ -1,9 +1,6 @@
-﻿namespace NPBehave
-{
-    public abstract class Task : Node
-    {
-        public Task(string name) : base(name)
-        {
+﻿namespace NPBehave {
+    public abstract class Task : Node {
+        public Task(string name) : base(name) {
         }
     }
 }

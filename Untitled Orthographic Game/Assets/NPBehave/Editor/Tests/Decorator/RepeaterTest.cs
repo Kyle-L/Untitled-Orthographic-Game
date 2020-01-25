@@ -1,12 +1,9 @@
 ﻿using NUnit.Framework;
 
-namespace NPBehave
-{
-    public class RepeaterTest : Test
-    {
+namespace NPBehave {
+    public class RepeaterTest : Test {
         [Test]
-        public void ShouldFail_WhenDecorateeFails()
-        {
+        public void ShouldFail_WhenDecorateeFails() {
             MockNode failingChild = new MockNode();
             Repeater sut = new Repeater(-1, failingChild);
             TestRoot behaviorTree = CreateBehaviorTree(sut);
@@ -22,8 +19,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldSucceed_WhenDecorateeSucceededGivenTimes()
-        {
+        public void ShouldSucceed_WhenDecorateeSucceededGivenTimes() {
             MockNode succeedingChild = new MockNode();
             Repeater sut = new Repeater(3, succeedingChild);
             TestRoot behaviorTree = CreateBehaviorTree(sut);
@@ -31,8 +27,7 @@ namespace NPBehave
             behaviorTree.Start();
             Assert.AreEqual(Node.State.ACTIVE, sut.CurrentState);
 
-            for (int i = 0; i < 2; i++)
-            {
+            for (int i = 0; i < 2; i++) {
                 succeedingChild.Finish(true);
                 Assert.AreEqual(Node.State.ACTIVE, sut.CurrentState);
                 Assert.IsFalse(behaviorTree.DidFinish);
@@ -46,8 +41,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldWaitForNextUpdate_WhenDecorateeSucceedsImmediately()
-        {
+        public void ShouldWaitForNextUpdate_WhenDecorateeSucceedsImmediately() {
             MockNode succeedingChild = new MockNode();
             Repeater sut = new Repeater(-1, succeedingChild);
             TestRoot behaviorTree = CreateBehaviorTree(sut);
@@ -68,8 +62,7 @@ namespace NPBehave
 
 
         [Test]
-        public void ShouldNotLeaveObserversRegistered_WhenInactive()
-        {
+        public void ShouldNotLeaveObserversRegistered_WhenInactive() {
             MockNode child = new MockNode();
             Repeater sut = new Repeater(-1, child);
             TestRoot behaviorTree = CreateBehaviorTree(sut);

@@ -7,7 +7,7 @@ public class CharacterSerializer : MonoBehaviour {
     public Controller[] AllCharacters { get; private set; }
     public Transform[] Lookable { get; private set; }
 
-    void Start() {
+    void Awake() {
         #region Enforces Singleton Pattern.
         //Check if instance already exists
         if (instance == null) {

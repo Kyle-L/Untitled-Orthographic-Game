@@ -1,12 +1,10 @@
-﻿using UnityEngine;
-using NPBehave;
+﻿using NPBehave;
+using UnityEngine;
 
-public class NPBehaveExampleHelloBlackboardsAI : MonoBehaviour
-{
+public class NPBehaveExampleHelloBlackboardsAI : MonoBehaviour {
     private Root behaviorTree;
 
-    void Start()
-    {
+    void Start() {
         behaviorTree = new Root(
 
             // toggle the 'toggled' blackboard boolean flag around every 500 milliseconds

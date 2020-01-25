@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 
-namespace NPBehave
-{
+namespace NPBehave {
 
-    public class Clock
-    {
+    public class Clock {
         private List<System.Action> updateObservers = new List<System.Action>();
         private Dictionary<System.Action, Timer> timers = new Dictionary<System.Action, Timer>();
         private HashSet<System.Action> removeObservers = new HashSet<System.Action>();
@@ -14,18 +12,16 @@ namespace NPBehave
         private Dictionary<System.Action, Timer> addTimers = new Dictionary<System.Action, Timer>();
         private bool isInUpdate = false;
 
-        class Timer
-        {
+        class Timer {
             public double scheduledTime = 0f;
             public int repeat = 0;
             public bool used = false;
-			public double delay = 0f;
-			public float randomVariance = 0.0f;
+            public double delay = 0f;
+            public float randomVariance = 0.0f;
 
-			public void ScheduleAbsoluteTime(double elapsedTime)
-			{
-				scheduledTime = elapsedTime + delay - randomVariance * 0.5f + randomVariance * UnityEngine.Random.value;
-			}
+            public void ScheduleAbsoluteTime(double elapsedTime) {
+                scheduledTime = elapsedTime + delay - randomVariance * 0.5f + randomVariance * UnityEngine.Random.value;
+            }
         }
 
         private double elapsedTime = 0f;
@@ -37,8 +33,7 @@ namespace NPBehave
         /// <param name="time">time in milliseconds</param>
         /// <param name="repeat">number of times to repeat, set to -1 to repeat until unregistered.</param>
         /// <param name="action">method to invoke</param>
-        public void AddTimer(float time, int repeat, System.Action action)
-        {
+        public void AddTimer(float time, int repeat, System.Action action) {
             AddTimer(time, 0f, repeat, action);
         }
 
@@ -47,58 +42,44 @@ namespace NPBehave
         /// <param name="randomVariance">deviate from time on a random basis</param>
         /// <param name="repeat">number of times to repeat, set to -1 to repeat until unregistered.</param>
         /// <param name="action">method to invoke</param>
-        public void AddTimer(float delay, float randomVariance, int repeat, System.Action action)
-        {
-			
-			Timer timer = null;
+        public void AddTimer(float delay, float randomVariance, int repeat, System.Action action) {
 
-            if (!isInUpdate)
-            {
-                if (!this.timers.ContainsKey(action))
-                {
-					this.timers[action] = getTimerFromPool();
-                }
-				timer = this.timers[action];
-            }
-            else
-            {
-                if (!this.addTimers.ContainsKey(action))
-                {
-					this.addTimers[action] = getTimerFromPool();
-                }
-				timer = this.addTimers [action];
+            Timer timer = null;
 
-                if (this.removeTimers.Contains(action))
-                {
+            if (!isInUpdate) {
+                if (!this.timers.ContainsKey(action)) {
+                    this.timers[action] = getTimerFromPool();
+                }
+                timer = this.timers[action];
+            } else {
+                if (!this.addTimers.ContainsKey(action)) {
+                    this.addTimers[action] = getTimerFromPool();
+                }
+                timer = this.addTimers[action];
+
+                if (this.removeTimers.Contains(action)) {
                     this.removeTimers.Remove(action);
                 }
             }
 
-			Assert.IsTrue(timer.used);
-			timer.delay = delay;
-			timer.randomVariance = randomVariance;
-			timer.repeat = repeat;
-			timer.ScheduleAbsoluteTime(elapsedTime);
+            Assert.IsTrue(timer.used);
+            timer.delay = delay;
+            timer.randomVariance = randomVariance;
+            timer.repeat = repeat;
+            timer.ScheduleAbsoluteTime(elapsedTime);
         }
 
-        public void RemoveTimer(System.Action action)
-        {
-            if (!isInUpdate)
-            {
-                if (this.timers.ContainsKey(action))
-                {
+        public void RemoveTimer(System.Action action) {
+            if (!isInUpdate) {
+                if (this.timers.ContainsKey(action)) {
                     timers[action].used = false;
                     this.timers.Remove(action);
                 }
-            }
-            else
-            {
-                if (this.timers.ContainsKey(action))
-                {
+            } else {
+                if (this.timers.ContainsKey(action)) {
                     this.removeTimers.Add(action);
                 }
-                if (this.addTimers.ContainsKey(action))
-                {
+                if (this.addTimers.ContainsKey(action)) {
                     Assert.IsTrue(this.addTimers[action].used);
                     this.addTimers[action].used = false;
                     this.addTimers.Remove(action);
@@ -106,24 +87,15 @@ namespace NPBehave
             }
         }
 
-        public bool HasTimer(System.Action action)
-        {
-            if (!isInUpdate)
-            {
+        public bool HasTimer(System.Action action) {
+            if (!isInUpdate) {
                 return this.timers.ContainsKey(action);
-            }
-            else
-            {
-                if (this.removeTimers.Contains(action))
-                {
+            } else {
+                if (this.removeTimers.Contains(action)) {
                     return false;
-                }
-                else if (this.addTimers.ContainsKey(action))
-                {
+                } else if (this.addTimers.ContainsKey(action)) {
                     return true;
-                }
-                else
-                {
+                } else {
                     return this.timers.ContainsKey(action);
                 }
             }
@@ -131,125 +103,90 @@ namespace NPBehave
 
         /// <summary>Register a function that is called every frame</summary>
         /// <param name="action">function to invoke</param>
-        public void AddUpdateObserver(System.Action action)
-        {
-            if (!isInUpdate)
-            {
+        public void AddUpdateObserver(System.Action action) {
+            if (!isInUpdate) {
                 this.updateObservers.Add(action);
-            }
-            else
-            {
-                if (!this.updateObservers.Contains(action))
-                {
+            } else {
+                if (!this.updateObservers.Contains(action)) {
                     this.addObservers.Add(action);
                 }
-                if (this.removeObservers.Contains(action))
-                {
+                if (this.removeObservers.Contains(action)) {
                     this.removeObservers.Remove(action);
                 }
             }
         }
 
-        public void RemoveUpdateObserver(System.Action action)
-        {
-            if (!isInUpdate)
-            {
+        public void RemoveUpdateObserver(System.Action action) {
+            if (!isInUpdate) {
                 this.updateObservers.Remove(action);
-            }
-            else
-            {
-                if (this.updateObservers.Contains(action))
-                {
+            } else {
+                if (this.updateObservers.Contains(action)) {
                     this.removeObservers.Add(action);
                 }
-                if (this.addObservers.Contains(action))
-                {
+                if (this.addObservers.Contains(action)) {
                     this.addObservers.Remove(action);
                 }
             }
         }
 
-        public bool HasUpdateObserver(System.Action action)
-        {
-            if (!isInUpdate)
-            {
+        public bool HasUpdateObserver(System.Action action) {
+            if (!isInUpdate) {
                 return this.updateObservers.Contains(action);
-            }
-            else
-            {
-                if (this.removeObservers.Contains(action))
-                {
+            } else {
+                if (this.removeObservers.Contains(action)) {
                     return false;
-                }
-                else if (this.addObservers.Contains(action))
-                {
+                } else if (this.addObservers.Contains(action)) {
                     return true;
-                }
-                else
-                {
+                } else {
                     return this.updateObservers.Contains(action);
                 }
             }
         }
 
-        public void Update(float deltaTime)
-        {
+        public void Update(float deltaTime) {
             this.elapsedTime += deltaTime;
 
             this.isInUpdate = true;
 
-            foreach (System.Action action in updateObservers)
-            {
-                if (!removeObservers.Contains(action))
-                {
+            foreach (System.Action action in updateObservers) {
+                if (!removeObservers.Contains(action)) {
                     action.Invoke();
                 }
             }
 
             Dictionary<System.Action, Timer>.KeyCollection keys = timers.Keys;
-			foreach (System.Action callback in keys)
-            {
-                if (this.removeTimers.Contains(callback))
-                {
+            foreach (System.Action callback in keys) {
+                if (this.removeTimers.Contains(callback)) {
                     continue;
                 }
 
-				Timer timer = timers[callback];
-                if (timer.scheduledTime <= this.elapsedTime)
-                {
-                    if (timer.repeat == 0)
-                    {
+                Timer timer = timers[callback];
+                if (timer.scheduledTime <= this.elapsedTime) {
+                    if (timer.repeat == 0) {
                         RemoveTimer(callback);
-                    }
-                    else if (timer.repeat >= 0)
-                    {
+                    } else if (timer.repeat >= 0) {
                         timer.repeat--;
                     }
                     callback.Invoke();
-					timer.ScheduleAbsoluteTime(elapsedTime);
+                    timer.ScheduleAbsoluteTime(elapsedTime);
                 }
             }
 
-            foreach (System.Action action in this.addObservers)
-            {
+            foreach (System.Action action in this.addObservers) {
                 this.updateObservers.Add(action);
             }
-            foreach (System.Action action in this.removeObservers)
-            {
+            foreach (System.Action action in this.removeObservers) {
                 this.updateObservers.Remove(action);
             }
-            foreach (System.Action action in this.addTimers.Keys)
-            {
-                if (this.timers.ContainsKey(action))
-                {
+            foreach (System.Action action in this.addTimers.Keys) {
+                if (this.timers.ContainsKey(action)) {
                     Assert.AreNotEqual(this.timers[action], this.addTimers[action]);
                     this.timers[action].used = false;
                 }
                 Assert.IsTrue(this.addTimers[action].used);
                 this.timers[action] = this.addTimers[action];
             }
-            foreach (System.Action action in this.removeTimers)
-            {
+            foreach (System.Action action in this.removeTimers) {
                 Assert.IsTrue(this.timers[action].used);
                 timers[action].used = false;
                 this.timers.Remove(action);
@@ -262,40 +199,31 @@ namespace NPBehave
             this.isInUpdate = false;
         }
 
-        public int NumUpdateObservers
-        {
-            get
-            {
+        public int NumUpdateObservers {
+            get {
                 return updateObservers.Count;
             }
         }
 
-        public int NumTimers
-        {
-            get
-            {
+        public int NumTimers {
+            get {
                 return timers.Count;
             }
         }
 
-        public double ElapsedTime
-        {
-            get
-            {
+        public double ElapsedTime {
+            get {
                 return elapsedTime;
             }
         }
 
-        private Timer getTimerFromPool()
-        {
+        private Timer getTimerFromPool() {
             int i = 0;
             int l = timerPool.Count;
             Timer timer = null;
-            while (i < l)
-            {
+            while (i < l) {
                 int timerIndex = (i + currentTimerPoolIndex) % l;
-                if (!timerPool[timerIndex].used)
-                {
+                if (!timerPool[timerIndex].used) {
                     currentTimerPoolIndex = timerIndex;
                     timer = timerPool[timerIndex];
                     break;
@@ -303,8 +231,7 @@ namespace NPBehave
                 i++;
             }
 
-            if (timer == null)
-            {
+            if (timer == null) {
                 timer = new Timer();
                 currentTimerPoolIndex = 0;
                 timerPool.Add(timer);
@@ -314,10 +241,8 @@ namespace NPBehave
             return timer;
         }
 
-        public int DebugPoolSize
-        {
-            get
-            {
+        public int DebugPoolSize {
+            get {
                 return this.timerPool.Count;
             }
         }

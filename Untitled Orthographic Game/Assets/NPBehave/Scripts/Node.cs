@@ -1,11 +1,8 @@
 ﻿using UnityEngine.Assertions;
 
-namespace NPBehave
-{
-    public abstract class Node
-    {
-        public enum State
-        {
+namespace NPBehave {
+    public abstract class Node {
+        public enum State {
             INACTIVE,
             ACTIVE,
             STOP_REQUESTED,
@@ -13,91 +10,72 @@ namespace NPBehave
 
         protected State currentState = State.INACTIVE;
 
-        public State CurrentState
-        {
+        public State CurrentState {
             get { return currentState; }
         }
 
         public Root RootNode;
 
         private Container parentNode;
-        public Container ParentNode
-        {
-            get
-            {
+        public Container ParentNode {
+            get {
                 return parentNode;
             }
         }
 
         private string label;
 
-        public string Label
-        {
-            get
-            {
+        public string Label {
+            get {
                 return label;
             }
-            set
-            {
+            set {
                 label = value;
             }
         }
 
         private string name;
 
-        public string Name
-        {
-            get
-            {
+        public string Name {
+            get {
                 return name;
             }
         }
 
-        public virtual Blackboard Blackboard
-        {
-            get
-            {
+        public virtual Blackboard Blackboard {
+            get {
                 return RootNode.Blackboard;
             }
         }
 
-        public virtual Clock Clock
-        {
-            get
-            {
+        public virtual Clock Clock {
+            get {
                 return RootNode.Clock;
             }
         }
 
-        public bool IsStopRequested
-        {
-            get
-            {
+        public bool IsStopRequested {
+            get {
                 return this.currentState == State.STOP_REQUESTED;
             }
         }
 
-        public bool IsActive
-        {
-            get
-            {
+        public bool IsActive {
+            get {
                 return this.currentState == State.ACTIVE;
             }
         }
 
 
-        public Node(string name)
-        {
+        public Node(string name) {
             this.name = name;
         }
 
-        public virtual void SetRoot(Root rootNode)
-        {
+        public virtual void SetRoot(Root rootNode) {
             this.RootNode = rootNode;
         }
 
-        public void SetParent(Container parent)
-        {
+        public void SetParent(Container parent) {
             this.parentNode = parent;
         }
 
@@ -110,8 +88,7 @@ namespace NPBehave
         public bool DebugLastResult = false;
 #endif
 
-        public void Start()
-        {
+        public void Start() {
             // Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes, tried to start: " + this.Name + "! PATH: " + GetPath());
             Assert.AreEqual(this.currentState, State.INACTIVE, "can only start inactive nodes");
 
@@ -126,8 +103,7 @@ namespace NPBehave
         /// <summary>
         /// TODO: Rename to "Cancel" in next API-Incompatible version
         /// </summary>
-        public void Stop()
-        {
+        public void Stop() {
             // Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop " + this.Name + "! PATH: " + GetPath());
             Assert.AreEqual(this.currentState, State.ACTIVE, "can only stop active nodes, tried to stop");
             this.currentState = State.STOP_REQUESTED;
@@ -139,21 +115,18 @@ namespace NPBehave
             DoStop();
         }
 
-        protected virtual void DoStart()
-        {
+        protected virtual void DoStart() {
 
         }
 
-        protected virtual void DoStop()
-        {
+        protected virtual void DoStop() {
 
         }
 
 
         /// THIS ABSOLUTLY HAS TO BE THE LAST CALL IN YOUR FUNCTION, NEVER MODIFY
         /// ANY STATE AFTER CALLING Stopped !!!!
-        protected virtual void Stopped(bool success)
-        {
+        protected virtual void Stopped(bool success) {
             // Assert.AreNotEqual(this.currentState, State.INACTIVE, "The Node " + this + " called 'Stopped' while in state INACTIVE, something is wrong! PATH: " + GetPath());
             Assert.AreNotEqual(this.currentState, State.INACTIVE, "Called 'Stopped' while in state INACTIVE, something is wrong!");
             this.currentState = State.INACTIVE;
@@ -163,21 +136,18 @@ namespace NPBehave
             this.DebugLastStoppedAt = UnityEngine.Time.time;
             DebugLastResult = success;
 #endif
-            if (this.ParentNode != null)
-            {
+            if (this.ParentNode != null) {
                 this.ParentNode.ChildStopped(this, success);
             }
         }
 
-        public virtual void ParentCompositeStopped(Composite composite)
-        {
+        public virtual void ParentCompositeStopped(Composite composite) {
             DoParentCompositeStopped(composite);
         }
 
         /// THIS IS CALLED WHILE YOU ARE INACTIVE, IT's MEANT FOR DECORATORS TO REMOVE ANY PENDING
         /// OBSERVERS
-        protected virtual void DoParentCompositeStopped(Composite composite)
-        {
+        protected virtual void DoParentCompositeStopped(Composite composite) {
             /// be careful with this!
         }
 
@@ -196,19 +166,14 @@ namespace NPBehave
         //     }
         // }
 
-        override public string ToString()
-        {
-            return !string.IsNullOrEmpty(Label) ? (this.Name + "{"+Label+"}") : this.Name;
+        override public string ToString() {
+            return !string.IsNullOrEmpty(Label) ? (this.Name + "{" + Label + "}") : this.Name;
         }
 
-        protected string GetPath()
-        {
-            if (ParentNode != null)
-            {
+        protected string GetPath() {
+            if (ParentNode != null) {
                 return ParentNode.GetPath() + "/" + Name;
-            }
-            else
-            {
+            } else {
                 return Name;
             }
         }

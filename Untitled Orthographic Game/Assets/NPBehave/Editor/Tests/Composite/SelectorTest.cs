@@ -1,12 +1,9 @@
 ﻿using NUnit.Framework;
-namespace NPBehave
-{
+namespace NPBehave {
 
-    public class SelectorTest : Test
-    {
+    public class SelectorTest : Test {
         [Test]
-        public void ShouldFail_WhenSingleChildFails()
-        {
+        public void ShouldFail_WhenSingleChildFails() {
             MockNode failingChild = new MockNode();
             Selector sut = new Selector(failingChild);
             TestRoot behaviorTree = CreateBehaviorTree(sut);
@@ -23,8 +20,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldSucceed_WhenSingleChildSucceeds()
-        {
+        public void ShouldSucceed_WhenSingleChildSucceeds() {
             MockNode succeedingChild = new MockNode();
             Selector sut = new Selector(succeedingChild);
             TestRoot behaviorTree = CreateBehaviorTree(sut);
@@ -41,8 +37,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldFail_WhenStoppedExplicitly()
-        {
+        public void ShouldFail_WhenStoppedExplicitly() {
             MockNode failingChild = new MockNode(false);
             Selector sut = new Selector(failingChild);
             TestRoot behaviorTree = CreateBehaviorTree(sut);
@@ -59,8 +54,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldSucceed_WhenStoppedExplicitlyButChildStillFinishesSuccessfully()
-        {
+        public void ShouldSucceed_WhenStoppedExplicitlyButChildStillFinishesSuccessfully() {
             MockNode succeedingChild = new MockNode(true);
             Selector sut = new Selector(succeedingChild);
             TestRoot behaviorTree = CreateBehaviorTree(sut);
@@ -77,8 +71,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldSucceed_WhenFirstChildSuccessful()
-        {
+        public void ShouldSucceed_WhenFirstChildSuccessful() {
             MockNode firstChild = new MockNode();
             MockNode secondChild = new MockNode();
             Selector sut = new Selector(firstChild, secondChild);
@@ -100,8 +93,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldProcceedToSecondChild_WhenFirstChildFailed()
-        {
+        public void ShouldProcceedToSecondChild_WhenFirstChildFailed() {
             MockNode firstChild = new MockNode();
             MockNode secondChild = new MockNode();
             Selector sut = new Selector(firstChild, secondChild);
@@ -129,8 +121,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void StopLowerPriorityChildrenForChild_WithoutImmediateRestart_ShouldCancelSecondChild()
-        {
+        public void StopLowerPriorityChildrenForChild_WithoutImmediateRestart_ShouldCancelSecondChild() {
             MockNode firstChild = new MockNode();
             MockNode secondChild = new MockNode();
             Selector sut = new Selector(firstChild, secondChild);
@@ -153,8 +144,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void StopLowerPriorityChildrenForChild_WithImmediateRestart_ShouldRestartFirstChild_WhenSecondChildFails()
-        {
+        public void StopLowerPriorityChildrenForChild_WithImmediateRestart_ShouldRestartFirstChild_WhenSecondChildFails() {
             MockNode firstChild = new MockNode();
             MockNode secondChild = new MockNode(false);
             Selector sut = new Selector(firstChild, secondChild);
@@ -176,8 +166,7 @@ namespace NPBehave
         }
 
         [Test]
-        public void StopLowerPriorityChildrenForChild_WithImmediateRestart_ShouldNotRestartFirstChild_WhenSecondChildSucceeds()
-        {
+        public void StopLowerPriorityChildrenForChild_WithImmediateRestart_ShouldNotRestartFirstChild_WhenSecondChildSucceeds() {
             MockNode firstChild = new MockNode();
             MockNode secondChild = new MockNode(true);
             Selector sut = new Selector(firstChild, secondChild);

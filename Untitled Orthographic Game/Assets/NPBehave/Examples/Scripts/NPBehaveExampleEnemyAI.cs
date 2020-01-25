@@ -1,13 +1,11 @@
-﻿using UnityEngine;
-using NPBehave;
+﻿using NPBehave;
+using UnityEngine;
 
-public class NPBehaveExampleEnemyAI : MonoBehaviour
-{
+public class NPBehaveExampleEnemyAI : MonoBehaviour {
     private Blackboard blackboard;
     private Root behaviorTree;
 
-    void Start()
-    {
+    void Start() {
         // create our behaviour tree and get it's blackboard
         behaviorTree = CreateBehaviourTree();
         blackboard = behaviorTree.Blackboard;
@@ -22,8 +20,7 @@ public class NPBehaveExampleEnemyAI : MonoBehaviour
         behaviorTree.Start();
     }
 
-    private Root CreateBehaviourTree()
-    {
+    private Root CreateBehaviourTree() {
         // we always need a root node
         return new Root(
 
@@ -43,15 +40,11 @@ public class NPBehaveExampleEnemyAI : MonoBehaviour
                             new Action(() => SetColor(Color.red)) { Label = "Change to Red" },
 
                             // go towards player until playerDistance is greater than 7.5 ( in that case, _shouldCancel will get true )
-                            new Action((bool _shouldCancel) =>
-                            {
-                                if (!_shouldCancel)
-                                {
+                            new Action((bool _shouldCancel) => {
+                                if (!_shouldCancel) {
                                     MoveTowards(blackboard.Get<Vector3>("playerLocalPos"));
                                     return Action.Result.PROGRESS;
-                                }
-                                else
-                                {
+                                } else {
                                     return Action.Result.FAILED;
                                 }
                             }) { Label = "Follow" }
@@ -68,20 +61,17 @@ public class NPBehaveExampleEnemyAI : MonoBehaviour
         );
     }
 
-    private void UpdatePlayerDistance()
-    {
+    private void UpdatePlayerDistance() {
         Vector3 playerLocalPos = this.transform.InverseTransformPoint(GameObject.FindGameObjectWithTag("Player").transform.position);
         behaviorTree.Blackboard["playerLocalPos"] = playerLocalPos;
         behaviorTree.Blackboard["playerDistance"] = playerLocalPos.magnitude;
     }
 
-    private void MoveTowards(Vector3 localPosition)
-    {
+    private void MoveTowards(Vector3 localPosition) {
         transform.localPosition += localPosition * 0.5f * Time.deltaTime;
     }
 
-    private void SetColor(Color color)
-    {
+    private void SetColor(Color color) {
         GetComponent<MeshRenderer>().material.SetColor("_Color", color);
     }
 }

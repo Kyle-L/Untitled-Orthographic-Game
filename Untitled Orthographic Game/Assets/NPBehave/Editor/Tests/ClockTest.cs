@@ -1,20 +1,16 @@
 ﻿using NUnit.Framework;
-namespace NPBehave
-{
+namespace NPBehave {
 
-    public class ClockTest
-    {
+    public class ClockTest {
         private NPBehave.Clock sut;
 
         [SetUp]
-        public void SetUp()
-        {
+        public void SetUp() {
             this.sut = new NPBehave.Clock();
         }
 
         [Test]
-        public void ShouldUpdateObserversInOrder()
-        {
+        public void ShouldUpdateObserversInOrder() {
             int currentAction = 0;
             System.Action action0 = () => { Assert.AreEqual(0, currentAction++); };
             System.Action action1 = () => { Assert.AreEqual(1, currentAction++); };
@@ -35,15 +31,12 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldNotUpdateObserver_WhenRemovedDuringUpdate()
-        {
+        public void ShouldNotUpdateObserver_WhenRemovedDuringUpdate() {
             bool action2Invoked = false;
-            System.Action action2 = () =>
-            {
+            System.Action action2 = () => {
                 action2Invoked = true;
             };
-            System.Action action1 = new System.Action(() =>
-            {
+            System.Action action1 = new System.Action(() => {
                 Assert.IsFalse(action2Invoked);
                 this.sut.RemoveUpdateObserver(action2);
             });
@@ -55,15 +48,12 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldNotUpdateTimer_WhenRemovedDuringUpdate()
-        {
+        public void ShouldNotUpdateTimer_WhenRemovedDuringUpdate() {
             bool timer2Invoked = false;
-            System.Action timer2 = () =>
-            {
+            System.Action timer2 = () => {
                 timer2Invoked = true;
             };
-            System.Action action1 = new System.Action(() =>
-            {
+            System.Action action1 = new System.Action(() => {
                 Assert.IsFalse(timer2Invoked);
                 this.sut.RemoveTimer(timer2);
             });
@@ -75,16 +65,13 @@ namespace NPBehave
         }
 
         [Test]
-        public void ShouldNotUpdateTimer_WhenRemovedDuringTimer()
-        {
+        public void ShouldNotUpdateTimer_WhenRemovedDuringTimer() {
             // TODO: as it's a dictionary, the order of events could not always be correct...
             bool timer2Invoked = false;
-            System.Action timer2 = () =>
-            {
+            System.Action timer2 = () => {
                 timer2Invoked = true;
             };
-            System.Action timer1 = new System.Action(() =>
-            {
+            System.Action timer1 = new System.Action(() => {
                 Assert.IsFalse(timer2Invoked);
                 this.sut.RemoveTimer(timer2);
             });
@@ -95,26 +82,24 @@ namespace NPBehave
             Assert.IsFalse(timer2Invoked);
         }
 
-		[Test]
-		public void ShouldUpdateAgain_WhenUsingInfiniteRepititions()
-		{
-			int invokations = 0;
-			System.Action callback = new System.Action(() =>
-			{
-				invokations++;
-			});
+        [Test]
+        public void ShouldUpdateAgain_WhenUsingInfiniteRepititions() {
+            int invokations = 0;
+            System.Action callback = new System.Action(() => {
+                invokations++;
+            });
 
-			this.sut.AddTimer(0.9f, -1, callback);
-			this.sut.Update(1);
-			Assert.AreEqual(1, invokations);
-			this.sut.Update(1);
-			Assert.AreEqual(2, invokations);
-			this.sut.Update(1);
-			Assert.AreEqual(3, invokations);
-			this.sut.Update(0.1f);
-			Assert.AreEqual(3, invokations);
-			this.sut.Update(0.1f);
-			Assert.AreEqual(3, invokations);
-		}
+            this.sut.AddTimer(0.9f, -1, callback);
+            this.sut.Update(1);
+            Assert.AreEqual(1, invokations);
+            this.sut.Update(1);
+            Assert.AreEqual(2, invokations);
+            this.sut.Update(1);
+            Assert.AreEqual(3, invokations);
+            this.sut.Update(0.1f);
+            Assert.AreEqual(3, invokations);
+            this.sut.Update(0.1f);
+            Assert.AreEqual(3, invokations);
+        }
     }
 }

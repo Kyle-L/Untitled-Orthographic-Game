@@ -1,14 +1,10 @@
 ﻿using UnityEngine;
-using NPBehave;
 
-namespace NPBehave.Examples.ReusableSubtrees
-{
-    public class EnemyA : MonoBehaviour
-    {
+namespace NPBehave.Examples.ReusableSubtrees {
+    public class EnemyA : MonoBehaviour {
         private Root behaviorTree;
 
-        void Start()
-        {
+        void Start() {
             // this enemy is only able to move
             behaviorTree = new Root(
 

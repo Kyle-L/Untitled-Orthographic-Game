@@ -1,18 +1,15 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-namespace NPBehave
-{
-    public class UnityContext : MonoBehaviour
-    {
+namespace NPBehave {
+    public class UnityContext : MonoBehaviour {
         private static UnityContext instance = null;
 
-        private static UnityContext GetInstance()
-        {
-            if (instance == null)
-            {
-                GameObject gameObject = new GameObject();
-                gameObject.name = "~Context";
+        private static UnityContext GetInstance() {
+            if (instance == null) {
+                GameObject gameObject = new GameObject {
+                    name = "~Context"
+                };
                 instance = (UnityContext)gameObject.AddComponent(typeof(UnityContext));
                 gameObject.isStatic = true;
 #if !UNITY_EDITOR
@@ -22,16 +19,13 @@ namespace NPBehave
             return instance;
         }
 
-        public static Clock GetClock()
-        {
+        public static Clock GetClock() {
             return GetInstance().clock;
         }
 
-        public static Blackboard GetSharedBlackboard(string key)
-        {
+        public static Blackboard GetSharedBlackboard(string key) {
             UnityContext context = GetInstance();
-            if (!context.blackboards.ContainsKey(key))
-            {
+            if (!context.blackboards.ContainsKey(key)) {
                 context.blackboards.Add(key, new Blackboard(context.clock));
             }
             return context.blackboards[key];
@@ -41,8 +35,7 @@ namespace NPBehave
 
         private Clock clock = new Clock();
 
-        void Update()
-        {
+        void Update() {
             clock.Update(Time.deltaTime);
         }
     }

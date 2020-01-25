@@ -1,12 +1,9 @@
 ﻿using NUnit.Framework;
-namespace NPBehave
-{
+namespace NPBehave {
 
-    public class GeneralTest : Test
-    {
+    public class GeneralTest : Test {
         [Test]
-        public void ShouldNotActivateLowerPriorityBranchInCaseMultipleBranchesGetValid()
-        {
+        public void ShouldNotActivateLowerPriorityBranchInCaseMultipleBranchesGetValid() {
             this.Timer = new Clock();
             this.Blackboard = new Blackboard(Timer);
 
@@ -16,9 +13,9 @@ namespace NPBehave
             MockNode thirdChild = new MockNode(false);
 
             // coniditions for each subtree that listen the BB for events
-            BlackboardCondition firstCondition = new BlackboardCondition( "branch1", Operator.IS_EQUAL, true, Stops.IMMEDIATE_RESTART, firstChild );
-            BlackboardCondition secondCondition = new BlackboardCondition( "branch2", Operator.IS_EQUAL, true, Stops.IMMEDIATE_RESTART, secondChild );
-            BlackboardCondition thirdCondtion = new BlackboardCondition( "branch3", Operator.IS_EQUAL, true, Stops.IMMEDIATE_RESTART, thirdChild );
+            BlackboardCondition firstCondition = new BlackboardCondition("branch1", Operator.IS_EQUAL, true, Stops.IMMEDIATE_RESTART, firstChild);
+            BlackboardCondition secondCondition = new BlackboardCondition("branch2", Operator.IS_EQUAL, true, Stops.IMMEDIATE_RESTART, secondChild);
+            BlackboardCondition thirdCondtion = new BlackboardCondition("branch3", Operator.IS_EQUAL, true, Stops.IMMEDIATE_RESTART, thirdChild);
 
             // set up the tree
             Selector selector = new Selector(firstCondition, secondCondition, thirdCondtion);
@@ -26,7 +23,7 @@ namespace NPBehave
 
             // intially we want to activate branch3
             Blackboard.Set("branch3", true);
-           
+
             // start the tree
             behaviorTree.Start();
 

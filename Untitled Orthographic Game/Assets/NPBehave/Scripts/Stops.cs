@@ -1,7 +1,5 @@
-﻿namespace NPBehave
-{
-    public enum Stops
-    {
+﻿namespace NPBehave {
+    public enum Stops {
         NONE,
         SELF,
         LOWER_PRIORITY,

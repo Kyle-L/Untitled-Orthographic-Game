@@ -1,22 +1,15 @@
-﻿using UnityEngine;
-using UnityEngine.Assertions;
-using System.Collections;
+﻿using UnityEngine.Assertions;
 
-namespace NPBehave
-{
-    public class Selector : Composite
-    {
+namespace NPBehave {
+    public class Selector : Composite {
         private int currentIndex = -1;
 
-        public Selector(params Node[] children) : base("Selector", children)
-        {
+        public Selector(params Node[] children) : base("Selector", children) {
         }
 
 
-        protected override void DoStart()
-        {
-            foreach (Node child in Children)
-            {
+        protected override void DoStart() {
+            foreach (Node child in Children) {
                 Assert.AreEqual(child.CurrentState, State.INACTIVE);
             }
 
@@ -25,64 +18,42 @@ namespace NPBehave
             ProcessChildren();
         }
 
-        protected override void DoStop()
-        {
+        protected override void DoStop() {
             Children[currentIndex].Stop();
         }
 
-        protected override void DoChildStopped(Node child, bool result)
-        {
-            if (result)
-            {
+        protected override void DoChildStopped(Node child, bool result) {
+            if (result) {
                 Stopped(true);
-            }
-            else
-            {
+            } else {
                 ProcessChildren();
             }
         }
 
-        private void ProcessChildren()
-        {
-            if (++currentIndex < Children.Length)
-            {
-                if (IsStopRequested)
-                {
+        private void ProcessChildren() {
+            if (++currentIndex < Children.Length) {
+                if (IsStopRequested) {
                     Stopped(false);
-                }
-                else
-                {
+                } else {
                     Children[currentIndex].Start();
                 }
-            }
-            else
-            {
+            } else {
                 Stopped(false);
             }
         }
 
-        public override void StopLowerPriorityChildrenForChild(Node abortForChild, bool immediateRestart)
-        {
+        public override void StopLowerPriorityChildrenForChild(Node abortForChild, bool immediateRestart) {
             int indexForChild = 0;
             bool found = false;
-            foreach (Node currentChild in Children)
-            {
-                if (currentChild == abortForChild)
-                {
+            foreach (Node currentChild in Children) {
+                if (currentChild == abortForChild) {
                     found = true;
-                }
-                else if (!found)
-                {
+                } else if (!found) {
                     indexForChild++;
-                }
-                else if (found && currentChild.IsActive)
-                {
-                    if (immediateRestart)
-                    {
+                } else if (found && currentChild.IsActive) {
+                    if (immediateRestart) {
                         currentIndex = indexForChild - 1;
-                    }
-                    else
-                    {
+                    } else {
                         currentIndex = Children.Length;
                     }
                     currentChild.Stop();
@@ -91,8 +62,7 @@ namespace NPBehave
             }
         }
 
-        override public string ToString()
-        {
+        override public string ToString() {
             return base.ToString() + "[" + this.currentIndex + "]";
         }
     }

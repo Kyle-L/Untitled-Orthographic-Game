@@ -1,45 +1,61 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using NPBehave;
 
 public abstract class Controller : MonoBehaviour {
 
     [Header("States")]
-    [SerializeField]
-    protected States startState = States.Idle;
-
-    public States currentState { get; protected set; }
-    protected Stack<States> stateHistory;
-
-    [Header("Transforms")]
-    public Transform head;
-
-    protected Coroutine stateCoroutine;
+    public States currentState = States.Idle;
 
     public enum States {
         Idle,
         Wandering,
         Interacting,
-        Talking,
-        Searching,
-        Dying
+        Posed
     }
+    protected Stack<States> stateHistory;
 
-    protected MovementController _movementController;
+    // Status
+    public bool isAlive = true;
+
+    [Header("Behavior Tree")]
+    protected Root behaviorTree;
+    protected Blackboard blackboard;
+
+    // Components
+    public MovementController MovementController { get; protected set; }
 
     protected void Start() {
         stateHistory = new Stack<States>();
 
-        _movementController = GetComponent<MovementController>();
+        MovementController = GetComponent<MovementController>();
+
+        // create our behaviour tree and get it's blackboard
+        behaviorTree = CreateBehaviourTree();
+        blackboard = behaviorTree.Blackboard;
+
+        // attach the debugger component if executed in editor (helps to debug in the inspector) 
+        #if UNITY_EDITOR
+            Debugger debugger = (Debugger)this.gameObject.AddComponent(typeof(Debugger));
+            debugger.BehaviorTree = behaviorTree;
+        #endif
+
+        // start the behaviour tree
+        behaviorTree.Start();
     }
 
+    protected abstract Root CreateBehaviourTree();
+
+    protected abstract void UpdateBlackBoards();
+
     public void Die() {
-        _movementController.Stop();
-        _movementController.RagDoll();
+        MovementController.Stop();
+        MovementController.RagDoll();
     }
 
     public void Live() {
-        _movementController.Stop();
-        _movementController.StopRagdoll();
+        MovementController.Stop();
+        MovementController.StopRagdoll();
     }
 
 }

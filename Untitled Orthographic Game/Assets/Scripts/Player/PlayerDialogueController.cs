@@ -40,16 +40,19 @@ public class PlayerDialogueController : MonoBehaviour {
             }
 
             DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode);
-            PlayerControllerMain.instance.PlayerMovementController.Face(target.head.transform);
-            PlayerControllerMain.instance.PlayerMovementController.LookAt(target.head.transform);
+            PlayerControllerMain.instance.PlayerMovementController.Face(target.transform);
+            PlayerControllerMain.instance.PlayerMovementController.LookAt(target.transform);
             //PlayerControllerMain.instance.PlayerMovementController.SetLocation(target.transform.forward);
-            target.Talk(head);
+            target.ModifyBlackBoard(NPCController.BlackBoardVars.InteractingObject, PlayerControllerMain.instance);
+            target.ModifyBlackBoard(NPCController.BlackBoardVars.interactingObjectType, PlayerControllerMain.instance.GetType());
+            target.currentState = Controller.States.Interacting;
+            target.ModifyBlackBoard(NPCController.BlackBoardVars.State, NPCController.States.Interacting);
         }
     }
 
     private void StopDialogue() {
         if (target != null) {
-            target.StopTalk();
+            target.currentState = Controller.States.Wandering;
             target = null;
         }
         PlayerControllerMain.instance.PlayerMovementController.StopFace();

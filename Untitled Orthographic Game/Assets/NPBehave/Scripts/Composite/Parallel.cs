@@ -1,13 +1,9 @@
-using UnityEngine;
-using UnityEngine.Assertions;
 using System.Collections.Generic;
+using UnityEngine.Assertions;
 
-namespace NPBehave
-{
-    public class Parallel : Composite
-    {
-        public enum Policy
-        {
+namespace NPBehave {
+    public class Parallel : Composite {
+        public enum Policy {
             ONE,
             ALL,
         }
@@ -31,8 +27,7 @@ namespace NPBehave
         private bool successState;
         private bool childrenAborted;
 
-        public Parallel(Policy successPolicy, Policy failurePolicy, /*Wait waitForPendingChildrenRule,*/ params Node[] children) : base("Parallel", children)
-        {
+        public Parallel(Policy successPolicy, Policy failurePolicy, /*Wait waitForPendingChildrenRule,*/ params Node[] children) : base("Parallel", children) {
             this.successPolicy = successPolicy;
             this.failurePolicy = failurePolicy;
             // this.waitForPendingChildrenRule = waitForPendingChildrenRule;
@@ -40,10 +35,8 @@ namespace NPBehave
             this.childrenResults = new Dictionary<Node, bool>();
         }
 
-        protected override void DoStart()
-        {
-            foreach (Node child in Children)
-            {
+        protected override void DoStart() {
+            foreach (Node child in Children) {
                 Assert.AreEqual(child.CurrentState, State.INACTIVE);
             }
 
@@ -51,87 +44,62 @@ namespace NPBehave
             runningCount = 0;
             succeededCount = 0;
             failedCount = 0;
-            foreach (Node child in this.Children)
-            {
+            foreach (Node child in this.Children) {
                 runningCount++;
                 child.Start();
             }
         }
 
-        protected override void DoStop()
-        {
+        protected override void DoStop() {
             Assert.IsTrue(runningCount + succeededCount + failedCount == childrenCount);
 
-            foreach (Node child in this.Children)
-            {
-                if (child.IsActive)
-                {
+            foreach (Node child in this.Children) {
+                if (child.IsActive) {
                     child.Stop();
                 }
             }
         }
 
-        protected override void DoChildStopped(Node child, bool result)
-        {
+        protected override void DoChildStopped(Node child, bool result) {
             runningCount--;
-            if (result)
-            {
+            if (result) {
                 succeededCount++;
-            }
-            else
-            {
+            } else {
                 failedCount++;
             }
             this.childrenResults[child] = result;
 
             bool allChildrenStarted = runningCount + succeededCount + failedCount == childrenCount;
-            if (allChildrenStarted)
-            {
-                if (runningCount == 0)
-                {
+            if (allChildrenStarted) {
+                if (runningCount == 0) {
                     if (!this.childrenAborted) // if children got aborted because rule was evaluated previously, we don't want to override the successState 
                     {
-                        if (failurePolicy == Policy.ONE && failedCount > 0)
-                        {
+                        if (failurePolicy == Policy.ONE && failedCount > 0) {
                             successState = false;
-                        }
-                        else if (successPolicy == Policy.ONE && succeededCount > 0)
-                        {
+                        } else if (successPolicy == Policy.ONE && succeededCount > 0) {
                             successState = true;
-                        }
-                        else if (successPolicy == Policy.ALL && succeededCount == childrenCount)
-                        {
+                        } else if (successPolicy == Policy.ALL && succeededCount == childrenCount) {
                             successState = true;
-                        }
-                        else
-                        {
+                        } else {
                             successState = false;
                         }
                     }
                     Stopped(successState);
-                }
-                else if (!this.childrenAborted)
-                {
+                } else if (!this.childrenAborted) {
                     Assert.IsFalse(succeededCount == childrenCount);
                     Assert.IsFalse(failedCount == childrenCount);
 
-                    if (failurePolicy == Policy.ONE && failedCount > 0/* && waitForPendingChildrenRule != Wait.ON_FAILURE && waitForPendingChildrenRule != Wait.BOTH*/)
-                    {
+                    if (failurePolicy == Policy.ONE && failedCount > 0/* && waitForPendingChildrenRule != Wait.ON_FAILURE && waitForPendingChildrenRule != Wait.BOTH*/) {
                         successState = false;
                         childrenAborted = true;
-                    }
-                    else if (successPolicy == Policy.ONE && succeededCount > 0/* && waitForPendingChildrenRule != Wait.ON_SUCCESS && waitForPendingChildrenRule != Wait.BOTH*/)
-                    {
+                    } else if (successPolicy == Policy.ONE && succeededCount > 0/* && waitForPendingChildrenRule != Wait.ON_SUCCESS && waitForPendingChildrenRule != Wait.BOTH*/) {
                         successState = true;
                         childrenAborted = true;
                     }
 
-                    if (childrenAborted)
-                    {
-                        foreach (Node currentChild in this.Children)
-                        {
-                            if (currentChild.IsActive)
-                            {
+                    if (childrenAborted) {
+                        foreach (Node currentChild in this.Children) {
+                            if (currentChild.IsActive) {
                                 currentChild.Stop();
                             }
                         }
@@ -140,24 +108,17 @@ namespace NPBehave
             }
         }
 
-        public override void StopLowerPriorityChildrenForChild(Node abortForChild, bool immediateRestart)
-        {
-            if (immediateRestart)
-            {
+        public override void StopLowerPriorityChildrenForChild(Node abortForChild, bool immediateRestart) {
+            if (immediateRestart) {
                 Assert.IsFalse(abortForChild.IsActive);
-                if (childrenResults[abortForChild])
-                {
+                if (childrenResults[abortForChild]) {
                     succeededCount--;
-                }
-                else
-                {
+                } else {
                     failedCount--;
                 }
                 runningCount++;
                 abortForChild.Start();
-            }
-            else
-            {
+            } else {
                 throw new Exception("On Parallel Nodes all children have the same priority, thus the method does nothing if you pass false to 'immediateRestart'!");
             }
         }

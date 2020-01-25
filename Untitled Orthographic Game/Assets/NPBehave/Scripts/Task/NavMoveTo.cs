@@ -1,9 +1,7 @@
 using UnityEngine;
 
-namespace NPBehave
-{
-    public class NavMoveTo : Task
-    {
+namespace NPBehave {
+    public class NavMoveTo : Task {
         private const float DESTINATION_CHANGE_THRESHOLD = 0.0001f;
         private const uint DESTINATION_CHANGE_MAX_CHECKS = 100;
 
@@ -44,8 +42,7 @@ namespace NPBehave
             this.updateVariance = updateVariance;
         }
 
-        protected override void DoStart()
-        {
+        protected override void DoStart() {
             lastDestination = Vector3.zero;
             lastDistance = 99999999.0f;
             failedChecks = 0;
@@ -56,45 +53,34 @@ namespace NPBehave
             moveToBlackboardKey();
         }
 
-        protected override void DoStop()
-        {
+        protected override void DoStop() {
             stopAndCleanUp(false);
         }
 
-        private void onBlackboardValueChanged(Blackboard.Type type, object newValue)
-        {
+        private void onBlackboardValueChanged(Blackboard.Type type, object newValue) {
             moveToBlackboardKey();
         }
 
-        private void onUpdateTimer()
-        {
+        private void onUpdateTimer() {
             moveToBlackboardKey();
         }
 
-        private void moveToBlackboardKey()
-        {
+        private void moveToBlackboardKey() {
             object target = Blackboard.Get(blackboardKey);
-            if (target == null)
-            {
+            if (target == null) {
                 stopAndCleanUp(false);
                 return;
             }
 
             // get target location
             Vector3 destination = Vector3.zero;
-            if (target is Transform)
-            {
-                if (updateFrequency >= 0.0f)
-                {
+            if (target is Transform) {
+                if (updateFrequency >= 0.0f) {
                     destination = ((Transform)target).position;
                 }
-            }
-            else if (target is Vector3)
-            {
+            } else if (target is Vector3) {
                 destination = (Vector3)target;
-            }
-            else
-            {
+            } else {
                 Debug.LogWarning("NavMoveTo: Blackboard Key '" + this.blackboardKey + "' contained unsupported type '" + target.GetType());
                 stopAndCleanUp(false);
                 return;
@@ -107,26 +93,19 @@ namespace NPBehave
             bool distanceChanged = Mathf.Abs(agent.remainingDistance - lastDistance) > DESTINATION_CHANGE_THRESHOLD;
 
             // check if we are already at our goal and stop the task
-            if (lastDistance < this.tolerance)
-            {
-                if (stopOnTolerance || (!destinationChanged && !distanceChanged))
-                {
+            if (lastDistance < this.tolerance) {
+                if (stopOnTolerance || (!destinationChanged && !distanceChanged)) {
                     // reached the goal
                     stopAndCleanUp(true);
                     return;
                 }
-            }
-            else if (!destinationChanged && !distanceChanged)
-            {
-                if (failedChecks++ > DESTINATION_CHANGE_MAX_CHECKS)
-                {
+            } else if (!destinationChanged && !distanceChanged) {
+                if (failedChecks++ > DESTINATION_CHANGE_MAX_CHECKS) {
                     // could not reach the goal for whatever reason
                     stopAndCleanUp(false);
                     return;
                 }
-            }
-            else
-            {
+            } else {
                 failedChecks = 0;
             }
 
@@ -134,8 +113,7 @@ namespace NPBehave
             lastDistance = agent.remainingDistance;
         }
 
-        private void stopAndCleanUp(bool result)
-        {
+        private void stopAndCleanUp(bool result) {
             agent.destination = agent.transform.position;
             Blackboard.RemoveObserver(blackboardKey, onBlackboardValueChanged);
             Clock.RemoveTimer(onUpdateTimer);

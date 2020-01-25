@@ -1,12 +1,10 @@
-﻿using UnityEngine;
-using NPBehave;
+﻿using NPBehave;
+using UnityEngine;
 
-public class NPBehaveExampleHelloWorldAI : MonoBehaviour
-{
+public class NPBehaveExampleHelloWorldAI : MonoBehaviour {
     private Root behaviorTree;
 
-    void Start()
-    {
+    void Start() {
         behaviorTree = new Root(
             new Action(() => Debug.Log("Hello World!"))
         );
