@@ -47,33 +47,4 @@ public class PlayerControllerMain : Controller {
         PlayerSettingsController = GetComponent<PlayerSettingsController>();
     }
 
-    protected override Root CreateBehaviourTree() {
-        // we always need a root node
-        return new Root(
-
-            // kick up our service to update the "playerDistance" and "playerLocalPos" Blackboard values every 125 milliseconds
-            new Service(0.5f, UpdateBlackBoards,
-
-                new Parallel(Parallel.Policy.ONE, Parallel.Policy.ALL,
-
-                    new BlackboardCondition("look", Operator.IS_EQUAL, true, Stops.IMMEDIATE_RESTART,
-                        new Action((bool success) => {
-                            if (!success) {
-                                MovementController.LookAtRandom(CharacterSerializer.instance.Lookable);
-                                return Action.Result.PROGRESS;
-                            } else {
-                                MovementController.StopLookAt();
-                                return Action.Result.FAILED;
-                            }
-                        })
-                    )
-                )
-            )
-        );
-    }
-
-    protected override void UpdateBlackBoards() {
-        blackboard["look"] = true;
-        blackboard["state"] = currentState;
-    }
 }

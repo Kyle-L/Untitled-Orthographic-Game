@@ -44,9 +44,7 @@ public class PlayerDialogueController : MonoBehaviour {
             PlayerControllerMain.instance.PlayerMovementController.LookAt(target.transform);
             //PlayerControllerMain.instance.PlayerMovementController.SetLocation(target.transform.forward);
             target.ModifyBlackBoard(NPCController.BlackBoardVars.InteractingObject, PlayerControllerMain.instance);
-            target.ModifyBlackBoard(NPCController.BlackBoardVars.interactingObjectType, PlayerControllerMain.instance.GetType());
             target.currentState = Controller.States.Interacting;
-            target.ModifyBlackBoard(NPCController.BlackBoardVars.State, NPCController.States.Interacting);
         }
     }
 

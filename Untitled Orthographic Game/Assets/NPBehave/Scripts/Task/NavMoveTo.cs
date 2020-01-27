@@ -87,7 +87,8 @@ namespace NPBehave {
             }
 
             // set new destination
-            agent.destination = destination;
+            //agent.destination = destination;
+            agent.SetDestination(destination);
 
             bool destinationChanged = (agent.destination - lastDestination).sqrMagnitude > (DESTINATION_CHANGE_THRESHOLD * DESTINATION_CHANGE_THRESHOLD); //(destination - agent.destination).sqrMagnitude > (DESTINATION_CHANGE_THRESHOLD * DESTINATION_CHANGE_THRESHOLD);
             bool distanceChanged = Mathf.Abs(agent.remainingDistance - lastDistance) > DESTINATION_CHANGE_THRESHOLD;
@@ -114,7 +115,8 @@ namespace NPBehave {
         }
 
         private void stopAndCleanUp(bool result) {
-            agent.destination = agent.transform.position;
+            //agent.destination = agent.transform.position;
+            agent.SetDestination(agent.transform.position);
             Blackboard.RemoveObserver(blackboardKey, onBlackboardValueChanged);
             Clock.RemoveTimer(onUpdateTimer);
             Stopped(result);

@@ -2341,6 +2341,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1367408801}
+    - target: {fileID: 3027163334471997118, guid: 8f272cf7abf733445be4b692989c10ed,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3027163334471997119, guid: 8f272cf7abf733445be4b692989c10ed,
         type: 3}
       propertyPath: m_Enabled
@@ -3185,6 +3190,11 @@ PrefabInstance:
       propertyPath: head
       value: 
       objectReference: {fileID: 1960883839}
+    - target: {fileID: 4945974411171489541, guid: 8b6387ced9a2cf0408025e6793572fbd,
+        type: 3}
+      propertyPath: currentState
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4945974411171489542, guid: 8b6387ced9a2cf0408025e6793572fbd,
         type: 3}
       propertyPath: m_Center.y
@@ -3511,6 +3521,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027163334471997118, guid: 8f272cf7abf733445be4b692989c10ed,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5075580739333442337, guid: 8f272cf7abf733445be4b692989c10ed,
         type: 3}

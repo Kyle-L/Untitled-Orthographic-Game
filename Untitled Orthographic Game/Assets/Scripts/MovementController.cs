@@ -12,7 +12,8 @@ using UnityEngine.AI;
 public abstract class MovementController : MonoBehaviour {
 
     [Header("Components")]
-    protected NavMeshAgent _navMeshAgent;
+    [HideInInspector]
+    public NavMeshAgent _navMeshAgent;
     protected CharacterController _characterController;
     protected Animator _animator;
     protected FootIKController _footIKController;
@@ -23,6 +24,7 @@ public abstract class MovementController : MonoBehaviour {
     [Header("Speed properties")]
     [SerializeField]
     public float moveSpeed = 5;
+    public float alignSpeed = 1;
     public float rotateSpeed = 1;
     public float animatorLerpSpeed = 5;
 
@@ -31,6 +33,9 @@ public abstract class MovementController : MonoBehaviour {
 
     protected float verticalVelocity;
     protected Vector3 direction;
+
+    protected Coroutine angleCoroutine;
+    protected Coroutine moveCoroutine;
 
     protected void Awake() {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
@@ -80,25 +85,6 @@ public abstract class MovementController : MonoBehaviour {
         // Sets the values.
         _animator.SetFloat("SpeedY", speedY);
         _animator.SetFloat("SpeedX", speedX);
-
-        // If the npc is walking, check to see if it should be heading to next destination.
-        if (!_navMeshAgent.pathPending && _characterController.velocity.sqrMagnitude == 0f) {
-            isWalking = false;
-        }
-    }
-
-    public void Stop() {
-        _navMeshAgent.isStopped = true;
-    }
-
-    public void SetLocation(Transform loc) {
-        SetLocation(loc.position);
-    }
-
-    public void SetLocation(Vector3 loc) {
-        _navMeshAgent.isStopped = false;
-        isWalking = true;
-        _navMeshAgent.SetDestination(loc);
     }
 
     /// <summary>
@@ -106,9 +92,6 @@ public abstract class MovementController : MonoBehaviour {
     /// </summary>
     /// <param name="target"></param>
     public void Face(Transform target) {
-        // Stops the npc from being able to move.
-        Stop();
-
         // Calculates the direction by finding the normalized difference.
         Vector3 direction = (target.position - transform.position).normalized;
 
@@ -120,30 +103,60 @@ public abstract class MovementController : MonoBehaviour {
         lookRotation.x = lookRotation.z = 0;
 
         // If a coroutine is running, stop it.
-        if (lookCoroutine != null) {
-            StopCoroutine(lookCoroutine);
+        if (angleCoroutine != null) {
+            StopCoroutine(angleCoroutine);
         }
 
         // Start the look look at coroutine.
-        lookCoroutine = StartCoroutine(LookAtCoroutine(lookRotation));
+        angleCoroutine = StartCoroutine(SetAngleSlerp(lookRotation));
     }
 
     public void StopFace() {
-        if (lookCoroutine != null) {
-            StopCoroutine(lookCoroutine);
+        if (angleCoroutine != null) {
+            StopCoroutine(angleCoroutine);
         }
     }
-
-    Coroutine lookCoroutine;
 
     /// <summary>
     /// The coroutine the rotates the npc based on the angle.
     /// </summary>
     /// <param name="angle">The angle the npc is rotating towards</param>
     /// <returns></returns>
-    private IEnumerator LookAtCoroutine(Quaternion angle) {
+    private IEnumerator SetAngleSlerp(Quaternion angle) {
         while (Quaternion.Angle(transform.rotation, angle) > 1) {
             transform.rotation = Quaternion.Slerp(transform.rotation, angle, rotateSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    public void AlignRotation(Transform transform) {
+        // If a coroutine is running, stop it.
+        if (angleCoroutine != null) {
+            StopCoroutine(angleCoroutine);
+        }
+
+        // Start the look look at coroutine.
+        angleCoroutine = StartCoroutine(SetAngleSlerp(transform.rotation));
+    }
+
+    public void AlignPosition(Transform transform) {
+        // If a coroutine is running, stop it.
+        if (moveCoroutine != null) {
+            StopCoroutine(moveCoroutine);
+        }
+
+        // Start the look look at coroutine.
+        moveCoroutine = StartCoroutine(SetPositionSlerp(transform.position));
+    }
+
+    /// <summary>
+    /// The coroutine the transforms the npc based on the position.
+    /// </summary>
+    /// <param name="pos">The position the npc is transforming towards</param>
+    /// <returns></returns>
+    private IEnumerator SetPositionSlerp(Vector3 pos) {
+        while (Vector3.Distance(transform.position, pos) > 0.05f) {
+            transform.position = Vector3.Slerp(transform.position, pos, alignSpeed * Time.deltaTime);
             yield return null;
         }
     }

@@ -15,7 +15,7 @@ public class PlayerMovementController : MovementController {
         if (Control) {
             if (Input.GetButtonDown("Jump")) {
                 agentControlled = true;
-                SetLocation(target);
+                _navMeshAgent.SetDestination(target.position);
             } else if (Mathf.Abs(Input.GetAxis("Vertical")) > 0 || Mathf.Abs(Input.GetAxis("Horizontal")) > 0) {
                 agentControlled = false;
             }
