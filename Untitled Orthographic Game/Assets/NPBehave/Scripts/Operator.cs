@@ -8,6 +8,7 @@ namespace NPBehave {
         IS_GREATER,
         IS_SMALLER_OR_EQUAL,
         IS_SMALLER,
-        ALWAYS_TRUE
+        ALWAYS_TRUE,
+        IS_TRUE
     }
 }

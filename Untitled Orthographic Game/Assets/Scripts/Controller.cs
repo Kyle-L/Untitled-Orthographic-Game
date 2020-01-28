@@ -17,7 +17,7 @@ public abstract class Controller : MonoBehaviour {
         Wandering,
         Interacting,
         Posed,
-        UserController
+        UserControlled
     }
     protected Stack<States> stateHistory;
 
@@ -28,7 +28,7 @@ public abstract class Controller : MonoBehaviour {
         Look,
         State,
         InteractingObject,
-        interactingObjectType,
+        InteractingObjectType,
         Destination
     }
 
@@ -87,6 +87,12 @@ public abstract class Controller : MonoBehaviour {
                     // Run the node dictated by the state param. Only one needs to run for the node to be successful.
                     new Selector(
 
+                        // If the state is user controlled, run this.
+                        new BlackboardCondition(BlackBoardVars.State.ToString(), Operator.IS_EQUAL, States.UserControlled, Stops.IMMEDIATE_RESTART,
+                            // In the user controlled state, the npc does nothing.
+                            new WaitUntilStopped()
+                        ) { Label = "User Controlled" },
+
                         // If the state is idle, run this.
                         new BlackboardCondition(BlackBoardVars.State.ToString(), Operator.IS_EQUAL, States.Idle, Stops.IMMEDIATE_RESTART,
                             // In the idle state, the npc does nothing.
@@ -118,11 +124,12 @@ public abstract class Controller : MonoBehaviour {
                             new Sequence(
                                 // Determines the type of object that the npc is interacting with.
                                 new Action(() => {
-                                    blackboard[BlackBoardVars.interactingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType();
+                                    blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType;
+                                    print(blackboard[BlackBoardVars.InteractingObjectType.ToString()]);
                                 }),
                                 new Selector(
                                     // If the interacting object param has already been set, run this node.
-                                    new BlackboardCondition(BlackBoardVars.interactingObjectType.ToString(), Operator.IS_EQUAL, typeof(PlayerControllerMain), Stops.BOTH,
+                                    new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_EQUAL, typeof(Controller), Stops.BOTH,
                                         // This sequence represents the actions taken to talk.
                                         new Sequence(
                                             // First, the npc will move to the front of the controller.
@@ -141,7 +148,7 @@ public abstract class Controller : MonoBehaviour {
                                         )
                                     ) { Label = "Talking" },
 
-                                    new BlackboardCondition(BlackBoardVars.interactingObjectType.ToString(), Operator.IS_EQUAL, typeof(Interactable), Stops.BOTH,
+                                    new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_EQUAL, typeof(Interactable), Stops.BOTH,
                                         // This sequence represents the actions taken to talk.
                                         new Sequence(
                                             new Action(() => {
@@ -169,10 +176,6 @@ public abstract class Controller : MonoBehaviour {
         );
     }
 
-    public Action WalkTo (Vector3 pos) {
-        return new Action(() => { });
-    }
-
     /// <summary>
     /// Modifies a blackboard variable.
     /// </summary>
@@ -198,7 +201,7 @@ public abstract class Controller : MonoBehaviour {
         }
     }
 
-    protected void UpdateBlackBoards() {
+    public void UpdateBlackBoards() {
         blackboard[BlackBoardVars.Look.ToString()] = true;
         blackboard[BlackBoardVars.State.ToString()] = currentState;
     }

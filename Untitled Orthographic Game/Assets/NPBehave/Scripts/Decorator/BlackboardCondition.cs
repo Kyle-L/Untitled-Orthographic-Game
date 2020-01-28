@@ -65,7 +65,7 @@ namespace NPBehave {
                 case Operator.IS_SET: return true;
                 case Operator.IS_EQUAL: return object.Equals(o, value);
                 case Operator.IS_NOT_EQUAL: return !object.Equals(o, value);
-
+                
                 case Operator.IS_GREATER_OR_EQUAL:
                     if (o is float) {
                         return (float)o >= (float)this.value;
@@ -101,6 +101,14 @@ namespace NPBehave {
                         return (float)o < (float)this.value;
                     } else if (o is int) {
                         return (int)o < (int)this.value;
+                    } else {
+                        Debug.LogError("Type not compareable: " + o.GetType());
+                        return false;
+                    }
+
+                case Operator.IS_TRUE:
+                    if (o is bool) {
+                        return (bool)o;
                     } else {
                         Debug.LogError("Type not compareable: " + o.GetType());
                         return false;

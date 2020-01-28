@@ -40,10 +40,12 @@ public class PlayerDialogueController : MonoBehaviour {
             }
 
             DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode);
-            PlayerControllerMain.instance.PlayerMovementController.Face(target.transform);
-            PlayerControllerMain.instance.PlayerMovementController.LookAt(target.transform);
-            //PlayerControllerMain.instance.PlayerMovementController.SetLocation(target.transform.forward);
-            target.ModifyBlackBoard(NPCController.BlackBoardVars.InteractingObject, PlayerControllerMain.instance);
+
+            PlayerControllerMain.instance.MovementController.agentControlled = true;
+            PlayerControllerMain.instance.ModifyBlackBoard(Controller.BlackBoardVars.InteractingObject, target);
+            PlayerControllerMain.instance.currentState = Controller.States.Interacting;
+
+            target.ModifyBlackBoard(Controller.BlackBoardVars.InteractingObject, PlayerControllerMain.instance);
             target.currentState = Controller.States.Interacting;
         }
     }
@@ -53,6 +55,6 @@ public class PlayerDialogueController : MonoBehaviour {
             target.currentState = Controller.States.Wandering;
             target = null;
         }
-        PlayerControllerMain.instance.PlayerMovementController.StopFace();
+        PlayerControllerMain.instance.currentState = Controller.States.UserControlled;
     }
 }
