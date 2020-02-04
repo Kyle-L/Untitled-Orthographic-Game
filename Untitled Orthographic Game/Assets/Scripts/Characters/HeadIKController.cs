@@ -56,7 +56,7 @@ public class HeadIKController : MonoBehaviour {
 
         /* In order for to look at something, the object needs to be visible 
          * and in front of the character. */
-        if (Physics.Raycast(_ray, RAYCAST_MAX_DISTANCE) && front > distanceToLook) {
+        if (Physics.Raycast(_ray, RAYCAST_MAX_DISTANCE) && front > distanceToLook && currentLookTrans != null) {
             /* If the object is in front, lerp the weight to the max.
              * The lerp is there so the character doesn't abruptly look.*/
             lookAtWeight = Mathf.Lerp(lookAtWeight, lookAtMaxWeight, weightSpeed * Time.deltaTime);
@@ -74,6 +74,10 @@ public class HeadIKController : MonoBehaviour {
     /// </summary>
     /// <param name="trans"></param>
     public void LookAt(Transform trans) {
+        if (trans == null) {
+            return;
+        }
+
         if (trans == currentLookTrans) {
             if (Vector3.Distance(lookPos, trans.position) <= MIN_LOOK_THRESHOLD) {
                 return;
@@ -92,7 +96,7 @@ public class HeadIKController : MonoBehaviour {
         }
 
         // Start the coroutine.
-        lookCoroutine = StartCoroutine(Look(trans));
+        lookCoroutine = StartCoroutine(Look(currentLookTrans));
     }
 
     /// <summary>
@@ -116,7 +120,11 @@ public class HeadIKController : MonoBehaviour {
         nClosest = nClosest.ThenByDescending(t => (transform.InverseTransformPoint(t.position).z));
 
         if (nClosest.First().Equals(head)) {
-            return nClosest.Skip(1).First();
+            if (nClosest.Count() >= 2) {
+                return nClosest.Skip(1).First();
+            } else {
+                return null;
+            }
         }
 
         // Return the the first element which should be the closest and in front of the root transform.

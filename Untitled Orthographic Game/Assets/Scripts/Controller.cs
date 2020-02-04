@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using NPBehave;
+using static NPBehave.Action;
 
 public abstract class Controller : MonoBehaviour {
 
@@ -78,7 +79,6 @@ public abstract class Controller : MonoBehaviour {
                                 MovementController.LookAtRandom(CharacterSerializer.instance.Lookable);
                                 return Action.Result.PROGRESS;
                             } else {
-                                MovementController.StopLookAt();
                                 return Action.Result.FAILED;
                             }
                         })
@@ -125,7 +125,6 @@ public abstract class Controller : MonoBehaviour {
                                 // Determines the type of object that the npc is interacting with.
                                 new Action(() => {
                                     blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType;
-                                    print(blackboard[BlackBoardVars.InteractingObjectType.ToString()]);
                                 }),
                                 new Selector(
                                     // If the interacting object param has already been set, run this node.
@@ -158,13 +157,22 @@ public abstract class Controller : MonoBehaviour {
                                             // First, the npc will move to the front of the controller.
                                             new NavMoveTo(MovementController._navMeshAgent, BlackBoardVars.Destination.ToString()),
                                             // Then, the npc will face the other controller.
-                                            new Action(() => {
-                                                Interactable interactionObject = blackboard.Get<Interactable>(BlackBoardVars.InteractingObject.ToString());
-                                                MovementController.AlignPosition(interactionObject.interactionPoint);
-                                                MovementController.AlignRotation(interactionObject.interactionPoint);
-                                            }),
-                                            // Finally, the npc will wait in the state till something changes.
-                                            new WaitUntilStopped()
+                                            new Action((Request result) => {
+                                                if (result == Request.CANCEL) {
+                                                    MovementController.SetCharacterControllerState(true);
+                                                    MovementController.TriggerAnimation(MovementController.AnimationTriggers.Exit);
+                                                    return Action.Result.SUCCESS;
+                                                } else if (result == Request.START) {
+                                                    Interactable interactionObject = blackboard.Get<Interactable>(BlackBoardVars.InteractingObject.ToString());
+                                                    MovementController.AlignPosition(interactionObject.interactionPoint);
+                                                    MovementController.AlignRotation(interactionObject.interactionPoint);
+                                                    MovementController.TriggerAnimation(MovementController.AnimationTriggers.SitDown);
+                                                    MovementController.SetCharacterControllerState(false);
+                                                    return Action.Result.PROGRESS;
+                                                } else {
+                                                    return Action.Result.PROGRESS;
+                                                }
+                                            })
                                         )
                                     ) { Label = "Interactable" }
                                 )

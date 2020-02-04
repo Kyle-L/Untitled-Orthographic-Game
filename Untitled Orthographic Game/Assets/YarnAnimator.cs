@@ -24,7 +24,7 @@ public class YarnAnimator : MonoBehaviour {
                 return;
             }
         }
-        print("There is no state \"" + gestureName + "\" on layer \"" +
+        Debug.Log("There is no state \"" + gestureName + "\" on layer \"" +
               layerIndex + "\" of \"" + this.name + "\"");
     }
 }

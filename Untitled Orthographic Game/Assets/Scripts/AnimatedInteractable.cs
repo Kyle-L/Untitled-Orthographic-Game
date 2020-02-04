@@ -5,11 +5,11 @@ using UnityEngine;
 public class AnimatedInteractable : Interactable
 {
     public override void Go() {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override void Stop() {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
 }

@@ -24,8 +24,8 @@ public abstract class MovementController : MonoBehaviour {
     [Header("Speed properties")]
     [SerializeField]
     public float moveSpeed = 5;
-    public float alignSpeed = 1;
-    public float rotateSpeed = 1;
+    public float alignSpeed = 3;
+    public float rotateSpeed = 3;
     public float animatorLerpSpeed = 5;
 
     public bool agentControlled { get; set; } = true;
@@ -46,12 +46,16 @@ public abstract class MovementController : MonoBehaviour {
         _handIKController = this.GetComponent<HandIKController>();
         _ragdollHelper = this.GetComponent<RagdollHelper>();
 
-        _navMeshAgent.updatePosition = false;
+        _navMeshAgent.updatePosition = true;
         _navMeshAgent.updateRotation = false;
     }
 
 
     protected void Update() {
+        if (!_characterController.enabled) {
+            return;
+        }
+
         verticalVelocity = 0;
 
         if (agentControlled) {
@@ -169,8 +173,18 @@ public abstract class MovementController : MonoBehaviour {
         _headIKController.LookAt(_headIKController.GetClosestInFrontTransform(trans));
     }
 
-    public void StopLookAt() {
-        //_headIKController.stop
+    public enum AnimationTriggers {
+        SitDown,
+        Exit
+    }
+
+    public void TriggerAnimation (AnimationTriggers trigger) {
+        _animator.SetTrigger(trigger.ToString());
+    }
+
+    public void SetCharacterControllerState (bool state) {
+        //_navMeshAgent.enabled = state;
+        _characterController.enabled = state;
     }
 
     public void RagDoll() {

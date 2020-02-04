@@ -52,7 +52,7 @@ public class PlayerDialogueController : MonoBehaviour {
 
     private void StopDialogue() {
         if (target != null) {
-            target.currentState = Controller.States.Wandering;
+            target.currentState = Controller.States.Idle;
             target = null;
         }
         PlayerControllerMain.instance.currentState = Controller.States.UserControlled;

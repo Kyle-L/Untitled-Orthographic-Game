@@ -61,10 +61,10 @@ public class SettingsController : MonoBehaviour {
     public float MouseSensitivity {
         get { return mouseSensitivity; }
         set {
-            //PlayerPrefs.SetFloat("mouseSensitivity", value);
-            //if (CameraController.instance != null) {
-            //    CameraController.instance.AngleSensitivity = value;
-            //}
+            PlayerPrefs.SetFloat("mouseSensitivity", value);
+            if (CameraController.instance != null) {
+                CameraController.instance.cameraRotateSpeed = value;
+            }
 
             mouseSensitivity = value;
         }
@@ -78,9 +78,9 @@ public class SettingsController : MonoBehaviour {
         get { return zoomSensitivity; }
         set {
             PlayerPrefs.SetFloat("zoomSensitivity", value);
-            //if (CameraController.instance != null) {
-            //    CameraController.instance.ZoomSensitivity = value;
-            //}
+            if (CameraController.instance != null) {
+                CameraController.instance.cameraZoomSpeed = value;
+            }
 
             zoomSensitivity = value;
         }

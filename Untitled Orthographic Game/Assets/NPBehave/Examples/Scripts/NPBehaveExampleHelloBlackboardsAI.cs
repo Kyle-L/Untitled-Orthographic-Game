@@ -20,7 +20,7 @@ public class NPBehaveExampleHelloBlackboardsAI : MonoBehaviour {
                         // when 'toggled' is true, this branch will get executed.
                         new Sequence(
 
-                            // print out a message ...
+                            // Debug.Log out a message ...
                             new Action(() => Debug.Log("foo")),
 
                             // ... and stay here until the `BlackboardValue`-node stops us because the toggled flag went false.

@@ -8,21 +8,17 @@ public class UIMenu_Settings : MonoBehaviour {
 
     // The UI elements that change the settings.
     [Header("UI Elements")]
-    [SerializeField]
-    private Slider volumeSlider;
-    [SerializeField]
-    private Slider mouseSlider;
-    [SerializeField]
-    private Slider zoomSlider;
-    [SerializeField]
-    private Dropdown qualityDropdown;
+    public Slider volumeSlider;
+    public Slider mouseSlider;
+    public Slider zoomSlider;
+    public Dropdown qualityDropdown;
 
     private void Start() {
         // Set the UI elements to represent the values of settings.
-        //volumeSlider.value = SettingsController.instance.Volume;
-        //mouseSlider.value = SettingsController.instance.MouseSensitivity;
-        //zoomSlider.value = SettingsController.instance.ZoomSensitivity;
-        //qualityDropdown.value = SettingsController.instance.QualityLevel;
+        volumeSlider.value = SettingsController.instance.Volume;
+        mouseSlider.value = SettingsController.instance.MouseSensitivity;
+        zoomSlider.value = SettingsController.instance.ZoomSensitivity;
+        qualityDropdown.value = SettingsController.instance.QualityLevel;
     }
 
     /// <summary>
@@ -30,7 +26,7 @@ public class UIMenu_Settings : MonoBehaviour {
     /// </summary>
     /// <param name="aSlider"></param>
     public void VolumeSlider(Slider aSlider) {
-        //SettingsController.instance.Volume = aSlider.value;
+        SettingsController.instance.Volume = aSlider.value;
     }
 
     /// <summary>
@@ -39,7 +35,7 @@ public class UIMenu_Settings : MonoBehaviour {
     /// </summary>
     /// <param name="aSlider"></param>
     public void MouseSensitivitySlider(Slider aSlider) {
-        //SettingsController.instance.MouseSensitivity = aSlider.value;
+        SettingsController.instance.MouseSensitivity = aSlider.value;
     }
 
     /// <summary>
@@ -48,7 +44,7 @@ public class UIMenu_Settings : MonoBehaviour {
     /// </summary>
     /// <param name="aSlider"></param>
     public void ZoomSensitivitySlider(Slider aSlider) {
-        //SettingsController.instance.ZoomSensitivity = aSlider.value;
+        SettingsController.instance.ZoomSensitivity = aSlider.value;
     }
 
     /// <summary>
@@ -57,7 +53,7 @@ public class UIMenu_Settings : MonoBehaviour {
     /// </summary>
     /// <param name="aDropdown"></param>
     public void QualityLevelSlider(Dropdown aDropdown) {
-        //SettingsController.instance.QualityLevel = aDropdown.value;
+        SettingsController.instance.QualityLevel = aDropdown.value;
     }
 
 }
