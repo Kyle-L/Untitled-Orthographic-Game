@@ -1,4 +1,4 @@
-title: Start
+title: Start2
 tags: 
 colorID: 0
 position: 540,260
@@ -6,10 +6,10 @@ position: 540,260
 <<stopragdoll NPC>>
 This is the beginning node.
 
-[[This goes to node 2|Node2]]
-[[This goes to node 3|Node3]]
+[[This goes to node 2|Node22]]
+[[This goes to node 3|Node32]]
 ===
-title: Node2
+title: Node22
 tags: 
 colorID: 0
 position: 228,572
@@ -17,10 +17,10 @@ position: 228,572
 <<gesture NPC hard-nod>>
 This is node 2
 
-[[This goes back to the start node.|Start]]
-[[This goes back to the 4th node.|Node4]]
+[[This goes back to the start node.|Start2]]
+[[This goes back to the 4th node.|Node42]]
 ===
-title: Node3
+title: Node32
 tags: 
 colorID: 0
 position: 953,547
@@ -28,10 +28,10 @@ position: 953,547
 <<gesture NPC angry>>
 This is node 3
 
-[[This goes back to the start node.|Start]]
-[[This goes back to the 4th node.|Node4]]
+[[This goes back to the start node.|Start2]]
+[[This goes back to the 4th node.|Node42]]
 ===
-title: Node4
+title: Node42
 tags: 
 colorID: 0
 position: 531,802
@@ -39,10 +39,10 @@ position: 531,802
 <<gesture NPC annoyed>>
 This is the 4th node.
 
-[[This ends goes back the start node.|Start]]
-[[This ends the conversation|End]]
+[[This ends goes back the start node.|Start2]]
+[[This ends the conversation|End2]]
 ===
-title: End
+title: End2
 tags: 
 colorID: 0
 position: 525,1086

@@ -208,18 +208,18 @@ namespace Yarn.Unity {
 
         /// Start the dialogue
         public void StartDialogue() {
-            StartDialogue(startNode);
+            StartDialogue(startNode, null);
         }
 
         /// Start the dialogue from a given node
-        public void StartDialogue(string startNode) {
+        public void StartDialogue(string startNode, Text text) {
 
             // Stop any processes that might be running already
             StopAllCoroutines();
             dialogueUI.StopAllCoroutines();
 
             // Get it going
-            StartCoroutine(RunDialogue(startNode));
+            StartCoroutine(RunDialogue(startNode, text));
         }
 
         IEnumerator RunDialogue(string startNode = "Start", Text lineText = null) {
@@ -237,7 +237,7 @@ namespace Yarn.Unity {
 
                     // Wait for line to finish displaying
                     var lineResult = step as Yarn.Dialogue.LineResult;
-                    yield return StartCoroutine(this.dialogueUI.RunLine(lineResult.line));
+                    yield return StartCoroutine(this.dialogueUI.RunLine(lineResult.line, lineText));
 
                 } else if (step is Yarn.Dialogue.OptionSetResult) {
 
@@ -446,7 +446,7 @@ namespace Yarn.Unity {
         }
 
         /// Display a line.
-        public abstract IEnumerator RunLine(Yarn.Line line);
+        public abstract IEnumerator RunLine(Yarn.Line line, Text lineText);
 
         /// Display the options, and call the optionChooser when done.
         public abstract IEnumerator RunOptions(Yarn.Options optionsCollection,

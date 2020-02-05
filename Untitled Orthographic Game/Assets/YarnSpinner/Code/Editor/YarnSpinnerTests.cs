@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestDialogueUIBehaviour : Yarn.Unity.DialogueUIBehaviour {
 
@@ -26,7 +27,7 @@ public class TestDialogueUIBehaviour : Yarn.Unity.DialogueUIBehaviour {
     public CommandHandler commandHandler;
 
 
-    public override System.Collections.IEnumerator RunLine(Yarn.Line line) {
+    public override System.Collections.IEnumerator RunLine(Yarn.Line line, Text lineText) {
         if (lineHandler != null) {
             lineHandler(line);
         }
@@ -99,7 +100,7 @@ public class YarnSpinnerTests {
         dialogueUI.ExpectLine("Sally: Don't do that.");
         dialogueUI.SelectOption("Anything exciting happen on your watch?");
 
-        dialogueRunner.StartDialogue("Sally");
+        dialogueRunner.StartDialogue("Sally", null);
 
         // Talking to Sally a second time should result in a different dialogue
 
