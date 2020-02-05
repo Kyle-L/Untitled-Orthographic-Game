@@ -140,7 +140,7 @@ namespace Yarn.Unity.Example {
             Debug.Log("Dialogue starting!");
 
             // Open the dialogue menu.
-            UIMenuController.instance?.SetMenu(UIMenuController.MainMenus.DialogueMenu);
+            //UIMenuController.instance?.SetMenu(UIMenuController.MainMenus.DialogueMenu);
 
             // Pause the player
             //if (PlayerController.instance != null) {
@@ -156,7 +156,7 @@ namespace Yarn.Unity.Example {
             Debug.Log("Complete!");
 
             // Close the dialogue menu.
-            UIMenuController.instance?.CloseMenu();
+            //UIMenuController.instance?.CloseMenu();
 
             // Unpause the player
             //if (PlayerController.instance != null) {

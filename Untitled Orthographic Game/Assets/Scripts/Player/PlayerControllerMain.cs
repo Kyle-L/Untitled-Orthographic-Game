@@ -1,5 +1,4 @@
-﻿using NPBehave;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
 [RequireComponent(typeof(PlayerDialogueController))]

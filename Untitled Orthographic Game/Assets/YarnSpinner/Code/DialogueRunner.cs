@@ -28,6 +28,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Yarn.Unity {
 
@@ -221,7 +222,7 @@ namespace Yarn.Unity {
             StartCoroutine(RunDialogue(startNode));
         }
 
-        IEnumerator RunDialogue(string startNode = "Start") {
+        IEnumerator RunDialogue(string startNode = "Start", Text lineText = null) {
             // Mark that we're in conversation.
             isDialogueRunning = true;
 

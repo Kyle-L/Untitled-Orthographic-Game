@@ -65,7 +65,7 @@ namespace NPBehave {
                 case Operator.IS_SET: return true;
                 case Operator.IS_EQUAL: return object.Equals(o, value);
                 case Operator.IS_NOT_EQUAL: return !object.Equals(o, value);
-                
+
                 case Operator.IS_GREATER_OR_EQUAL:
                     if (o is float) {
                         return (float)o >= (float)this.value;

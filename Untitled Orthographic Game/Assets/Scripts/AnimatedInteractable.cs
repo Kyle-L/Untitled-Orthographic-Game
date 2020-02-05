@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class AnimatedInteractable : Interactable
-{
+﻿public class AnimatedInteractable : Interactable {
     public override void Go() {
         //throw new System.NotImplementedException();
     }

@@ -1,9 +1,4 @@
-﻿using NPBehave;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// <summary>
+﻿/// <summary>
 /// The overall controller for an npc.
 /// </summary>
 public class NPCController : Controller {

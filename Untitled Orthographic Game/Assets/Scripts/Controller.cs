@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using NPBehave;
+using System.Collections.Generic;
 using UnityEngine;
-using NPBehave;
 using static NPBehave.Action;
 
 public abstract class Controller : MonoBehaviour {
@@ -35,7 +35,7 @@ public abstract class Controller : MonoBehaviour {
 
     [Header("Traits")]
     public List<Traits> activeTraits;
-    public enum Traits { Talkative, Curious, EasilyBored, Lazy,  }
+    public enum Traits { Talkative, Curious, EasilyBored, Lazy, }
 
     // Status
     public bool isAlive = true;
@@ -53,10 +53,10 @@ public abstract class Controller : MonoBehaviour {
         blackboard = behaviorTree.Blackboard;
 
         // attach the debugger component if executed in editor (helps to debug in the inspector) 
-        #if UNITY_EDITOR
-            Debugger debugger = (Debugger)this.gameObject.AddComponent(typeof(Debugger));
-            debugger.BehaviorTree = behaviorTree;
-        #endif
+#if UNITY_EDITOR
+        Debugger debugger = (Debugger)this.gameObject.AddComponent(typeof(Debugger));
+        debugger.BehaviorTree = behaviorTree;
+#endif
 
         // start the behaviour tree
         behaviorTree.Start();

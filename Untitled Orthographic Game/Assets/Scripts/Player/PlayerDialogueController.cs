@@ -41,6 +41,7 @@ public class PlayerDialogueController : MonoBehaviour {
 
             DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode);
 
+
             PlayerControllerMain.instance.MovementController.agentControlled = true;
             PlayerControllerMain.instance.ModifyBlackBoard(Controller.BlackBoardVars.InteractingObject, target);
             PlayerControllerMain.instance.currentState = Controller.States.Interacting;

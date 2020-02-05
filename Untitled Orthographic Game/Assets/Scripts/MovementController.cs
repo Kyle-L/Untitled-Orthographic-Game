@@ -178,11 +178,11 @@ public abstract class MovementController : MonoBehaviour {
         Exit
     }
 
-    public void TriggerAnimation (AnimationTriggers trigger) {
+    public void TriggerAnimation(AnimationTriggers trigger) {
         _animator.SetTrigger(trigger.ToString());
     }
 
-    public void SetCharacterControllerState (bool state) {
+    public void SetCharacterControllerState(bool state) {
         //_navMeshAgent.enabled = state;
         _characterController.enabled = state;
     }

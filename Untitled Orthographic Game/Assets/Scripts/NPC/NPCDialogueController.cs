@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
+
 /// <summary>
 /// Controls all of the dialogue options for the npc that Yarn
 /// Spinner and the Dialogue Runner will use.
@@ -8,6 +10,8 @@ public class NPCDialogueController : MonoBehaviour {
 
     [Tooltip("The name of the character.")]
     public string characterName;
+
+    public Text characterText;
 
     [Tooltip("The node from which the dialogue tree begins.")]
     [FormerlySerializedAs("startNode")]
