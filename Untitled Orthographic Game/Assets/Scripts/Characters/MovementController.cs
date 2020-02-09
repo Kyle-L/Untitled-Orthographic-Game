@@ -46,7 +46,7 @@ public abstract class MovementController : MonoBehaviour {
         _handIKController = this.GetComponent<HandIKController>();
         _ragdollHelper = this.GetComponent<RagdollHelper>();
 
-        _navMeshAgent.updatePosition = true;
+        _navMeshAgent.updatePosition = false;
         _navMeshAgent.updateRotation = false;
     }
 
@@ -68,6 +68,7 @@ public abstract class MovementController : MonoBehaviour {
             verticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
 
+
         //Normalize direction.
         transform.forward = Vector3.Slerp(transform.forward, direction, 3 * Time.deltaTime);
 
@@ -77,6 +78,7 @@ public abstract class MovementController : MonoBehaviour {
         _characterController.Move(direction * Time.deltaTime);
 
         _navMeshAgent.velocity = _characterController.velocity;
+        _navMeshAgent.nextPosition = transform.position;
 
         // Gets the previous SpeedX and Y.
         float speedY = _animator.GetFloat("SpeedY");

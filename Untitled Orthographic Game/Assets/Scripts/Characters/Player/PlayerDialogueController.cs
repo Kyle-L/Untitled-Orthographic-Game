@@ -42,20 +42,16 @@ public class PlayerDialogueController : MonoBehaviour {
             DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode, target.NPCDialogueController.characterText);
 
 
-            PlayerControllerMain.instance.MovementController.agentControlled = true;
-            PlayerControllerMain.instance.ModifyBlackBoard(Controller.BlackBoardVars.InteractingObject, target);
-            PlayerControllerMain.instance.currentState = Controller.States.Interacting;
-
-            target.ModifyBlackBoard(Controller.BlackBoardVars.InteractingObject, PlayerControllerMain.instance);
-            target.currentState = Controller.States.Interacting;
+            PlayerControllerMain.instance.InteractWith(target);
+            target.InteractWith(PlayerControllerMain.instance);
         }
     }
 
     private void StopDialogue() {
         if (target != null) {
-            target.currentState = Controller.States.Idle;
+            //target.currentState = Controller.States.Idle;
             target = null;
         }
-        PlayerControllerMain.instance.currentState = Controller.States.UserControlled;
+        PlayerControllerMain.instance.SetState(Controller.States.UserControlled);
     }
 }

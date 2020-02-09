@@ -3,6 +3,8 @@
 public class MouseStateController : MonoBehaviour {
     public static MouseStateController instance;
 
+    bool mouseState = false;
+
     private void Awake() {
         if (instance == null) {
             //if not, set instance to this
@@ -17,7 +19,13 @@ public class MouseStateController : MonoBehaviour {
     }
 
     public void SetMouseState(bool isActive) {
-        Cursor.visible = isActive;
-        Cursor.lockState = (isActive) ? CursorLockMode.None : CursorLockMode.Locked;
+        mouseState = isActive;
+        Cursor.visible = mouseState;
+        Cursor.lockState = (mouseState) ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    public void SetUIMouse (bool isActive) {
+        Cursor.visible = mouseState || isActive;
+        Cursor.lockState = (mouseState || isActive) ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

@@ -77,7 +77,7 @@ namespace Yarn.Unity.Example {
             }
 
             // Wait for any user input
-            while (Input.anyKeyDown == false) {
+            while (Input.GetButtonDown("Fire1") == false) {
                 yield return null;
             }
 
@@ -142,15 +142,9 @@ namespace Yarn.Unity.Example {
         /// Called when the dialogue system has started running.
         public override IEnumerator DialogueStarted() {
             Debug.Log("Dialogue starting!");
-
-            // Open the dialogue menu.
-            //UIMenuController.instance?.SetMenu(UIMenuController.MainMenus.DialogueMenu);
-
-            // Pause the player
-            //if (PlayerController.instance != null) {
-            //    PlayerController.instance.CurrentState = PlayerController.States.Iteracting;
-                MouseStateController.instance?.SetMouseState(true);
-            //}
+            
+            // Enables the in-game mouse.
+            MouseStateController.instance?.SetMouseState(true);
 
             yield break;
         }
@@ -158,15 +152,9 @@ namespace Yarn.Unity.Example {
         /// Called when the dialogue system has finished running.
         public override IEnumerator DialogueComplete() {
             Debug.Log("Complete!");
-
-            // Close the dialogue menu.
-            //UIMenuController.instance?.CloseMenu();
-
-            // Unpause the player
-            //if (PlayerController.instance != null) {
-            //    PlayerController.instance.CurrentState = PlayerController.States.Playing;
-                MouseStateController.instance?.SetMouseState(false);
-            //}
+            
+            // Disables the in-game mouse.
+            MouseStateController.instance?.SetMouseState(false);
 
             yield break;
         }

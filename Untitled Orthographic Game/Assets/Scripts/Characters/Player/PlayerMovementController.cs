@@ -17,13 +17,10 @@ public class PlayerMovementController : MovementController {
         if (Control) {
             if (Input.GetButtonDown("Jump")) {
                 agentControlled = true;
-                PlayerControllerMain.instance.ModifyBlackBoard(Controller.BlackBoardVars.InteractingObject, interactableTest);
-                PlayerControllerMain.instance.ModifyBlackBoard(Controller.BlackBoardVars.State, Controller.States.Interacting);
-                PlayerControllerMain.instance.currentState = Controller.States.Interacting;
+                PlayerControllerMain.instance.InteractWith(interactableTest);
             } else if (Mathf.Abs(Input.GetAxis("Vertical")) > 0 || Mathf.Abs(Input.GetAxis("Horizontal")) > 0) {
                 agentControlled = false;
-                PlayerControllerMain.instance.ModifyBlackBoard(Controller.BlackBoardVars.State, Controller.States.UserControlled);
-                PlayerControllerMain.instance.currentState = Controller.States.UserControlled;
+                PlayerControllerMain.instance.SetState(Controller.States.UserControlled);
             }
 
             if (!agentControlled && _animator.GetCurrentAnimatorStateInfo(0).IsName("Movement") || _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {

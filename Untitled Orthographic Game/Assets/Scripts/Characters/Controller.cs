@@ -10,9 +10,6 @@ public abstract class Controller : MonoBehaviour {
     public float wanderingTime = 5;
     public float wanderingTimeDeviation = 2;
 
-    [Header("States")]
-    public States currentState = States.Idle;
-
     public enum States {
         Idle,
         Wandering,
@@ -177,11 +174,26 @@ public abstract class Controller : MonoBehaviour {
                                     ) { Label = "Interactable" }
                                 )
                             )
-                        )
+                        ),
+                        new WaitUntilStopped()
                     )
                 )
             )
         );
+    }
+
+    public void InteractWith (Interactable go) {
+        ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
+        ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
+    }
+
+    public void InteractWith(Controller go) {
+        ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
+        ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
+    }
+
+    public void SetState (States state) {
+        ModifyBlackBoard(BlackBoardVars.State, state);
     }
 
     /// <summary>
@@ -189,7 +201,7 @@ public abstract class Controller : MonoBehaviour {
     /// </summary>
     /// <param name="key"></param>
     /// <param name="value"></param>
-    public void ModifyBlackBoard(BlackBoardVars key, object value) {
+    private void ModifyBlackBoard(BlackBoardVars key, object value) {
         blackboard[key.ToString()] = value;
     }
 
@@ -199,7 +211,7 @@ public abstract class Controller : MonoBehaviour {
     /// </summary>
     /// <param name="key"></param>
     /// <param name="value"></param>
-    public void ModifyBlackBoard(BlackBoardVars[] key, object[] value) {
+    private void ModifyBlackBoard(BlackBoardVars[] key, object[] value) {
         if (key.Length != value.Length) {
             return;
         }
@@ -211,7 +223,6 @@ public abstract class Controller : MonoBehaviour {
 
     public void UpdateBlackBoards() {
         blackboard[BlackBoardVars.Look.ToString()] = true;
-        blackboard[BlackBoardVars.State.ToString()] = currentState;
     }
 
     public void Die() {
