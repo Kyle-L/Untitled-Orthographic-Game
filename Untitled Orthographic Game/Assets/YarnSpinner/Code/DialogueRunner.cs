@@ -67,6 +67,9 @@ namespace Yarn.Unity {
         /// Whether we should start dialogue when the scene starts
         public bool startAutomatically = true;
 
+        /// The audio clip that plays when a line is run.
+        public AudioClip lineAudioEffect;
+
         /// Tests to see if the dialogue is running
         public bool isDialogueRunning { get; private set; }
 
@@ -237,6 +240,7 @@ namespace Yarn.Unity {
 
                     // Wait for line to finish displaying
                     var lineResult = step as Yarn.Dialogue.LineResult;
+                    AudioController.instance.PlayEffect(lineAudioEffect);
                     yield return StartCoroutine(this.dialogueUI.RunLine(lineResult.line, lineText));
 
                 } else if (step is Yarn.Dialogue.OptionSetResult) {

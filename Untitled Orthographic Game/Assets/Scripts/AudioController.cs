@@ -8,6 +8,9 @@ using UnityEngine;
 public class AudioController : MonoBehaviour {
     public static AudioController instance;
 
+    public AudioSource musicSource;
+    public AudioSource effectSource;
+
     // Contains all of the audio sources in the game.
     private AudioSource[] sources;
 
@@ -93,6 +96,15 @@ public class AudioController : MonoBehaviour {
     /// </summary>
     public void RefreshSources() {
         sources = FindObjectsOfType<AudioSource>();
+    }
+
+    /// <summary>
+    /// Plays a sound effect on the sound effect source.
+    /// </summary>
+    /// <param name="effect"></param>
+    /// <param name="volume"></param>
+    public void PlayEffect (AudioClip effect, float volume = 1) {
+        effectSource.PlayOneShot(effect, volume);
     }
 
 }

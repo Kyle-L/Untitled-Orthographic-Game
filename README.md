@@ -12,7 +12,8 @@ This is the repository for the development of a currently unitled orthographic g
 <a name="media"/></a>
 ## Media
 ![Concept Image](Documentation/images/banner.png)
-![Concept Image 3](Documentation/images/banner-2.png)
+![Concept Image 2](Documentation/images/banner-2.png)
+![Concept Image 3](Documentation/images/banner-3.png)
   
 <a name="attributions"></a>
 ## Attributions

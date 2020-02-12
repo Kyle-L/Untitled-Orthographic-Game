@@ -12,7 +12,7 @@ Material:
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0bbf47d52582c8349ac3922b394c4ad2, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 160, y: 240}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -113,7 +113,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - WaveSpeed: {r: 19, g: 9, b: -16, a: -7}
-    - _Color: {r: 0.3647059, g: 0.58431375, b: 0.32941177, a: 1}
+    - _Color: {r: 0.5042777, g: 0.5882353, b: 0.44313726, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _HorizonColor: {r: 0.172, g: 0.463, b: 0.435, a: 1}
