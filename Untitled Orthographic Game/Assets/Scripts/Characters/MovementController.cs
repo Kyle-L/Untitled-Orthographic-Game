@@ -65,7 +65,7 @@ public abstract class MovementController : MonoBehaviour {
         direction *= moveSpeed;
 
         if (!_characterController.isGrounded) {
-            verticalVelocity += Physics.gravity.y * Time.deltaTime;
+            verticalVelocity += Physics.gravity.y/* * Time.deltaTime*/;
         }
 
 

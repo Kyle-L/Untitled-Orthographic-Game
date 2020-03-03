@@ -3,6 +3,8 @@
 public abstract class Interactable : MonoBehaviour {
 
     public Transform interactionPoint;
+    public Transform leftHandPoint;
+    public Transform righthandPoint;
     public string interactionGoString;
     public string interactionStopString;
 

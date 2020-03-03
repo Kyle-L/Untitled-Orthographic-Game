@@ -24,7 +24,7 @@ public class MouseStateController : MonoBehaviour {
         Cursor.lockState = (mouseState) ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
-    public void SetUIMouse (bool isActive) {
+    public void SetUIMouse(bool isActive) {
         Cursor.visible = mouseState || isActive;
         Cursor.lockState = (mouseState || isActive) ? CursorLockMode.None : CursorLockMode.Locked;
     }

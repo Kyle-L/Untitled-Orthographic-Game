@@ -182,7 +182,7 @@ public abstract class Controller : MonoBehaviour {
         );
     }
 
-    public void InteractWith (Interactable go) {
+    public void InteractWith(Interactable go) {
         ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
         ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
     }
@@ -192,7 +192,7 @@ public abstract class Controller : MonoBehaviour {
         ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
     }
 
-    public void SetState (States state) {
+    public void SetState(States state) {
         ModifyBlackBoard(BlackBoardVars.State, state);
     }
 

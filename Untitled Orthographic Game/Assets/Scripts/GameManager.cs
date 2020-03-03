@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
 
     public float minimumLoadTime = 1.5f;
 
+    public ScriptedEvent startEvent;
+
     private int prevScene = -1;
 
     private void Awake() {
@@ -24,6 +26,10 @@ public class GameManager : MonoBehaviour {
         #endregion
 
         ResumeTime();
+    }
+
+    private void Start() {
+        startEvent?.Go();
     }
 
     public void StopTime() {

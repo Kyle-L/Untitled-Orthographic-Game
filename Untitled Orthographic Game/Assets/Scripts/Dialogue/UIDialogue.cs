@@ -142,7 +142,7 @@ namespace Yarn.Unity.Example {
         /// Called when the dialogue system has started running.
         public override IEnumerator DialogueStarted() {
             Debug.Log("Dialogue starting!");
-            
+
             // Enables the in-game mouse.
             MouseStateController.instance?.SetMouseState(true);
 
@@ -152,7 +152,7 @@ namespace Yarn.Unity.Example {
         /// Called when the dialogue system has finished running.
         public override IEnumerator DialogueComplete() {
             Debug.Log("Complete!");
-            
+
             // Disables the in-game mouse.
             MouseStateController.instance?.SetMouseState(false);
 

@@ -63,9 +63,9 @@ public class Hideable : MonoBehaviour {
                 if (dot >= 0) {
                     Hide(false);
 
-               /* If the dot product is less than 0, then 
-                * it should be hidden since the forward is the opposite
-                * direction of the camera.*/
+                    /* If the dot product is less than 0, then 
+                     * it should be hidden since the forward is the opposite
+                     * direction of the camera.*/
                 } else {
                     Hide(true);
                 }
@@ -89,7 +89,7 @@ public class Hideable : MonoBehaviour {
                 // If does hide is true, set the cross section to the hide height.
                 if (doesHide) {
                     material.SetVector("_SectionPoint", new Vector4(0, crossSectionMinHeight, 0, 0));
-                // If does hide is false, set the cross section to the max height.
+                    // If does hide is false, set the cross section to the max height.
                 } else {
                     material.SetVector("_SectionPoint", new Vector4(0, crossSectionMaxHeight, 0, 0));
                 }

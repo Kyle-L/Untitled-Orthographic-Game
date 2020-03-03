@@ -45,7 +45,9 @@ public class UIMenuController : MonoBehaviour {
 
     public void Start() {
         // Set the default menu on start.
-        SetMenu(defaultMenu);
+        if (GetCurrentMenu() == null) {
+            SetMenu(defaultMenu);
+        }
     }
 
     private void Update() {
@@ -74,7 +76,7 @@ public class UIMenuController : MonoBehaviour {
             // If the menu is not the last.
         } else {
             // Pop the current menu from the stack and set it inactive.
-            uiHistory.Pop().gameObject.SetActive(false);
+            uiHistory.Pop().Enable(false);
             /* Set the current head of the stack to the active menu,
              * but don't add it to the UI history. */
             SetMenu(uiHistory.Peek(), false);
@@ -134,7 +136,7 @@ public class UIMenuController : MonoBehaviour {
     public void SetMenu(UIMenu aMenu, bool addToHistory) {
         // If the history is greater than 0, disable the current head.
         if (uiHistory.Count > 0) {
-            uiHistory.Peek().gameObject.SetActive(false);
+            uiHistory.Peek().Enable(false);
         }
 
         /* If the menu is null or the menu is not null and the user can 
@@ -169,7 +171,7 @@ public class UIMenuController : MonoBehaviour {
             // Otherwise
         } else {
             // Set the menu active.
-            aMenu.gameObject.SetActive(true);
+            aMenu.Enable(true);
             // Use the background if the menu dictates it.
             backgroundUI.SetActive(aMenu.DoesUseMenuBackground());
             // Then stop time if menu dictates to pause time and the game manager exists.

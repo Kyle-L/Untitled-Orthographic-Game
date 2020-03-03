@@ -6,6 +6,9 @@
 public class UIMenu : MonoBehaviour {
 
     [SerializeField]
+    [Tooltip("All of the ui objects that should be enabled/disbaled when the ui is activated/deactivated.")]
+    private GameObject[] uiObjects;
+    [SerializeField]
     [Tooltip("Whether a background is enabled with this menu.")]
     private bool useMenuBackground = true;
     [SerializeField]
@@ -63,4 +66,12 @@ public class UIMenu : MonoBehaviour {
     public bool GetOverrideState() {
         return canOverride;
     }
+
+    public void Enable(bool doesEnable) {
+        this.gameObject.SetActive(doesEnable);
+        foreach (GameObject gameObject in uiObjects) {
+            gameObject.SetActive(doesEnable);
+        }
+    }
+
 }

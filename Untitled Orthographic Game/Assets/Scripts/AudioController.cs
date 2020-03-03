@@ -103,7 +103,7 @@ public class AudioController : MonoBehaviour {
     /// </summary>
     /// <param name="effect"></param>
     /// <param name="volume"></param>
-    public void PlayEffect (AudioClip effect, float volume = 1) {
+    public void PlayEffect(AudioClip effect, float volume = 1) {
         effectSource.PlayOneShot(effect, volume);
     }
 
