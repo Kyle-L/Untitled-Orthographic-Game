@@ -486,7 +486,8 @@ MonoBehaviour:
   lookAtMinWeight: 0
   distanceToLook: 0.15
   lookSpeed: 3
-  weightSpeed: 1
+  weightSpeedStop: 1
+  weightSpeedStart: 1
 --- !u!114 &3972358739613255087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +617,7 @@ SkinnedMeshRenderer:
   - {fileID: 2100000, guid: 6f2a61dc0bc436b4ba2a49dcfe20c546, type: 2}
   - {fileID: 2100000, guid: 898d4d472e65fc441bb202e96f4207cf, type: 2}
   - {fileID: 2100000, guid: d1cf4480e538eac489dbd6fd44ec8c88, type: 2}
-  - {fileID: 2100000, guid: 3902464b7a9974246998b0e9893dd039, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: d1cf4480e538eac489dbd6fd44ec8c88, type: 2}
   - {fileID: 2100000, guid: c6e113c214f52784aa9012f9ffad4bf4, type: 2}
   - {fileID: 2100000, guid: 898d4d472e65fc441bb202e96f4207cf, type: 2}
@@ -2108,7 +2109,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 3
 --- !u!114 &3972358740586856412
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,7 +23,8 @@ public class HeadIKController : MonoBehaviour {
     [Header("Misc.")]
     public float distanceToLook = -1;
     public float lookSpeed = 3;
-    public float weightSpeed = 1;
+    public float weightSpeedStop = 1;
+    public float weightSpeedStart = 1;
 
     // Components.
     private Animator _animator;
@@ -31,7 +32,6 @@ public class HeadIKController : MonoBehaviour {
     // Frequently used variables.
     private Transform currentLookTrans;
     private Vector3 lookPos;
-    private RaycastHit _hit;
     private Coroutine lookCoroutine;
 
     private void Start() {
@@ -59,11 +59,11 @@ public class HeadIKController : MonoBehaviour {
         if (Physics.Raycast(_ray, RAYCAST_MAX_DISTANCE) && front > distanceToLook && currentLookTrans != null) {
             /* If the object is in front, lerp the weight to the max.
              * The lerp is there so the character doesn't abruptly look.*/
-            lookAtWeight = Mathf.Lerp(lookAtWeight, lookAtMaxWeight, weightSpeed * Time.deltaTime);
+            lookAtWeight = Mathf.Lerp(lookAtWeight, lookAtMaxWeight, weightSpeedStart * Time.deltaTime);
         } else {
             /* If the object is in front, lerp the weight to the max.
              * The lerp is there so the character doesn't abruptly look.*/
-            lookAtWeight = Mathf.Lerp(lookAtWeight, lookAtMinWeight, weightSpeed * Time.deltaTime);
+            lookAtWeight = Mathf.Lerp(lookAtWeight, lookAtMinWeight, weightSpeedStop * Time.deltaTime);
         }
 
         Debug.DrawLine(head.position, lookPos);
