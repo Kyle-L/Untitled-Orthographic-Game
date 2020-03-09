@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
-[RequireComponent(typeof(PlayerDialogueController))]
+[RequireComponent(typeof(PlayerInteractionController))]
 [RequireComponent(typeof(PlayerObjectHolder))]
 [RequireComponent(typeof(PlayerSettingsController))]
 public class PlayerControllerMain : Controller {
@@ -32,7 +32,7 @@ public class PlayerControllerMain : Controller {
 
     // Components
     public PlayerMovementController PlayerMovementController { get; private set; }
-    public PlayerDialogueController PlayerDialogueController { get; private set; }
+    public PlayerInteractionController PlayerDialogueController { get; private set; }
     public PlayerObjectHolder PlayerObjectHolder { get; private set; }
     public PlayerSettingsController PlayerSettingsController { get; private set; }
 
@@ -41,7 +41,7 @@ public class PlayerControllerMain : Controller {
         instance = this;
 
         PlayerMovementController = GetComponent<PlayerMovementController>();
-        PlayerDialogueController = GetComponent<PlayerDialogueController>();
+        PlayerDialogueController = GetComponent<PlayerInteractionController>();
         PlayerObjectHolder = GetComponent<PlayerObjectHolder>();
         PlayerSettingsController = GetComponent<PlayerSettingsController>();
     }

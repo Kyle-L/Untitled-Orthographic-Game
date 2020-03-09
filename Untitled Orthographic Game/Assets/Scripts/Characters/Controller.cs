@@ -17,7 +17,6 @@ public abstract class Controller : MonoBehaviour {
         Posed,
         UserControlled
     }
-    protected Stack<States> stateHistory;
 
     [Header("Behavior Tree")]
     protected Root behaviorTree;
@@ -30,19 +29,10 @@ public abstract class Controller : MonoBehaviour {
         Destination
     }
 
-    [Header("Traits")]
-    public List<Traits> activeTraits;
-    public enum Traits { Talkative, Curious, EasilyBored, Lazy, }
-
-    // Status
-    public bool isAlive = true;
-
     // Components
     public MovementController MovementController { get; protected set; }
 
     protected void Start() {
-        stateHistory = new Stack<States>();
-
         MovementController = GetComponent<MovementController>();
 
         // create our behaviour tree and get it's blackboard
@@ -118,7 +108,8 @@ public abstract class Controller : MonoBehaviour {
 
                         // If the state is interacting, run this.
                         new BlackboardCondition(BlackBoardVars.State.ToString(), Operator.IS_EQUAL, States.Interacting, Stops.IMMEDIATE_RESTART,
-                            new Sequence(
+                            new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_NOT_SET, Stops.LOWER_PRIORITY_IMMEDIATE_RESTART,
+                                new Sequence(
                                 // Determines the type of object that the npc is interacting with.
                                 new Action(() => {
                                     blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType;
@@ -174,6 +165,7 @@ public abstract class Controller : MonoBehaviour {
                                     ) { Label = "Interactable" }
                                 )
                             )
+                            )
                         ),
                         new WaitUntilStopped()
                     )
@@ -183,17 +175,31 @@ public abstract class Controller : MonoBehaviour {
     }
 
     public void InteractWith(Interactable go) {
+        ModifyBlackBoard(BlackBoardVars.InteractingObjectType);
         ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
         ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
     }
 
     public void InteractWith(Controller go) {
+        ModifyBlackBoard(BlackBoardVars.InteractingObjectType);
         ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
         ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
     }
 
     public void SetState(States state) {
         ModifyBlackBoard(BlackBoardVars.State, state);
+    }
+
+    public States GetState () {
+        return blackboard.Get<States>(BlackBoardVars.State.ToString());
+    }
+
+    /// <summary>
+    /// Modifies a blackboard variable to be unset.
+    /// </summary>
+    /// <param name="key"></param>
+    private void ModifyBlackBoard(BlackBoardVars key) {
+        blackboard.Unset(key.ToString());
     }
 
     /// <summary>
@@ -203,22 +209,6 @@ public abstract class Controller : MonoBehaviour {
     /// <param name="value"></param>
     private void ModifyBlackBoard(BlackBoardVars key, object value) {
         blackboard[key.ToString()] = value;
-    }
-
-    /// <summary>
-    /// Modifies a blackboard variable.
-    /// Precondition: The length of key is equal to the length of value.
-    /// </summary>
-    /// <param name="key"></param>
-    /// <param name="value"></param>
-    private void ModifyBlackBoard(BlackBoardVars[] key, object[] value) {
-        if (key.Length != value.Length) {
-            return;
-        }
-
-        for (int index = 0; index < key.Length; index++) {
-            blackboard[key[index].ToString()] = value[index];
-        }
     }
 
     public void UpdateBlackBoards() {

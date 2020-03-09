@@ -1,0 +1,135 @@
+title: Date
+tags: 
+colorID: 0
+position: 487,615
+---
+You okay?
+
+-> Yeah, I'm fine.
+    Okay...
+    You look like you have seen better days.
+-> I could be a bit better.
+    I'm sorry.
+    Maybe we can talk about it later?
+    When you are feeling better?
+    -> Yeah
+    -> No
+    Okay.
+-> No.
+    I'm sorry.
+    Maybe we can talk about it later?
+    When you are feeling better?
+    -> Yeah
+    -> No
+    Okay.
+
+Anyway... 
+Do you have any plans today?
+
+-> No
+-> Not yet
+
+Would you potentially want to help me with something?
+
+-> Yeah!
+    Sweet!
+-> No!
+    Oh...
+    Okay...
+-> Actually I do have plans today (Lie)
+    Hmm...
+    I don't you think you do.
+    -> I totally do!
+        No you don't!
+    -> Yeah... I don't.
+    
+Anyway, I had a fri-
+A guy friend who was asking about?
+
+-> And?
+-> Why?
+
+You know :)
+
+-> Do I?
+    Yes.
+    Yes, you do.
+-> Oh, right.
+
+Anyway, he was asking if you were free to meet for coffee today.
+So...
+Are you?
+
+-> Yes!
+-> No!
+    I'll tell him you're free to meet!
+
+How's 3:00pm sou-
+3:00pm will work!
+I'll text him!
+
+-> Okay!
+-> You suck!
+
+Yup!
+I know.
+It will be good for you though!
+ -> Why?
+
+You don't get out enough.
+You need to put yourself out to the world.
+
+-> I'm good.
+    The world is a big place with cool people.
+-> Why?
+    Because the world is a big place with cool people.
+
+People will care about you and what you have to offer.
+
+-> And what do I have to offer?
+
+A dry sense of humor.
+Seriously though, you are the funniest person I know.
+
+-> Yeah (No shit, I know I'm hilarious)
+-> Really? (Of course I am)
+    Yeah!
+-> No, I'm not that funny.
+    You are selling yourself short.
+
+Anyone would be lucky to be friends with you!
+I know I am.
+
+-> Thank you!
+-> Awwwww...
+
+Anyway, I think you'll really like this guy!
+
+-> Why?
+-> What if I don't?
+    Please, just give him time to warm up to you?
+
+He's quirky like you.
+
+-> Okay.
+-> I'll consider it.
+
+Yay!
+
+[[What are you up to today?|UpTo]]
+===
+title: Start
+tags: 
+colorID: 0
+position: 484,173
+---
+ [[...|Date]]
+ [[What are you up to?|UpTo]]
+===
+title: UpTo
+tags: 
+colorID: 0
+position: 836,618
+---
+Empty Text
+===

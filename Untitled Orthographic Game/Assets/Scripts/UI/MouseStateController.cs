@@ -3,7 +3,9 @@
 public class MouseStateController : MonoBehaviour {
     public static MouseStateController instance;
 
+    public Texture2D cursorTexture;
     bool mouseState = false;
+
 
     private void Awake() {
         if (instance == null) {
@@ -20,12 +22,15 @@ public class MouseStateController : MonoBehaviour {
 
     public void SetMouseState(bool isActive) {
         mouseState = isActive;
-        Cursor.visible = mouseState;
-        Cursor.lockState = (mouseState) ? CursorLockMode.None : CursorLockMode.Locked;
+        SetUIMouse(isActive);
     }
 
     public void SetUIMouse(bool isActive) {
-        Cursor.visible = mouseState || isActive;
-        Cursor.lockState = (mouseState || isActive) ? CursorLockMode.None : CursorLockMode.Locked;
+        if (mouseState || isActive) {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        } else {
+            Vector2 cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+            Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+        }
     }
 }

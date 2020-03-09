@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Yarn.Unity;
 
 public class PlayerMovementController : MovementController {
 
@@ -8,19 +9,16 @@ public class PlayerMovementController : MovementController {
 
     public bool Control { get; set; } = true;
 
-    public AnimatedInteractable interactableTest;
-
     private new void Update() {
         direction = Vector3.zero;
 
         #region Movement
         if (Control) {
-            if (Input.GetButtonDown("Jump")) {
-                agentControlled = true;
-                PlayerControllerMain.instance.InteractWith(interactableTest);
-            } else if (Mathf.Abs(Input.GetAxis("Vertical")) > 0 || Mathf.Abs(Input.GetAxis("Horizontal")) > 0) {
-                agentControlled = false;
-                PlayerControllerMain.instance.SetState(Controller.States.UserControlled);
+            if (Mathf.Abs(Input.GetAxis("Vertical")) > 0 || Mathf.Abs(Input.GetAxis("Horizontal")) > 0) {
+                if (!DialogueRunner.instance.isDialogueRunning) {
+                    agentControlled = false;
+                    PlayerControllerMain.instance.SetState(Controller.States.UserControlled);
+                }
             }
 
             if (!agentControlled && _animator.GetCurrentAnimatorStateInfo(0).IsName("Movement") || _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {
