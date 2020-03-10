@@ -901,7 +901,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &105234479
 Transform:
@@ -4820,18 +4820,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5594475, y: 0.7455444, z: 0.54}
   m_Center: {x: -0.009603143, y: 0.37277213, z: -0.086961806}
---- !u!114 &634853603 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2874761992674815224, guid: 0b61d239da1e9c24bb82ad60acd081a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1893884055}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a70f4244611b89c4e90928a48cb50b46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &637202673
 GameObject:
   m_ObjectHideFlags: 0
@@ -4953,7 +4941,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &673543249
 Transform:
@@ -8136,6 +8124,10 @@ PrefabInstance:
       propertyPath: weightSpeedStart
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 653055887, guid: 8b6387ced9a2cf0408025e6793572fbd, type: 3}
+      propertyPath: distanceToLook
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1084412633, guid: 8b6387ced9a2cf0408025e6793572fbd, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -9067,7 +9059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e489caa3efef6d4593dc02755e96cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiMenu: {fileID: 634853603}
+  uiMenu: {fileID: 0}
 --- !u!4 &1263139910
 Transform:
   m_ObjectHideFlags: 0

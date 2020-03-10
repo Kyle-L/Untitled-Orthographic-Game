@@ -22,7 +22,7 @@ public class PlayerInteractionController : MonoBehaviour {
             if (Physics.Raycast(ray, out hit)) {
                 Interactable objectHit = hit.transform.GetComponent<Interactable>();
                 print(objectHit);
-                if (objectHit != null) {
+                if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
 
                     PlayerControllerMain.instance.InteractWith(objectHit);
                 }
@@ -30,7 +30,9 @@ public class PlayerInteractionController : MonoBehaviour {
         }
 
         if (CrossPlatformInputManager.GetButtonDown("Interact")) {
-            CheckForNearbyNPC();
+            if (!PlayerControllerMain.instance.MovementController.agentControlled) {
+                CheckForNearbyNPC();
+            }
         }
     }
 

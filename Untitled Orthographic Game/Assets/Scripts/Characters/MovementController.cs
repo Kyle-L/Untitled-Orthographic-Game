@@ -34,8 +34,14 @@ public abstract class MovementController : MonoBehaviour {
     protected float verticalVelocity;
     protected Vector3 direction;
 
+    public enum AnimationTriggers {
+        SitDown,
+        Exit
+    }
+
     protected Coroutine angleCoroutine;
-    protected Coroutine moveCoroutine;
+    protected Coroutine transformMoveCoroutine;
+    protected Coroutine agentMoveCoroutine;
 
     protected void Awake() {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
@@ -49,7 +55,6 @@ public abstract class MovementController : MonoBehaviour {
         _navMeshAgent.updatePosition = false;
         _navMeshAgent.updateRotation = false;
     }
-
 
     protected void Update() {
         if (!_characterController.enabled) {
@@ -147,12 +152,12 @@ public abstract class MovementController : MonoBehaviour {
 
     public void AlignPosition(Transform transform) {
         // If a coroutine is running, stop it.
-        if (moveCoroutine != null) {
-            StopCoroutine(moveCoroutine);
+        if (transformMoveCoroutine != null) {
+            StopCoroutine(transformMoveCoroutine);
         }
 
         // Start the look look at coroutine.
-        moveCoroutine = StartCoroutine(SetPositionSlerp(transform.position));
+        transformMoveCoroutine = StartCoroutine(SetPositionSlerp(transform.position));
     }
 
     /// <summary>
@@ -167,17 +172,41 @@ public abstract class MovementController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Makes the character look at specific transform.
+    /// </summary>
+    /// <param name="pos"></param>
     public void LookAt(Transform pos) {
         _headIKController.LookAt(pos);
     }
 
+    /// <summary>
+    /// Makes the character look at a random transform.
+    /// </summary>
+    /// <param name="trans"></param>
     public void LookAtRandom(Transform[] trans) {
         _headIKController.LookAt(_headIKController.GetClosestInFrontTransform(trans));
     }
 
-    public enum AnimationTriggers {
-        SitDown,
-        Exit
+    public void SetDestination (Transform transform) {
+        SetDestination(transform.position);
+    }
+
+    public void SetDestination(Vector3 position) {
+        if (agentMoveCoroutine != null) {
+            StopCoroutine(agentMoveCoroutine);
+        }
+        agentMoveCoroutine = StartCoroutine(WaitToSet(position));
+    }
+
+    private IEnumerator WaitToSet(Vector3 position) {
+        _navMeshAgent.destination = position;
+        _navMeshAgent.isStopped = true;
+        while (!IsAnimating()) {
+            yield return null;
+        }
+        _navMeshAgent.isStopped = false;
+        agentControlled = true;
     }
 
     public void TriggerAnimation(AnimationTriggers trigger) {
@@ -195,5 +224,13 @@ public abstract class MovementController : MonoBehaviour {
 
     public void StopRagdoll() {
         _ragdollHelper.ragdolled = false;
+    }
+
+    /// <summary>
+    /// Returns whether the player is in any animation state other than Idle and Movement.
+    /// </summary>
+    /// <returns></returns>
+    public bool IsAnimating () {
+        return (_animator.GetCurrentAnimatorStateInfo(0).IsName("Movement") || _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
     }
 }

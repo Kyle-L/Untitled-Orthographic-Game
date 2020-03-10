@@ -21,7 +21,7 @@ public class PlayerMovementController : MovementController {
                 }
             }
 
-            if (!agentControlled && _animator.GetCurrentAnimatorStateInfo(0).IsName("Movement") || _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {
+            if (!agentControlled && IsAnimating()) {
                 // Movement
                 float vertical = Input.GetAxis("Vertical");
                 float horizontal = Input.GetAxis("Horizontal");

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace NPBehave {
@@ -8,7 +9,7 @@ namespace NPBehave {
 #if UNITY_5_3 || UNITY_5_4
         private NavMeshAgent agent;
 #else
-        private UnityEngine.AI.NavMeshAgent agent;
+        private Controller agent;
 #endif
         private string blackboardKey;
         private float tolerance;
@@ -31,7 +32,7 @@ namespace NPBehave {
 #if UNITY_5_3 || UNITY_5_4
         public NavMoveTo(NavMeshAgent agent, string blackboardKey, float tolerance = 1.0f, bool stopOnTolerance = false, float updateFrequency = 0.1f, float updateVariance = 0.025f) : base("NavMoveTo")
 #else
-        public NavMoveTo(UnityEngine.AI.NavMeshAgent agent, string blackboardKey, float tolerance = 1.0f, bool stopOnTolerance = false, float updateFrequency = 0.1f, float updateVariance = 0.025f) : base("NavMoveTo")
+        public NavMoveTo(Controller agent, string blackboardKey, float tolerance = 1.0f, bool stopOnTolerance = false, float updateFrequency = 0.1f, float updateVariance = 0.025f) : base("NavMoveTo")
 #endif
         {
             this.agent = agent;
@@ -88,10 +89,10 @@ namespace NPBehave {
 
             // set new destination
             //agent.destination = destination;
-            agent.SetDestination(destination);
+            agent.MovementController.SetDestination(destination);
 
-            bool destinationChanged = (agent.destination - lastDestination).sqrMagnitude > (DESTINATION_CHANGE_THRESHOLD * DESTINATION_CHANGE_THRESHOLD); //(destination - agent.destination).sqrMagnitude > (DESTINATION_CHANGE_THRESHOLD * DESTINATION_CHANGE_THRESHOLD);
-            bool distanceChanged = Mathf.Abs(agent.remainingDistance - lastDistance) > DESTINATION_CHANGE_THRESHOLD;
+            bool destinationChanged = (agent.MovementController._navMeshAgent.destination - lastDestination).sqrMagnitude > (DESTINATION_CHANGE_THRESHOLD * DESTINATION_CHANGE_THRESHOLD); //(destination - agent.destination).sqrMagnitude > (DESTINATION_CHANGE_THRESHOLD * DESTINATION_CHANGE_THRESHOLD);
+            bool distanceChanged = Mathf.Abs(agent.MovementController._navMeshAgent.remainingDistance - lastDistance) > DESTINATION_CHANGE_THRESHOLD;
 
             // check if we are already at our goal and stop the task
             if (lastDistance < this.tolerance) {
@@ -110,13 +111,13 @@ namespace NPBehave {
                 failedChecks = 0;
             }
 
-            lastDestination = agent.destination;
-            lastDistance = agent.remainingDistance;
+            lastDestination = agent.MovementController._navMeshAgent.destination;
+            lastDistance = agent.MovementController._navMeshAgent.remainingDistance;
         }
 
         private void stopAndCleanUp(bool result) {
             //agent.destination = agent.transform.position;
-            agent.SetDestination(agent.transform.position);
+            agent.MovementController.SetDestination(agent.transform.position);
             Blackboard.RemoveObserver(blackboardKey, onBlackboardValueChanged);
             Clock.RemoveTimer(onUpdateTimer);
             Stopped(result);

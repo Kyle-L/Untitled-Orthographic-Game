@@ -100,7 +100,7 @@ public abstract class Controller : MonoBehaviour {
                                 new Action(() => {
                                     blackboard[BlackBoardVars.Destination.ToString()] = wanderingPoints[UnityEngine.Random.Range(0, wanderingPoints.Length)].transform.position;
                                 }),
-                                new NavMoveTo(MovementController._navMeshAgent, BlackBoardVars.Destination.ToString()),
+                                new NavMoveTo(this, BlackBoardVars.Destination.ToString()),
                                 // Now at a wandering point, the npc waits to wander again.
                                 new Wait(wanderingTime, wanderingTimeDeviation)
                             )
@@ -108,63 +108,66 @@ public abstract class Controller : MonoBehaviour {
 
                         // If the state is interacting, run this.
                         new BlackboardCondition(BlackBoardVars.State.ToString(), Operator.IS_EQUAL, States.Interacting, Stops.IMMEDIATE_RESTART,
-                            new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_NOT_SET, Stops.LOWER_PRIORITY_IMMEDIATE_RESTART,
-                                new Sequence(
-                                // Determines the type of object that the npc is interacting with.
-                                new Action(() => {
-                                    blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType;
-                                }),
-                                new Selector(
-                                    // If the interacting object param has already been set, run this node.
-                                    new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_EQUAL, typeof(Controller), Stops.BOTH,
-                                        // This sequence represents the actions taken to talk.
-                                        new Sequence(
-                                            // First, the npc will move to the front of the controller.
-                                            new Action(() => {
-                                                Controller talkingTo = blackboard.Get<Controller>(BlackBoardVars.InteractingObject.ToString());
-                                                blackboard[BlackBoardVars.Destination.ToString()] = talkingTo.transform;
-                                            }),
-                                            new NavMoveTo(MovementController._navMeshAgent, BlackBoardVars.Destination.ToString()),
-                                            // Then, the npc will face the other controller.
-                                            new Action(() => {
-                                                Controller talkingTo = blackboard.Get<Controller>(BlackBoardVars.InteractingObject.ToString());
-                                                MovementController.Face(talkingTo.transform);
-                                            }),
-                                            // Finally, the npc will wait in the state till something changes.
-                                            new WaitUntilStopped()
-                                        )
-                                    ) { Label = "Talking" },
+                            new Repeater(
+                                new Succeeder(
+                                    new Sequence(
+                                    // Determines the type of object that the npc is interacting with.
+                                    new Action(() => {
+                                        blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType;
+                                        print("1");
+                                    }),
+                                    new Selector(
+                                        // If the interacting object param has already been set, run this node.
+                                        new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_EQUAL, typeof(Controller), Stops.BOTH,
+                                            // This sequence represents the actions taken to talk.
+                                            new Sequence(
+                                                // First, the npc will move to the front of the controller.
+                                                new Action(() => {
+                                                    Controller talkingTo = blackboard.Get<Controller>(BlackBoardVars.InteractingObject.ToString());
+                                                    blackboard[BlackBoardVars.Destination.ToString()] = talkingTo.transform;
+                                                }),
+                                                new NavMoveTo(this, BlackBoardVars.Destination.ToString()),
+                                                // Then, the npc will face the other controller.
+                                                new Action(() => {
+                                                    Controller talkingTo = blackboard.Get<Controller>(BlackBoardVars.InteractingObject.ToString());
+                                                    MovementController.Face(talkingTo.transform);
+                                                }),
+                                                // Finally, the npc will wait in the state till something changes.
+                                                new WaitUntilStopped()
+                                            )
+                                        ) { Label = "Talking" },
 
-                                    new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_EQUAL, typeof(Interactable), Stops.BOTH,
-                                        // This sequence represents the actions taken to talk.
-                                        new Sequence(
-                                            new Action(() => {
-                                                Interactable talkingTo = blackboard.Get<Interactable>(BlackBoardVars.InteractingObject.ToString());
-                                                blackboard[BlackBoardVars.Destination.ToString()] = talkingTo.interactionPoint;
-                                            }),
-                                            // First, the npc will move to the front of the controller.
-                                            new NavMoveTo(MovementController._navMeshAgent, BlackBoardVars.Destination.ToString()),
-                                            // Then, the npc will face the other controller.
-                                            new Action((Request result) => {
-                                                if (result == Request.CANCEL) {
-                                                    MovementController.SetCharacterControllerState(true);
-                                                    MovementController.TriggerAnimation(MovementController.AnimationTriggers.Exit);
-                                                    return Action.Result.SUCCESS;
-                                                } else if (result == Request.START) {
-                                                    Interactable interactionObject = blackboard.Get<Interactable>(BlackBoardVars.InteractingObject.ToString());
-                                                    MovementController.AlignPosition(interactionObject.interactionPoint);
-                                                    MovementController.AlignRotation(interactionObject.interactionPoint);
-                                                    MovementController.TriggerAnimation(MovementController.AnimationTriggers.SitDown);
-                                                    MovementController.SetCharacterControllerState(false);
-                                                    return Action.Result.PROGRESS;
-                                                } else {
-                                                    return Action.Result.PROGRESS;
-                                                }
-                                            })
-                                        )
-                                    ) { Label = "Interactable" }
+                                        new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_EQUAL, typeof(Interactable), Stops.BOTH,
+                                            // This sequence represents the actions taken to talk.
+                                            new Sequence(
+                                                new Action(() => {
+                                                    Interactable talkingTo = blackboard.Get<Interactable>(BlackBoardVars.InteractingObject.ToString());
+                                                    blackboard[BlackBoardVars.Destination.ToString()] = talkingTo.interactionPoint;
+                                                }),
+                                                // First, the npc will move to the front of the controller.
+                                                new NavMoveTo(this, BlackBoardVars.Destination.ToString()),
+                                                // Then, the npc will face the other controller.
+                                                new Action((Request result) => {
+                                                    if (result == Request.CANCEL) {
+                                                        MovementController.SetCharacterControllerState(true);
+                                                        MovementController.TriggerAnimation(MovementController.AnimationTriggers.Exit);
+                                                        return Action.Result.SUCCESS;
+                                                    } else if (result == Request.START) {
+                                                        Interactable interactionObject = blackboard.Get<Interactable>(BlackBoardVars.InteractingObject.ToString());
+                                                        MovementController.AlignPosition(interactionObject.interactionPoint);
+                                                        MovementController.AlignRotation(interactionObject.interactionPoint);
+                                                        MovementController.TriggerAnimation(MovementController.AnimationTriggers.SitDown);
+                                                        MovementController.SetCharacterControllerState(false);
+                                                        return Action.Result.PROGRESS;
+                                                    } else {
+                                                        return Action.Result.PROGRESS;
+                                                    }
+                                                })
+                                            )
+                                        ) { Label = "Interactable" }
+                                    )
                                 )
-                            )
+                                )
                             )
                         ),
                         new WaitUntilStopped()
@@ -175,15 +178,15 @@ public abstract class Controller : MonoBehaviour {
     }
 
     public void InteractWith(Interactable go) {
-        ModifyBlackBoard(BlackBoardVars.InteractingObjectType);
         ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
         ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
+        ModifyBlackBoard(BlackBoardVars.InteractingObjectType);
     }
 
     public void InteractWith(Controller go) {
-        ModifyBlackBoard(BlackBoardVars.InteractingObjectType);
         ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
         ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
+        ModifyBlackBoard(BlackBoardVars.InteractingObjectType);
     }
 
     public void SetState(States state) {
