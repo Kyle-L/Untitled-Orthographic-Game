@@ -26,11 +26,11 @@ public class MouseStateController : MonoBehaviour {
     }
 
     public void SetUIMouse(bool isActive) {
-        if (mouseState || isActive) {
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        } else {
-            Vector2 cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-            Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
-        }
+        //if (mouseState || isActive) {
+        //    Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        //} else {
+        //    Vector2 cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        //    Cursor.SetCursor(cursorTexture, cursorHotspot, CursorMode.Auto);
+        //}
     }
 }

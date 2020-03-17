@@ -21,7 +21,6 @@ public class PlayerInteractionController : MonoBehaviour {
         if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
             if (Physics.Raycast(ray, out hit)) {
                 Interactable objectHit = hit.transform.GetComponent<Interactable>();
-                print(objectHit);
                 if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
 
                     PlayerControllerMain.instance.InteractWith(objectHit);
@@ -30,7 +29,7 @@ public class PlayerInteractionController : MonoBehaviour {
         }
 
         if (CrossPlatformInputManager.GetButtonDown("Interact")) {
-            if (!PlayerControllerMain.instance.MovementController.agentControlled) {
+            if (PlayerControllerMain.instance.Control) {
                 CheckForNearbyNPC();
             }
         }
@@ -74,6 +73,7 @@ public class PlayerInteractionController : MonoBehaviour {
             target = null;
         }
         PlayerControllerMain.instance.Control = true;
+        PlayerControllerMain.instance.MovementController.agentControlled = false;
         PlayerControllerMain.instance.SetState(Controller.States.UserControlled);
     }
 }

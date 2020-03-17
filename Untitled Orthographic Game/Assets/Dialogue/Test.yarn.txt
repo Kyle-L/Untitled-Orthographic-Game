@@ -1,0 +1,43 @@
+title: Test
+tags: 
+colorID: 0
+position: 539,551
+---
+<<if visited("Test") is false>>
+    <<NPC gesture acknowledging>> 
+    This is a test of the branching dialogue system.
+    
+    -> Okay
+        <<gesture NPC acknowledging>> 
+        I hope this system actually works.
+    -> Sweet
+        <<gesture NPC acknowledging>> 
+        I'm glad you love it.
+    -> I hate this.
+        <<gesture NPC acknowledging>> 
+        Too bad.
+    
+    <<gesture NPC weight-shift>> 
+    Anyway, every dialogue option has the ability to change my reaction.
+    
+    For instance, I will react differently to different choices.
+    
+    -> Angry choice.
+        <<gesture NPC angry>> 
+        I'm angry.
+    -> Happy choice.
+        <<gesture NPC happy>> 
+        I'm happy.
+    -> Sad choice.
+        <<gesture NPC dismissing>> 
+        I'm sad.
+    
+    <<gesture NPC acknowledging>> 
+    For now, that is all I have for you.
+<<else>>
+    <<gesture NPC annoyed>> 
+    I already talked to you!
+    <<gesture NPC angry>> 
+    Punk!
+<<endif>>
+===

@@ -114,7 +114,6 @@ public abstract class Controller : MonoBehaviour {
                                     // Determines the type of object that the npc is interacting with.
                                     new Action(() => {
                                         blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType;
-                                        print("1");
                                     }),
                                     new Selector(
                                         // If the interacting object param has already been set, run this node.

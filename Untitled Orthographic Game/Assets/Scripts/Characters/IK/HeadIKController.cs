@@ -54,11 +54,9 @@ public class HeadIKController : MonoBehaviour {
          * at the axis.*/
         float front = transform.InverseTransformPoint(lookPos).z;
 
-        print(this.name + " : " + Physics.Raycast(_ray, RAYCAST_MAX_DISTANCE));
-
         /* In order for to look at something, the object needs to be visible 
          * and in front of the character. */
-        if (Physics.Raycast(_ray, RAYCAST_MAX_DISTANCE) && front > distanceToLook && currentLookTrans != null) {
+        if (/*Physics.Raycast(_ray, RAYCAST_MAX_DISTANCE) &&*/ front > distanceToLook && currentLookTrans != null) {
             /* If the object is in front, lerp the weight to the max.
              * The lerp is there so the character doesn't abruptly look.*/
             lookAtWeight = Mathf.Lerp(lookAtWeight, lookAtMaxWeight, weightSpeedStart * Time.deltaTime);

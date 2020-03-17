@@ -172,6 +172,12 @@ public abstract class MovementController : MonoBehaviour {
         }
     }
 
+    public void SetPosition (Vector3 pos) {
+        _navMeshAgent.enabled = false;
+        transform.position = pos;
+        _navMeshAgent.enabled = true;
+    }
+
     /// <summary>
     /// Makes the character look at specific transform.
     /// </summary>
