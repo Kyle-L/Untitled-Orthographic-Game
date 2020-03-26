@@ -172,10 +172,9 @@ public abstract class MovementController : MonoBehaviour {
         }
     }
 
-    public void SetPosition (Vector3 pos) {
-        _navMeshAgent.enabled = false;
+    public void SetPosition(Vector3 pos) {
+        _navMeshAgent.Warp(pos);
         transform.position = pos;
-        _navMeshAgent.enabled = true;
     }
 
     /// <summary>
@@ -194,7 +193,7 @@ public abstract class MovementController : MonoBehaviour {
         _headIKController.LookAt(_headIKController.GetClosestInFrontTransform(trans));
     }
 
-    public void SetDestination (Transform transform) {
+    public void SetDestination(Transform transform) {
         SetDestination(transform.position);
     }
 
@@ -236,7 +235,7 @@ public abstract class MovementController : MonoBehaviour {
     /// Returns whether the player is in any animation state other than Idle and Movement.
     /// </summary>
     /// <returns></returns>
-    public bool IsAnimating () {
+    public bool IsAnimating() {
         return (_animator.GetCurrentAnimatorStateInfo(0).IsName("Movement") || _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"));
     }
 }

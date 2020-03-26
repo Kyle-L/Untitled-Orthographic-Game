@@ -1,9 +1,13 @@
 ﻿using NPBehave;
-using System.Collections.Generic;
 using UnityEngine;
 using static NPBehave.Action;
 
 public abstract class Controller : MonoBehaviour {
+
+    [Header("Character")]
+    public Transform character;
+    private Vector3 offsetPos;
+    private Vector3 offsetRot;
 
     [Header("Wandering")]
     public Transform[] wanderingPoints;
@@ -29,11 +33,18 @@ public abstract class Controller : MonoBehaviour {
         Destination
     }
 
+    public bool isAlive = true;
+
     // Components
     public MovementController MovementController { get; protected set; }
+    public PlayerObjectHolder PlayerObjectHolder { get; protected set; }
 
     protected void Start() {
         MovementController = GetComponent<MovementController>();
+        PlayerObjectHolder = GetComponent<PlayerObjectHolder>();
+
+        offsetPos = character.localPosition;
+        offsetRot = character.localRotation.eulerAngles;
 
         // create our behaviour tree and get it's blackboard
         behaviorTree = CreateBehaviourTree();
@@ -113,7 +124,11 @@ public abstract class Controller : MonoBehaviour {
                                     new Sequence(
                                     // Determines the type of object that the npc is interacting with.
                                     new Action(() => {
-                                        blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType;
+                                        if (blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType == typeof(MonoBehaviour)) {
+                                            blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType();
+                                        } else {
+                                            blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType;
+                                        }
                                     }),
                                     new Selector(
                                         // If the interacting object param has already been set, run this node.
@@ -163,7 +178,43 @@ public abstract class Controller : MonoBehaviour {
                                                     }
                                                 })
                                             )
-                                        ) { Label = "Interactable" }
+                                        ) { Label = "Interactable" },
+
+                                        new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_EQUAL, typeof(Viewable), Stops.LOWER_PRIORITY,
+                                            // This sequence represents the actions taken to talk.
+                                            new Sequence(
+                                                new Action(() => {
+                                                    Viewable talkingTo = blackboard.Get<Viewable>(BlackBoardVars.InteractingObject.ToString());
+                                                    blackboard[BlackBoardVars.Destination.ToString()] = talkingTo.interactionPoint;
+                                                }),
+                                                // First, the npc will move to the front of the controller.
+                                                new NavMoveTo(this, BlackBoardVars.Destination.ToString()),
+
+                                                new Action(() => {
+                                                    Viewable talkingTo = blackboard.Get<Viewable>(BlackBoardVars.InteractingObject.ToString());
+                                                    talkingTo.Go();
+                                                    SetState(States.UserControlled);
+                                                })
+                                            )
+                                        ) { Label = "Viewable" },
+
+                                        new BlackboardCondition(BlackBoardVars.InteractingObjectType.ToString(), Operator.IS_EQUAL, typeof(Pickupable), Stops.LOWER_PRIORITY,
+                                            // This sequence represents the actions taken to talk.
+                                            new Sequence(
+                                                new Action(() => {
+                                                    Pickupable talkingTo = blackboard.Get<Pickupable>(BlackBoardVars.InteractingObject.ToString());
+                                                    blackboard[BlackBoardVars.Destination.ToString()] = talkingTo.transform;
+                                                }),
+                                                // First, the npc will move to the front of the controller.
+                                                new NavMoveTo(this, BlackBoardVars.Destination.ToString()),
+
+                                                new Action(() => {
+                                                    Pickupable talkingTo = blackboard.Get<Pickupable>(BlackBoardVars.InteractingObject.ToString());
+                                                    PlayerObjectHolder.Pickup(talkingTo);
+                                                    SetState(States.UserControlled);
+                                                })
+                                            )
+                                        ) { Label = "Pickupable" }
                                     )
                                 )
                                 )
@@ -176,13 +227,11 @@ public abstract class Controller : MonoBehaviour {
         );
     }
 
-    public void InteractWith(Interactable go) {
-        ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
-        ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
-        ModifyBlackBoard(BlackBoardVars.InteractingObjectType);
-    }
+    public void InteractWith(Object go) {
+        if (blackboard.Get<Object>(BlackBoardVars.InteractingObject.ToString()) == go && GetState() != States.UserControlled) {
+            return;
+        }
 
-    public void InteractWith(Controller go) {
         ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
         ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
         ModifyBlackBoard(BlackBoardVars.InteractingObjectType);
@@ -192,7 +241,7 @@ public abstract class Controller : MonoBehaviour {
         ModifyBlackBoard(BlackBoardVars.State, state);
     }
 
-    public States GetState () {
+    public States GetState() {
         return blackboard.Get<States>(BlackBoardVars.State.ToString());
     }
 
@@ -218,13 +267,29 @@ public abstract class Controller : MonoBehaviour {
     }
 
     public void Die() {
-        MovementController._navMeshAgent.enabled = false;
+        isAlive = false;
+        //MovementController._navMeshAgent.enabled = false;
+        MovementController.SetCharacterControllerState(false);
         MovementController.RagDoll();
     }
 
     public void Live() {
+
+
+        transform.rotation = character.rotation;
+        character.rotation = Quaternion.Euler(transform.rotation.eulerAngles + offsetRot);
+
         MovementController._navMeshAgent.enabled = true;
+
+        MovementController.SetCharacterControllerState(true);
+
+        MovementController.SetPosition(character.position);
+        character.localPosition = offsetPos;
+
+        isAlive = true;
         MovementController.StopRagdoll();
+        // Need a way to set the body position
+
     }
 
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using Yarn.Unity;
@@ -6,9 +6,11 @@ using Yarn.Unity;
 public class PlayerInteractionController : MonoBehaviour {
 
     [SerializeField]
-    private float interactionRadius = 2.0f;
+    private float interactionRadius = 1;
+    private Coroutine interactionRange;
 
     private NPCController target;
+
 
     private void Start() {
         DialogueRunner.instance.DialogueFinished += (sender, args) => { StopDialogue(); };
@@ -20,17 +22,29 @@ public class PlayerInteractionController : MonoBehaviour {
 
         if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
             if (Physics.Raycast(ray, out hit)) {
-                Interactable objectHit = hit.transform.GetComponent<Interactable>();
-                if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
+                if (hit.collider.CompareTag("Interactable")) {
+                    Interactable objectHit = hit.transform.GetComponent<Interactable>();
+                    if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
 
-                    PlayerControllerMain.instance.InteractWith(objectHit);
+                        PlayerControllerMain.instance.InteractWith(objectHit);
+                    }
+                } else if (hit.collider.CompareTag("Viewable")) {
+                    Viewable objectHit = hit.transform.GetComponent<Viewable>();
+                    if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
+                        PlayerControllerMain.instance.InteractWith(objectHit);
+                    }
+                } else if (hit.collider.CompareTag("Pickupable")) {
+                    Pickupable objectHit = hit.transform.GetComponent<Pickupable>();
+                    if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
+                        PlayerControllerMain.instance.InteractWith(objectHit);
+                    }
+                } else if (hit.collider.tag == "NPC") {
+                    if (PlayerControllerMain.instance.Control) {
+                        CheckForNearbyNPC(hit.collider.gameObject);
+                    }
                 }
-            }
-        }
 
-        if (CrossPlatformInputManager.GetButtonDown("Interact")) {
-            if (PlayerControllerMain.instance.Control) {
-                CheckForNearbyNPC();
+
             }
         }
     }
@@ -39,30 +53,23 @@ public class PlayerInteractionController : MonoBehaviour {
     /** Filter them to those that have a Yarn start node and are in range; 
      * then start a conversation with the first one
      */
-    public void CheckForNearbyNPC() {
-        var allParticipants = new List<NPCController>(FindObjectsOfType<NPCController>());
-        target = allParticipants.Find(delegate (NPCController p) {
-            return string.IsNullOrEmpty(p.NPCDialogueController.talkToNode) == false && // has a conversation node?
-            (p.transform.position - this.transform.position)// is in range?
-            .magnitude <= interactionRadius;
-        });
+    public void CheckForNearbyNPC(GameObject character) {
+        target = character.GetComponentInParent<NPCController>();
         if (target != null) {
             // Quit the dialogue if it is already running.
             if (DialogueRunner.instance.isDialogueRunning) {
                 return;
             }
 
-            DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode, target.NPCDialogueController.characterText);
-
-            PlayerControllerMain.instance.Control = false;
-
-            if (PlayerControllerMain.instance.GetState() != Controller.States.Interacting) {
+            if (PlayerControllerMain.instance.GetState() != Controller.States.Interacting || Vector3.Distance(this.transform.position, character.transform.position) > interactionRadius) {
                 PlayerControllerMain.instance.InteractWith(target);
             }
 
-            if (target.GetState() != Controller.States.Interacting) {
-                target.InteractWith(PlayerControllerMain.instance);
+            if (interactionRange != null) {
+                StopCoroutine(interactionRange);
             }
+            interactionRange = StartCoroutine(WaitForInteractionRange(target));
+
 
         }
     }
@@ -75,5 +82,21 @@ public class PlayerInteractionController : MonoBehaviour {
         PlayerControllerMain.instance.Control = true;
         PlayerControllerMain.instance.MovementController.agentControlled = false;
         PlayerControllerMain.instance.SetState(Controller.States.UserControlled);
+    }
+
+    private IEnumerator WaitForInteractionRange(NPCController character) {
+        while (Vector3.Distance(this.transform.position, character.transform.position) > interactionRadius) {
+            if (!PlayerControllerMain.instance.MovementController.agentControlled) {
+                yield break;
+            }
+            yield return null;
+        }
+        DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode, target.NPCDialogueController.characterText);
+
+        PlayerControllerMain.instance.Control = false;
+
+        if (target.GetState() != Controller.States.Interacting) {
+            target.InteractWith(PlayerControllerMain.instance);
+        }
     }
 }

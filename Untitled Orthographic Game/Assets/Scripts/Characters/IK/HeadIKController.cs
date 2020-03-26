@@ -7,7 +7,7 @@ using UnityEngine;
 public class HeadIKController : MonoBehaviour {
 
     // Constants.
-    private const float RAYCAST_MAX_DISTANCE = 5f;
+    private const float RAYCAST_MAX_DISTANCE = 2f;
     private const float MIN_LOOK_THRESHOLD = 0.01f;
 
     [Header("Transforms")]

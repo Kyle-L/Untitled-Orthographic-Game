@@ -41,7 +41,7 @@ public class CameraController : MonoBehaviour {
     public float cameraZoomSpeed = 2;
 
     //Controls
-    private bool Control { get; set; } = true;
+    private bool control = true;
 
     void Awake() {
         instance = this;
@@ -56,7 +56,7 @@ public class CameraController : MonoBehaviour {
 
     void Update() {
         cameraTarget = trackingObject.transform.position;
-        if (Control) {
+        if (control) {
             // Processes user input for rotation and height.
             if (CrossPlatformInputManager.GetButton("Fire2")) {
                 // Get user input
@@ -109,5 +109,9 @@ public class CameraController : MonoBehaviour {
 
     public void SetAngle(float aAngle) {
         curAngle = aAngle;
+    }
+
+    public void SetControl(bool canControl) {
+        control = canControl;
     }
 }

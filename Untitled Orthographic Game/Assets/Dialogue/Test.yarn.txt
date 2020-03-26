@@ -8,16 +8,13 @@ position: 539,551
     This is a test of the branching dialogue system.
     
     -> Okay
-        <<gesture NPC acknowledging>> 
         I hope this system actually works.
     -> Sweet
-        <<gesture NPC acknowledging>> 
         I'm glad you love it.
     -> I hate this.
-        <<gesture NPC acknowledging>> 
         Too bad.
     
-    <<gesture NPC weight-shift>> 
+    <<gesture NPC acknowledging>> 
     Anyway, every dialogue option has the ability to change my reaction.
     
     For instance, I will react differently to different choices.

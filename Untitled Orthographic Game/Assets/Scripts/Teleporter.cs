@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine;
 
 public class Teleporter : MonoBehaviour {
 
@@ -26,13 +23,6 @@ public class Teleporter : MonoBehaviour {
             // Calculates the difference and then applies that to the next position.
             Vector3 diff = positions[currentPosition].transform.InverseTransformPoint(PlayerControllerMain.instance.transform.position);
             Vector3 telePos = positions[nextPosition].transform.position + diff;
-
-            // Finds the closest navmesh point.
-            NavMeshHit myNavHit;
-            // 100 is an arbitrary number.
-            if (NavMesh.SamplePosition(telePos, out myNavHit, 100, -1)) {
-                telePos = myNavHit.position;
-            }
 
             // Puts the user on the closest navmesh point.
             PlayerControllerMain.instance.MovementController.SetPosition(telePos);

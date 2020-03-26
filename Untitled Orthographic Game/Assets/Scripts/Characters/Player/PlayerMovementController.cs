@@ -15,7 +15,7 @@ public class PlayerMovementController : MovementController {
         #region Movement
         if (Control) {
             if (Mathf.Abs(Input.GetAxis("Vertical")) > 0 || Mathf.Abs(Input.GetAxis("Horizontal")) > 0) {
-                if (!DialogueRunner.instance.isDialogueRunning) {
+                if (!DialogueRunner.instance.isDialogueRunning && PlayerControllerMain.instance.isAlive) {
                     agentControlled = false;
                     PlayerControllerMain.instance.SetState(Controller.States.UserControlled);
                 }

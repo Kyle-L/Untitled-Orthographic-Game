@@ -144,6 +144,7 @@ public class UIMenuController : MonoBehaviour {
         if (aMenu == null || (aMenu != null && aMenu.GetControlState())) {
             // Then disable the mouse if it exists.
             MouseStateController.instance?.SetUIMouse(false);
+            CameraController.instance?.SetControl(true);
             GameManager.instance.ResumeTime();
             // Then unpause the player controller if it exists.
             if (PlayerControllerMain.instance != null) {
@@ -153,6 +154,7 @@ public class UIMenuController : MonoBehaviour {
         } else {
             // Then enable the mouse if it exists.
             MouseStateController.instance?.SetUIMouse(true);
+            CameraController.instance?.SetControl(false);
             GameManager.instance.StopTime();
             // Then pause the player controller if it exists.
             if (PlayerControllerMain.instance != null) {

@@ -2,13 +2,13 @@
 
 public class RagdollDetect : MonoBehaviour {
 
-    private NPCMovementController movement;
+    private Controller movement;
 
     private void Start() {
-        movement = GetComponentInParent<NPCMovementController>();
+        movement = GetComponentInParent<Controller>();
     }
 
     private void OnCollisionEnter(Collision collision) {
-        movement.RagDoll();
+        movement.Die();
     }
 }
