@@ -17,8 +17,8 @@ public abstract class Interactable : MonoBehaviour {
 
 
 
-    public abstract void Go();
+    public abstract void Go(Controller controller);
 
-    public abstract void Stop();
+    public abstract void Stop(Controller controller);
 
 }

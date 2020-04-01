@@ -121,5 +121,5 @@ Material:
     - _RefrColor: {r: 0.34, g: 0.85, b: 0.92, a: 1}
     - _SectionColor: {r: 0.23137257, g: 0.57254905, b: 0.35686275, a: 1}
     - _SectionPlane: {r: 0, g: 1, b: 0, a: 1}
-    - _SectionPoint: {r: 0, g: 4, b: 0, a: 1}
+    - _SectionPoint: {r: 0, g: 8, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

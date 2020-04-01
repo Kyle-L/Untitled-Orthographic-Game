@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(HandIKController))]
 public class PlayerObjectHolder : MonoBehaviour {
 
-    private HandIKController _handIKController;
+    [Header("Defaults")]
+    public Pickupable startHold;
+    private Pickupable currentHeld;
 
     public enum HoldPositions { LeftCenter, RightCenter, BothCenter, LeftLower, RightLower, BothLower };
-
+    [Header("Hold Positions")]
     public Transform leftCenter;
     public Transform rightCenter;
     public Transform bothCenter;
@@ -14,34 +17,79 @@ public class PlayerObjectHolder : MonoBehaviour {
     public Transform rightLower;
     public Transform bothLower;
 
+    // Components
+    private HandIKController _handIKController;
+    private Animator _animator;
+
     void Start() {
         _handIKController = this.GetComponent<HandIKController>();
+        _animator = this.GetComponent<Animator>();
+
+        if (startHold != null) SetPickup(startHold, false);
+
     }
 
     void Update() {
+        if (Input.GetButtonDown("Jump")) {
+            Drop();
+        }
+    }
+
+    public void SetPickup(Pickupable pickUp, bool animation = true) {
+        currentHeld = pickUp;
+
+        if (animation) {
+            _animator.SetTrigger("Pickup");
+
+            _animator.SetFloat("PickupHeight", Mathf.Clamp((pickUp.transform.position.y - transform.position.y) / 2, 0, 1));
+        } else {
+            GrabObject(false);
+            GrabArms(false);
+        }
+
 
     }
 
-    public void Pickup (Pickupable pickUp) {
-        pickUp.pickupObject.parent = GetParentTransform(pickUp.holdPosition);
-        pickUp.pickupObject.localPosition = Vector3.zero;
-        pickUp.pickupObject.localRotation = Quaternion.Euler(Vector3.zero);
+    public void GrabArms(bool lerp = true) {
 
-        _handIKController.IkActive = true;
-
-        if (pickUp.holdPosition.ToString().Contains("Left") || pickUp.holdPosition.ToString().Contains("Both")) {
+        if (currentHeld.holdPosition.ToString().Contains("Left") || currentHeld.holdPosition.ToString().Contains("Both")) {
             _handIKController.leftHand = true;
         }
 
-        if (pickUp.holdPosition.ToString().Contains("Right") || pickUp.holdPosition.ToString().Contains("Both")) {
+        if (currentHeld.holdPosition.ToString().Contains("Right") || currentHeld.holdPosition.ToString().Contains("Both")) {
             _handIKController.rightHand = true;
         }
 
-        _handIKController.leftObject = pickUp.pickupLeftHandle;
-        _handIKController.rightObject = pickUp.pickupRightHandle;
+        _handIKController.leftObject = currentHeld.pickupLeftHandle;
+        _handIKController.rightObject = currentHeld.pickupRightHandle;
+        
+        if (lerp) {
+            _handIKController.LerpPositon(1);
+        } else {
+            currentHeld.pickupObject.localPosition = Vector3.zero;
+            currentHeld.pickupObject.localRotation = Quaternion.Euler(Vector3.zero);
+        }
     }
 
-    private Transform GetParentTransform (HoldPositions pos) {
+    public void GrabObject(bool lerp = true) {
+        currentHeld.Pickup(GetParentTransform(currentHeld.holdPosition));
+        LerpPositon(currentHeld);
+        _handIKController.LerpRotation(1);
+        _handIKController.LerpPositon(1);
+    }
+
+    public void Drop() {
+        _handIKController.LerpPositon(0);
+        _handIKController.LerpRotation(0);
+        currentHeld.Drop();
+
+        _handIKController.leftHand = false;
+        _handIKController.rightHand = false;
+        _handIKController.leftObject = null;
+        _handIKController.rightObject = null;
+    }
+
+    private Transform GetParentTransform(HoldPositions pos) {
         switch (pos) {
             case HoldPositions.LeftCenter:
                 return leftCenter;
@@ -57,6 +105,18 @@ public class PlayerObjectHolder : MonoBehaviour {
                 return bothLower;
             default:
                 return bothCenter;
+        }
+    }
+
+    private void LerpPositon(Pickupable pickUp) {
+        StartCoroutine(LerpPositionCoroutine(pickUp));
+    }
+
+    private IEnumerator LerpPositionCoroutine(Pickupable pickUp) {
+        while (Vector3.Distance(pickUp.pickupObject.localPosition, Vector3.zero) > 0.01f) {
+            pickUp.pickupObject.localPosition = Vector3.Lerp(pickUp.pickupObject.localPosition, Vector3.zero, Time.deltaTime * 5);
+            pickUp.pickupObject.localRotation = Quaternion.Euler(Vector3.Lerp(pickUp.pickupObject.localPosition, Vector3.zero, Time.deltaTime * 5));
+            yield return null;
         }
     }
 

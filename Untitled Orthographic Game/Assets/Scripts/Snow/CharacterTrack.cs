@@ -28,7 +28,7 @@ public class CharacterTrack : MonoBehaviour {
 
         _snowMaterial = _terrain.GetComponent<MeshRenderer>().material;
         if (_snowMaterial.GetTexture("_Splat") == null) {
-            _splatmap = new RenderTexture(1024, 1024, 0, RenderTextureFormat.ARGBFloat);
+            _splatmap = new RenderTexture(2056, 2056, 0, RenderTextureFormat.ARGBFloat);
         } else {
             _splatmap = (RenderTexture)_snowMaterial.GetTexture("_Splat");
         }

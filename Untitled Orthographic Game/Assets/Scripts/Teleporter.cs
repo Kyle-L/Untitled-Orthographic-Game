@@ -2,46 +2,39 @@
 
 public class Teleporter : MonoBehaviour {
 
-    private bool canUse = true;
-
     [Header("General")]
-    private int currentPosition = 0;
-    private int nextPosition = 1;
-    public GameObject[] positions;
-
-    [Header("Particles")]
-    public ParticleSystem _particleSystem;
+    private bool nextFade = false;
+    private bool nextPosSet = false;
+    private Transform nextPosition;
 
     [Header("Audio")]
     public AudioClip audioClip;
     public AudioSource _audioSource;
 
-    private void Update() {
-        /* On jump, the user teleports if they can use. */
-        if (Input.GetButtonDown("Jump") && canUse) {
-
-            // Calculates the difference and then applies that to the next position.
-            Vector3 diff = positions[currentPosition].transform.InverseTransformPoint(PlayerControllerMain.instance.transform.position);
-            Vector3 telePos = positions[nextPosition].transform.position + diff;
-
-            // Puts the user on the closest navmesh point.
-            PlayerControllerMain.instance.MovementController.SetPosition(telePos);
-
-            // Plays the particles and audio if they exist.
-            //_particleSystem?.Play();
-            //_audioSource?.PlayOneShot(audioClip);
-
-            // Increments to the next position and bounds.
-            currentPosition++;
-            nextPosition++;
-
-            currentPosition %= positions.Length;
-            nextPosition %= positions.Length;
-            print("jump");
+    public void SetNextTeleport (Transform teleportPos, bool fade = true) {
+        nextPosition = teleportPos;
+        nextPosSet = true;
+        nextFade = fade;
+        if (nextFade) {
+            UIFadeTransitionController.instance.FadeIn(1);
         }
     }
 
-    public void SetControl(bool control) {
-        canUse = control;
+    public void Teleport () {
+        if (!nextPosSet) {
+            print("The next teleport position has not been set. Aborting teleport...");
+            return;
+        }
+
+        if (nextFade) {
+            UIFadeTransitionController.instance.FadeOut(0.5f);
+            nextFade = false;
+        }
+
+
+        PlayerControllerMain.instance.MovementController.SetPosition(nextPosition);
+        PlayerControllerMain.instance.SetState(Controller.States.UserControlled);
+        nextPosSet = false;
     }
+
 }

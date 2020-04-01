@@ -9,6 +9,6 @@ public class RagdollDetect : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        movement.Die();
+        //movement.Die();
     }
 }

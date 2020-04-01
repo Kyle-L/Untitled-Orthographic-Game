@@ -28,13 +28,15 @@ public class UIFadeTransitionController : MonoBehaviour {
         return _animator.GetBool("Transition");
     }
 
-    public void FadeIn() {
+    public void FadeIn(float speed = 0) {
         _animator.SetBool("Transition", true);
+        _animator.SetFloat("Speed", speed);
         _animator.SetTrigger(fadeInTrigger);
     }
 
-    public void FadeOut() {
+    public void FadeOut(float speed = 0) {
         _animator.SetBool("Transition", true);
+        _animator.SetFloat("Speed", speed);
         _animator.SetTrigger(fadeOutTrigger);
     }
 

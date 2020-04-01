@@ -1,9 +1,9 @@
 ﻿public class EmptyInteractable : Interactable {
-    public override void Go() {
+    public override void Go(Controller controller) {
         return;
     }
 
-    public override void Stop() {
+    public override void Stop(Controller controller) {
         return;
     }
 }

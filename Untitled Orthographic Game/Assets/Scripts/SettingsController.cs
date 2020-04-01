@@ -10,7 +10,9 @@ public class SettingsController : MonoBehaviour {
     // Default values of the settings.
     [Header("Default Settings")]
     [SerializeField]
-    private float defaultMouse = 2.5f;
+    private float defaultRotate = 2.5f;
+    [SerializeField]
+    private float defaultHeight = 2.5f;
     [SerializeField]
     private float defaultZoom = 1.5f;
     [SerializeField]
@@ -33,7 +35,8 @@ public class SettingsController : MonoBehaviour {
         /* Gets the values stored in player prefs, otherwise the default
          * values are used if the player has not changed the settings. */
         Volume = PlayerPrefs.GetFloat("volume", defaultVolume);
-        MouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity", defaultMouse);
+        RotateSensitivity = PlayerPrefs.GetFloat("rotateSensitivity", defaultRotate);
+        HeightSensitivity = PlayerPrefs.GetFloat("heightSensitivity", defaultHeight);
         ZoomSensitivity = PlayerPrefs.GetFloat("zoomSensitivity", defaultZoom);
         if (PlayerPrefs.GetInt("qualityLevel") != QualitySettings.GetQualityLevel()) {
             QualityLevel = QualitySettings.GetQualityLevel();
@@ -56,20 +59,36 @@ public class SettingsController : MonoBehaviour {
     private float volume;
 
     /// <summary>
-    /// Changes the mouse sensitivity.
+    /// Changes the rotate sensitivity.
     /// </summary>
-    public float MouseSensitivity {
-        get { return mouseSensitivity; }
+    public float RotateSensitivity {
+        get { return rotateSensitivity; }
         set {
-            PlayerPrefs.SetFloat("mouseSensitivity", value);
+            PlayerPrefs.SetFloat("rotateSensitivity", value);
             if (CameraController.instance != null) {
                 CameraController.instance.cameraRotateSpeed = value;
             }
 
-            mouseSensitivity = value;
+            rotateSensitivity = value;
         }
     }
-    private float mouseSensitivity;
+    private float rotateSensitivity;
+
+    /// <summary>
+    /// Changes the height sensitivity.
+    /// </summary>
+    public float HeightSensitivity {
+        get { return heightSensitivity; }
+        set {
+            PlayerPrefs.SetFloat("heightSensitivity", value);
+            if (CameraController.instance != null) {
+                CameraController.instance.cameraHeightSpeed = value;
+            }
+
+            heightSensitivity = value;
+        }
+    }
+    private float heightSensitivity;
 
     /// <summary>
     /// Changes the zoom sensitivity.

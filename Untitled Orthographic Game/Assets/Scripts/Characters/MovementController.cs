@@ -75,7 +75,9 @@ public abstract class MovementController : MonoBehaviour {
 
 
         //Normalize direction.
-        transform.forward = Vector3.Slerp(transform.forward, direction, 3 * Time.deltaTime);
+        if (direction != Vector3.zero) {
+            transform.forward = Vector3.Slerp(transform.forward, direction, 3 * Time.deltaTime);
+        }
 
         direction.y = verticalVelocity;
 
@@ -84,6 +86,7 @@ public abstract class MovementController : MonoBehaviour {
 
         _navMeshAgent.velocity = _characterController.velocity;
         _navMeshAgent.nextPosition = transform.position;
+
 
         // Gets the previous SpeedX and Y.
         float speedY = _animator.GetFloat("SpeedY");
@@ -172,9 +175,17 @@ public abstract class MovementController : MonoBehaviour {
         }
     }
 
-    public void SetPosition(Vector3 pos) {
-        _navMeshAgent.Warp(pos);
-        transform.position = pos;
+    public void SetPosition(Transform pos) {
+        // If a coroutine is running, stop it.
+        if (transformMoveCoroutine != null) {
+            StopCoroutine(transformMoveCoroutine);
+        }
+
+        _navMeshAgent.Warp(pos.position);
+        transform.position = pos.position;
+        transform.rotation = pos.rotation;
+        _characterController.enabled = true;
+        _animator.SetTrigger("Idle");
     }
 
     /// <summary>
@@ -216,6 +227,10 @@ public abstract class MovementController : MonoBehaviour {
 
     public void TriggerAnimation(AnimationTriggers trigger) {
         _animator.SetTrigger(trigger.ToString());
+    }
+
+    public void TriggerAnimation(string trigger) {
+        _animator.SetTrigger(trigger);
     }
 
     public void SetCharacterControllerState(bool state) {

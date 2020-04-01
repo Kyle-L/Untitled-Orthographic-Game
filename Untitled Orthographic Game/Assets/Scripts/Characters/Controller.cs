@@ -28,6 +28,7 @@ public abstract class Controller : MonoBehaviour {
     public enum BlackBoardVars {
         Look,
         State,
+        NewInteractingObject,
         InteractingObject,
         InteractingObjectType,
         Destination
@@ -38,10 +39,12 @@ public abstract class Controller : MonoBehaviour {
     // Components
     public MovementController MovementController { get; protected set; }
     public PlayerObjectHolder PlayerObjectHolder { get; protected set; }
+    public Teleporter Teleporter { get; protected set; }
 
     protected void Start() {
         MovementController = GetComponent<MovementController>();
         PlayerObjectHolder = GetComponent<PlayerObjectHolder>();
+        Teleporter = GetComponent<Teleporter>();
 
         offsetPos = character.localPosition;
         offsetRot = character.localRotation.eulerAngles;
@@ -124,6 +127,7 @@ public abstract class Controller : MonoBehaviour {
                                     new Sequence(
                                     // Determines the type of object that the npc is interacting with.
                                     new Action(() => {
+                                        blackboard[BlackBoardVars.InteractingObject.ToString()] = blackboard[BlackBoardVars.NewInteractingObject.ToString()];
                                         if (blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType == typeof(MonoBehaviour)) {
                                             blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType();
                                         } else {
@@ -162,16 +166,19 @@ public abstract class Controller : MonoBehaviour {
                                                 new NavMoveTo(this, BlackBoardVars.Destination.ToString()),
                                                 // Then, the npc will face the other controller.
                                                 new Action((Request result) => {
+                                                    Interactable interactionObject = blackboard.Get<Interactable>(BlackBoardVars.InteractingObject.ToString());
                                                     if (result == Request.CANCEL) {
                                                         MovementController.SetCharacterControllerState(true);
-                                                        MovementController.TriggerAnimation(MovementController.AnimationTriggers.Exit);
+                                                        MovementController.TriggerAnimation(interactionObject.interactionStopString);
                                                         return Action.Result.SUCCESS;
                                                     } else if (result == Request.START) {
-                                                        Interactable interactionObject = blackboard.Get<Interactable>(BlackBoardVars.InteractingObject.ToString());
                                                         MovementController.AlignPosition(interactionObject.interactionPoint);
                                                         MovementController.AlignRotation(interactionObject.interactionPoint);
-                                                        MovementController.TriggerAnimation(MovementController.AnimationTriggers.SitDown);
+
+                                                        MovementController.TriggerAnimation(interactionObject.interactionGoString);
                                                         MovementController.SetCharacterControllerState(false);
+
+                                                        interactionObject.Go(this);
                                                         return Action.Result.PROGRESS;
                                                     } else {
                                                         return Action.Result.PROGRESS;
@@ -210,7 +217,7 @@ public abstract class Controller : MonoBehaviour {
 
                                                 new Action(() => {
                                                     Pickupable talkingTo = blackboard.Get<Pickupable>(BlackBoardVars.InteractingObject.ToString());
-                                                    PlayerObjectHolder.Pickup(talkingTo);
+                                                    PlayerObjectHolder.SetPickup(talkingTo);
                                                     SetState(States.UserControlled);
                                                 })
                                             )
@@ -232,7 +239,7 @@ public abstract class Controller : MonoBehaviour {
             return;
         }
 
-        ModifyBlackBoard(BlackBoardVars.InteractingObject, go);
+        ModifyBlackBoard(BlackBoardVars.NewInteractingObject, go);
         ModifyBlackBoard(BlackBoardVars.State, States.Interacting);
         ModifyBlackBoard(BlackBoardVars.InteractingObjectType);
     }
@@ -283,7 +290,7 @@ public abstract class Controller : MonoBehaviour {
 
         MovementController.SetCharacterControllerState(true);
 
-        MovementController.SetPosition(character.position);
+        MovementController.SetPosition(character);
         character.localPosition = offsetPos;
 
         isAlive = true;

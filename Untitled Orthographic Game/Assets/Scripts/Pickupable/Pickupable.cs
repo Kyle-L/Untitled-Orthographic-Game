@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
 public class Pickupable : MonoBehaviour {
 
     [Header("UI")]
@@ -19,6 +21,10 @@ public class Pickupable : MonoBehaviour {
     [Tooltip("Where the player will hold the object relative to their own body.")]
     public PlayerObjectHolder.HoldPositions holdPosition;
 
+    private Rigidbody _rigidbody;
+    private bool initialState;
+    private Transform parent;
+
     private void Awake() {
         if (pickupObject == null) {
             pickupObject = this.transform;
@@ -31,6 +37,24 @@ public class Pickupable : MonoBehaviour {
         if (pickupRightHandle == null) {
             pickupRightHandle = this.transform;
         }
+
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    public void Pickup(Transform newParent) {
+        if (newParent == transform.parent) {
+            return;
+        }
+
+        initialState = _rigidbody.isKinematic;
+        _rigidbody.isKinematic = true;
+        parent = transform.parent;
+        transform.parent = newParent;
+    }
+
+    public void Drop() {
+        _rigidbody.isKinematic = initialState;
+        transform.parent = parent;
     }
 
 }

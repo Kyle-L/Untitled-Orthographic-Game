@@ -10,7 +10,8 @@ public class UIMenu_Settings : MonoBehaviour {
     // The UI elements that change the settings.
     [Header("UI Elements")]
     public Slider volumeSlider;
-    public Slider mouseSlider;
+    public Slider rotateSlider;
+    public Slider heightSlider;
     public Slider zoomSlider;
     public Dropdown qualityDropdown;
 
@@ -32,7 +33,8 @@ public class UIMenu_Settings : MonoBehaviour {
     private void Start() {
         // Set the UI elements to represent the values of settings.
         volumeSlider.value = SettingsController.instance.Volume;
-        mouseSlider.value = SettingsController.instance.MouseSensitivity;
+        rotateSlider.value = SettingsController.instance.RotateSensitivity;
+        heightSlider.value = SettingsController.instance.HeightSensitivity;
         zoomSlider.value = SettingsController.instance.ZoomSensitivity;
         qualityDropdown.value = SettingsController.instance.QualityLevel;
     }
@@ -46,12 +48,21 @@ public class UIMenu_Settings : MonoBehaviour {
     }
 
     /// <summary>
-    /// Changes the mouse sensitivty based on the value given by
+    /// Changes the rotate sensitivty based on the value given by
     /// a slider.
     /// </summary>
     /// <param name="aSlider"></param>
-    public void MouseSensitivitySlider(Slider aSlider) {
-        SettingsController.instance.MouseSensitivity = aSlider.value;
+    public void RotateSensitivitySlider(Slider aSlider) {
+        SettingsController.instance.RotateSensitivity = aSlider.value;
+    }
+
+    /// <summary>
+    /// Changes the height sensitivty based on the value given by
+    /// a slider.
+    /// </summary>
+    /// <param name="aSlider"></param>
+    public void HeightSensitivitySlider(Slider aSlider) {
+        SettingsController.instance.HeightSensitivity = aSlider.value;
     }
 
     /// <summary>

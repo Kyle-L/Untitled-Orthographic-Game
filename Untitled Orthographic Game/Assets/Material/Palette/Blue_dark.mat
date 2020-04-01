@@ -93,5 +93,5 @@ Material:
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
     - _SectionColor: {r: 0.21960786, g: 0.48627454, b: 0.5764706, a: 1}
     - _SectionPlane: {r: 0, g: 1, b: 0, a: 1}
-    - _SectionPoint: {r: 0, g: 4, b: 0, a: 1}
+    - _SectionPoint: {r: 0, g: 8, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
