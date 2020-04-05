@@ -27,6 +27,7 @@ SOFTWARE.
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -323,7 +324,11 @@ namespace Yarn.Unity {
          */
         public bool DispatchCommand(string command) {
 
-            var words = command.Split(' ');
+            var words = command.Split('|')
+                     .Select((element, index) => index % 2 == 0  // If even index
+                                           ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)  // Split the item
+                                           : new string[] { element })  // Keep the entire item
+                     .SelectMany(element => element).ToArray();
 
             // need 2 parameters in order to have both a command name
             // and the name of an object to find

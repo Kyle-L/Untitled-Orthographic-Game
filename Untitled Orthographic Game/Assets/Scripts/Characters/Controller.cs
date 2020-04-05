@@ -14,6 +14,10 @@ public abstract class Controller : MonoBehaviour {
     public float wanderingTime = 5;
     public float wanderingTimeDeviation = 2;
 
+    [Header("Posing")]
+    public string poseAnimationLayerName = "Base Layer";
+    private int poseAnimationIndex;
+
     public enum States {
         Idle,
         Wandering,
@@ -40,12 +44,18 @@ public abstract class Controller : MonoBehaviour {
     public MovementController MovementController { get; protected set; }
     public PlayerObjectHolder PlayerObjectHolder { get; protected set; }
     public Teleporter Teleporter { get; protected set; }
+    protected Animator _animator;
 
     protected void Start() {
         MovementController = GetComponent<MovementController>();
         PlayerObjectHolder = GetComponent<PlayerObjectHolder>();
         Teleporter = GetComponent<Teleporter>();
+        _animator = GetComponent<Animator>();
 
+        // Gets the pose animation layer.
+        poseAnimationIndex = _animator.GetLayerIndex(poseAnimationLayerName);
+
+        // Gets how much the character is offset.
         offsetPos = character.localPosition;
         offsetRot = character.localRotation.eulerAngles;
 
@@ -232,6 +242,12 @@ public abstract class Controller : MonoBehaviour {
                 )
             )
         );
+    }
+
+    public void Pose(string animation, Transform pos) {
+        SetState(States.Posed);
+        MovementController.Pose(poseAnimationIndex, animation, true, false, true);
+        MovementController.SetPosition(pos);
     }
 
     public void InteractWith(Object go) {

@@ -1,0 +1,57 @@
+title: Start
+tags: 
+colorID: 0
+position: 539,551
+---
+<<add Story |"What did you decide to watch?" asked Autumn, walking up to Cara.|>> 
+-> What did you decide to watch?
+
+<<add Story |"Some comedy about a group of wizards trying to fit in living in— New York I think?"|>> 
+Some comedy about a group of wizards trying to fit in living in— New York I think?
+
+<<add Story |"Hey, did you get me anything?"|>> 
+Hey, did you get me anything?
+
+<<add Story |"N- no..."|>> 
+-> N- no...
+
+<<add Story |"Why not?"|>> 
+Why not?
+
+<<add Story |"You said you had coffee earlier this morning."|>> 
+-> You said you had coffee earlier this morning.
+
+<<add Story |"I did."|>> 
+I did.
+
+<<add Story |"..."|>> 
+-> ...
+<<add Story |"In fact, it is sitting there on the table."|>> 
+-> In fact, it is sitting there on the table.
+
+<<add Story |"Why does that mean I can’t have coffee now? "|>> 
+Why does that mean I can’t have coffee now? 
+<<add Story |"Since when are we limited to a singular cup of coffee a day?"|>> 
+Since when are we limited to a singular cup of coffee a day?
+
+<<add Story |"I just presumed."|>> 
+-> I just presumed.
+    <<add Story |"My disappointment is immeasurable and my day is ruined"|>> 
+    My disappointment is immeasurable and my day is ruined
+<<add Story |"Since you said you needed to cut down on caffeine."|>> 
+-> Since you said you needed to cut down on caffeine.
+    <<add Story |"I— I don’t need your logical sass."|>> 
+    I— I don’t need your logical sass.
+<<add Story |"Valid point!"|>> 
+-> Valid point!
+    <<add Story |"I am never wrong."|>> 
+    I am never wrong.
+
+<<add Story |"I hope you know that."|>> 
+I hope you know that.
+
+<<add Story |"Sure."|>> 
+-> Sure.
+<<add Story |"Mmm hmm."|>> 
+-> Mmm hmm.
+===

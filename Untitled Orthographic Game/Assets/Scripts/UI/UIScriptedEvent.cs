@@ -1,4 +1,5 @@
-﻿public class UIScriptedEvent : ScriptedEvent {
+﻿
+public class UIScriptedEvent : ScriptedEvent {
 
     public UIMenu uiMenu;
 

@@ -11,7 +11,7 @@ public class Teleporter : MonoBehaviour {
     public AudioClip audioClip;
     public AudioSource _audioSource;
 
-    public void SetNextTeleport (Transform teleportPos, bool fade = true) {
+    public void SetNextTeleport(Transform teleportPos, bool fade = true) {
         nextPosition = teleportPos;
         nextPosSet = true;
         nextFade = fade;
@@ -20,7 +20,7 @@ public class Teleporter : MonoBehaviour {
         }
     }
 
-    public void Teleport () {
+    public void Teleport() {
         if (!nextPosSet) {
             print("The next teleport position has not been set. Aborting teleport...");
             return;

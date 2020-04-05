@@ -61,9 +61,7 @@ public class PlayerInteractionController : MonoBehaviour {
                 return;
             }
 
-            if (PlayerControllerMain.instance.GetState() != Controller.States.Interacting || Vector3.Distance(this.transform.position, character.transform.position) > interactionRadius) {
-                PlayerControllerMain.instance.InteractWith(target);
-            }
+            PlayerControllerMain.instance.InteractWith(target);
 
             if (interactionRange != null) {
                 StopCoroutine(interactionRange);

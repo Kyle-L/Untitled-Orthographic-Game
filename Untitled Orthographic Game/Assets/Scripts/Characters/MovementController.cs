@@ -29,6 +29,9 @@ public abstract class MovementController : MonoBehaviour {
     public float animatorLerpSpeed = 5;
 
     public bool agentControlled { get; set; } = true;
+    public bool isPosed { get; private set; } = false;
+    private bool canLookPosed;
+    private bool canRotatePosed;
     public bool isWalking { get; private set; } = false;
 
     protected float verticalVelocity;
@@ -106,6 +109,11 @@ public abstract class MovementController : MonoBehaviour {
     /// </summary>
     /// <param name="target"></param>
     public void Face(Transform target) {
+        if (!canRotatePosed && isPosed) {
+            print(this.name + " cannot face anything currently as it is posed.");
+            return;
+        }
+
         // Calculates the direction by finding the normalized difference.
         Vector3 direction = (target.position - transform.position).normalized;
 
@@ -144,6 +152,11 @@ public abstract class MovementController : MonoBehaviour {
     }
 
     public void AlignRotation(Transform transform) {
+        if (!canRotatePosed && isPosed) {
+            print(this.name + " cannot be rotated currently as it is posed.");
+            return;
+        }
+
         // If a coroutine is running, stop it.
         if (angleCoroutine != null) {
             StopCoroutine(angleCoroutine);
@@ -176,23 +189,60 @@ public abstract class MovementController : MonoBehaviour {
     }
 
     public void SetPosition(Transform pos) {
+        SetPosition(pos.position, pos.rotation);
+    }
+
+    public void SetPosition(Vector3 pos, Quaternion rot) {
         // If a coroutine is running, stop it.
         if (transformMoveCoroutine != null) {
             StopCoroutine(transformMoveCoroutine);
         }
 
-        _navMeshAgent.Warp(pos.position);
-        transform.position = pos.position;
-        transform.rotation = pos.rotation;
+        _navMeshAgent.Warp(pos);
+        transform.position = pos;
+        transform.rotation = rot;
+    }
+
+    public void SetPosition(Vector3 pos) {
+        // If a coroutine is running, stop it.
+        if (transformMoveCoroutine != null) {
+            StopCoroutine(transformMoveCoroutine);
+        }
+
+        _navMeshAgent.Warp(pos);
+        transform.position = pos;
+    }
+
+    public void Pose(int poseLayer, string poseAnimation, bool canLook, bool canRotate, bool disable) {
+        if (disable) {
+            _characterController.enabled = false;
+            _navMeshAgent.enabled = false;
+        }
+
+        isPosed = true;
+        canRotatePosed = canRotate;
+        canLookPosed = canLook;
+        _animator.Play(poseAnimation, poseLayer);
+    }
+
+    public void Unpose() {
+        isPosed = false;
         _characterController.enabled = true;
+        _navMeshAgent.enabled = true;
         _animator.SetTrigger("Idle");
     }
+
 
     /// <summary>
     /// Makes the character look at specific transform.
     /// </summary>
     /// <param name="pos"></param>
     public void LookAt(Transform pos) {
+        if (!canLookPosed && isPosed) {
+            print(this.name + " cannot be look currently as it is posed.");
+            return;
+        }
+
         _headIKController.LookAt(pos);
     }
 
@@ -201,6 +251,11 @@ public abstract class MovementController : MonoBehaviour {
     /// </summary>
     /// <param name="trans"></param>
     public void LookAtRandom(Transform[] trans) {
+        if (!canLookPosed && isPosed) {
+            print(this.name + " cannot be look currently as it is posed.");
+            return;
+        }
+
         _headIKController.LookAt(_headIKController.GetClosestInFrontTransform(trans));
     }
 
@@ -209,6 +264,11 @@ public abstract class MovementController : MonoBehaviour {
     }
 
     public void SetDestination(Vector3 position) {
+        if (!_characterController.enabled || !_navMeshAgent.enabled) {
+            print(this.name + " can't move at the moment since either the CharacterContoller or NavmeshAgent is disabled");
+            return;
+        }
+
         if (agentMoveCoroutine != null) {
             StopCoroutine(agentMoveCoroutine);
         }

@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using UnityEngine;
+
+/// <summary>
 /// The overall controller for an npc.
 /// </summary>
 public class NPCController : Controller {
@@ -7,7 +9,8 @@ public class NPCController : Controller {
     public NPCDialogueController NPCDialogueController { get; private set; }
     public NPCMovementController NPCMovementController { get; private set; }
 
-    public Interactable go;
+    public string poseStr;
+    public Transform pose;
 
     protected new void Start() {
         // Get componenets
@@ -16,7 +19,7 @@ public class NPCController : Controller {
 
         base.Start();
 
-        InteractWith(go);
+        Pose(poseStr, pose);
     }
 
 }

@@ -67,7 +67,7 @@ namespace NPBehave {
 
         private void moveToBlackboardKey() {
             object target = Blackboard.Get(blackboardKey);
-            if (target == null) {
+            if (target == null || !agent.MovementController._navMeshAgent.enabled) {
                 stopAndCleanUp(false);
                 return;
             }

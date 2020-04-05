@@ -34,7 +34,7 @@
 
 			float _Tess;
 
-			float4 tessDistance(appdata v0, appdata v1, appdata v2) {
+			float4 tessDistance(appdata_full v0, appdata_full v1, appdata_full v2) {
 				float minDist = 10.0;
 				float maxDist = 25.0;
 				return UnityDistanceBasedTess(v0.vertex, v1.vertex, v2.vertex, minDist, maxDist, _Tess);
@@ -43,7 +43,8 @@
 			sampler2D _Splat;
 			float _Displacement;
 
-			void disp(inout appdata v)
+
+			void disp(inout appdata_full v)
 			{
 				float d = tex2Dlod(_Splat, float4(v.texcoord.xy,0,0)).r * _Displacement;
 				float3 up = mul((float3x3)unity_WorldToObject, float3(0, 1, 0));

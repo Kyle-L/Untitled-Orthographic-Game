@@ -9,7 +9,7 @@ public class TeleportInteractable : Interactable {
     }
 
     public override void Stop(Controller controller) {
-        
+
     }
 
 }

@@ -25,8 +25,9 @@ public class PlayerObjectHolder : MonoBehaviour {
         _handIKController = this.GetComponent<HandIKController>();
         _animator = this.GetComponent<Animator>();
 
-        if (startHold != null) SetPickup(startHold, false);
-
+        if (startHold != null) {
+            SetPickup(startHold, false);
+        }
     }
 
     void Update() {
@@ -62,7 +63,7 @@ public class PlayerObjectHolder : MonoBehaviour {
 
         _handIKController.leftObject = currentHeld.pickupLeftHandle;
         _handIKController.rightObject = currentHeld.pickupRightHandle;
-        
+
         if (lerp) {
             _handIKController.LerpPositon(1);
         } else {
