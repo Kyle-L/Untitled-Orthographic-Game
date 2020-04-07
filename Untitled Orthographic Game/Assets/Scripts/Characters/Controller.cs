@@ -180,6 +180,7 @@ public abstract class Controller : MonoBehaviour {
                                                     if (result == Request.CANCEL) {
                                                         MovementController.SetCharacterControllerState(true);
                                                         MovementController.TriggerAnimation(interactionObject.interactionStopString);
+                                                        interactionObject.Stop(this);
                                                         return Action.Result.SUCCESS;
                                                     } else if (result == Request.START) {
                                                         MovementController.AlignPosition(interactionObject.interactionPoint);

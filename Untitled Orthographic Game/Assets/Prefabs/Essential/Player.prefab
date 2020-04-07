@@ -1622,6 +1622,7 @@ MonoBehaviour:
   - {fileID: 0}
   wanderingTime: 5
   wanderingTimeDeviation: 2
+  poseAnimationLayerName: Base Layer
   isAlive: 1
 --- !u!114 &4945974411171489543
 MonoBehaviour:
@@ -1705,7 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drawShader: {fileID: 4800000, guid: 647f58b6fa0dc8a4480df018112cf82c, type: 3}
-  _brushSize: 1.25
+  _brushSize: 1.75
   _brushStrength: 1
   _terrain: {fileID: 0}
   feet:
@@ -1743,9 +1744,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f800469383ff449b62636c80727b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionWeightMultiplierLeftHand: 1
+  positionWeightLeftHand: 1
   rotationWeightLeftHand: 1
-  positionWeightMultiplierRightHand: 1
+  positionWeightRightHand: 1
   rotationWeightRightHand: 1
   leftOffset: {x: 0, y: 0, z: 0}
   rightOffset: {x: 0, y: 0, z: 0}
@@ -1765,6 +1766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40613cd819a94a2428b84617aff1e502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startHold: {fileID: 0}
   leftCenter: {fileID: 7299729326947890389}
   rightCenter: {fileID: 4762818565362172727}
   bothCenter: {fileID: 955603487}
@@ -1838,10 +1840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51abbb99b79a80a4581b1eb634f3f3c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions:
-  - {fileID: 0}
-  - {fileID: 0}
-  _particleSystem: {fileID: 0}
   audioClip: {fileID: 0}
   _audioSource: {fileID: 0}
 --- !u!1 &6003815927247148894

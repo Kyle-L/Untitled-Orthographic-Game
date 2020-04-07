@@ -145,7 +145,7 @@ public abstract class MovementController : MonoBehaviour {
     /// <param name="angle">The angle the npc is rotating towards</param>
     /// <returns></returns>
     private IEnumerator SetAngleSlerp(Quaternion angle) {
-        while (Quaternion.Angle(transform.rotation, angle) > 1) {
+        while (Vector3.Distance(transform.rotation.eulerAngles, angle.eulerAngles) > 1) {
             transform.rotation = Quaternion.Slerp(transform.rotation, angle, rotateSpeed * Time.deltaTime);
             yield return null;
         }

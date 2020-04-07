@@ -6,6 +6,7 @@ public class MouseStateController : MonoBehaviour {
 
     public GameObject cursor;
     public Text text;
+    public CanvasGroup cg;
     bool mouseState = false;
 
     private GameObject lastHit;
@@ -33,6 +34,9 @@ public class MouseStateController : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit)) {
+
+            Debug.DrawLine(Camera.main.transform.position, hit.point);
+
             if (hit.transform.gameObject != lastHit) {
                 lastHit = hit.transform.gameObject;
 
@@ -52,11 +56,18 @@ public class MouseStateController : MonoBehaviour {
                     _animator.SetBool("Interacting", true);
                     Controller i = lastHit.GetComponentInParent<Controller>();
                     text.text = "Talk to " + i.name;
+                } else if (lastHit.tag == "Commentable") {
+                    _animator.SetBool("Interacting", true);
+                    Commentable i = lastHit.GetComponentInParent<Commentable>();
+                    text.text = "Comment on " + i.name;
                 } else {
                     _animator.SetBool("Interacting", false);
                 }
             }
+        } else {
+            _animator.SetBool("Interacting", false);
         }
+        print(hit);
     }
 
     public void SetMouseState(bool isActive) {
@@ -67,10 +78,10 @@ public class MouseStateController : MonoBehaviour {
     public void SetUIMouse(bool isActive) {
         if (mouseState || isActive) {
             Cursor.visible = true;
-            cursor.SetActive(false);
+            cg.alpha = 0;
         } else {
             Cursor.visible = false;
-            cursor.SetActive(true);
+            cg.alpha = 1;
         }
     }
 }

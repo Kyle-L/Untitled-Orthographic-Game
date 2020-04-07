@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 using Yarn.Unity;
 
 public class PlayerInteractionController : MonoBehaviour {
+
+    public Text playerText;
 
     [SerializeField]
     private float interactionRadius = 1;
@@ -41,6 +44,12 @@ public class PlayerInteractionController : MonoBehaviour {
                 } else if (hit.collider.tag == "NPC") {
                     if (PlayerControllerMain.instance.Control) {
                         CheckForNearbyNPC(hit.collider.gameObject);
+                    }
+                } else if (hit.collider.tag == "Commentable") {
+                    Commentable objectHit = hit.transform.GetComponent<Commentable>();
+                    objectHit.Go();
+                    if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
+                        DialogueRunner.instance.StartDialogue(objectHit.startNode, playerText);
                     }
                 }
 

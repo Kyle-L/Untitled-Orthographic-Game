@@ -19,14 +19,17 @@ public class CameraController : MonoBehaviour {
     public float cameraPositionSmoothSpeed = 2.5f;
 
     [Header("Camera Position Settings")]
-    public Vector3 objectOffset;
+    public Vector3 trackingOffset;
+    public float objectOffset;
+
     private Vector3 cameraTarget;
 
-    public float cameraHeight = 15;
+    public float startHeight = 15;
+    private float curHeight = 15;
     public float cameraMinHeight = 0;
     public float cameraMaxHeight = 50;
 
-    public float cameraSize = 5;
+    public float startSize = 5;
     public float cameraMinSize = 1;
     public float cameraMaxSize = 7;
 
@@ -49,6 +52,8 @@ public class CameraController : MonoBehaviour {
         _camera = GetComponent<Camera>();
 
         SetAngle(cameraStartAngle);
+        SetSize(startSize);
+        SetHeight(startHeight);
     }
 
     void Start() {
@@ -65,10 +70,10 @@ public class CameraController : MonoBehaviour {
 
                 // Apply the user input to the current angle and height.
                 curAngle += axisX * cameraRotateSpeed * Time.deltaTime;
-                cameraHeight -= axisY * cameraHeightSpeed * Time.deltaTime;
+                curHeight -= axisY * cameraHeightSpeed * Time.deltaTime;
 
                 // Clamps the camera's height.
-                cameraHeight = Mathf.Clamp(cameraHeight, cameraMinHeight, cameraMaxHeight);
+                curHeight = Mathf.Clamp(curHeight, cameraMinHeight, cameraMaxHeight);
             }
 
             // Processes user input for movement.
@@ -97,18 +102,26 @@ public class CameraController : MonoBehaviour {
         }
 
         //Creates the angle used to rotate the camera.
-        Vector3 v = Quaternion.AngleAxis(curAngle, Vector3.up) * new Vector3(cameraRadius, cameraHeight, 0); //Center angle relative to player.
+        Vector3 v = Quaternion.AngleAxis(curAngle, Vector3.up) * new Vector3(cameraRadius, curHeight, 0); //Center angle relative to player.
 
         //Sets the camera position.
-        transform.position = v + objectOffset + cameraTarget;
+        transform.position = v + trackingOffset + cameraTarget;
 
         //Rotates the camera to look at the playerController.
-        transform.LookAt(objectOffset + cameraTarget);
+        transform.LookAt(trackingOffset + cameraTarget);
 
     }
 
     public void SetAngle(float aAngle) {
         curAngle = aAngle;
+    }
+
+    public void SetSize(float aSize) {
+        _camera.orthographicSize = Mathf.Clamp(aSize, cameraMinSize, cameraMaxSize); ;
+    }
+
+    public void SetHeight (float aHeight) {
+        curHeight = aHeight;
     }
 
     public void SetControl(bool canControl) {

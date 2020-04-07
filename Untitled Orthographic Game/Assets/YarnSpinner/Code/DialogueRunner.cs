@@ -237,14 +237,19 @@ namespace Yarn.Unity {
             // one at a time.
             foreach (Yarn.Dialogue.RunnerResult step in dialogue.Run(startNode)) {
 
+
+
                 if (step is Yarn.Dialogue.LineResult) {
+                    // Play sound.
+                    AudioController.instance.PlayEffect(lineAudioEffect);
 
                     // Wait for line to finish displaying
                     var lineResult = step as Yarn.Dialogue.LineResult;
-                    AudioController.instance.PlayEffect(lineAudioEffect);
                     yield return StartCoroutine(this.dialogueUI.RunLine(lineResult.line, lineText));
 
                 } else if (step is Yarn.Dialogue.OptionSetResult) {
+                    // Play sound.
+                    AudioController.instance.PlayEffect(lineAudioEffect);
 
                     // Wait for user to finish picking an option
                     var optionSetResult = step as Yarn.Dialogue.OptionSetResult;
