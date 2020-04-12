@@ -188,11 +188,11 @@ public abstract class MovementController : MonoBehaviour {
         }
     }
 
-    public void SetPosition(Transform pos) {
-        SetPosition(pos.position, pos.rotation);
+    public void SetPosition(Transform pos, bool resetAnimation = true) {
+        SetPosition(pos.position, pos.rotation, resetAnimation);
     }
 
-    public void SetPosition(Vector3 pos, Quaternion rot) {
+    public void SetPosition(Vector3 pos, Quaternion rot, bool resetAnimation = true) {
         // If a coroutine is running, stop it.
         if (transformMoveCoroutine != null) {
             StopCoroutine(transformMoveCoroutine);
@@ -201,9 +201,12 @@ public abstract class MovementController : MonoBehaviour {
         _navMeshAgent.Warp(pos);
         transform.position = pos;
         transform.rotation = rot;
+        if (resetAnimation) {
+            _animator.SetTrigger("Idle");
+        }
     }
 
-    public void SetPosition(Vector3 pos) {
+    public void SetPosition(Vector3 pos, bool resetAnimation = true) {
         // If a coroutine is running, stop it.
         if (transformMoveCoroutine != null) {
             StopCoroutine(transformMoveCoroutine);
@@ -211,6 +214,9 @@ public abstract class MovementController : MonoBehaviour {
 
         _navMeshAgent.Warp(pos);
         transform.position = pos;
+        if (resetAnimation) {
+            _animator.SetTrigger("Idle");
+        }
     }
 
     public void Pose(int poseLayer, string poseAnimation, bool canLook, bool canRotate, bool disable) {
@@ -222,6 +228,7 @@ public abstract class MovementController : MonoBehaviour {
         isPosed = true;
         canRotatePosed = canRotate;
         canLookPosed = canLook;
+
         _animator.Play(poseAnimation, poseLayer);
     }
 

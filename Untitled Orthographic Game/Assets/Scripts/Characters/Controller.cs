@@ -248,7 +248,7 @@ public abstract class Controller : MonoBehaviour {
     public void Pose(string animation, Transform pos) {
         SetState(States.Posed);
         MovementController.Pose(poseAnimationIndex, animation, true, false, true);
-        MovementController.SetPosition(pos);
+        MovementController.SetPosition(pos, false);
     }
 
     public void InteractWith(Object go) {

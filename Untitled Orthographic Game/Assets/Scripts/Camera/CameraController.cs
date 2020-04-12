@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour {
     public GameObject trackingObject;
 
     private Camera _camera;
+    public Camera uiCamera;
 
     [Header("Camera Movement Settings")]
     public float cameraRotationSmoothSpeed = 2.5f;
@@ -98,7 +99,7 @@ public class CameraController : MonoBehaviour {
 
             // Processes user input for camera size.
             _camera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * cameraZoomSpeed;
-            _camera.orthographicSize = _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize, cameraMinSize, cameraMaxSize);
+            _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize, cameraMinSize, cameraMaxSize);
         }
 
         //Creates the angle used to rotate the camera.
@@ -110,6 +111,11 @@ public class CameraController : MonoBehaviour {
         //Rotates the camera to look at the playerController.
         transform.LookAt(trackingOffset + cameraTarget);
 
+        if (uiCamera != null) {
+            uiCamera.transform.position = _camera.transform.position;
+            uiCamera.transform.rotation = _camera.transform.rotation;
+            uiCamera.orthographicSize = _camera.orthographicSize;
+        }
     }
 
     public void SetAngle(float aAngle) {
@@ -120,7 +126,7 @@ public class CameraController : MonoBehaviour {
         _camera.orthographicSize = Mathf.Clamp(aSize, cameraMinSize, cameraMaxSize); ;
     }
 
-    public void SetHeight (float aHeight) {
+    public void SetHeight(float aHeight) {
         curHeight = aHeight;
     }
 

@@ -16,7 +16,7 @@ public class Commentable : MonoBehaviour {
         }
     }
 
-    public void Go () {
+    public void Go() {
         if (disableAfter) {
             this.enabled = false;
         }
