@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackingObject: {fileID: 0}
+  uiCamera: {fileID: 0}
   cameraRotationSmoothSpeed: 2.5
   cameraPositionSmoothSpeed: 2.5
-  trackingOffset: {x: 0, y: 2.5, z: 0}
+  trackingOffset: {x: 0, y: 1.5, z: 0}
   objectOffset: 0
   startHeight: 1
   cameraMinHeight: 0

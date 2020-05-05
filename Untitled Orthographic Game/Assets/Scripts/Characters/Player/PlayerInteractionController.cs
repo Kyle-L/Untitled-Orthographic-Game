@@ -76,8 +76,6 @@ public class PlayerInteractionController : MonoBehaviour {
                 StopCoroutine(interactionRange);
             }
             interactionRange = StartCoroutine(WaitForInteractionRange(target));
-
-
         }
     }
 
@@ -93,9 +91,11 @@ public class PlayerInteractionController : MonoBehaviour {
 
     private IEnumerator WaitForInteractionRange(NPCController character) {
         while (Vector3.Distance(this.transform.position, character.transform.position) > interactionRadius) {
-            if (!PlayerControllerMain.instance.MovementController.agentControlled) {
-                yield break;
-            }
+            //if (!PlayerControllerMain.instance.MovementController.agentControlled) {
+            //    print("break");
+            //    yield break;
+            //}
+            print("waiting");
             yield return null;
         }
         DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode, target.NPCDialogueController.characterText);

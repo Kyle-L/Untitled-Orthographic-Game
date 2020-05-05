@@ -6,8 +6,8 @@
 public class UIMenu : MonoBehaviour {
 
     [SerializeField]
-    [Tooltip("All of the ui objects that should be enabled/disbaled when the ui is activated/deactivated.")]
-    private GameObject[] uiObjects;
+    [Tooltip("All of the ui objects that should be enabled/disabled when the ui is activated/deactivated.")]
+    private GameObject[] uiObjects = null;
     [SerializeField]
     [Tooltip("Whether a background is enabled with this menu.")]
     private bool useMenuBackground = true;

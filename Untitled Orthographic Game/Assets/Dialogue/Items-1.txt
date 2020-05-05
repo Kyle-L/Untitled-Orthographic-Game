@@ -1,0 +1,74 @@
+title: tree-snow
+tags: 
+colorID: 0
+position: 690,391
+---
+The snow's come early- but it is always relaxing hearing it fall.
+===
+title: tree-sanctuary
+tags: 
+colorID: 0
+position: 690,612
+---
+I love how the trees kind of hide the apartment.
+It makes it like a little hidden sanctuary.
+===
+title: plants-snow
+tags: 
+colorID: 0
+position: 910,390
+---
+I don't have much a green finger.
+Doesn't really matter now with the snow though.
+===
+title: plant-inside
+tags: 
+colorID: 0
+position: 916,608
+---
+Pan, the only plant I've managed to keep alive for more than a month...
+===
+title: coffee-cara
+tags: 
+colorID: 0
+position: 1125,388
+---
+A chestnut latte I think?
+It is Cara's favorite.
+===
+title: door-cara
+tags: 
+colorID: 0
+position: 1132,606
+---
+I probably shouldn't go in Cara's room.
+===
+title: autumn-bed
+tags: 
+colorID: 0
+position: 473,390
+---
+Should I make my bed?
+Nah.
+===
+title: fridge
+tags: 
+colorID: 0
+position: 475,611
+---
+I need to go grocery shopping soon.
+===
+title: bookshelve
+tags: 
+colorID: 0
+position: 256,388
+---
+I hope to able to afford more books in the future.
+===
+title: painting
+tags: 
+colorID: 0
+position: 254,614
+---
+It looks kinda of odd all by itself.
+===

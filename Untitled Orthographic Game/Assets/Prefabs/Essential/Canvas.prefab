@@ -1336,7 +1336,7 @@ MonoBehaviour:
   uiObjects: []
   useMenuBackground: 1
   enableControls: 1
-  doesPauseTime: 1
+  doesPauseTime: 0
   canGoBack: 1
   canOverride: 0
 --- !u!1 &526855541884798460

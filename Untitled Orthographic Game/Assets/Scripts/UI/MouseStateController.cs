@@ -11,8 +11,7 @@ public class MouseStateController : MonoBehaviour {
 
     private GameObject lastHit;
 
-    [SerializeField]
-    private Animator _animator;
+    public Animator animator;
 
     private void Awake() {
         if (instance == null) {
@@ -41,31 +40,31 @@ public class MouseStateController : MonoBehaviour {
                 lastHit = hit.transform.gameObject;
 
                 if (lastHit.tag == "Interactable") {
-                    _animator.SetBool("Interacting", true);
+                    animator.SetBool("Interacting", true);
                     Interactable i = lastHit.GetComponent<Interactable>();
                     text.text = i.interactionUIActionString + " " + i.interactionUIObjectString;
                 } else if (lastHit.tag == "Viewable") {
-                    _animator.SetBool("Interacting", true);
+                    animator.SetBool("Interacting", true);
                     Viewable i = lastHit.GetComponent<Viewable>();
                     text.text = i.viewUIActionString + " " + i.viewUIObjectString;
                 } else if (lastHit.tag == "Pickupable") {
-                    _animator.SetBool("Interacting", true);
+                    animator.SetBool("Interacting", true);
                     Pickupable i = lastHit.GetComponent<Pickupable>();
                     text.text = i.pickUpUIActionString + " " + i.pickUpUIObjectString;
                 } else if (lastHit.tag == "NPC") {
-                    _animator.SetBool("Interacting", true);
+                    animator.SetBool("Interacting", true);
                     Controller i = lastHit.GetComponentInParent<Controller>();
                     text.text = "Talk to " + i.name;
                 } else if (lastHit.tag == "Commentable") {
-                    _animator.SetBool("Interacting", true);
+                    animator.SetBool("Interacting", true);
                     Commentable i = lastHit.GetComponentInParent<Commentable>();
-                    text.text = "Comment on " + i.name;
+                    text.text = "Comment on " + i.commentableUIObjectString;
                 } else {
-                    _animator.SetBool("Interacting", false);
+                    animator.SetBool("Interacting", false);
                 }
             }
         } else {
-            _animator.SetBool("Interacting", false);
+            animator.SetBool("Interacting", false);
         }
         print(hit);
     }

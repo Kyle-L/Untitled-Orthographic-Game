@@ -9,6 +9,8 @@ public class NPCController : Controller {
     public NPCDialogueController NPCDialogueController { get; private set; }
     public NPCMovementController NPCMovementController { get; private set; }
 
+    [Header("Optional- Pose")]
+    public bool startPose = false;
     public string poseStr;
     public Transform pose;
 
@@ -18,8 +20,10 @@ public class NPCController : Controller {
         NPCMovementController = GetComponent<NPCMovementController>();
 
         base.Start();
-
-        Pose(poseStr, pose);
+        
+        if (startPose) {
+            Pose(poseStr, pose);
+        }
     }
 
 }
