@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityStandardAssets.CrossPlatformInput;
 using Yarn.Unity;
 
 public class PlayerInteractionController : MonoBehaviour {
@@ -23,7 +22,7 @@ public class PlayerInteractionController : MonoBehaviour {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (CrossPlatformInputManager.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1")) {
             if (Physics.Raycast(ray, out hit)) {
                 if (hit.collider.CompareTag("Interactable")) {
                     Interactable objectHit = hit.transform.GetComponent<Interactable>();

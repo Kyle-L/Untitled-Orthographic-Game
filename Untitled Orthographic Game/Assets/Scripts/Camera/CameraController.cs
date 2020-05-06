@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 /// <summary>
 /// Controls the camera.
@@ -64,7 +63,7 @@ public class CameraController : MonoBehaviour {
         cameraTarget = trackingObject.transform.position;
         if (control) {
             // Processes user input for rotation and height.
-            if (CrossPlatformInputManager.GetButton("Fire2")) {
+            if (Input.GetButton("Fire2")) {
                 // Get user input
                 float axisX = Input.GetAxis("Axis X");
                 float axisY = Input.GetAxis("Axis Y");

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 /// <summary>
 /// The main controller of all the game's UI menus. 
@@ -52,7 +51,7 @@ public class UIMenuController : MonoBehaviour {
 
     private void Update() {
         // If the user hits the cancel key and the game is able to be paused.
-        if (CrossPlatformInputManager.GetButtonDown("Cancel") && canPause) {
+        if (Input.GetButtonDown("Cancel") && canPause) {
             // If the menu is not active.
             if (!GetMenuState() || GetOverrideState()) {
                 // Enable the pause menu.

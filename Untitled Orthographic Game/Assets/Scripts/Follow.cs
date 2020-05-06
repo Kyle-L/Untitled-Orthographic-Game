@@ -32,8 +32,6 @@ public class Follow : MonoBehaviour {
         // compute rotation
         if (lookAt) {
             transform.LookAt(target);
-        } else {
-            transform.rotation = target.rotation;
         }
     }
 }

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: White
-  m_Shader: {fileID: 4800000, guid: 6543cd53fe423404387303816c22f669, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9a0d29765595ac147afd61ebe7f5b207, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -68,6 +68,10 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SectionOffset: 0
+    - _ShakeBending: 0.317
+    - _ShakeDisplacement: 1
+    - _ShakeTime: 0.187
+    - _ShakeWindspeed: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

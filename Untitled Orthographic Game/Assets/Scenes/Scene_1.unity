@@ -1700,6 +1700,11 @@ PrefabInstance:
       propertyPath: uiCamera
       value: 
       objectReference: {fileID: 1845656179}
+    - target: {fileID: 3457340373269534142, guid: c1a161fd5c9dd684d8952e90cb12fcbd,
+        type: 3}
+      propertyPath: cameraMinHeight
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3457340373269534141, guid: c1a161fd5c9dd684d8952e90cb12fcbd, type: 3}
     - {fileID: 3457340373269534140, guid: c1a161fd5c9dd684d8952e90cb12fcbd, type: 3}

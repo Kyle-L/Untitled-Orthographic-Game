@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour {
         UIFadeTransitionController.instance.FadeIn();
         AudioController.instance.FadeOut();
 
-        while (UIFadeTransitionController.instance.GetTransition()) {
+        while (UIFadeTransitionController.instance.GetTransition() || AudioController.instance.GetTransition()) {
             yield return null;
         }
 

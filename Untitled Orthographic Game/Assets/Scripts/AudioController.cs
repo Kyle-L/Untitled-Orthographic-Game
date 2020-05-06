@@ -18,6 +18,8 @@ public class AudioController : MonoBehaviour {
     public float fadeTolerance = 0.125f;
     public float fadeSpeed = 10f;
 
+    bool transitioning = false;
+
     private void Awake() {
         #region Enforces Singleton Pattern.
         //Check if instance already exists
@@ -45,6 +47,7 @@ public class AudioController : MonoBehaviour {
     /// fadeTolerance.
     /// </summary>
     public void FadeOut() {
+        transitioning = true;
         StartCoroutine(FadeTo(0, fadeSpeed, fadeTolerance));
     }
 
@@ -53,6 +56,7 @@ public class AudioController : MonoBehaviour {
     /// fadeTolerance.
     /// </summary>
     public void FadeIn() {
+        transitioning = true;
         StartCoroutine(FadeTo(multiplier, fadeSpeed, fadeTolerance));
     }
 
@@ -68,7 +72,15 @@ public class AudioController : MonoBehaviour {
             AudioListener.volume = Mathf.Lerp(AudioListener.volume, value, speed * Time.deltaTime);
             yield return null;
         }
+        transitioning = false;
+    }
 
+    /// <summary>
+    /// Returns whether the audio is fading in or out.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetTransition () {
+        return transitioning;
     }
 
     /// <summary>

@@ -20,7 +20,7 @@ public class NPCController : Controller {
         NPCMovementController = GetComponent<NPCMovementController>();
 
         base.Start();
-        
+
         if (startPose) {
             Pose(poseStr, pose);
         }
