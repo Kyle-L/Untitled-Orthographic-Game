@@ -1,13 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TriggerFollow : MonoBehaviour
-{
+public class TriggerFollow : Trigger {
 
-    public Follow follow;
+    [Header("Follow")]
+    public Follow followComponent;
+    public Transform followTarget;
+    public bool enableFollow = true;
+
+    public override void ActivateTrigger() {
+        followComponent.enabled = enableFollow;
+        followComponent.target = followTarget;
+    }
+
+    public override void DeactivateTrigger() {
+        followComponent.enabled = !enableFollow;
+        followComponent.target = null;
+    }
 
     private void OnTriggerEnter(Collider other) {
-        follow.enabled = true;
+        ActivateTrigger();
     }
 }

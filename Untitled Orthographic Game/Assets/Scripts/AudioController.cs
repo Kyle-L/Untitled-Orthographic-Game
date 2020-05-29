@@ -79,7 +79,7 @@ public class AudioController : MonoBehaviour {
     /// Returns whether the audio is fading in or out.
     /// </summary>
     /// <returns></returns>
-    public bool GetTransition () {
+    public bool GetTransition() {
         return transitioning;
     }
 

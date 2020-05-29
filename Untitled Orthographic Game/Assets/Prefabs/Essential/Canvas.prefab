@@ -3144,7 +3144,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 250, y: -125}
-  m_SizeDelta: {x: 500, y: 250}
+  m_SizeDelta: {x: 500, y: 240.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2274255875776965478
 CanvasRenderer:
@@ -3186,7 +3186,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Goodbye, \nAutumn"
+  m_Text: "Weathered \n\tAway"
 --- !u!1 &1912369746579079275
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,26 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TriggerAnimation : MonoBehaviour
-{
+public class TriggerAnimation : Trigger {
 
     public Animator animator;
-    public string trigger;
-    bool disableTrigger = true;
-
-    private Collider col;
-
-    private void Start() {
-        col = this.GetComponent<Collider>();
-    }
+    public string triggerIn;
+    public string triggerOut;
+    public bool disableOnTrigger = false;
 
     private void OnTriggerEnter(Collider other) {
-        animator.SetTrigger(trigger);
+        ActivateTrigger();
+    }
 
-        if (disableTrigger) {
-            col.enabled = false;
+    private void OnTriggerExit(Collider other) {
+        DeactivateTrigger();
+    }
+
+    public override void ActivateTrigger() {
+        animator.SetTrigger(triggerIn);
+        if (triggerType == TriggerTypes.Collider) {
+            _collider.enabled = _collider.enabled && !disableOnTrigger;
         }
     }
 
+    public override void DeactivateTrigger() {
+        animator.SetTrigger(triggerOut);
+        if (triggerType == TriggerTypes.Collider) {
+            _collider.enabled = _collider.enabled && !disableOnTrigger;
+        }
+    }
 }

@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         startEvent?.Go();
+        AudioController.instance.FadeIn();
     }
 
     public void StopTime() {

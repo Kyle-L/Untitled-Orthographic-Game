@@ -1,19 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TriggerScene : MonoBehaviour
-{
-
-    private Collider col;
-
-    private void Start() {
-        col = this.GetComponent<Collider>();
-    }
+public class TriggerScene : Trigger {
 
     private void OnTriggerEnter(Collider other) {
-        GameManager.instance.LoadNextScene();
-        col.enabled = false;
+        ActivateTrigger();
     }
 
+    public override void ActivateTrigger() {
+        GameManager.instance.LoadNextScene();
+        _collider.enabled = false;
+    }
+
+    public override void DeactivateTrigger() {
+        throw new System.NotImplementedException();
+    }
 }
