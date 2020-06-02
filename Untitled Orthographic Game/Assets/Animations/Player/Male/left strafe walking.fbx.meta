@@ -57,7 +57,50 @@ ModelImporter:
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
+      curves:
+      - name: Weight
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: -4.497612
+            outSlope: -4.497612
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.22172546
+            value: 0.0027649403
+            inSlope: -1.3118515
+            outSlope: -1.3118515
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.7524632
+            value: 0.9973193
+            inSlope: 0.017348675
+            outSlope: 0.017348675
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.66829616
+          - serializedVersion: 3
+            time: 0.9932251
+            value: 0.00008392334
+            inSlope: -4.141999
+            outSlope: -4.141999
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          preInfinity: 0
+          postInfinity: 0
+          rotationOrder: 4
       events: []
       transformMask: []
       maskType: 3

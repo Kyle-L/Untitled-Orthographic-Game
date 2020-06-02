@@ -144,7 +144,7 @@ namespace Yarn.Unity.Example {
             Debug.Log("Dialogue starting!");
 
             // Enables the in-game mouse.
-            MouseStateController.instance?.SetMouseState(true);
+            //MouseStateController.instance?.SetMouseState(true);
 
             yield break;
         }
@@ -154,7 +154,7 @@ namespace Yarn.Unity.Example {
             Debug.Log("Complete!");
 
             // Disables the in-game mouse.
-            MouseStateController.instance?.SetMouseState(false);
+            //MouseStateController.instance?.SetMouseState(false);
 
             yield break;
         }

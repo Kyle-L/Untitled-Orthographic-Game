@@ -66,7 +66,6 @@ public class MouseStateController : MonoBehaviour {
         } else {
             animator.SetBool("Interacting", false);
         }
-        print(hit);
     }
 
     public void SetMouseState(bool isActive) {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,6 +28,8 @@ public abstract class MovementController : MonoBehaviour {
     public float alignSpeed = 3;
     public float rotateSpeed = 3;
     public float animatorLerpSpeed = 5;
+    public float fallLerpSpeed = 3;
+    public float fallVelocityActivation = 6;
 
     public bool agentControlled { get; set; } = true;
     public bool isPosed { get; private set; } = false;
@@ -64,8 +67,6 @@ public abstract class MovementController : MonoBehaviour {
             return;
         }
 
-        verticalVelocity = 0;
-
         if (agentControlled) {
             direction = _navMeshAgent.desiredVelocity.normalized;
         }
@@ -73,9 +74,10 @@ public abstract class MovementController : MonoBehaviour {
         direction *= moveSpeed;
 
         if (!_characterController.isGrounded) {
-            verticalVelocity += Physics.gravity.y/* * Time.deltaTime*/;
+            verticalVelocity = Mathf.Lerp(verticalVelocity, Physics.gravity.y, Time.deltaTime * fallLerpSpeed);
+        } else {
+            verticalVelocity = 0;
         }
-
 
         //Normalize direction.
         if (direction != Vector3.zero) {
@@ -94,14 +96,17 @@ public abstract class MovementController : MonoBehaviour {
         // Gets the previous SpeedX and Y.
         float speedY = _animator.GetFloat("SpeedY");
         float speedX = _animator.GetFloat("SpeedX");
+        float speedZ = _animator.GetFloat("SpeedZ");
 
         // Smooths them to the current values.
         speedY = Mathf.Lerp(speedY, transform.InverseTransformDirection(_characterController.velocity).z, animatorLerpSpeed * Time.deltaTime);
         speedX = Mathf.Lerp(speedX, transform.InverseTransformDirection(_characterController.velocity).x, animatorLerpSpeed * Time.deltaTime);
+        speedZ = Mathf.Lerp(speedZ, (Math.Abs(_characterController.velocity.y) < fallVelocityActivation) ?  0 : transform.InverseTransformDirection(_characterController.velocity).y, animatorLerpSpeed * Time.deltaTime);
 
         // Sets the values.
         _animator.SetFloat("SpeedY", speedY);
         _animator.SetFloat("SpeedX", speedX);
+        _animator.SetFloat("SpeedZ", speedZ);
     }
 
     /// <summary>
