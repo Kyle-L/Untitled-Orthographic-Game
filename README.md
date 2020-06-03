@@ -7,7 +7,7 @@
 
 <a name="overview"/></a>
 ## Overview
-This is the repository for the development of a currently unitled orthographic game.
+This is the repository for the development of a currently untitled orthographic game.
 
 <a name="media"/></a>
 ## Media
@@ -30,3 +30,5 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 In
 [cc-by-nc-shield]: https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg
 
 The underlying source code is licensed under [GNU General Public License v3.0](LICENSE.md).
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
