@@ -5,6 +5,7 @@ using Yarn.Unity;
 /// An extremely simple implementation of DialogueUnityVariableStorage, which
 /// just stores everything in a Dictionary.
 public class DialogueVariableStorage : VariableStorageBehaviour {
+    public static DialogueVariableStorage instance;
 
     /// Where we actually keeping our variables
     Dictionary<string, Yarn.Value> variables = new Dictionary<string, Yarn.Value>();
@@ -30,6 +31,8 @@ public class DialogueVariableStorage : VariableStorageBehaviour {
 
     /// Reset to our default values when the game starts
     void Awake() {
+        instance = this;
+
         ResetToDefaults();
     }
 

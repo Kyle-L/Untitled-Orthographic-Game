@@ -257,14 +257,14 @@ MonoBehaviour:
   trackingOffset: {x: 0, y: 1.5, z: 0}
   objectOffset: 0
   startHeight: 1.75
-  cameraMinHeight: 0
+  cameraMinHeight: 0.6
   cameraMaxHeight: 4
   startSize: 2.5
   cameraMinSize: 1
   cameraMaxSize: 7
   cameraRadius: 3.5
   cameraStartAngle: -30
-  cameraMoveSpeed: 1
+  cameraMoveSpeed: 10
   cameraHeightSpeed: 2
   cameraRotateSpeed: 20
   cameraZoomSpeed: 2

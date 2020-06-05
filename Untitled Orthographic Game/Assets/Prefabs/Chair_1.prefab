@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3198242495691056593
 Transform:
@@ -48,7 +48,7 @@ GameObject:
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3198242495822738950
 Transform:
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b206b74c6c04bc449b0771a91847a945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionUIActionString: Sit on
-  interactionUIObjectString: Chair
+  interactionUIActionString: Sit Down
+  interactionUIObjectString: 
   interactionPoint: {fileID: 3198242495691056593}
   leftHandPoint: {fileID: 0}
   righthandPoint: {fileID: 0}
