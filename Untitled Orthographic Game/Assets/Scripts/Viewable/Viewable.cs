@@ -11,7 +11,10 @@ public abstract class Viewable : MonoBehaviour {
     public Viewable leftView;
     public Viewable rightView;
 
-    public abstract void Go();
+    public virtual void Go() {
+        // Indicates that the player has interacted with this object.
+        DialogueVariableStorage.instance.SetValue(this.name, new Yarn.Value(true));
+    }
 
     public abstract void Stop();
 

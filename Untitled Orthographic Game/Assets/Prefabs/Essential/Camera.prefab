@@ -164,7 +164,8 @@ GameObject:
   - component: {fileID: 3457340373269534129}
   - component: {fileID: 3457340373269534128}
   - component: {fileID: 3457340373269534143}
-  - component: {fileID: 3457340373269534142}
+  - component: {fileID: 6169004704286166471}
+  - component: {fileID: 503564950}
   m_Layer: 8
   m_Name: Camera
   m_TagString: MainCamera
@@ -181,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 3457340373269534139}
   m_LocalRotation: {x: 0.081626765, y: 0.9140943, z: -0.22821216, w: 0.32509673}
   m_LocalPosition: {x: -18.137226, y: 4.9956512, z: 1.8811494}
-  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3457340372276236035}
   m_Father: {fileID: 0}
@@ -238,7 +239,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3457340373269534139}
   m_Enabled: 1
---- !u!114 &3457340373269534142
+--- !u!114 &6169004704286166471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,17 +255,40 @@ MonoBehaviour:
   uiCamera: {fileID: 3457340372276236034}
   cameraRotationSmoothSpeed: 2.5
   cameraPositionSmoothSpeed: 2.5
-  trackingOffset: {x: 0, y: 1.5, z: 0}
+  trackingOffset: {x: 0, y: 1.4, z: 0}
   objectOffset: 0
-  startHeight: 1.75
-  cameraMinHeight: 0.6
-  cameraMaxHeight: 4
-  startSize: 2.5
+  startHeight: 15
+  cameraMinHeight: 0
+  cameraMaxHeight: 50
+  startSize: 5
   cameraMinSize: 1
   cameraMaxSize: 7
-  cameraRadius: 3.5
-  cameraStartAngle: -30
-  cameraMoveSpeed: 10
-  cameraHeightSpeed: 2
-  cameraRotateSpeed: 20
+  cameraRadius: 15
+  cameraStartAngle: 15
+  cameraMoveSpeed: 1
+  cameraHeightSpeed: 1
+  cameraRotateSpeed: 1
   cameraZoomSpeed: 2
+--- !u!114 &503564950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457340373269534139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1920b890f01234e9078129fe030ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  offsetPositionFollow: {x: 1, y: 9, z: 10}
+  offsetPositionFollowSpace: 0
+  offsetPositionLookAt: {x: 0, y: 0, z: 0}
+  followPosition: 0
+  followMotion: 1
+  targetFollowSpeed: 1
+  lookAt: 0
+  rotationMotion: 2
+  targetRotationSpeed: 1
+  smoothSpeed: 0.125

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
         }
         #endregion
 
-        ResumeTime();
+        //ResumeTime();
     }
 
     private void Start() {
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour {
         asyncLoad.allowSceneActivation = false;
 
         float loadTime = minimumLoadTime;
-        while (!asyncLoad.isDone && loadTime > 0) {
+        while (asyncLoad.progress < 0.9f || loadTime > 0) {
             loadTime -= Time.deltaTime;
             yield return null;
         }

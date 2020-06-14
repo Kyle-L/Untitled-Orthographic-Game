@@ -30,6 +30,10 @@ public class CharacterSerializer : MonoBehaviour {
     }
 
     void UpdateLookable() {
-        Lookable = GameObject.FindGameObjectsWithTag("Lookable").Select(go => go.transform).ToArray();
+        var list = GameObject.FindGameObjectsWithTag("Lookable").Select(go => go.transform);
+        list = list.Union(GameObject.FindGameObjectsWithTag("Viewable").Select(go => go.transform));
+        list = list.Union(GameObject.FindGameObjectsWithTag("Commentable").Select(go => go.transform));
+
+        Lookable = list.ToArray();
     }
 }

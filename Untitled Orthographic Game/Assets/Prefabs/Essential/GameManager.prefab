@@ -52,7 +52,7 @@ MonoBehaviour:
   musicSource: {fileID: 1134177332}
   effectSource: {fileID: 1134177332}
   multiplier: 1
-  fadeTolerance: 0.025
+  fadeTolerance: 0.001
   fadeSpeed: 10
 --- !u!114 &1705539224564096879
 MonoBehaviour:

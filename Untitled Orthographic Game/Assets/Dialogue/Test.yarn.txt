@@ -4,7 +4,7 @@ colorID: 0
 position: 539,551
 ---
 <<if visited("Test") is false>>
-    <<NPC gesture acknowledging>> 
+    <<Cara gesture acknowledging>> 
     This is a test of the branching dialogue system.
     
     -> Okay
@@ -14,27 +14,45 @@ position: 539,551
     -> I hate this.
         Too bad.
     
-    <<gesture NPC acknowledging>> 
+    <<gesture Cara acknowledging>> 
     Anyway, every dialogue option has the ability to change my reaction.
     
     For instance, I will react differently to different choices.
-    
+
     -> Angry choice.
-        <<gesture NPC angry>> 
+        <<gesture Cara angry>> 
         I'm angry.
     -> Happy choice.
-        <<gesture NPC happy>> 
+        <<gesture Cara happy>> 
         I'm happy.
     -> Sad choice.
-        <<gesture NPC dismissing>> 
+        <<gesture Cara dismissing>> 
         I'm sad.
     
-    <<gesture NPC acknowledging>> 
+    I am also able to remember and recognize things that you have done in the environment.
+
+    <<if $Book_Alice is true>>
+        For instance, I know that you picked up Alice in Wonderland over there.
+    <<elseif $Book_Frank is true>>
+        For instance, I know that you picked up Frankenstein over there.
+    <<elseif $Book_Pride is true>>
+        For instance, I know that you picked up Pride and Prejudice over there.
+    <<else>>
+        For instance, I know you haven't read any of those books on the shelf over there.
+    << endif>> 
+
+    <<if $Coffee_Cara is true>>
+        I also know that you recognized what coffee I had sitting on the table over there.
+    <<else>>
+        I also know that you didn't notice my coffee sitting right there.
+    <<endif>> 
+
+    <<gesture Cara acknowledging>> 
     For now, that is all I have for you.
 <<else>>
-    <<gesture NPC annoyed>> 
+    <<gesture Cara annoyed>> 
     I already talked to you!
-    <<gesture NPC angry>> 
+    <<gesture Cara angry>> 
     Punk!
 <<endif>>
 ===

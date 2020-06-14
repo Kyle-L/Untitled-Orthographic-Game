@@ -6,7 +6,7 @@ public class Commentable : MonoBehaviour {
     [Tooltip("The name of the object.")]
     public string commentableUIObjectString = "Unnamed";
     public string startNode;
-
+    public bool addToDialogueStorage = false;
 
     public bool disableAfter = true;
     public bool switchTagAfter = true;
@@ -17,6 +17,9 @@ public class Commentable : MonoBehaviour {
     }
 
     public void Go() {
+        // Indicates that the player has interacted with this object.
+        DialogueVariableStorage.instance.SetValue(this.name, new Yarn.Value(true));
+
         if (disableAfter) {
             this.enabled = false;
         }

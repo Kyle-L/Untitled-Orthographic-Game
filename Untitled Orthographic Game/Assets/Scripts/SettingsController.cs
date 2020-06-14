@@ -18,6 +18,12 @@ public class SettingsController : MonoBehaviour {
     [SerializeField]
     private float defaultVolume = 2.5f;
 
+    private const string VOLUME = "volume";
+    private const string ROTATE = "rotateSensitivity";
+    private const string HEIGHT = "heightSensitivity";
+    private const string ZOOM = "zoomSensitivity";
+    private const string QUALITY = "qualityLevel";
+
     public void Awake() {
         #region Enforces Singleton Pattern.
         //Check if instance already exists
@@ -34,15 +40,11 @@ public class SettingsController : MonoBehaviour {
 
         /* Gets the values stored in player prefs, otherwise the default
          * values are used if the player has not changed the settings. */
-        Volume = PlayerPrefs.GetFloat("volume", defaultVolume);
-        RotateSensitivity = PlayerPrefs.GetFloat("rotateSensitivity", defaultRotate);
-        HeightSensitivity = PlayerPrefs.GetFloat("heightSensitivity", defaultHeight);
-        ZoomSensitivity = PlayerPrefs.GetFloat("zoomSensitivity", defaultZoom);
-        if (PlayerPrefs.GetInt("qualityLevel") != QualitySettings.GetQualityLevel()) {
-            QualityLevel = QualitySettings.GetQualityLevel();
-        } else {
-            QualityLevel = PlayerPrefs.GetInt("qualityLevel", QualitySettings.GetQualityLevel());
-        }
+        Volume = PlayerPrefs.GetFloat(VOLUME, defaultVolume);
+        RotateSensitivity = PlayerPrefs.GetFloat(ROTATE, defaultRotate);
+        HeightSensitivity = PlayerPrefs.GetFloat(HEIGHT, defaultHeight);
+        ZoomSensitivity = PlayerPrefs.GetFloat(ZOOM, defaultZoom);
+        QualityLevel = PlayerPrefs.GetInt(QUALITY, QualitySettings.GetQualityLevel());
     }
 
     /// <summary>
@@ -51,7 +53,8 @@ public class SettingsController : MonoBehaviour {
     public float Volume {
         get { return volume; }
         set {
-            PlayerPrefs.SetFloat("volume", value);
+            PlayerPrefs.SetFloat(VOLUME, value);
+            PlayerPrefs.Save();
             AudioListener.volume = volume;
             volume = value;
         }
@@ -64,7 +67,8 @@ public class SettingsController : MonoBehaviour {
     public float RotateSensitivity {
         get { return rotateSensitivity; }
         set {
-            PlayerPrefs.SetFloat("rotateSensitivity", value);
+            PlayerPrefs.SetFloat(ROTATE, value);
+            PlayerPrefs.Save();
             if (CameraController.instance != null) {
                 CameraController.instance.cameraRotateSpeed = value;
             }
@@ -80,7 +84,8 @@ public class SettingsController : MonoBehaviour {
     public float HeightSensitivity {
         get { return heightSensitivity; }
         set {
-            PlayerPrefs.SetFloat("heightSensitivity", value);
+            PlayerPrefs.SetFloat(HEIGHT, value);
+            PlayerPrefs.Save();
             if (CameraController.instance != null) {
                 CameraController.instance.cameraHeightSpeed = value;
             }
@@ -96,7 +101,8 @@ public class SettingsController : MonoBehaviour {
     public float ZoomSensitivity {
         get { return zoomSensitivity; }
         set {
-            PlayerPrefs.SetFloat("zoomSensitivity", value);
+            PlayerPrefs.SetFloat(ZOOM, value);
+            PlayerPrefs.Save();
             if (CameraController.instance != null) {
                 CameraController.instance.cameraZoomSpeed = value;
             }
@@ -112,7 +118,8 @@ public class SettingsController : MonoBehaviour {
     public int QualityLevel {
         get { return qualityLevel; }
         set {
-            PlayerPrefs.SetInt("qualityLevel", value);
+            PlayerPrefs.SetInt(QUALITY, value);
+            PlayerPrefs.Save();
             QualitySettings.SetQualityLevel(value);
             qualityLevel = value;
         }

@@ -34,11 +34,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.00363, y: 0.00363, z: 0.0036299995}
   m_Children:
+  - {fileID: 1723026160}
   - {fileID: 1382876603}
   - {fileID: 1084412633}
   - {fileID: 1879718588}
   - {fileID: 1592615599}
-  - {fileID: 1723026160}
   m_Father: {fileID: 143253013337927037}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -372,11 +372,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2557403056417170360}
-  offsetPosition: {x: 0, y: 0.25, z: 0.4}
-  offsetPositionSpace: 1
+  offsetPositionFollow: {x: 0, y: 0.25, z: 0.3}
+  offsetPositionFollowSpace: 1
+  offsetPositionLookAt: {x: 0, y: 0, z: 0}
+  followPosition: 1
   followMotion: 0
-  followSpeed: 2
+  targetFollowSpeed: 5
   lookAt: 1
+  rotationMotion: 0
+  targetRotationSpeed: 2
+  smoothSpeed: 5
 --- !u!1 &1084412632
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +416,7 @@ RectTransform:
   m_Children:
   - {fileID: 1893472357}
   m_Father: {fileID: 29241185}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -582,7 +587,7 @@ RectTransform:
   m_Children:
   - {fileID: 1925536178}
   m_Father: {fileID: 29241185}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -869,7 +874,7 @@ RectTransform:
   m_Children:
   - {fileID: 425232123}
   m_Father: {fileID: 29241185}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1038,7 +1043,7 @@ RectTransform:
   m_Children:
   - {fileID: 1453654773}
   m_Father: {fileID: 29241185}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1126,7 +1131,7 @@ RectTransform:
   m_Children:
   - {fileID: 508542002}
   m_Father: {fileID: 29241185}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1628,11 +1633,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2557403056417170360}
-  offsetPosition: {x: -0.15, y: 0, z: 0.3}
-  offsetPositionSpace: 1
+  offsetPositionFollow: {x: -0.175, y: 0, z: 0.3}
+  offsetPositionFollowSpace: 1
+  offsetPositionLookAt: {x: 0, y: 0, z: 0}
+  followPosition: 1
   followMotion: 0
-  followSpeed: 2
+  targetFollowSpeed: 5
   lookAt: 1
+  rotationMotion: 0
+  targetRotationSpeed: 2
+  smoothSpeed: 5
 --- !u!54 &1745433862
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1851,11 +1861,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2557403056417170360}
-  offsetPosition: {x: 0, y: 0, z: 0.4}
-  offsetPositionSpace: 1
+  offsetPositionFollow: {x: 0, y: 0, z: 0.3}
+  offsetPositionFollowSpace: 1
+  offsetPositionLookAt: {x: 0, y: 0, z: 0}
+  followPosition: 1
   followMotion: 0
-  followSpeed: 2
+  targetFollowSpeed: 5
   lookAt: 1
+  rotationMotion: 0
+  targetRotationSpeed: 2
+  smoothSpeed: 5
 --- !u!54 &227984669
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1929,11 +1944,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2557403056417170360}
-  offsetPosition: {x: 0.15, y: 0.25, z: 0.3}
-  offsetPositionSpace: 1
+  offsetPositionFollow: {x: 0.175, y: 0.25, z: 0.3}
+  offsetPositionFollowSpace: 1
+  offsetPositionLookAt: {x: 0, y: 0, z: 0}
+  followPosition: 1
   followMotion: 0
-  followSpeed: 2
+  targetFollowSpeed: 5
   lookAt: 1
+  rotationMotion: 0
+  targetRotationSpeed: 2
+  smoothSpeed: 5
 --- !u!1 &4945974411171489536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,6 +2041,8 @@ MonoBehaviour:
   alignSpeed: 2
   rotateSpeed: 3
   animatorLerpSpeed: 5
+  fallLerpSpeed: 3
+  fallVelocityActivation: 6
   playerMainCamera: {fileID: 0}
   target: {fileID: 0}
 --- !u!114 &2058142156
@@ -2087,7 +2109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drawShader: {fileID: 4800000, guid: 647f58b6fa0dc8a4480df018112cf82c, type: 3}
-  _brushSize: 0.5
+  _brushSize: 0.2
   _brushStrength: 1
   _terrain: {fileID: 0}
   feet:
@@ -2267,11 +2289,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2557403056417170360}
-  offsetPosition: {x: 0.15, y: 0, z: 0.3}
-  offsetPositionSpace: 1
+  offsetPositionFollow: {x: 0.175, y: 0, z: 0.3}
+  offsetPositionFollowSpace: 1
+  offsetPositionLookAt: {x: 0, y: 0, z: 0}
+  followPosition: 1
   followMotion: 0
-  followSpeed: 2
+  targetFollowSpeed: 5
   lookAt: 1
+  rotationMotion: 0
+  targetRotationSpeed: 2
+  smoothSpeed: 5
 --- !u!54 &1302921616
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2575,11 +2602,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2557403056417170360}
-  offsetPosition: {x: -0.15, y: 0.25, z: 0.3}
-  offsetPositionSpace: 1
+  offsetPositionFollow: {x: -0.175, y: 0.25, z: 0.3}
+  offsetPositionFollowSpace: 1
+  offsetPositionLookAt: {x: 0, y: 0, z: 0}
+  followPosition: 1
   followMotion: 0
-  followSpeed: 2
+  targetFollowSpeed: 5
   lookAt: 1
+  rotationMotion: 0
+  targetRotationSpeed: 2
+  smoothSpeed: 5
 --- !u!54 &81658295
 Rigidbody:
   m_ObjectHideFlags: 0

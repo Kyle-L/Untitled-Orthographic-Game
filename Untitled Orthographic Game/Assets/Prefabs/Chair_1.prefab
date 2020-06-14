@@ -91,7 +91,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 906536689a286614599282830f3a7c1e, type: 2}
+  - {fileID: 2100000, guid: 23ae800c75645a64aba607641fd17727, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,8 +129,10 @@ MonoBehaviour:
   interactionPoint: {fileID: 3198242495691056593}
   leftHandPoint: {fileID: 0}
   righthandPoint: {fileID: 0}
-  interactionGoString: SitDown
-  interactionStopString: Exit
+  animationGoString: SitDown
+  animationStopString: Exit
+  goTrigger: {fileID: 0}
+  stopTrigger: {fileID: 0}
 --- !u!65 &3198242495822738968
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Yarn;
 
 public class UIViewable : Viewable {
 
@@ -6,6 +7,8 @@ public class UIViewable : Viewable {
     public TextAsset viewableText;
 
     public override void Go() {
+        base.Go();
+
         UIMenu_Viewable.instance.View(this);
     }
 

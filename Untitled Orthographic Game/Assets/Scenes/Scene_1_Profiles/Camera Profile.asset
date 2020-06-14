@@ -27,7 +27,7 @@ MonoBehaviour:
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.35
+    value: 0.3
   smoothness:
     overrideState: 1
     value: 0.6
@@ -36,7 +36,7 @@ MonoBehaviour:
     value: 1
   rounded:
     overrideState: 0
-    value: 0
+    value: 1
   mask:
     overrideState: 0
     value: {fileID: 0}
@@ -44,34 +44,6 @@ MonoBehaviour:
   opacity:
     overrideState: 0
     value: 1
---- !u!114 &-328883807695251499
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
-  m_Name: Grain
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  colored:
-    overrideState: 1
-    value: 0
-  intensity:
-    overrideState: 1
-    value: 0.1
-  size:
-    overrideState: 1
-    value: 1
-  lumContrib:
-    overrideState: 0
-    value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,11 +57,11 @@ MonoBehaviour:
   m_Name: Camera Profile
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: 8250776526509525003}
+  - {fileID: 3463564391336486916}
   - {fileID: 8616295928872790362}
   - {fileID: -4913135600811021267}
-  - {fileID: -328883807695251499}
---- !u!114 &8250776526509525003
+  - {fileID: 8624784335517565235}
+--- !u!114 &3463564391336486916
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,28 +79,28 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 7.36
+    value: 15
   threshold:
     overrideState: 1
-    value: 0.86
+    value: 0.9
   softKnee:
-    overrideState: 1
-    value: 0.643
+    overrideState: 0
+    value: 0.5
   clamp:
     overrideState: 0
     value: 65472
   diffusion:
-    overrideState: 1
-    value: 3
+    overrideState: 0
+    value: 7
   anamorphicRatio:
     overrideState: 0
-    value: -1
+    value: 0
   color:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
   fastMode:
     overrideState: 1
-    value: 1
+    value: 0
   dirtTexture:
     overrideState: 0
     value: {fileID: 0}
@@ -153,15 +125,15 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   gradingMode:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0
   externalLut:
     overrideState: 0
     value: {fileID: 0}
     defaultState: 1
   tonemapper:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
   toneCurveToeStrength:
     overrideState: 0
     value: 0
@@ -201,16 +173,16 @@ MonoBehaviour:
     value: -62
   saturation:
     overrideState: 1
-    value: 15
+    value: 5
   brightness:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 10
   postExposure:
     overrideState: 0
     value: 0
   contrast:
     overrideState: 1
-    value: -15
+    value: -10
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -1447,3 +1419,31 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
+--- !u!114 &8624784335517565235
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65e486e4de6e5448a8fbb43dc8756a0, type: 3}
+  m_Name: Grain
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  colored:
+    overrideState: 1
+    value: 0
+  intensity:
+    overrideState: 1
+    value: 0.1
+  size:
+    overrideState: 1
+    value: 1
+  lumContrib:
+    overrideState: 0
+    value: 0.8

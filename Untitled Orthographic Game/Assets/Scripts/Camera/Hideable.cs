@@ -88,10 +88,10 @@ public class Hideable : MonoBehaviour {
             foreach (Material material in materials) {
                 // If does hide is true, set the cross section to the hide height.
                 if (doesHide) {
-                    material.SetVector("_SectionPoint", new Vector4(0, crossSectionMinHeight, 0, 0));
+                    material.SetVector("_PlanePosition", new Vector4(0, crossSectionMinHeight, 0, 0));
                     // If does hide is false, set the cross section to the max height.
                 } else {
-                    material.SetVector("_SectionPoint", new Vector4(0, crossSectionMaxHeight, 0, 0));
+                    material.SetVector("_PlanePosition", new Vector4(0, crossSectionMaxHeight, 0, 0));
                 }
             }
             // Iterates through each game in hide objects.

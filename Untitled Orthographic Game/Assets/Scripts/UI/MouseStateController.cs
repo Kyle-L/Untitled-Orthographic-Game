@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class MouseStateController : MonoBehaviour {
     public static MouseStateController instance;
@@ -32,7 +33,7 @@ public class MouseStateController : MonoBehaviour {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit)) {
+        if (Physics.Raycast(ray, out hit) && (DialogueRunner.instance != null && !DialogueRunner.instance.isDialogueRunning)) {
 
             Debug.DrawLine(Camera.main.transform.position, hit.point);
 

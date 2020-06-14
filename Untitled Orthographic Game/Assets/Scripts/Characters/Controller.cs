@@ -179,14 +179,14 @@ public abstract class Controller : MonoBehaviour {
                                                     Interactable interactionObject = blackboard.Get<Interactable>(BlackBoardVars.InteractingObject.ToString());
                                                     if (result == Request.CANCEL) {
                                                         MovementController.SetCharacterControllerState(true);
-                                                        MovementController.TriggerAnimation(interactionObject.interactionStopString);
+                                                        MovementController.TriggerAnimation(interactionObject.animationStopString);
                                                         interactionObject.Stop(this);
                                                         return Action.Result.SUCCESS;
                                                     } else if (result == Request.START) {
                                                         MovementController.AlignPosition(interactionObject.interactionPoint);
                                                         MovementController.AlignRotation(interactionObject.interactionPoint);
 
-                                                        MovementController.TriggerAnimation(interactionObject.interactionGoString);
+                                                        MovementController.TriggerAnimation(interactionObject.animationGoString);
                                                         MovementController.SetCharacterControllerState(false);
 
                                                         interactionObject.Go(this);

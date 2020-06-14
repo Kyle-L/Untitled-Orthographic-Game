@@ -6,15 +6,18 @@ public class TriggerFollow : Trigger {
     public Follow followComponent;
     public Transform followTarget;
     public bool enableFollow = true;
+    public bool enableLookAt = true;
 
     public override void ActivateTrigger() {
-        followComponent.enabled = enableFollow;
+        followComponent.FollowPosition = enableFollow;
+        followComponent.LookAt = enableLookAt;
         followComponent.target = followTarget;
     }
 
     public override void DeactivateTrigger() {
-        followComponent.enabled = !enableFollow;
-        followComponent.target = null;
+        followComponent.FollowPosition = false;
+        followComponent.LookAt = false;
+        //followComponent.target = null;
     }
 
     private void OnTriggerEnter(Collider other) {
