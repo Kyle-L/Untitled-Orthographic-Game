@@ -6853,6 +6853,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: -17
       objectReference: {fileID: 0}
+    - target: {fileID: 1881219445969304043, guid: 0b61d239da1e9c24bb82ad60acd081a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912369746612585943, guid: 0b61d239da1e9c24bb82ad60acd081a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912369746862865841, guid: 0b61d239da1e9c24bb82ad60acd081a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1912369747170179177, guid: 0b61d239da1e9c24bb82ad60acd081a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6963,6 +6978,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1912369747403821938, guid: 0b61d239da1e9c24bb82ad60acd081a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1912369747493187228, guid: 0b61d239da1e9c24bb82ad60acd081a6,
         type: 3}
       propertyPath: doesPauseTime
@@ -6977,6 +6997,26 @@ PrefabInstance:
         type: 3}
       propertyPath: defaultMenu
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912369747864405023, guid: 0b61d239da1e9c24bb82ad60acd081a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912369747905221801, guid: 0b61d239da1e9c24bb82ad60acd081a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912369748479328216, guid: 0b61d239da1e9c24bb82ad60acd081a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985298919869810373, guid: 0b61d239da1e9c24bb82ad60acd081a6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2317157123713020869, guid: 0b61d239da1e9c24bb82ad60acd081a6,
         type: 3}

@@ -44,14 +44,14 @@ public class PlayerObjectHolder : MonoBehaviour {
 
             _animator.SetFloat("PickupHeight", Mathf.Clamp((pickUp.transform.position.y - transform.position.y) / 2, 0, 1));
         } else {
-            GrabObject(false);
-            GrabArms(false);
+            GrabObject();
+            GrabArms();
         }
 
 
     }
 
-    public void GrabArms(bool lerp = true) {
+    public void GrabArms() {
 
         if (currentHeld.holdPosition.ToString().Contains("Left") || currentHeld.holdPosition.ToString().Contains("Both")) {
             _handIKController.leftHand = true;
@@ -64,7 +64,7 @@ public class PlayerObjectHolder : MonoBehaviour {
         _handIKController.leftObject = currentHeld.pickupLeftHandle;
         _handIKController.rightObject = currentHeld.pickupRightHandle;
 
-        if (lerp) {
+        if (true) {
             _handIKController.LerpPositon(1);
         } else {
             currentHeld.pickupObject.localPosition = Vector3.zero;
@@ -72,7 +72,7 @@ public class PlayerObjectHolder : MonoBehaviour {
         }
     }
 
-    public void GrabObject(bool lerp = true) {
+    public void GrabObject() {
         currentHeld.Pickup(GetParentTransform(currentHeld.holdPosition));
         LerpPositon(currentHeld);
         _handIKController.LerpRotation(1);
@@ -82,7 +82,7 @@ public class PlayerObjectHolder : MonoBehaviour {
     public void Drop() {
         _handIKController.LerpPositon(0);
         _handIKController.LerpRotation(0);
-        currentHeld.Drop();
+        currentHeld?.Drop();
 
         _handIKController.leftHand = false;
         _handIKController.rightHand = false;

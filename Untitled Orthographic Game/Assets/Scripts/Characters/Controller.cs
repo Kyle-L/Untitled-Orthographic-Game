@@ -138,7 +138,7 @@ public abstract class Controller : MonoBehaviour {
                                     // Determines the type of object that the npc is interacting with.
                                     new Action(() => {
                                         blackboard[BlackBoardVars.InteractingObject.ToString()] = blackboard[BlackBoardVars.NewInteractingObject.ToString()];
-                                        if (blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType == typeof(MonoBehaviour)) {
+                                        if (blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType == typeof(MonoBehaviour) || blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType == typeof(InteractBase)) {
                                             blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType();
                                         } else {
                                             blackboard[BlackBoardVars.InteractingObjectType.ToString()] = blackboard[BlackBoardVars.InteractingObject.ToString()].GetType().BaseType;

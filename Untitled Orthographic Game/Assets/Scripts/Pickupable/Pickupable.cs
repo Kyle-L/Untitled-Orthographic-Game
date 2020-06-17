@@ -2,7 +2,7 @@
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
-public class Pickupable : MonoBehaviour {
+public class Pickupable : InteractBase {
 
     [Header("UI")]
     [Tooltip("The action that is displayed for the user when picking the object up.")]
@@ -39,6 +39,12 @@ public class Pickupable : MonoBehaviour {
         }
 
         _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    public new void Start() {
+        base.Start();
+
+        SetString(pickUpUIActionString, pickUpUIObjectString);
     }
 
     public void Pickup(Transform newParent) {

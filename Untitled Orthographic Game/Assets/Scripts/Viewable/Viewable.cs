@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class Viewable : MonoBehaviour {
+public abstract class Viewable : InteractBase {
 
     public Transform interactionPoint;
 
@@ -10,6 +10,12 @@ public abstract class Viewable : MonoBehaviour {
 
     public Viewable leftView;
     public Viewable rightView;
+
+    private new void Start() {
+        base.Start();
+
+        SetString(viewUIActionString, viewUIObjectString);
+    }
 
     public virtual void Go() {
         // Indicates that the player has interacted with this object.

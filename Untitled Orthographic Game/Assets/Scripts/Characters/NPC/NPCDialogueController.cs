@@ -6,10 +6,13 @@ using UnityEngine.UI;
 /// Controls all of the dialogue options for the npc that Yarn
 /// Spinner and the Dialogue Runner will use.
 /// </summary>
-public class NPCDialogueController : MonoBehaviour {
+public class NPCDialogueController : InteractBase {
 
-    [Tooltip("The name of the character.")]
-    public string characterName;
+    [Header("UI")]
+    [Tooltip("A string which represents the action taken while interacting.")]
+    public string interactionUIActionString = "Talk to";
+    [Tooltip("A string which represents the object being interacted with.")]
+    public string interactionUIObjectString = "NPC";
 
     [Tooltip("The text box of the character.")]
     public Text characterText;
@@ -18,17 +21,10 @@ public class NPCDialogueController : MonoBehaviour {
     [FormerlySerializedAs("startNode")]
     public string talkToNode;
 
-    //[Tooltip("The script that the dialogue is in." +
-    //    "Adds the script to the dialogue runner if it" +
-    //    "is not yet added.")]
-    //[Header("Optional")]
-    //public TextAsset scriptToLoad;
+    private new void Start() {
+        base.Start();
 
-    void Start() {
-        // Adds the script to the dialogue runner if it is not null.
-        //if (scriptToLoad != null) {
-        //    FindObjectOfType<Yarn.Unity.DialogueRunner>().AddScript(scriptToLoad);
-        //}
+        SetString(interactionUIActionString, interactionUIObjectString);
 
         characterText.gameObject.SetActive(false);
     }

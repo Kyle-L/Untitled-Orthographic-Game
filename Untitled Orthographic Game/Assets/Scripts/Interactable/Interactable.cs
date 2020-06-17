@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class Interactable : MonoBehaviour {
+public abstract class Interactable : InteractBase {
 
     [Header("UI")]
     [Tooltip("A string which represents the action taken while interacting.")]
@@ -28,12 +28,19 @@ public abstract class Interactable : MonoBehaviour {
     [Tooltip("A trigger that is called on Stop.")]
     public Trigger stopTrigger;
 
+    public new void Start() {
+        base.Start();
+
+        SetString(interactionUIActionString, interactionUIObjectString);
+    }
+
     public virtual void Go(Controller controller) {
         goTrigger?.ActivateTrigger();
     }
 
     public virtual void Stop(Controller controller) {
         stopTrigger?.ActivateTrigger();
+        EnableUI();
     }
 
 }

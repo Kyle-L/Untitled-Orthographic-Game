@@ -40,11 +40,19 @@ public class SettingsController : MonoBehaviour {
 
         /* Gets the values stored in player prefs, otherwise the default
          * values are used if the player has not changed the settings. */
-        Volume = PlayerPrefs.GetFloat(VOLUME, defaultVolume);
-        RotateSensitivity = PlayerPrefs.GetFloat(ROTATE, defaultRotate);
-        HeightSensitivity = PlayerPrefs.GetFloat(HEIGHT, defaultHeight);
-        ZoomSensitivity = PlayerPrefs.GetFloat(ZOOM, defaultZoom);
-        QualityLevel = PlayerPrefs.GetInt(QUALITY, QualitySettings.GetQualityLevel());
+        volume = PlayerPrefs.GetFloat(VOLUME, defaultVolume);
+        rotateSensitivity = PlayerPrefs.GetFloat(ROTATE, defaultRotate);
+        heightSensitivity = PlayerPrefs.GetFloat(HEIGHT, defaultHeight);
+        zoomSensitivity = PlayerPrefs.GetFloat(ZOOM, defaultZoom);
+        qualityLevel = PlayerPrefs.GetInt(QUALITY, QualitySettings.GetQualityLevel());
+    }
+
+    public void Start() {
+        Volume = volume;
+        RotateSensitivity = rotateSensitivity;
+        HeightSensitivity = heightSensitivity;
+        ZoomSensitivity = zoomSensitivity;
+        QualityLevel = qualityLevel;
     }
 
     /// <summary>

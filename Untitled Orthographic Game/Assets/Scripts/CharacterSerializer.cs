@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterSerializer : MonoBehaviour {
@@ -6,6 +7,7 @@ public class CharacterSerializer : MonoBehaviour {
 
     public Controller[] AllCharacters { get; private set; }
     public Transform[] Lookable { get; private set; }
+    public Dictionary<GameObject, InteractBase> InteractDictionary { get; private set; }
 
     void Awake() {
         #region Enforces Singleton Pattern.
@@ -30,10 +32,22 @@ public class CharacterSerializer : MonoBehaviour {
     }
 
     void UpdateLookable() {
-        var list = GameObject.FindGameObjectsWithTag("Lookable").Select(go => go.transform);
-        list = list.Union(GameObject.FindGameObjectsWithTag("Viewable").Select(go => go.transform));
-        list = list.Union(GameObject.FindGameObjectsWithTag("Commentable").Select(go => go.transform));
+        var listInteract = FindObjectsOfType(typeof(InteractBase)) as InteractBase[];
 
-        Lookable = list.ToArray();
+
+        InteractDictionary = new Dictionary<GameObject, InteractBase>();
+
+        foreach (InteractBase interactBase in listInteract.ToArray()) {
+            if (interactBase != null) {
+                InteractDictionary.Add(interactBase.gameObject, interactBase);
+            }
+        }
+
+
+        var listLookable = GameObject.FindGameObjectsWithTag("Lookable").Select(go => go.transform);
+        listLookable = listLookable.Union(GameObject.FindGameObjectsWithTag("Viewable").Select(go => go.transform));
+        listLookable = listLookable.Union(GameObject.FindGameObjectsWithTag("Commentable").Select(go => go.transform));
+
+        Lookable = listLookable.ToArray();
     }
 }

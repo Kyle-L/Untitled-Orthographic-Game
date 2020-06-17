@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1134177334}
   - component: {fileID: 1134177331}
   - component: {fileID: 1134177333}
+  - component: {fileID: 235762062154430399}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -304,3 +305,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumLoadTime: 1.5
   startEvent: {fileID: 0}
+--- !u!114 &235762062154430399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705539224564096876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f121fcbc0f104499a7afa5996de08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactBaseUIPrefab: {fileID: 4861150569956327394, guid: f0b4023fa92bb474a90df374d500d083,
+    type: 3}

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class Commentable : MonoBehaviour {
+public class Commentable : InteractBase {
 
     [Tooltip("The name of the object.")]
+    public string commentableUIActionString = "Comment on";
     public string commentableUIObjectString = "Unnamed";
     public string startNode;
     public bool addToDialogueStorage = false;
@@ -12,7 +13,11 @@ public class Commentable : MonoBehaviour {
     public bool switchTagAfter = true;
     public string switchTag = "Lookable";
 
-    private void Start() {
+    private new void Start() {
+        base.Start();
+
+        SetString(commentableUIActionString, commentableUIObjectString);
+
         this.tag = "Commentable";
     }
 

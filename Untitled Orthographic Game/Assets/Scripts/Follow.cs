@@ -23,7 +23,7 @@ public class Follow : MonoBehaviour {
     }
     public FollowMotions followMotion = FollowMotions.Instant;
     public float targetFollowSpeed = 5;
-    private float followSpeed = 0;
+    public float followSpeed = 0;
 
     public enum FollowMotions { Instant, Lerp, Slerp }
 
