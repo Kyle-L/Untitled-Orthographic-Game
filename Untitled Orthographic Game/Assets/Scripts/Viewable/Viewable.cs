@@ -11,9 +11,7 @@ public abstract class Viewable : InteractBase {
     public Viewable leftView;
     public Viewable rightView;
 
-    private new void Start() {
-        base.Start();
-
+    private void Start() {
         SetString(viewUIActionString, viewUIObjectString);
     }
 
@@ -22,6 +20,8 @@ public abstract class Viewable : InteractBase {
         DialogueVariableStorage.instance.SetValue(this.name, new Yarn.Value(true));
     }
 
-    public abstract void Stop();
+    public virtual void Stop() {
+        EnableUI();
+    }
 
 }

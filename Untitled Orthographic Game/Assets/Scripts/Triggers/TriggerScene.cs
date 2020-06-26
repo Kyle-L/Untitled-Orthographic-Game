@@ -5,10 +5,6 @@ public class TriggerScene : Trigger {
 
     public float delay = 0;
 
-    private void OnTriggerEnter(Collider other) {
-        ActivateTrigger();
-    }
-
     public override void ActivateTrigger() {
         StartCoroutine(WaitToActivate(delay));
     }

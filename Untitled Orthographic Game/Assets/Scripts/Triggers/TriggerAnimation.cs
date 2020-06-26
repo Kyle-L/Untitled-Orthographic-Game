@@ -7,14 +7,6 @@ public class TriggerAnimation : Trigger {
     public string triggerOut;
     public bool disableOnTrigger = false;
 
-    private void OnTriggerEnter(Collider other) {
-        ActivateTrigger();
-    }
-
-    private void OnTriggerExit(Collider other) {
-        DeactivateTrigger();
-    }
-
     public override void ActivateTrigger() {
         animator.SetTrigger(triggerIn);
         if (triggerType == TriggerTypes.Collider) {

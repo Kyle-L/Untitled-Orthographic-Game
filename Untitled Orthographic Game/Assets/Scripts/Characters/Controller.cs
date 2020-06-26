@@ -211,6 +211,7 @@ public abstract class Controller : MonoBehaviour {
                                                 new Action(() => {
                                                     Viewable talkingTo = blackboard.Get<Viewable>(BlackBoardVars.InteractingObject.ToString());
                                                     talkingTo.Go();
+                                                    MovementController.Face(talkingTo.transform);
                                                     SetState(States.UserControlled);
                                                 })
                                             )

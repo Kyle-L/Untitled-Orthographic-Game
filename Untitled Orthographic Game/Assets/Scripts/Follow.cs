@@ -23,7 +23,7 @@ public class Follow : MonoBehaviour {
     }
     public FollowMotions followMotion = FollowMotions.Instant;
     public float targetFollowSpeed = 5;
-    public float followSpeed = 0;
+    private float followSpeed = 0;
 
     public enum FollowMotions { Instant, Lerp, Slerp }
 
@@ -105,7 +105,7 @@ public class Follow : MonoBehaviour {
     }
 
     private IEnumerator smoothRotationSpeed(FollowMotions motion, float target) {
-        while (Mathf.Abs(followSpeed - target) > 0.001f) {
+        while (Mathf.Abs(rotationSpeed - target) > 0.001f) {
             switch (motion) {
                 case FollowMotions.Instant:
                     rotationSpeed = target;

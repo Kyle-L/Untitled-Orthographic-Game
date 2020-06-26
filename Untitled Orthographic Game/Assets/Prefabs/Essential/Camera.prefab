@@ -291,4 +291,4 @@ MonoBehaviour:
   lookAt: 0
   rotationMotion: 2
   targetRotationSpeed: 1
-  smoothSpeed: 0.125
+  smoothSpeed: 0.5

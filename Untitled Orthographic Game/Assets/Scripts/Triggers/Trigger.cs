@@ -11,7 +11,7 @@ public abstract class Trigger : MonoBehaviour {
     public TriggerTypes triggerType = TriggerTypes.Collider;
     public enum TriggerTypes { Collider, Method };
 
-    protected Collider _collider;
+    private protected Collider _collider;
 
     /// <summary>
     /// Activates the trigger.
@@ -23,9 +23,22 @@ public abstract class Trigger : MonoBehaviour {
     /// </summary>
     public abstract void DeactivateTrigger();
 
-    public void Start() {
+    public virtual void Start() {
         if (triggerType == TriggerTypes.Collider) {
             _collider = this.GetComponent<Collider>();
         }
     }
+
+    protected void OnTriggerEnter(Collider other) {
+        // Ignore triggers.
+        if (other.isTrigger) {
+            return;
+        }
+        ActivateTrigger();
+    }
+
+    protected void OnTriggerExit(Collider other) {
+        DeactivateTrigger();
+    }
+
 }

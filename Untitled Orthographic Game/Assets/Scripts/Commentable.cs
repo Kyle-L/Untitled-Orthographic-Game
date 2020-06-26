@@ -13,9 +13,7 @@ public class Commentable : InteractBase {
     public bool switchTagAfter = true;
     public string switchTag = "Lookable";
 
-    private new void Start() {
-        base.Start();
-
+    private void Start() {
         SetString(commentableUIActionString, commentableUIObjectString);
 
         this.tag = "Commentable";
@@ -28,6 +26,8 @@ public class Commentable : InteractBase {
         if (disableAfter) {
             this.enabled = false;
         }
+
+        DisableUI();
 
         if (switchTagAfter) {
             this.tag = switchTag;

@@ -28,9 +28,7 @@ public abstract class Interactable : InteractBase {
     [Tooltip("A trigger that is called on Stop.")]
     public Trigger stopTrigger;
 
-    public new void Start() {
-        base.Start();
-
+    public void Start() {
         SetString(interactionUIActionString, interactionUIObjectString);
     }
 
@@ -40,7 +38,7 @@ public abstract class Interactable : InteractBase {
 
     public virtual void Stop(Controller controller) {
         stopTrigger?.ActivateTrigger();
-        EnableUI();
+        UnhideUI();
     }
 
 }

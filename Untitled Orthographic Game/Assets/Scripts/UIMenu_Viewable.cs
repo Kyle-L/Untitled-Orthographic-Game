@@ -49,4 +49,9 @@ public class UIMenu_Viewable : MonoBehaviour {
         View((UIViewable)currentView.rightView);
     }
 
+    public void Stop () {
+        UIMenuController.instance.CloseMenu();
+        currentView.Stop();
+    }
+
 }

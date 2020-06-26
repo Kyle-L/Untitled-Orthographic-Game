@@ -21,9 +21,7 @@ public class NPCDialogueController : InteractBase {
     [FormerlySerializedAs("startNode")]
     public string talkToNode;
 
-    private new void Start() {
-        base.Start();
-
+    private void Start() {
         SetString(interactionUIActionString, interactionUIObjectString);
 
         characterText.gameObject.SetActive(false);

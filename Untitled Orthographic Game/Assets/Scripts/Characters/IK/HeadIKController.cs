@@ -11,6 +11,7 @@ public class HeadIKController : MonoBehaviour {
     private const float MIN_LOOK_THRESHOLD = 0.01f;
 
     [Header("Transforms")]
+    [Tooltip("The transform of the head of the character.")]
     public Transform head;
 
     [Header("Look Weight")]
@@ -113,6 +114,10 @@ public class HeadIKController : MonoBehaviour {
     }
 
     public Transform GetClosestInFrontTransform(ICollection<Transform> transforms) {
+        if (transforms.Count == 0) {
+            return null;
+        }
+
         // Order all transforms by distance, least to greatest.
         IOrderedEnumerable<Transform> nClosest = transforms.OrderBy(t => (t.position - transform.position).sqrMagnitude);
 
@@ -120,7 +125,30 @@ public class HeadIKController : MonoBehaviour {
         nClosest = nClosest.ThenByDescending(t => (transform.InverseTransformPoint(t.position).z));
 
         if (nClosest.First().Equals(head)) {
-            if (nClosest.Count() >= 2) {
+            if (nClosest.Count() > 1) {
+                return nClosest.Skip(1).First();
+            } else {
+                return null;
+            }
+        }
+
+        // Return the the first element which should be the closest and in front of the root transform.
+        return nClosest.First();
+    }
+
+    public T GetClosestInFrontTransform<T>(ICollection<T> collection) where T: MonoBehaviour {
+        if (collection.Count == 0) {
+            return null;
+        }
+
+        // Order all transforms by distance, least to greatest.
+        IOrderedEnumerable<T> nClosest = collection.OrderBy(item => (item.transform.position - transform.position).sqrMagnitude);
+
+        // Then order all transforms by whether they are in front of the root transform or behind.
+        nClosest = nClosest.ThenByDescending(item => (transform.InverseTransformPoint(item.transform.position).z));
+
+        if (nClosest.First().Equals(head)) {
+            if (nClosest.Count() > 1) {
                 return nClosest.Skip(1).First();
             } else {
                 return null;

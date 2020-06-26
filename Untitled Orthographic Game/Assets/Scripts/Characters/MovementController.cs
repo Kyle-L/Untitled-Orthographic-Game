@@ -17,9 +17,9 @@ public abstract class MovementController : MonoBehaviour {
     public NavMeshAgent _navMeshAgent;
     protected CharacterController _characterController;
     protected Animator _animator;
-    protected FootIKController _footIKController;
-    protected HeadIKController _headIKController;
-    protected HandIKController _handIKController;
+    public FootIKController FootIKController { get; private set; }
+    public HeadIKController HeadIKController { get; private set; }
+    public HandIKController HandIKController { get; private set; }
     protected RagdollHelper _ragdollHelper;
 
     [Header("Speed properties")]
@@ -53,9 +53,9 @@ public abstract class MovementController : MonoBehaviour {
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
         _characterController = this.GetComponent<CharacterController>();
         _animator = this.GetComponent<Animator>();
-        _footIKController = this.GetComponent<FootIKController>();
-        _headIKController = this.GetComponent<HeadIKController>();
-        _handIKController = this.GetComponent<HandIKController>();
+        FootIKController = this.GetComponent<FootIKController>();
+        HeadIKController = this.GetComponent<HeadIKController>();
+        HandIKController = this.GetComponent<HandIKController>();
         _ragdollHelper = this.GetComponent<RagdollHelper>();
 
         _navMeshAgent.updatePosition = false;
@@ -255,7 +255,7 @@ public abstract class MovementController : MonoBehaviour {
             return;
         }
 
-        _headIKController.LookAt(pos);
+        HeadIKController.LookAt(pos);
     }
 
     /// <summary>
@@ -268,7 +268,7 @@ public abstract class MovementController : MonoBehaviour {
             return;
         }
 
-        _headIKController.LookAt(_headIKController.GetClosestInFrontTransform(trans));
+        HeadIKController.LookAt(HeadIKController.GetClosestInFrontTransform(trans));
     }
 
     public void SetDestination(Transform transform) {

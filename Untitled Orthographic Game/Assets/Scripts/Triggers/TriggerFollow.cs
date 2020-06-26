@@ -12,6 +12,9 @@ public class TriggerFollow : Trigger {
         followComponent.FollowPosition = enableFollow;
         followComponent.LookAt = enableLookAt;
         followComponent.target = followTarget;
+        if (triggerType == TriggerTypes.Collider) {
+            _collider.enabled = false;
+        }
     }
 
     public override void DeactivateTrigger() {
@@ -20,7 +23,4 @@ public class TriggerFollow : Trigger {
         //followComponent.target = null;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        ActivateTrigger();
-    }
 }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
 
@@ -8,11 +10,11 @@ public class MouseStateController : MonoBehaviour {
     public GameObject cursor;
     public Text text;
     public CanvasGroup cg;
-    bool mouseState = false;
-
-    private GameObject lastHit;
+    private bool mouseState = false;
 
     public Animator animator;
+
+    Stack<bool> history;
 
     private void Awake() {
         if (instance == null) {
@@ -25,62 +27,38 @@ public class MouseStateController : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
+
+        history = new Stack<bool>();
+
+        if (cursor != null) {
+            Cursor.visible = false;
+        }
+        mouseState = false;
     }
 
     public void Update() {
         cursor.transform.position = Input.mousePosition;
 
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit) && (DialogueRunner.instance != null && !DialogueRunner.instance.isDialogueRunning)) {
-
-            Debug.DrawLine(Camera.main.transform.position, hit.point);
-
-            if (hit.transform.gameObject != lastHit) {
-                lastHit = hit.transform.gameObject;
-
-                if (lastHit.tag == "Interactable") {
-                    animator.SetBool("Interacting", true);
-                    Interactable i = lastHit.GetComponent<Interactable>();
-                    text.text = i.interactionUIActionString + " " + i.interactionUIObjectString;
-                } else if (lastHit.tag == "Viewable") {
-                    animator.SetBool("Interacting", true);
-                    Viewable i = lastHit.GetComponent<Viewable>();
-                    text.text = i.viewUIActionString + " " + i.viewUIObjectString;
-                } else if (lastHit.tag == "Pickupable") {
-                    animator.SetBool("Interacting", true);
-                    Pickupable i = lastHit.GetComponent<Pickupable>();
-                    text.text = i.pickUpUIActionString + " " + i.pickUpUIObjectString;
-                } else if (lastHit.tag == "NPC") {
-                    animator.SetBool("Interacting", true);
-                    Controller i = lastHit.GetComponentInParent<Controller>();
-                    text.text = "Talk to " + i.name;
-                } else if (lastHit.tag == "Commentable") {
-                    animator.SetBool("Interacting", true);
-                    Commentable i = lastHit.GetComponentInParent<Commentable>();
-                    text.text = "Comment on " + i.commentableUIObjectString;
-                } else {
-                    animator.SetBool("Interacting", false);
-                }
-            }
-        } else {
-            animator.SetBool("Interacting", false);
-        }
     }
 
-    public void SetMouseState(bool isActive) {
-        mouseState = isActive;
-        SetUIMouse(isActive);
-    }
-
-    public void SetUIMouse(bool isActive) {
-        if (mouseState || isActive) {
-            Cursor.visible = true;
+    public void GoBack () {
+        if (history.Count == 0) {
+            Cursor.visible = false;
             cg.alpha = 0;
+            return;
+        }
+        SetMouseState(history.Pop(), false);
+    }
+
+    public void SetMouseState(bool isActive, bool addToHistory = true) {
+        if (addToHistory) history.Push(mouseState);
+        mouseState = isActive;
+
+        if (cursor != null) {
+            cg.alpha = isActive ? 1 : 0;
         } else {
             Cursor.visible = false;
-            cg.alpha = 1;
         }
     }
+
 }

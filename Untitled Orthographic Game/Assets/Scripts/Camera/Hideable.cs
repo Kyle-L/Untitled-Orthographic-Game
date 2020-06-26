@@ -8,6 +8,7 @@ public class Hideable : MonoBehaviour {
     [Header("Hide Settings")]
     public bool alwaysHide = false;
     public GameObject[] hideObjects;
+    private MeshRenderer[][] hideObjectsMeshes;
 
     [Header("Cross Section Settings")]
     [Range(0, 10)]
@@ -19,6 +20,12 @@ public class Hideable : MonoBehaviour {
     private float dot, lastDot;
 
     private void Start() {
+        // Gets all the meshrenders of hide objects.
+        hideObjectsMeshes = new MeshRenderer[hideObjects.Length][];
+        for (int i = 0; i < hideObjects.Length; i++) {
+            hideObjectsMeshes[i] = hideObjects[i].GetComponentsInChildren<MeshRenderer>();
+        }
+
         // Gets all mesh renders in the object.
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
 
@@ -95,10 +102,12 @@ public class Hideable : MonoBehaviour {
                 }
             }
             // Iterates through each game in hide objects.
-            foreach (GameObject gameObject in hideObjects) {
+            for (int i = 0; i < hideObjectsMeshes.Length; i++) {
+                for (int j = 0; j < hideObjectsMeshes[i].Length; j++) {
                 /* If does hide is true, hide the object by setting it inactive. 
                  * If does hide is false, hide the object by setting it active. */
-                gameObject.SetActive(!doesHide);
+                hideObjectsMeshes[i][j].shadowCastingMode = doesHide ? UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly : UnityEngine.Rendering.ShadowCastingMode.On;
+                }
             }
         }
     }

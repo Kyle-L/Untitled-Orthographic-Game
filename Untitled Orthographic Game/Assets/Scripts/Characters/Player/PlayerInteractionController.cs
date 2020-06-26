@@ -1,4 +1,4 @@
-﻿using Boo.Lang;
+﻿using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,53 +26,58 @@ public class PlayerInteractionController : MonoBehaviour {
 
     void Update() {
 
-        if (Input.GetButtonDown("Fire1") && cur != null) {
+        if (Input.GetButtonDown("Fire1") && cur != null && !UIMenuController.instance.GetMenuState() && !DialogueRunner.instance.isDialogueRunning) {
             if (cur.CompareTag("Interactable")) {
+                cur.DisableUI();
                 Interactable objectHit = cur.transform.GetComponent<Interactable>();
                 if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
 
                     PlayerControllerMain.instance.InteractWith(objectHit);
                 }
             } else if (cur.CompareTag("Viewable")) {
+                cur.DisableUI();
                 Viewable objectHit = cur.transform.GetComponent<Viewable>();
                 if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
                     PlayerControllerMain.instance.InteractWith(objectHit);
                 }
             } else if (cur.CompareTag("Pickupable")) {
+                cur.DisableUI();
                 Pickupable objectHit = cur.transform.GetComponent<Pickupable>();
                 if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
                     PlayerControllerMain.instance.InteractWith(objectHit);
                 }
             } else if (cur.tag == "NPC") {
+                cur.DisableUI();
                 if (PlayerControllerMain.instance.Control) {
                     CheckForNearbyNPC(cur.gameObject);
                 }
             } else if (cur.tag == "Commentable") {
+                cur.DisableUI();
                 Commentable objectHit = cur.transform.GetComponent<Commentable>();
                 objectHit.Go();
                 if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
                     DialogueRunner.instance.StartDialogue(objectHit.startNode, playerText);
                 }
             }
-            cur.DisableUI();
         }
 
         InteractBase bestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
-        foreach (InteractBase potentialTarget in list) {
-            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if (dSqrToTarget < closestDistanceSqr) {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
-            }
-        }
+        Vector3 currentPosition = PlayerControllerMain.instance.MovementController.HeadIKController.head.position;
+        //foreach (InteractBase potentialTarget in list) {
+        //    Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+        //    float dSqrToTarget = directionToTarget.sqrMagnitude;
+        //    if (dSqrToTarget < closestDistanceSqr) {
+        //        closestDistanceSqr = dSqrToTarget;
+        //        bestTarget = potentialTarget;
+        //    }
+        //}
+        bestTarget = PlayerControllerMain.instance.MovementController.HeadIKController.GetClosestInFrontTransform(list);
 
         cur = bestTarget;
         if (last != cur) {
             last?.DefocusUI();
-            cur.FocusUI();
+            cur?.FocusUI();
             last = cur;
         }
     }
@@ -82,8 +87,10 @@ public class PlayerInteractionController : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Pickupable") || other.CompareTag("Interactable") || other.CompareTag("Viewable") ||
             other.CompareTag("Commentable") || other.CompareTag("NPC")) {
-            list.Add(CharacterSerializer.instance.InteractDictionary[other.gameObject]);
-            CharacterSerializer.instance.InteractDictionary[other.gameObject].EnableUI();
+            if (CharacterSerializer.instance.InteractDictionary.TryGetValue(other.gameObject, out InteractBase outVal)) {
+                list.Add(outVal);
+                outVal.UnhideUI();
+            }
         }
     }
 
@@ -91,7 +98,7 @@ public class PlayerInteractionController : MonoBehaviour {
         if (other.CompareTag("Pickupable") || other.CompareTag("Interactable") || other.CompareTag("Viewable") ||
             other.CompareTag("Commentable") || other.CompareTag("NPC")) {
             list.Remove(CharacterSerializer.instance.InteractDictionary[other.gameObject]);
-            CharacterSerializer.instance.InteractDictionary[other.gameObject].DisableUI();
+            CharacterSerializer.instance.InteractDictionary[other.gameObject].HideUI();
         }
     }
 
@@ -109,7 +116,7 @@ public class PlayerInteractionController : MonoBehaviour {
             }
 
             PlayerControllerMain.instance.InteractWith(target);
-
+            
             if (interactionRange != null) {
                 StopCoroutine(interactionRange);
             }
@@ -118,16 +125,26 @@ public class PlayerInteractionController : MonoBehaviour {
     }
 
     private void StopDialogue() {
-        target.NPCDialogueController.EnableUI();
-
         if (target != null) {
             //target.currentState = Controller.States.Idle;
             target = null;
+            cur.EnableUI();
         }
         PlayerControllerMain.instance.Control = true;
         PlayerControllerMain.instance.MovementController.agentControlled = false;
         PlayerControllerMain.instance.SetState(Controller.States.UserControlled);
     }
+
+    private void SetUI(bool state) {
+        foreach (InteractBase interactBase in list) {
+            if (state) {
+                interactBase.UnhideUI();
+            } else {
+                interactBase.HideUI();
+            }
+        }
+    }
+
 
     private IEnumerator WaitForInteractionRange(NPCController character) {
         while (Vector3.Distance(this.transform.position, character.transform.position) > interactionRadius) {

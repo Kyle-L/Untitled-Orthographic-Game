@@ -98,6 +98,8 @@ namespace Yarn.Unity.Example {
                                  "buttons to present them in. This will cause problems.");
             }
 
+            MouseStateController.instance?.SetMouseState(true);
+
             // Display each option in a button, and make it visible
             int i = 0;
             foreach (var optionString in optionsCollection.options) {
@@ -113,6 +115,8 @@ namespace Yarn.Unity.Example {
             while (SetSelectedOption != null) {
                 yield return null;
             }
+
+            MouseStateController.instance?.SetMouseState(false);
 
             // Hide all the buttons
             foreach (var button in optionButtons) {
@@ -144,7 +148,7 @@ namespace Yarn.Unity.Example {
             Debug.Log("Dialogue starting!");
 
             // Enables the in-game mouse.
-            //MouseStateController.instance?.SetMouseState(true);
+            //MouseStateController.instance?.SetUIMouse(true);
 
             yield break;
         }
@@ -154,7 +158,7 @@ namespace Yarn.Unity.Example {
             Debug.Log("Complete!");
 
             // Disables the in-game mouse.
-            //MouseStateController.instance?.SetMouseState(false);
+            //MouseStateController.instance?.SetUIMouse(false);
 
             yield break;
         }

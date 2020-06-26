@@ -25,7 +25,13 @@ public class Pickupable : InteractBase {
     private bool initialState;
     private Transform parent;
 
-    private void Awake() {
+    private new void Awake () {
+        base.Awake();
+
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void Start() {
         if (pickupObject == null) {
             pickupObject = this.transform;
         }
@@ -38,12 +44,6 @@ public class Pickupable : InteractBase {
             pickupRightHandle = this.transform;
         }
 
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-
-    public new void Start() {
-        base.Start();
-
         SetString(pickUpUIActionString, pickUpUIObjectString);
     }
 
@@ -51,6 +51,8 @@ public class Pickupable : InteractBase {
         if (newParent == transform.parent) {
             return;
         }
+
+        DisableUI();
 
         initialState = _rigidbody.isKinematic;
         _rigidbody.isKinematic = true;
@@ -61,6 +63,8 @@ public class Pickupable : InteractBase {
     public void Drop() {
         _rigidbody.isKinematic = initialState;
         transform.parent = parent;
+
+        EnableUI();
     }
 
 }

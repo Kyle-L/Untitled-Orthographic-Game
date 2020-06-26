@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CharacterTrack : MonoBehaviour {
 
@@ -18,9 +19,13 @@ public class CharacterTrack : MonoBehaviour {
     private RaycastHit _hit;
     int _layerMask;
 
+    private void Start() {
+        // If the terrain is null or there is no feet, then no tracks can be rendered.
+        if (_terrain == null || feet.Length == 0) {
+            print("No terrain or feet are set. " + this.name + " is unable to render tracks.");
+            return;
+        }
 
-    // Start is called before the first frame update
-    void Start() {
         _layerMask = LayerMask.GetMask("Ground");
 
         _drawMaterial = new Material(_drawShader);
@@ -35,8 +40,12 @@ public class CharacterTrack : MonoBehaviour {
         _snowMaterial.SetTexture("_Splat", _splatmap);
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update() {
+        // If the terrain is null or there is no feet, then no tracks can be rendered.
+        if (_terrain == null || feet.Length == 0) {
+            return;
+        }
+
         foreach (Transform tran in feet) {
             if (Physics.Raycast(tran.position, Vector3.down, out _hit, 1f, _layerMask)) {
                 _drawMaterial.SetVector("_Coordinate", new Vector4(_hit.textureCoord.x, _hit.textureCoord.y, 0, 0));

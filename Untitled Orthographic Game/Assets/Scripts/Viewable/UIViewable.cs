@@ -13,6 +13,6 @@ public class UIViewable : Viewable {
     }
 
     public override void Stop() {
-
+        base.Stop();
     }
 }
