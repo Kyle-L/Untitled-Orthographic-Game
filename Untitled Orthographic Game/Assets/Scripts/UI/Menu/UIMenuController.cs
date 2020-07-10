@@ -11,11 +11,12 @@ public class UIMenuController : MonoBehaviour {
     // Whether the user can pause the game.
     private bool canPause = true;
 
-    // Default Menus enum
-    public enum MainMenus { NoMenu, MainMenu, PauseMenu, DialogueMenu, GameOver };
-
+    [Header("General UI Settings")]
     // The default menu that is started on.
     public MainMenus defaultMenu = MainMenus.NoMenu;
+
+    // Default Menus enum
+    public enum MainMenus { NoMenu, MainMenu, PauseMenu, DialogueMenu, GameOver };
 
     // Default Menus
     public GameObject backgroundUI;
@@ -26,6 +27,13 @@ public class UIMenuController : MonoBehaviour {
 
     // The UI history. What menus the user has pressed on.
     private Stack<UIMenu> uiHistory = new Stack<UIMenu>();
+
+    [Header("Audio Settings")]
+    public AudioClip backgroundMusic;
+    public AudioClip effectSound;
+
+    public AudioSource uiMusicAudioSource;
+    public AudioSource uiEffectAudioSource;
 
     private void Awake() {
         #region Enforces Singleton Pattern.
@@ -40,6 +48,18 @@ public class UIMenuController : MonoBehaviour {
             Destroy(gameObject);
         }
         #endregion
+
+        if (uiMusicAudioSource == null) {
+            uiMusicAudioSource = this.GetComponent<AudioSource>();
+        }
+        uiMusicAudioSource.playOnAwake = false;
+        uiMusicAudioSource.clip = backgroundMusic;
+
+        if (uiEffectAudioSource == null) {
+            uiEffectAudioSource = this.GetComponent<AudioSource>();
+        }
+        uiEffectAudioSource.playOnAwake = false;
+        uiEffectAudioSource.clip = effectSound;
     }
 
     public void Start() {
@@ -152,7 +172,7 @@ public class UIMenuController : MonoBehaviour {
             // Otherwise
         } else {
             // Then enable the mouse if it exists.
-            MouseStateController.instance?.SetMouseState(true);
+            MouseStateController.instance?.SetMouseState(true, false);
             CameraController.instance?.SetControl(false);
             GameManager.instance.StopTime();
             // Then pause the player controller if it exists.
@@ -169,7 +189,10 @@ public class UIMenuController : MonoBehaviour {
             backgroundUI.SetActive(false);
             // Resumes time.
             GameManager.instance?.ResumeTime();
-            // Otherwise
+            // Stop background music.
+            uiMusicAudioSource?.Stop();
+
+        // Otherwise
         } else {
             // Set the menu active.
             aMenu.Enable(true);
@@ -180,6 +203,16 @@ public class UIMenuController : MonoBehaviour {
                 GameManager.instance?.StopTime();
             } else {
                 GameManager.instance?.ResumeTime();
+            }
+            // Play background music.
+            if (aMenu.DoesHaveBackgroundMusic()) {
+                if (!uiMusicAudioSource.isPlaying) {
+                    uiMusicAudioSource.Play();
+                }
+            }
+            // Play effect sound.
+            if (aMenu.DoesPlayEffectSound()) {
+                uiEffectAudioSource.PlayOneShot((aMenu.GetEffectSound() == null) ? effectSound : aMenu.GetEffectSound());
             }
             // Add the menu to history if the addToHistory param dictates it.
             if (addToHistory) {

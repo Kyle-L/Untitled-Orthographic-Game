@@ -26,15 +26,15 @@ tags:
 colorID: 0
 position: 916,608
 ---
-Pan, the only plant I've managed to keep alive for more than a month...
+It's amazing I haven't let you die yet.
 ===
 title: coffee-cara
 tags: 
 colorID: 0
 position: 1125,388
 ---
-A chestnut latte I think?
-It is Cara's favorite.
+I guess the <NPC name> forgot about her coffee.
+It is probably cold now.
 ===
 title: door-cara
 tags: 

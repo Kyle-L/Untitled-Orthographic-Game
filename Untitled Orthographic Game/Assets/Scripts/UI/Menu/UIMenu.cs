@@ -23,6 +23,15 @@ public class UIMenu : MonoBehaviour {
     [SerializeField]
     [Tooltip("Whether another menu can be opened while this menu is active.")]
     private bool canOverride = false;
+    [SerializeField]
+    [Tooltip("Whether the menu has background music or not.")]
+    private bool playBackgroundMusic = true;
+    [SerializeField]
+    [Tooltip("Whether the menu has effect sound or not.")]
+    private bool playEffectSound = true;
+    [SerializeField]
+    private AudioClip overrideEffectClip;
+
     //[SerializeField]
     //[Tooltip("Whether the mouse is active while this menu is active.")]
     //private bool mouseState = true;
@@ -65,6 +74,30 @@ public class UIMenu : MonoBehaviour {
     /// <returns></returns>
     public bool GetOverrideState() {
         return canOverride;
+    }
+
+    /// <summary>
+    /// Indicates whether this menu has background music or not.
+    /// </summary>
+    /// <returns></returns>
+    public bool DoesHaveBackgroundMusic() {
+        return playBackgroundMusic;
+    }
+
+    /// <summary>
+    /// Indicates whether this menu has an effect sound or not.
+    /// </summary>
+    /// <returns></returns>
+    public bool DoesPlayEffectSound() {
+        return playEffectSound;
+    }
+
+    /// <summary>
+    /// Returns the override effect sound if it exists, otherwise null.
+    /// </summary>
+    /// <returns></returns>
+    public AudioClip GetEffectSound() {
+        return overrideEffectClip;
     }
 
     public void Enable(bool doesEnable) {

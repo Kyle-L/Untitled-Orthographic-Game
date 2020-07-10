@@ -12,7 +12,7 @@ public class MouseStateController : MonoBehaviour {
     public CanvasGroup cg;
     private bool mouseState = false;
 
-    public Animator animator;
+    public bool mouseStateStart = false;
 
     Stack<bool> history;
 
@@ -30,10 +30,8 @@ public class MouseStateController : MonoBehaviour {
 
         history = new Stack<bool>();
 
-        if (cursor != null) {
-            Cursor.visible = false;
-        }
-        mouseState = false;
+        Cursor.visible = false;
+        mouseState = mouseStateStart;
     }
 
     public void Update() {
@@ -43,8 +41,7 @@ public class MouseStateController : MonoBehaviour {
 
     public void GoBack () {
         if (history.Count == 0) {
-            Cursor.visible = false;
-            cg.alpha = 0;
+            cg.alpha = mouseStateStart ? 1 : 0;
             return;
         }
         SetMouseState(history.Pop(), false);

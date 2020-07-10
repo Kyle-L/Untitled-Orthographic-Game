@@ -89,7 +89,7 @@ public class AudioController : MonoBehaviour {
     /// </summary>
     public void Pause() {
         foreach (var a in sources) {
-            a?.Pause();
+            if (a.gameObject.layer != 5) a?.Pause();
         }
     }
 
@@ -99,7 +99,7 @@ public class AudioController : MonoBehaviour {
     /// </summary>
     public void Unpause() {
         foreach (var a in sources) {
-            a?.UnPause();
+            if (a.gameObject.layer != 5) a?.UnPause();
         }
     }
 

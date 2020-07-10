@@ -38,21 +38,21 @@ position: 539,551
     <<elseif $Book_Pride is true>>
         For instance, I know that you picked up Pride and Prejudice over there.
     <<else>>
-        For instance, I know you haven't read any of those books on the shelf over there.
+        For instance, I know you haven't read any of the books in the house.
     << endif>> 
 
     <<if $Coffee_Cara is true>>
-        I also know that you recognized what coffee I had sitting on the table over there.
+        I also know that you interacted with my coffee over in the kitchen.
     <<else>>
-        I also know that you didn't notice my coffee sitting right there.
+        I also know that you didn't notice my coffee sitting in the kitchen.
     <<endif>> 
 
     <<gesture Cara acknowledging>> 
     For now, that is all I have for you.
 <<else>>
     <<gesture Cara annoyed>> 
-    I already talked to you!
+    I already talked to you.
     <<gesture Cara angry>> 
-    Punk!
+    I don't have anything else to say.
 <<endif>>
 ===

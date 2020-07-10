@@ -4090,12 +4090,6 @@ CanvasGroup:
     type: 3}
   m_PrefabInstance: {fileID: 1893884055}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &431113276 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7670580682564424675, guid: 0b61d239da1e9c24bb82ad60acd081a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1893884055}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &445854356
 GameObject:
   m_ObjectHideFlags: 0
@@ -4274,7 +4268,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521087496}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 367b060a7c34a5647bf6d10240a1fc7b, type: 3}
   m_Name: 
@@ -12089,7 +12083,7 @@ PrefabInstance:
     - target: {fileID: 2134711373, guid: cecf91d8a8272034eaa2f24c10407f4e, type: 3}
       propertyPath: _animator
       value: 
-      objectReference: {fileID: 431113276}
+      objectReference: {fileID: 0}
     - target: {fileID: 2134711373, guid: cecf91d8a8272034eaa2f24c10407f4e, type: 3}
       propertyPath: text
       value: 
@@ -12101,7 +12095,7 @@ PrefabInstance:
     - target: {fileID: 2134711373, guid: cecf91d8a8272034eaa2f24c10407f4e, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 431113276}
+      objectReference: {fileID: 0}
     - target: {fileID: 1705539224564096876, guid: cecf91d8a8272034eaa2f24c10407f4e,
         type: 3}
       propertyPath: m_Name

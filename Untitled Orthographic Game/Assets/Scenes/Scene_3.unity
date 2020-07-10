@@ -2506,12 +2506,6 @@ CanvasGroup:
     type: 3}
   m_PrefabInstance: {fileID: 1893884055}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &431113276 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7670580682564424675, guid: 0b61d239da1e9c24bb82ad60acd081a6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1893884055}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &441718668
 GameObject:
   m_ObjectHideFlags: 0
@@ -6950,7 +6944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  referenceSize: 2.5
+  referenceScale: 2.5
+  fallOff: 1.00001
 --- !u!1 &1502541800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7719,7 +7714,7 @@ PrefabInstance:
     - target: {fileID: 2134711373, guid: cecf91d8a8272034eaa2f24c10407f4e, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 431113276}
+      objectReference: {fileID: 0}
     - target: {fileID: 1705539224564096876, guid: cecf91d8a8272034eaa2f24c10407f4e,
         type: 3}
       propertyPath: m_Name

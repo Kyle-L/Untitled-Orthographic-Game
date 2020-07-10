@@ -47,7 +47,9 @@ public class CameraController : MonoBehaviour {
     private bool control = true;
 
     void Awake() {
-        instance = this;
+        instance = this;-
+
+
 
         _camera = GetComponent<Camera>();
 

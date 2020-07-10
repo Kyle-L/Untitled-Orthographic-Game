@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  fallOff: 2.5
+  referenceScale: 2.5
+  fallOff: 2
 --- !u!1 &4861150569982117230
 GameObject:
   m_ObjectHideFlags: 0

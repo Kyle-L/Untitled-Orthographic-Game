@@ -3,6 +3,7 @@
 public class CameraRelativeScaler : MonoBehaviour {
     public Camera cam;
     private Vector3 initialScale;
+    public float referenceScale = 2.5f;
     [Range(1.000001f, 25)]
     public float fallOff = 1.00001f;
 
@@ -14,7 +15,7 @@ public class CameraRelativeScaler : MonoBehaviour {
         }
 
         // record initial scale, use this as a basis
-        initialScale = transform.localScale / cam.orthographicSize;
+        initialScale = transform.localScale / referenceScale;
     }
 
     // scale object relative to distance from camera plane
