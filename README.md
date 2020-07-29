@@ -7,7 +7,7 @@
 
 <a name="overview"/></a>
 ## Overview
-This is the repository for the development of a currently untitled orthographic game.
+Untitled Orthographic Game (That's a placeholder name) is currently a work in-progress narrative adventure game that puts heavey emphasis on player choice and freedom.
 
 <a name="media"/></a>
 ## Media
