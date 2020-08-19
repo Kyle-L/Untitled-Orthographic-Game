@@ -98,7 +98,7 @@ namespace Yarn.Unity.Example {
                                  "buttons to present them in. This will cause problems.");
             }
 
-            MouseStateController.instance?.SetMouseState(true);
+            MouseStateController.instance?.SetMouseState(true, false);
 
             // Display each option in a button, and make it visible
             int i = 0;
@@ -116,7 +116,7 @@ namespace Yarn.Unity.Example {
                 yield return null;
             }
 
-            MouseStateController.instance?.SetMouseState(false);
+            MouseStateController.instance?.SetMouseState(false, false);
 
             // Hide all the buttons
             foreach (var button in optionButtons) {
