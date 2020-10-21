@@ -7093,6 +7093,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931318003}
   m_Mesh: {fileID: 4300004, guid: 7888b4c2055117e47850f1760fbc4c6b, type: 3}
+--- !u!114 &936570345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6169004704286166471, guid: c1a161fd5c9dd684d8952e90cb12fcbd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1068798440}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e5f137ff207bf843b7c112179e702e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &964059076
 GameObject:
   m_ObjectHideFlags: 0
@@ -8629,6 +8641,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 22068196, guid: cecf91d8a8272034eaa2f24c10407f4e, type: 3}
+      propertyPath: controlledCamera
+      value: 
+      objectReference: {fileID: 936570345}
     - target: {fileID: 1134177332, guid: cecf91d8a8272034eaa2f24c10407f4e, type: 3}
       propertyPath: m_audioClip
       value: 

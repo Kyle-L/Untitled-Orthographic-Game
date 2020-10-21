@@ -45,14 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8586c212cfddf45a0527f34e823dfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineText: {fileID: 0}
+  defaultLineText: {fileID: 0}
   continuePrompt: {fileID: 0}
-  textSpeed: 0.025
+  textSpeed: 0.04
   optionButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -84,7 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceText: []
+  sourceText:
+  - {fileID: 4900000, guid: 482b7c6d686ce3b449e358e6f142dff0, type: 3}
+  - {fileID: 4900000, guid: 84dfbb5811577354e85352b608704cde, type: 3}
   stringGroups: []
   shouldOverrideLanguage: 0
   overrideLanguage: 10
@@ -92,4 +90,5 @@ MonoBehaviour:
   dialogueUI: {fileID: 1111079716384775354}
   startNode: Start
   startAutomatically: 0
+  lineAudioEffect: {fileID: 8300000, guid: 048be5284abddb24eb438c734b4af681, type: 3}
   automaticCommands: 1

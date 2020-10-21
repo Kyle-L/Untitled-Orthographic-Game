@@ -7,11 +7,7 @@ using Yarn.Unity;
 public class MouseStateController : MonoBehaviour {
     public static MouseStateController instance;
 
-    public GameObject cursor;
-    public Text text;
-    public CanvasGroup cg;
     private bool mouseState = false;
-
     public bool mouseStateStart = false;
 
     Stack<bool> history;
@@ -34,14 +30,9 @@ public class MouseStateController : MonoBehaviour {
         mouseState = mouseStateStart;
     }
 
-    public void Update() {
-        cursor.transform.position = Input.mousePosition;
-
-    }
-
     public void GoBack () {
         if (history.Count == 0) {
-            cg.alpha = mouseStateStart ? 1 : 0;
+            Cursor.visible = mouseStateStart;
             return;
         }
         SetMouseState(history.Pop(), false);
@@ -51,11 +42,7 @@ public class MouseStateController : MonoBehaviour {
         if (addToHistory) history.Push(mouseState);
         mouseState = isActive;
 
-        if (cursor != null) {
-            cg.alpha = isActive ? 1 : 0;
-        } else {
-            Cursor.visible = false;
-        }
+        Cursor.visible = mouseState;
     }
 
 }

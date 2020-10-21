@@ -43,13 +43,11 @@ public abstract class Controller : MonoBehaviour {
     // Components
     public MovementController MovementController { get; protected set; }
     public PlayerObjectHolder PlayerObjectHolder { get; protected set; }
-    public Teleporter Teleporter { get; protected set; }
     protected Animator _animator;
 
     protected void Start() {
         MovementController = GetComponent<MovementController>();
         PlayerObjectHolder = GetComponent<PlayerObjectHolder>();
-        Teleporter = GetComponent<Teleporter>();
         _animator = GetComponent<Animator>();
 
         // Gets the pose animation layer.

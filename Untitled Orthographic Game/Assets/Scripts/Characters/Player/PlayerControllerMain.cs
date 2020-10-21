@@ -33,7 +33,7 @@ public class PlayerControllerMain : Controller {
 
     // Components
     public PlayerMovementController PlayerMovementController { get; private set; }
-    public PlayerInteractionController PlayerDialogueController { get; private set; }
+    public PlayerInteractionController PlayerInteractionController { get; private set; }
     public PlayerSettingsController PlayerSettingsController { get; private set; }
 
     public new void Start() {
@@ -41,7 +41,7 @@ public class PlayerControllerMain : Controller {
         instance = this;
 
         PlayerMovementController = GetComponent<PlayerMovementController>();
-        PlayerDialogueController = GetComponent<PlayerInteractionController>();
+        PlayerInteractionController = GetComponent<PlayerInteractionController>();
         PlayerSettingsController = GetComponent<PlayerSettingsController>();
     }
 

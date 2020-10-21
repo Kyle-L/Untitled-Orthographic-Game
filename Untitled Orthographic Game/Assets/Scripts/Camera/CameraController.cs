@@ -49,8 +49,6 @@ public class CameraController : MonoBehaviour {
     void Awake() {
         instance = this;
 
-
-
         _camera = GetComponent<Camera>();
 
         SetAngle(cameraStartAngle);
@@ -58,30 +56,9 @@ public class CameraController : MonoBehaviour {
         SetHeight(startHeight);
     }
 
-    void Start() {
-    }
-
     void Update() {
         cameraTarget = trackingObject.transform.position;
         if (control) {
-            // Processes user input for rotation and height.
-            if (Input.GetButton("Fire2")) {
-                // Get user input
-                float axisX = Input.GetAxis("Axis X");
-                float axisY = Input.GetAxis("Axis Y");
-
-                // Apply the user input to the current angle and height.
-                curAngle += axisX * cameraRotateSpeed * Time.deltaTime;
-                curHeight -= axisY * cameraHeightSpeed * Time.deltaTime;
-
-                // Clamps the camera's height.
-                curHeight = Mathf.Clamp(curHeight, cameraMinHeight, cameraMaxHeight);
-            }
-
-            // Processes user input for movement.
-            //float horizontal = Input.GetAxis("Horizontal");
-            //float vertical = Input.GetAxis("Vertical");
-
             // Get camera forward and right vectors:
             Vector3 forward = _camera.transform.forward;
             Vector3 right = _camera.transform.right;
@@ -97,10 +74,6 @@ public class CameraController : MonoBehaviour {
 
             // Apply the movement to the camera's target look position.
             //cameraTarget -= desiredMoveDirection * cameraMoveSpeed * Time.deltaTime;
-
-            // Processes user input for camera size.
-            _camera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * cameraZoomSpeed;
-            _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize, cameraMinSize, cameraMaxSize);
         }
 
         //Creates the angle used to rotate the camera.
@@ -119,15 +92,34 @@ public class CameraController : MonoBehaviour {
         }
     }
 
-    public void SetAngle(float aAngle) {
+    public void Look(Vector2 dir) {
+        // Get user input
+        float axisX = dir.x;
+        float axisY = dir.y;
+
+        // Apply the user input to the current angle and height.
+        curAngle += axisX * cameraRotateSpeed * Time.deltaTime;
+        curHeight -= axisY * cameraHeightSpeed * Time.deltaTime;
+
+        // Clamps the camera's height.
+        curHeight = Mathf.Clamp(curHeight, cameraMinHeight, cameraMaxHeight);
+    }
+
+    public void Zoom(float amount) {
+        // Processes user input for camera size.
+        _camera.orthographicSize -= amount * cameraZoomSpeed;
+        _camera.orthographicSize = Mathf.Clamp(_camera.orthographicSize, cameraMinSize, cameraMaxSize);
+    }
+
+    private void SetAngle(float aAngle) {
         curAngle = aAngle;
     }
 
-    public void SetSize(float aSize) {
+    private void SetSize(float aSize) {
         _camera.orthographicSize = Mathf.Clamp(aSize, cameraMinSize, cameraMaxSize); ;
     }
 
-    public void SetHeight(float aHeight) {
+    private void SetHeight(float aHeight) {
         curHeight = aHeight;
     }
 

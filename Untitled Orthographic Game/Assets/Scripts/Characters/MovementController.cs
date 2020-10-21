@@ -107,6 +107,8 @@ public abstract class MovementController : MonoBehaviour {
         _animator.SetFloat("SpeedY", speedY);
         _animator.SetFloat("SpeedX", speedX);
         _animator.SetFloat("SpeedZ", speedZ);
+
+        direction = Vector3.zero;
     }
 
     /// <summary>

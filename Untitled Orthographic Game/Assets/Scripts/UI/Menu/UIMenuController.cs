@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// The main controller of all the game's UI menus. 
@@ -7,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class UIMenuController : MonoBehaviour {
     public static UIMenuController instance;
+
+    public EventSystem eventSystem;
 
     // Whether the user can pause the game.
     private bool canPause = true;
@@ -69,21 +72,6 @@ public class UIMenuController : MonoBehaviour {
         }
     }
 
-    private void Update() {
-        // If the user hits the cancel key and the game is able to be paused.
-        if (Input.GetButtonDown("Cancel") && canPause) {
-            // If the menu is not active.
-            if (!GetMenuState() || GetOverrideState()) {
-                // Enable the pause menu.
-                SetMenu(MainMenus.PauseMenu);
-                // Otherwise, can the current menu go back.
-            } else if (GetCurrentMenu().GetBackState()) {
-                // Then go back if it can.
-                Back();
-            }
-        }
-    }
-
     /// <summary>
     /// Returns to a previously active menu. If no there is no previous menu, then just shut the current menu.
     /// </summary>
@@ -120,7 +108,7 @@ public class UIMenuController : MonoBehaviour {
     /// Sets a menu to active.
     /// </summary>
     /// <param name="aMenu">The menu you would like to set active. Please note see the overloaded method to send a Menu object rather than enumerated type.</param>
-    public void SetMenu(MainMenus aMenu) {
+    public void SetMenu(MainMenus aMenu, bool setEventSystem = false) {
         switch (aMenu) {
             case MainMenus.MainMenu:
                 SetMenu(mainMenuUI);
@@ -218,6 +206,9 @@ public class UIMenuController : MonoBehaviour {
             if (addToHistory) {
                 uiHistory.Push(aMenu);
             }
+
+            eventSystem.SetSelectedGameObject(null);
+            eventSystem.SetSelectedGameObject(aMenu.GetDefaultButton());
         }
     }
 

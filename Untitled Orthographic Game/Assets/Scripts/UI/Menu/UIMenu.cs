@@ -6,6 +6,9 @@
 public class UIMenu : MonoBehaviour {
 
     [SerializeField]
+    [Tooltip("")]
+    private GameObject defaultButton = null;
+    [SerializeField]
     [Tooltip("All of the ui objects that should be enabled/disabled when the ui is activated/deactivated.")]
     private GameObject[] uiObjects = null;
     [SerializeField]
@@ -30,11 +33,19 @@ public class UIMenu : MonoBehaviour {
     [Tooltip("Whether the menu has effect sound or not.")]
     private bool playEffectSound = true;
     [SerializeField]
-    private AudioClip overrideEffectClip;
+    private AudioClip overrideEffectClip = null;
 
     //[SerializeField]
     //[Tooltip("Whether the mouse is active while this menu is active.")]
     //private bool mouseState = true;
+
+    /// <summary>
+    /// Gets the UI button that is selected by the event system first.
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetDefaultButton () {
+        return defaultButton;
+    }
 
     /// <summary>
     /// Indicates whether this menu uses the default menu background.

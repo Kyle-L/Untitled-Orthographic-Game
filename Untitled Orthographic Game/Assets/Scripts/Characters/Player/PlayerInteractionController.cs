@@ -13,7 +13,7 @@ public class PlayerInteractionController : MonoBehaviour {
     private Coroutine interactionRange;
 
     private NPCController target;
-
+    private List<InteractBase> list;
 
     private void Start() {
         DialogueRunner.instance.DialogueFinished += (sender, args) => { StopDialogue(); };
@@ -24,9 +24,17 @@ public class PlayerInteractionController : MonoBehaviour {
     private InteractBase last;
     private InteractBase cur;
 
-    void Update() {
+    private void Update() {
+        cur = PlayerControllerMain.instance.MovementController.HeadIKController.GetClosestInFrontTransform(list); ;
+        if (last != cur) {
+            last?.DefocusUI();
+            cur?.FocusUI();
+            last = cur;
+        }
+    }
 
-        if (Input.GetButtonDown("Fire1") && cur != null && !UIMenuController.instance.GetMenuState() && !DialogueRunner.instance.isDialogueRunning) {
+    public void Interact () {
+        if (cur != null && !UIMenuController.instance.GetMenuState() && !DialogueRunner.instance.isDialogueRunning) {
             if (cur.CompareTag("Interactable")) {
                 cur.DisableUI();
                 Interactable objectHit = cur.transform.GetComponent<Interactable>();
@@ -60,29 +68,7 @@ public class PlayerInteractionController : MonoBehaviour {
                 }
             }
         }
-
-        InteractBase bestTarget = null;
-        float closestDistanceSqr = Mathf.Infinity;
-        Vector3 currentPosition = PlayerControllerMain.instance.MovementController.HeadIKController.head.position;
-        //foreach (InteractBase potentialTarget in list) {
-        //    Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
-        //    float dSqrToTarget = directionToTarget.sqrMagnitude;
-        //    if (dSqrToTarget < closestDistanceSqr) {
-        //        closestDistanceSqr = dSqrToTarget;
-        //        bestTarget = potentialTarget;
-        //    }
-        //}
-        bestTarget = PlayerControllerMain.instance.MovementController.HeadIKController.GetClosestInFrontTransform(list);
-
-        cur = bestTarget;
-        if (last != cur) {
-            last?.DefocusUI();
-            cur?.FocusUI();
-            last = cur;
-        }
     }
-
-    private List<InteractBase> list;
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Pickupable") || other.CompareTag("Interactable") || other.CompareTag("Viewable") ||
@@ -106,7 +92,7 @@ public class PlayerInteractionController : MonoBehaviour {
     /** Filter them to those that have a Yarn start node and are in range; 
      * then start a conversation with the first one
      */
-    public void CheckForNearbyNPC(GameObject character) {
+    private void CheckForNearbyNPC(GameObject character) {
         target = character.GetComponentInParent<NPCController>();
 
         if (target != null) {
@@ -148,10 +134,6 @@ public class PlayerInteractionController : MonoBehaviour {
 
     private IEnumerator WaitForInteractionRange(NPCController character) {
         while (Vector3.Distance(this.transform.position, character.transform.position) > interactionRadius) {
-            //if (!PlayerControllerMain.instance.MovementController.agentControlled) {
-            //    print("break");
-            //    yield break;
-            //}
             print("waiting");
             yield return null;
         }

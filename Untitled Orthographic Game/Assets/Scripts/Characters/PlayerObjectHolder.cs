@@ -31,9 +31,9 @@ public class PlayerObjectHolder : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetButtonDown("Jump")) {
-            Drop();
-        }
+        //if (Input.GetButtonDown("Jump")) {
+        //    Drop();
+        //}
     }
 
     public void SetPickup(Pickupable pickUp, bool animation = true) {
@@ -64,12 +64,7 @@ public class PlayerObjectHolder : MonoBehaviour {
         _handIKController.leftObject = currentHeld.pickupLeftHandle;
         _handIKController.rightObject = currentHeld.pickupRightHandle;
 
-        if (true) {
-            _handIKController.LerpPositon(1);
-        } else {
-            currentHeld.pickupObject.localPosition = Vector3.zero;
-            currentHeld.pickupObject.localRotation = Quaternion.Euler(Vector3.zero);
-        }
+        _handIKController.LerpPositon(1);
     }
 
     public void GrabObject() {
