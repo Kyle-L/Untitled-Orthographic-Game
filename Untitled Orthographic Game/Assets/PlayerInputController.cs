@@ -51,12 +51,8 @@ public class PlayerInputController : MonoBehaviour {
         }
     }
 
-    public void OnDeviceChange (InputDevice device, InputDeviceChange change) {
-        if (_playerInput.currentControlScheme == "Gamepad") {
-            //mouseStateController.DisableMouse();
-        } else {
-            //mouseStateController.EnableMouse();
-        }
+    public void OnDeviceChange (InputDevice dev, InputDeviceChange change) {
+        print(dev);
     }
 
     public void OnMove(InputAction.CallbackContext context) {
@@ -104,11 +100,16 @@ public class PlayerInputController : MonoBehaviour {
             return;
         }
 
+        if (_playerInput.currentControlScheme == "Gamepad") {
+            UIMenuController.instance.UseEventSystem = true;
+        } else {
+            UIMenuController.instance.UseEventSystem = false;
+        }
+
         if (UIMenuController.instance.GetCurrentMenu() == null) {
             UIMenuController.instance.PauseMenu();
         } else {
             UIMenuController.instance.SetMenu(UIMenuController.MainMenus.NoMenu);
         }
-        //_playerInput.SwitchCurrentActionMap("UI");
     }
 }

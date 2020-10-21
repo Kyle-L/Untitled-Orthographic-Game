@@ -68,9 +68,6 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        // Ensures the user can't pause the game once a load has started.
-        UIMenuController.instance.SetPauseState(false);
-
         prevScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(num);
     }

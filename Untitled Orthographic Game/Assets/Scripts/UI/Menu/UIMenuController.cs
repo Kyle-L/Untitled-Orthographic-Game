@@ -11,8 +11,7 @@ public class UIMenuController : MonoBehaviour {
 
     public EventSystem eventSystem;
 
-    // Whether the user can pause the game.
-    private bool canPause = true;
+    public bool UseEventSystem { get; set; } = false;
 
     [Header("General UI Settings")]
     // The default menu that is started on.
@@ -207,8 +206,10 @@ public class UIMenuController : MonoBehaviour {
                 uiHistory.Push(aMenu);
             }
 
-            eventSystem.SetSelectedGameObject(null);
-            eventSystem.SetSelectedGameObject(aMenu.GetDefaultButton());
+            if (UseEventSystem) {
+                eventSystem.SetSelectedGameObject(null);
+                eventSystem.SetSelectedGameObject(aMenu.GetDefaultButton());
+            }
         }
     }
 
@@ -234,14 +235,6 @@ public class UIMenuController : MonoBehaviour {
             return cur.GetOverrideState();
         }
         return false;
-    }
-
-    /// <summary>
-    /// Whether the user can pause the game.
-    /// </summary>
-    /// <param name="canPause"></param>
-    public void SetPauseState(bool canPause) {
-        this.canPause = canPause;
     }
 
 }
