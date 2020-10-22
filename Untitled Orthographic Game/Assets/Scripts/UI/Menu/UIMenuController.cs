@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class UIMenuController : MonoBehaviour {
     public static UIMenuController instance;
 
+    public Stack<GameObject> eventSystemHistory = new Stack<GameObject>();
     public EventSystem eventSystem;
 
     public bool UseEventSystem { get; set; } = false;
@@ -75,18 +76,11 @@ public class UIMenuController : MonoBehaviour {
     /// Returns to a previously active menu. If no there is no previous menu, then just shut the current menu.
     /// </summary>
     public void Back() {
-        // If the current menu is the last.
-        if (uiHistory.Count <= 1) {
-            // Then disable the menu.
-            SetMenu(MainMenus.NoMenu);
-            // If the menu is not the last.
-        } else {
-            // Pop the current menu from the stack and set it inactive.
-            uiHistory.Pop().Enable(false);
-            /* Set the current head of the stack to the active menu,
-             * but don't add it to the UI history. */
-            SetMenu(uiHistory.Peek(), false);
-        }
+        // Pop the current menu from the stack and set it inactive.
+        uiHistory.Pop().Enable(false);
+        /* Set the current head of the stack to the active menu,
+            * but don't add it to the UI history. */
+        SetMenu(uiHistory.Count > 0 ? uiHistory.Peek() : null, false, eventSystemHistory.Count > 0 ? eventSystemHistory.Pop() : null);
     }
 
     /// <summary>
@@ -107,7 +101,7 @@ public class UIMenuController : MonoBehaviour {
     /// Sets a menu to active.
     /// </summary>
     /// <param name="aMenu">The menu you would like to set active. Please note see the overloaded method to send a Menu object rather than enumerated type.</param>
-    public void SetMenu(MainMenus aMenu, bool setEventSystem = false) {
+    public void SetMenu(MainMenus aMenu) {
         switch (aMenu) {
             case MainMenus.MainMenu:
                 SetMenu(mainMenuUI);
@@ -139,7 +133,7 @@ public class UIMenuController : MonoBehaviour {
     /// Sets a menu to active. 
     /// </summary>
     /// <param name="aMenu">The menu you would like to set active.</param>
-    public void SetMenu(UIMenu aMenu, bool addToHistory) {
+    public void SetMenu(UIMenu aMenu, bool addToHistory, GameObject eventObject = null) {
         // If the history is greater than 0, disable the current head.
         if (uiHistory.Count > 0) {
             uiHistory.Peek().Enable(false);
@@ -201,15 +195,17 @@ public class UIMenuController : MonoBehaviour {
             if (aMenu.DoesPlayEffectSound()) {
                 uiEffectAudioSource.PlayOneShot((aMenu.GetEffectSound() == null) ? effectSound : aMenu.GetEffectSound());
             }
+
             // Add the menu to history if the addToHistory param dictates it.
             if (addToHistory) {
                 uiHistory.Push(aMenu);
+                eventSystemHistory.Push(eventSystem.currentSelectedGameObject);
             }
+        }
 
-            if (UseEventSystem) {
-                eventSystem.SetSelectedGameObject(null);
-                eventSystem.SetSelectedGameObject(aMenu.GetDefaultButton());
-            }
+        if (UseEventSystem) {
+            eventSystem.SetSelectedGameObject(null);
+            eventSystem.SetSelectedGameObject(eventObject ?? aMenu?.GetDefaultButton());
         }
     }
 

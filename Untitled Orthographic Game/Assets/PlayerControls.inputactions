@@ -402,17 +402,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e6daa55a-5a09-4739-b3d5-354f0efa2e4a",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "34908acb-a5c1-4b54-a55d-283c18df9620",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",

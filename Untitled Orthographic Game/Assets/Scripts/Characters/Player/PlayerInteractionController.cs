@@ -7,6 +7,7 @@ using Yarn.Unity;
 public class PlayerInteractionController : MonoBehaviour {
 
     public Text playerText;
+    public List<Button> optionButtons;
 
     [SerializeField]
     private float interactionRadius = 1;
@@ -64,7 +65,7 @@ public class PlayerInteractionController : MonoBehaviour {
                 Commentable objectHit = cur.transform.GetComponent<Commentable>();
                 objectHit.Go();
                 if (objectHit != null && !DialogueRunner.instance.isDialogueRunning) {
-                    DialogueRunner.instance.StartDialogue(objectHit.startNode, playerText);
+                    DialogueRunner.instance.StartDialogue(objectHit.startNode, playerText, optionButtons);
                 }
             }
         }
@@ -137,7 +138,7 @@ public class PlayerInteractionController : MonoBehaviour {
             print("waiting");
             yield return null;
         }
-        DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode, target.NPCDialogueController.characterText);
+        DialogueRunner.instance.StartDialogue(target.NPCDialogueController.talkToNode, target.NPCDialogueController.characterText, optionButtons);
 
         PlayerControllerMain.instance.Control = false;
 

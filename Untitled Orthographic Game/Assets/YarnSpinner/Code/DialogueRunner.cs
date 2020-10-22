@@ -16,8 +16,7 @@ copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+FITNESS FOR A PARTICULunityOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
@@ -64,9 +63,6 @@ namespace Yarn.Unity {
 
         /// Which node to start from
         public string startNode = Yarn.Dialogue.DEFAULT_START;
-
-        /// Whether we should start dialogue when the scene starts
-        public bool startAutomatically = true;
 
         /// The audio clip that plays when a line is run.
         public AudioClip lineAudioEffect;
@@ -142,10 +138,6 @@ namespace Yarn.Unity {
                 }
             }
 
-            if (startAutomatically) {
-                StartDialogue();
-            }
-
             if (stringGroups != null) {
                 // Load the string table for this language, if appropriate
                 var stringsGroup = new List<LocalisedStringGroup>(stringGroups).Find(
@@ -204,29 +196,18 @@ namespace Yarn.Unity {
             AddStringTable(text.text);
         }
 
-        /// Destroy the variable store and start again
-        public void ResetDialogue() {
-            variableStorage.ResetToDefaults();
-            StartDialogue();
-        }
-
-        /// Start the dialogue
-        public void StartDialogue() {
-            StartDialogue(startNode, null);
-        }
-
         /// Start the dialogue from a given node
-        public void StartDialogue(string startNode, Text text) {
+        public void StartDialogue(string startNode, Text text, List<Button> optionButtons) {
 
             // Stop any processes that might be running already
             StopAllCoroutines();
             dialogueUI.StopAllCoroutines();
 
             // Get it going
-            StartCoroutine(RunDialogue(startNode, text));
+            StartCoroutine(RunDialogue(startNode, text, optionButtons));
         }
 
-        IEnumerator RunDialogue(string startNode = "Start", Text lineText = null) {
+        IEnumerator RunDialogue(string startNode, Text lineText, List<Button> optionButtons) {
             // Mark that we're in conversation.
             isDialogueRunning = true;
 
@@ -256,7 +237,8 @@ namespace Yarn.Unity {
                     yield return StartCoroutine(
                         this.dialogueUI.RunOptions(
                         optionSetResult.options,
-                        optionSetResult.setSelectedOptionDelegate
+                        optionSetResult.setSelectedOptionDelegate,
+                        optionButtons
                     ));
 
                 } else if (step is Yarn.Dialogue.CommandResult) {
@@ -464,7 +446,8 @@ namespace Yarn.Unity {
 
         /// Display the options, and call the optionChooser when done.
         public abstract IEnumerator RunOptions(Yarn.Options optionsCollection,
-                                                Yarn.OptionChooser optionChooser);
+                                               Yarn.OptionChooser optionChooser,
+                                               List<Button> buttons);
 
         /// Perform some game-specific command.
         public abstract IEnumerator RunCommand(Yarn.Command command);

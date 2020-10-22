@@ -206,11 +206,18 @@ public abstract class Controller : MonoBehaviour {
                                                 // First, the npc will move to the front of the controller.
                                                 new NavMoveTo(this, BlackBoardVars.Destination.ToString()),
 
-                                                new Action(() => {
-                                                    Viewable talkingTo = blackboard.Get<Viewable>(BlackBoardVars.InteractingObject.ToString());
-                                                    talkingTo.Go();
-                                                    MovementController.Face(talkingTo.transform);
-                                                    SetState(States.UserControlled);
+                                                new Action((Request result) => {
+                                                    Viewable viewing = blackboard.Get<Viewable>(BlackBoardVars.InteractingObject.ToString());
+                                                    if (result == Request.CANCEL) {
+                                                        viewing.Stop();
+                                                        return Action.Result.SUCCESS;
+                                                    } else if (result == Request.START) {
+                                                        viewing.Go();
+                                                        MovementController.Face(viewing.transform);
+                                                        return Action.Result.PROGRESS;
+                                                    } else {
+                                                        return Action.Result.PROGRESS;
+                                                    }
                                                 })
                                             )
                                         ) { Label = "Viewable" },

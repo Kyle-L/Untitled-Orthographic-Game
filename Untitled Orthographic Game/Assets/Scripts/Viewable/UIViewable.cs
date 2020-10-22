@@ -12,7 +12,4 @@ public class UIViewable : Viewable {
         UIMenu_Viewable.instance.View(this);
     }
 
-    public override void Stop() {
-        base.Stop();
-    }
 }

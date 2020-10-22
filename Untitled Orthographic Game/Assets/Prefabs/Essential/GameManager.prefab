@@ -24,7 +24,7 @@ GameObject:
   m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1705539224564096878
 Transform:
@@ -85,9 +85,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc4196de97053d46bd44fb5594fff2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 0}
-  text: {fileID: 0}
-  cg: {fileID: 0}
   mouseStateStart: 0
 --- !u!82 &1134177332
 AudioSource:
@@ -426,21 +423,6 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 22068196}
-        m_MethodName: OnInteract
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ba927932-4aaf-4360-83eb-dae4bd720c99
-    m_ActionName: Player/Interact[/Keyboard/e,/DualShock4GamepadHID/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 22068196}
         m_MethodName: OnZoom
         m_Mode: 0
         m_Arguments:
@@ -469,9 +451,21 @@ MonoBehaviour:
     m_ActionId: b559f741-d9e6-4243-adfc-69d47d2fe310
     m_ActionName: Player/Pause[/DualShock4GamepadHID/start,/DualShock4GamepadHID/touchpadButton,/DualShock4GamepadHID/select,/Keyboard/escape]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 725ea159-8d56-47c0-8d30-30f29bd1c1de
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d77525f9-6a3b-4898-b8ba-554efb022e43
+    m_ActionName: UI/Move[/DualShock4GamepadHID/leftStick,/DualShock4GamepadHID/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3ad404ec-ddf0-461d-b91a-25005cf4e2d7
+    m_ActionName: UI/Submit[/DualShock4GamepadHID/buttonSouth,/Keyboard/enter]
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 22068196}
-        m_MethodName: OnMouse
+        m_MethodName: OnCancel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -481,8 +475,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 3e431974-a92f-4524-a11a-681dd6139cd6
-    m_ActionName: Player/Mouse[/Mouse/position]
+    m_ActionId: 201c307b-e5a1-42e6-a39c-869a8803925a
+    m_ActionName: UI/Cancel[/DualShock4GamepadHID/buttonEast,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c45daa58-131f-4c32-983d-2e16493d2f85
+    m_ActionName: UI/Left Click[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

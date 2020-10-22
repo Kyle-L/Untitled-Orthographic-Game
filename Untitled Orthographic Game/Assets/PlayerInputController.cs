@@ -33,6 +33,10 @@ public class PlayerInputController : MonoBehaviour {
 
         controlledPlayer.PlayerMovementController.Move(move);
 
+        if (controlledCamera == null) {
+            return;
+        }
+
         // Gamepad specific controls.
         if (_playerInput.currentControlScheme == "Gamepad") {
             if (zoom) {
@@ -72,6 +76,16 @@ public class PlayerInputController : MonoBehaviour {
     }
 
     public void OnFire1(InputAction.CallbackContext context) {
+        if (!context.performed) {
+            return;
+        }
+
+                if (_playerInput.currentControlScheme == "Gamepad") {
+            UIMenuController.instance.UseEventSystem = true;
+        } else {
+            UIMenuController.instance.UseEventSystem = false;
+        }
+
         if (DialogueRunner.instance.isDialogueRunning) {
             uiDialogue.DialogueContinue();
         } else {
@@ -110,6 +124,16 @@ public class PlayerInputController : MonoBehaviour {
             UIMenuController.instance.PauseMenu();
         } else {
             UIMenuController.instance.SetMenu(UIMenuController.MainMenus.NoMenu);
+        }
+    }
+
+    public void OnCancel (InputAction.CallbackContext context) {
+        if (!context.performed) {
+            return;
+        }
+
+        if (UIMenuController.instance.GetMenuState()) {
+            UIMenuController.instance.Back();
         }
     }
 }

@@ -11,6 +11,7 @@ public class UIMenu_Viewable : MonoBehaviour {
     public Text viewableUITextTitle;
     public Text viewableUITextBody;
 
+    public GameObject backButton;
     public GameObject leftButton;
     public GameObject rightButton;
 
@@ -47,11 +48,6 @@ public class UIMenu_Viewable : MonoBehaviour {
 
     public void ViewRight() {
         View((UIViewable)currentView.rightView);
-    }
-
-    public void Stop () {
-        UIMenuController.instance.CloseMenu();
-        currentView.Stop();
     }
 
 }

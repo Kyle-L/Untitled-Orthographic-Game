@@ -3,15 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIDialogue : Yarn.Unity.DialogueUIBehaviour {
-
-    /// The UI element that displays lines
-    public Text defaultLineText;
-
-    /// A UI element that appears after lines have finished appearing
-    public GameObject continuePrompt;
-
     /// A delegate (ie a function-stored-in-a-variable) that
     /// we call to tell the dialogue system about what option
     /// the user selected
@@ -25,30 +19,17 @@ public class UIDialogue : Yarn.Unity.DialogueUIBehaviour {
     private bool continueDialogue = false;
 
     /// The buttons that let the user choose an option
-    public List<Button> optionButtons;
+    public EventSystem eventSystem;
 
     public DialogueVariableStorage variableStorage;
 
     void Awake() {
-        defaultLineText?.gameObject.SetActive(false);
 
-        foreach (var button in optionButtons) {
-            button.gameObject.SetActive(false);
-        }
-
-        // Hide the continue prompt if it exists
-        if (continuePrompt != null) {
-            continuePrompt.SetActive(false);
-        }
     }
 
     /// Show a line of dialogue, gradually
     public override IEnumerator RunLine(Yarn.Line line, Text lineText) {
-        if (lineText == null) {
-            lineText = defaultLineText;
-        }
-
-        // Replaces variables with their values.
+// Replaces variables with their values.
         string moddedLine = CheckVars(line.text);
 
         // Show the text
@@ -68,11 +49,6 @@ public class UIDialogue : Yarn.Unity.DialogueUIBehaviour {
             lineText.text = moddedLine;
         }
 
-        // Show the 'press any key' prompt when done, if we have one
-        if (continuePrompt != null) {
-            continuePrompt.SetActive(true);
-        }
-
         // Wait for any user input
         isWaitingToContinue = true;
         while (continueDialogue == false) {
@@ -83,15 +59,12 @@ public class UIDialogue : Yarn.Unity.DialogueUIBehaviour {
 
         // Hide the text and prompt
         lineText.gameObject.SetActive(false);
-
-        if (continuePrompt != null) {
-            continuePrompt.SetActive(false);
-        }
     }
 
     /// Show a list of options, and wait for the player to make a selection.
     public override IEnumerator RunOptions(Yarn.Options optionsCollection,
-                                            Yarn.OptionChooser optionChooser) {
+                                           Yarn.OptionChooser optionChooser, 
+                                           List<Button> optionButtons) {
         // Do a little bit of safety checking
         if (optionsCollection.options.Count > optionButtons.Count) {
             Debug.LogWarning("There are more options to present than there are" +
@@ -107,6 +80,9 @@ public class UIDialogue : Yarn.Unity.DialogueUIBehaviour {
             optionButtons[i].GetComponentInChildren<Text>().text = optionString;
             i++;
         }
+
+        eventSystem.SetSelectedGameObject(null);
+        eventSystem.SetSelectedGameObject(optionButtons[0].gameObject);
 
         // Record that we're using it
         SetSelectedOption = optionChooser;

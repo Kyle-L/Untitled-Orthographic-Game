@@ -43,6 +43,11 @@ public class Follow : MonoBehaviour {
 
     public float smoothSpeed = 5;
 
+    private void Start() {
+        FollowPosition = followPosition;
+        LookAt = lookAt;
+    }
+
     private void Update() {
         Refresh();
     }

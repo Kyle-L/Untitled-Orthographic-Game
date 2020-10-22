@@ -3,8 +3,6 @@ using Yarn.Unity;
 
 public class PlayerMovementController : MovementController {
 
-    public Camera playerMainCamera;
-
     public bool Control { get; set; } = true;
 
     public void Move(Vector2 dir) {
@@ -25,7 +23,7 @@ public class PlayerMovementController : MovementController {
                 direction = new Vector3(horizontal, 0f, vertical);
 
                 //Makes direction relative to camera.
-                direction = playerMainCamera.transform.TransformDirection(direction);
+                direction = Camera.main.transform.TransformDirection(direction);
                 direction.y = 0.0f;
 
                 direction = Vector3.Normalize(direction);
