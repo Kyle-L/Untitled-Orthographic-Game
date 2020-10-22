@@ -76,6 +76,10 @@ public class UIMenuController : MonoBehaviour {
     /// Returns to a previously active menu. If no there is no previous menu, then just shut the current menu.
     /// </summary>
     public void Back() {
+        if (GetCurrentMenu() == null || !GetCurrentMenu().GetBackState()) {
+            return;
+        }
+
         // Pop the current menu from the stack and set it inactive.
         uiHistory.Pop().Enable(false);
         /* Set the current head of the stack to the active menu,

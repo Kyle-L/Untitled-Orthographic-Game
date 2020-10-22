@@ -11,7 +11,7 @@ public class PlayerInputController : MonoBehaviour {
     [SerializeField] private MouseStateController mouseStateController = null;
 
     [SerializeField] private CameraController controlledCamera = null;
-    [SerializeField] private PlayerControllerMain controlledPlayer = null;
+    [SerializeField] private PlayerControllerMain[] controlledPlayer;
     [SerializeField] private UIDialogue uiDialogue = null;
 
     private Vector2 move;
@@ -23,15 +23,17 @@ public class PlayerInputController : MonoBehaviour {
     private void Awake() {
         _playerInput = this.GetComponent<PlayerInput>();
 
-        InputSystem.onDeviceChange += OnDeviceChange;
+        _playerInput.controlsChangedEvent.AddListener(OnDeviceChange);
     }
 
     public void Update() {
-        if (controlledPlayer == null) {
+        if (controlledPlayer.Length == 0) {
             return;
         }
 
-        controlledPlayer.PlayerMovementController.Move(move);
+        foreach (PlayerControllerMain player in controlledPlayer) {
+            player.PlayerMovementController.Move(move);
+        }
 
         if (controlledCamera == null) {
             return;
@@ -55,12 +57,16 @@ public class PlayerInputController : MonoBehaviour {
         }
     }
 
-    public void OnDeviceChange (InputDevice dev, InputDeviceChange change) {
-        print(dev);
+    public void OnDeviceChange (PlayerInput input) {
+        if (_playerInput.currentControlScheme == "Gamepad") {
+            UIMenuController.instance.UseEventSystem = true;
+        } else {
+            UIMenuController.instance.UseEventSystem = false;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context) {
-        if (controlledPlayer == null) {
+        if (controlledPlayer.Length == 0) {
             return;
         }
 
@@ -68,7 +74,7 @@ public class PlayerInputController : MonoBehaviour {
     }
 
     public void OnLook(InputAction.CallbackContext context) {
-        if (controlledPlayer == null) {
+        if (controlledPlayer.Length == 0) {
             return;
         }
 
@@ -80,21 +86,17 @@ public class PlayerInputController : MonoBehaviour {
             return;
         }
 
-                if (_playerInput.currentControlScheme == "Gamepad") {
-            UIMenuController.instance.UseEventSystem = true;
-        } else {
-            UIMenuController.instance.UseEventSystem = false;
-        }
-
         if (DialogueRunner.instance.isDialogueRunning) {
             uiDialogue.DialogueContinue();
         } else {
-            controlledPlayer.PlayerInteractionController.Interact();
+            foreach (PlayerControllerMain player in controlledPlayer) {
+                player.PlayerInteractionController.Interact();
+            }
         }
     }
 
     public void OnFire2(InputAction.CallbackContext context) {
-        if (controlledPlayer == null) {
+        if (controlledPlayer.Length == 0) {
             return;
         }
 
@@ -102,7 +104,7 @@ public class PlayerInputController : MonoBehaviour {
     }
 
     public void OnZoom(InputAction.CallbackContext context) {
-        if (controlledPlayer == null) {
+        if (controlledCamera == null) {
             return;
         }
 
@@ -112,12 +114,6 @@ public class PlayerInputController : MonoBehaviour {
     public void OnPause(InputAction.CallbackContext context) {
         if (!context.performed) {
             return;
-        }
-
-        if (_playerInput.currentControlScheme == "Gamepad") {
-            UIMenuController.instance.UseEventSystem = true;
-        } else {
-            UIMenuController.instance.UseEventSystem = false;
         }
 
         if (UIMenuController.instance.GetCurrentMenu() == null) {
