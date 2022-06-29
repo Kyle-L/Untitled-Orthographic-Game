@@ -7,7 +7,7 @@
 
 <a name="overview"/></a>
 ## Overview
-Untitled Orthographic Game (That's a placeholder name) is currently a work in-progress narrative adventure game that puts heavey emphasis on player choice and freedom.
+Untitled Orthographic Game (That's a placeholder name) is an unfinished narrative adventure game that puts heavy emphasis on player choice and freedom.
 
 *Note: For the time being, progress on this project has been discontinued due to time constraints. Progress may continue in the future.*
 
